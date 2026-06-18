@@ -248,7 +248,9 @@ function SevenWorldsPanel() {
             </p>
           </div>
         </Reveal>
+      </div>
 
+      <div style={{ position: "relative", zIndex: 1, padding: "0 28px" }}>
         <div className="inst-grid">
           {INSTITUTIONS.map((inst, i) => {
             const Icon = inst.icon;
@@ -270,7 +272,9 @@ function SevenWorldsPanel() {
             );
           })}
         </div>
+      </div>
 
+      <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
         <div style={{ textAlign: "center", marginTop: 44 }}>
           <Link to="/institutions" className="btn btn-dark">
             Explore all programmes <ArrowUpRight size={18} />

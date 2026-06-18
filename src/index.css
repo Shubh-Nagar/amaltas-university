@@ -1112,17 +1112,18 @@ body{margin:0;}
 .inst-grid-section{padding:100px 0;background:var(--paper);}
 .inst-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(8,1fr);
   gap:16px;
 }
-/* 7th card spans — centre the last row */
-.inst-grid > *:nth-child(5){grid-column:1;}
-.inst-grid > *:nth-child(6){grid-column:2;}
-.inst-grid > *:nth-child(7){grid-column:3;}
+.inst-grid > *{grid-column:span 2;}
+/* centre the 3-card second row in the 8-virtual-column grid */
+.inst-grid > *:nth-child(5){grid-column:2 / span 2;}
+.inst-grid > *:nth-child(6){grid-column:4 / span 2;}
+.inst-grid > *:nth-child(7){grid-column:6 / span 2;}
 
 .inst-card{
   position:relative;display:block;border-radius:20px;overflow:hidden;
-  aspect-ratio:3/4;text-decoration:none;
+  aspect-ratio:4/3;text-decoration:none;
   box-shadow:0 16px 48px -24px rgba(11,44,24,.45);
   transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s;
 }
@@ -1170,8 +1171,10 @@ body{margin:0;}
 }
 .inst-card:hover .inst-card-cta{background:var(--goldL);transform:translateX(3px);}
 
-@media(max-width:1024px){.inst-grid{grid-template-columns:repeat(3,1fr);}
-  .inst-grid > *:nth-child(5),.inst-grid > *:nth-child(6),.inst-grid > *:nth-child(7){grid-column:auto;}}
+@media(max-width:1024px){
+  .inst-grid{grid-template-columns:repeat(3,1fr);}
+  .inst-grid > *,.inst-grid > *:nth-child(5),.inst-grid > *:nth-child(6),.inst-grid > *:nth-child(7){grid-column:auto;}
+}
 @media(max-width:640px){.inst-grid{grid-template-columns:repeat(2,1fr);}}
 
 /* ══════════════════════════════════════════
