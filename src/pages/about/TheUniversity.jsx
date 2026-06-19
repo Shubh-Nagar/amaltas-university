@@ -7,11 +7,11 @@ import { C } from "../../theme.js";
 import { STATS, UNIVERSITY_MILESTONES, VISION_MISSION } from "../../data/content.js";
 
 const INSTITUTE_PHOTOS = [
-  { name: "Medical Sciences",         short: "MBBS · MD · MS",           photo: "/assets/images%20of%20university/all%20institutes/medical%20science.jpeg" },
-  { name: "Ayurvedic College",        short: "BAMS · AYUSH",             photo: "/assets/images%20of%20university/all%20institutes/ayurveda.jpg" },
+  { name: "Medical Sciences",         short: "MBBS · MD · MS",           photo: "/assets/images%20of%20university/all%20institutes/medical.png" },
+  { name: "Ayurvedic College",        short: "BAMS · AYUSH",             photo: "/assets/images%20of%20university/all%20institutes/ayurveda.png" },
   { name: "Institute of Homoeopathy", short: "BHMS",                     photo: "/assets/images%20of%20university/all%20institutes/homoeopathys.png" },
   { name: "Nursing Sciences",         short: "B.Sc. · P.B.B.Sc. · M.Sc.",photo: "/assets/images%20of%20university/all%20institutes/nursing.jpeg" },
-  { name: "Institute of Pharmacy",    short: "B.Pharm · M.Pharm",        photo: "/assets/images%20of%20university/all%20institutes/phamacycampus.jpeg" },
+  { name: "Institute of Pharmacy",    short: "B.Pharm · M.Pharm",        photo: "/assets/images%20of%20university/all%20institutes/pharmacy.png" },
   { name: "Paramedical Sciences",     short: "BMLT · DMLT · Imaging",    photo: "/assets/images%20of%20university/all%20institutes/paramedical.jpeg" },
   { name: "Allied & Rehabilitation",  short: "Physiotherapy · Psychology",photo: "/assets/images%20of%20university/all%20institutes/alied.jpg" },
 ];
@@ -111,7 +111,7 @@ export default function TheUniversity() {
               {/* Main image */}
               <div style={{ borderRadius: 26, overflow: "hidden", aspectRatio: "4/3", boxShadow: "0 50px 100px -50px rgba(11,44,24,.6)", position: "relative" }}>
                 <img
-                  src="/assets/images%20of%20university/our%20purpose/amaltas_photo.jpeg"
+                  src="/assets/images%20of%20university/our%20purpose/university.jpg"
                   alt="Amaltas University Campus"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ArrowRight, ArrowUpRight, Phone, Calendar, Check, Send } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Phone, Calendar, Check } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
@@ -44,7 +44,6 @@ const STEPS = [
 
 export default function Admissions() {
   const [filter, setFilter] = useState("All");
-  const [sent, setSent] = useState(false);
   const filtered = filter === "All" ? PROGRAMS : PROGRAMS.filter((p) => p.t === filter);
 
   return (
@@ -125,23 +124,10 @@ export default function Admissions() {
           <span className="eyebrow">Admission enquiry</span>
           <h2 style={{ fontSize: "clamp(1.9rem,4vw,2.8rem)" }}>Tell us about you.</h2>
           <p className="lead">A counsellor will reach out within one working day.</p>
-          <div style={{ display: "grid", gap: 16, marginTop: 28 }}>
-            <div className="field"><label>Full name</label><input placeholder="Your name" /></div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-              <div className="field"><label>Phone</label><input placeholder="+91" /></div>
-              <div className="field"><label>Email</label><input placeholder="you@email.com" /></div>
-            </div>
-            <div className="field">
-              <label>Programme of interest</label>
-              <select>{PROGRAMS.map((p) => <option key={p.n}>{p.n}</option>)}</select>
-            </div>
-            <button className="btn btn-gold" style={{ justifyContent: "center" }} onClick={() => setSent(true)}>
-              {sent ? <>Enquiry received <Check size={18} /></> : <>Submit enquiry <Send size={16} /></>}
-            </button>
-            <p style={{ fontSize: 13, color: C.slate }}>
-              Or call our admissions cell — Toll free <a href={`tel:${CONTACT.tollFree.replace(/-/g, "")}`} style={{ color: C.emerald, fontWeight: 600 }}>{CONTACT.tollFree}</a>
-            </p>
-          </div>
+          <div className="npf_wgts" data-height="400px" data-w="b9e07b3b3898e1f019ca0c25a842d922" style={{ marginTop: 28 }} />
+          <p style={{ fontSize: 13, color: C.slate, marginTop: 16 }}>
+            Or call our admissions cell — Toll free <a href={`tel:${CONTACT.tollFree.replace(/-/g, "")}`} style={{ color: C.emerald, fontWeight: 600 }}>{CONTACT.tollFree}</a>
+          </p>
         </Reveal>
 
         <Reveal delay="d2">

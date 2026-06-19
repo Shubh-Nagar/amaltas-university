@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
@@ -21,6 +21,21 @@ import FounderChairmanMessage from "./pages/about/FounderChairmanMessage.jsx";
 import ChairmanMessage from "./pages/about/ChairmanMessage.jsx";
 
 export default function App() {
+  useEffect(() => {
+    if (window.NpfWidgetsInit) {
+      new window.NpfWidgetsInit({
+        widgetId: "b9e07b3b3898e1f019ca0c25a842d922",
+        baseurl: "widgets.in4.nopaperforms.com",
+        formTitle: "Enquiry Form",
+        titleColor: "#FF0033",
+        backgroundColor: "#ddd",
+        iframeHeight: "500px",
+        buttonbgColor: "#4c79dc",
+        buttonTextColor: "#FFF",
+      });
+    }
+  }, []);
+
   return (
     <div className="amaltas">
       <AdmissionPopup />

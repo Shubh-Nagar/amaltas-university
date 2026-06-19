@@ -16,15 +16,25 @@ import {
   INSTITUTIONS, WHY, VOICES, STATS, LEADERS,
   EVENTS, NEWS, FAQS, QUICK_LINKS, ANNOUNCEMENTS,
   AUDIENCES, ADMISSION_PATHS, LIFE, OUTCOMES, PARTNERS,
-  ACCREDITATIONS,
+  ACCREDITATIONS, ASSURANCE,
 } from "../data/content.js";
 
 const IMGS = {
-  purposeMain:  "/assets/images%20of%20university/our%20purpose/amaltas_photo.jpeg",
+  purposeMain:  "/assets/images%20of%20university/our%20purpose/university.jpg",
   campusBanner: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=80",
   leaderBg:     "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=70",
   instBanner:   "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=80",
 };
+
+const POSTERS = [
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130301_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130315_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130325_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130337_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130355_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130449_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130505_Instagram.jpg.jpeg",
+];
 
 /* ─── tiny sub-components ─── */
 
@@ -103,6 +113,13 @@ function FloatingActions() {
   }, []);
   return (
     <div className="fab-stack" aria-hidden="false">
+      <button
+        type="button"
+        className="npfWidgetButton npfWidget-b9e07b3b3898e1f019ca0c25a842d922 fab fab-enquire"
+        aria-label="Open enquiry form"
+      >
+        Enquire Now
+      </button>
       <a
         href="https://wa.me/919404956221?text=Hi%2C%20I%27d%20like%20to%20know%20about%20admissions%20at%20Amaltas%20University."
         target="_blank" rel="noreferrer"
@@ -285,54 +302,428 @@ function SevenWorldsPanel() {
   );
 }
 
-const HERO_SLIDES = [
+/* ─── Assurance — answers the questions families actually worry about ─── */
+function AssuranceSection() {
+  return (
+    <section className="sec assurance-sec" style={{ position: "relative", overflow: "hidden" }}>
+      <Blob color="rgba(18,134,63,.10)" size={520} blur={115} variant="a" delay={8}
+        style={{ left: "-8%", top: "0%" }} />
+      <Blob color="rgba(246,224,5,.10)" size={400} blur={100} variant="c" delay={21}
+        style={{ right: "-6%", bottom: "0%" }} />
+
+      <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
+        <Reveal>
+          <div style={{ textAlign: "center" }}>
+            <span className="eyebrow" style={{ justifyContent: "center" }}>Peace of mind for families</span>
+            <h2 style={{ maxWidth: 720, margin: "12px auto 0" }}>Everything you need to feel sure before you say yes.</h2>
+            <p className="lead" style={{ maxWidth: 580, margin: "16px auto 0" }}>
+              Scholarships, safe living, and real clinical training — the things that matter most, answered up front.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="assurance-grid">
+          {ASSURANCE.map((a, i) => {
+            const Icon = a.icon;
+            return (
+              <Reveal key={i} delay={`d${(i % 3) + 1}`} variant="zoom">
+                <div className="assurance-card">
+                  <span className="assurance-icon"><Icon size={20} /></span>
+                  <h3 className="assurance-title">{a.t}</h3>
+                  <p className="assurance-desc">{a.d}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: 44 }}>
+          <Link to="/admissions" className="btn btn-gold">Explore scholarships & fees <ArrowRight size={18} /></Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── News & Press — auto-rotating feature (left) + latest list (right) ─── */
+function NewsSection() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setActive((n) => (n + 1) % NEWS.length), 5000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <section className="sec" style={{ background: C.ivory, position: "relative", overflow: "hidden" }}>
+      <Blob color="rgba(18,134,63,.09)" size={450} blur={110} variant="a" delay={13}
+        style={{ right: "-6%", top: "10%" }} />
+
+      <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
+        <Reveal>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20 }}>
+            <div>
+              <span className="eyebrow">Stay informed</span>
+              <h2 style={{ marginTop: 12 }}>News & Press Releases</h2>
+            </div>
+            <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-dark" style={{ marginBottom: 10 }}>All News <ArrowUpRight size={17} /></a>
+          </div>
+        </Reveal>
+
+        <div className="news-feature-layout">
+          {/* ── LEFT: big auto-rotating highlight ── */}
+          <Reveal variant="left">
+            <div className="news-feature">
+              {NEWS.map((n, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  className={`news-feature-slide ${i === active ? "on" : ""}`}
+                >
+                  <img src={n.img} alt={n.title} loading="lazy" />
+                  <div className="news-feature-overlay" />
+                  <div className="news-feature-body">
+                    <div className="news-feature-meta">
+                      <span className="news-feature-tag">{n.tag}</span>
+                      <span className="news-feature-date"><Newspaper size={13} /> {n.date}</span>
+                    </div>
+                    <h3 className="news-feature-title">{n.title}</h3>
+                    <p className="news-feature-desc">{n.desc}</p>
+                    <span className="news-link" style={{ color: C.goldL }}>Read more <ArrowRight size={14} /></span>
+                  </div>
+                </a>
+              ))}
+              <div className="news-feature-dots">
+                {NEWS.map((_, i) => (
+                  <button
+                    key={i}
+                    className={i === active ? "on" : ""}
+                    onClick={() => setActive(i)}
+                    aria-label={`Show highlight ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* ── RIGHT: latest news list ── */}
+          <Reveal variant="right">
+            <div className="news-list">
+              {NEWS.map((n, i) => (
+                <button
+                  key={i}
+                  className={`news-list-card ${i === active ? "on" : ""}`}
+                  onClick={() => setActive(i)}
+                  onMouseEnter={() => setActive(i)}
+                >
+                  <div className="news-list-thumb">
+                    <img src={n.img} alt={n.title} loading="lazy" />
+                  </div>
+                  <div className="news-list-body">
+                    <div className="news-card-top">
+                      <span className="news-tag">{n.tag}</span>
+                      <span className="news-date"><Newspaper size={11} /> {n.date}</span>
+                    </div>
+                    <h3 className="news-list-title">{n.title}</h3>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Events & Activities — expanding filmstrip panels ─── */
+function EventsSection() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setActive((n) => (n + 1) % EVENTS.length), 3500);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  return (
+    <section className="sec" style={{ paddingTop: 110, position: "relative", overflow: "hidden" }}>
+      {/* ambient blobs — gold warmth behind panels */}
+      <Blob color="rgba(246,224,5,.13)" size={500} blur={110} variant="a" delay={5}
+        style={{ right: "-8%", top: "10%" }} />
+      <Blob color="rgba(18,134,63,.1)"  size={380} blur={100} variant="d" delay={19}
+        style={{ left: "-6%", bottom: "5%" }} />
+
+      <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
+        <Reveal>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20 }}>
+            <div>
+              <span className="eyebrow">Campus life</span>
+              <h2 style={{ marginTop: 12 }}>Events & Activities</h2>
+              <p className="lead" style={{ maxWidth: 520 }}>
+                From world records to lamp-lighting ceremonies, campus life at Amaltas is vibrant and meaningful.
+              </p>
+            </div>
+            <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-dark" style={{ marginBottom: 10 }}>
+              All Events <ArrowUpRight size={17} />
+            </a>
+          </div>
+        </Reveal>
+
+        <Reveal>
+          <div
+            className="events-strip"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {EVENTS.map((ev, i) => (
+              <article
+                key={i}
+                className={`events-panel ${i === active ? "on" : ""}`}
+                style={{ "--accent": ev.tagColor }}
+                onMouseEnter={() => setActive(i)}
+                onClick={() => setActive(i)}
+              >
+                <img className="events-panel-img" src={ev.img} alt={ev.title} loading="lazy" />
+                <div className="events-panel-overlay" />
+
+                {/* collapsed sliver label */}
+                <div className="events-panel-rail">
+                  <span className="events-panel-rail-tag">{ev.tag}</span>
+                  <span className="events-panel-rail-date">{ev.date}</span>
+                </div>
+
+                {/* expanded content */}
+                <div className="events-panel-content">
+                  <div className="events-panel-meta">
+                    <span className="ep-tag" style={{ background: ev.tagColor }}>{ev.tag}</span>
+                    <span className="ep-date"><Calendar size={11} /> {ev.date}</span>
+                  </div>
+                  <h3 className="events-panel-title">{ev.title}</h3>
+                  {ev.desc && <p className="events-panel-desc">{ev.desc}</p>}
+                  <a href="#" onClick={(e) => e.preventDefault()} className="event-link">View details <ArrowRight size={14} /></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─── World Record stacking cards data ─── */
+const WR_CARDS = [
   {
-    words: ["Where", "healing", "grows."],
-    goldIdx: 1,
-    sub: "Seven institutions. One living teaching hospital. A university built so the people who will care for India learn by caring — from the very first day.",
-    ctaLabel: "Begin your application",
-    ctaTo: "/admissions",
-    img: "/assets/images%20of%20university/campus%20life/student-girl.png",
-    imgType: "cutout",
+    bg: "linear-gradient(135deg,#0B2C18 0%,#1a5c35 100%)",
+    img: null,
+    eyebrow: "Dewas · Madhya Pradesh · Est. 2016",
+    stat: "7",
+    statLabel: "Health-Science Institutions",
+    body: "One campus uniting medicine, Ayurveda, homoeopathy, nursing, pharmacy, physiotherapy and allied sciences — every discipline of modern and traditional healthcare under a single roof.",
   },
   {
-    words: ["Where", "research", "heals."],
-    goldIdx: 1,
-    sub: "Live clinical wards, AYUSH-to-allopathy breadth, and a Ph.D. culture where publishing begins early. Bring your questions to a hospital that never closes.",
-    ctaLabel: "Discover research",
-    ctaTo: "/why",
-    img: "/assets/images%20of%20university/campus%20life/student-back.png",
-    imgType: "cutout",
+    bg: "linear-gradient(135deg,#103A22 0%,#0B2C18 100%)",
+    img: "/assets/images%20of%20university/The%20Amaltas%20difference/hospital.jpg",
+    eyebrow: "Teaching Hospital · On Campus",
+    stat: "1,500+",
+    statLabel: "Hospital Beds",
+    body: "A fully-functional superspeciality hospital where students step into real wards from year one — not after graduation. The distance between learning and healing, measured in footsteps.",
   },
   {
-    words: ["Where", "care", "begins."],
-    goldIdx: 1,
-    sub: "A campus where every student is known by name — safe hostels, mentor-faculty, and a working hospital that turns ambition into a profession families can trust.",
-    ctaLabel: "Explore admissions",
-    ctaTo: "/admissions",
-    img: "/assets/images%20of%20university/campus%20life/scolarship-Photoroom.png",
-    imgType: "cutout",
+    bg: "linear-gradient(135deg,#1e3a1a 0%,#0B2C18 100%)",
+    img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",
+    eyebrow: "विश्व कीर्तिमान · Guinness · 2024",
+    stat: "35,000+",
+    statLabel: "Participants · Mass Yoga",
+    body: "The Amaltas group brought together more than thirty-five thousand participants in a single collective yoga gathering — a record-setting testament to community, wellness, and what we build together.",
+  },
+  {
+    bg: "linear-gradient(135deg,#3a1208 0%,#872822 100%)",
+    img: "/assets/images%20of%20university/yoga-hall.jpeg",
+    eyebrow: "A world record, in one breath.",
+    stat: null,
+    statLabel: "Where healing grows.",
+    body: "A university measured not in degrees alone but in lives transformed — and records set, together. This is Amaltas.",
   },
 ];
+
+/* ─── Scroll-driven stacking card section ─── */
+function WorldRecordStack() {
+  const sectionRef = useRef(null);
+  const cardEls = useRef([]);
+  const N = WR_CARDS.length;
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = sectionRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const scrollable = el.offsetHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      const p = Math.max(0, Math.min(1, -rect.top / scrollable));
+      // card 0 is pre-shown; cards 1–(N-1) each get one scroll unit
+      const cp = 1 + p * (N - 1); // 1 → N
+
+      cardEls.current.forEach((cardEl, i) => {
+        if (!cardEl) return;
+        const t = cp - i; // negative = pending, 0–1 = entering, >1 = settled below stack
+        if (t <= 0) {
+          cardEl.style.transform = "translateY(100vh)";
+          cardEl.style.opacity = "0";
+        } else if (t < 1) {
+          const ease = t * t * (3 - 2 * t); // smoothstep
+          cardEl.style.transform = `translateY(${(1 - ease) * 100}vh)`;
+          cardEl.style.opacity = "1";
+        } else {
+          // settled — each extra card above it pushes it up and scales it down
+          const depth = Math.min(t - 1, N - 1 - i);
+          cardEl.style.transform = `translateY(${depth * -22}px) scale(${1 - depth * 0.04})`;
+          cardEl.style.opacity = "1";
+        }
+        cardEl.style.zIndex = String(i + 1);
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div ref={sectionRef} style={{ height: `${(N + 1) * 100}vh`, position: "relative" }}>
+      <div style={{
+        position: "sticky", top: 0, height: "100vh",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        background: C.paper, overflow: "hidden",
+      }}>
+        {/* ambient glow */}
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(18,134,63,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
+
+        {/* heading — fades as first card arrives */}
+        <div style={{ position: "absolute", top: 64, left: 0, right: 0, textAlign: "center", zIndex: 0, pointerEvents: "none" }}>
+          <span className="eyebrow" style={{ justifyContent: "center" }}>Our milestones</span>
+          <h2 style={{ marginTop: 12 }}>A world record, in one breath.</h2>
+        </div>
+
+        {/* scroll cue */}
+        <div style={{ position: "absolute", bottom: 36, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, zIndex: 20, opacity: 0.5, pointerEvents: "none" }}>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: C.slate }}>Scroll</span>
+          <div style={{ width: 1, height: 36, background: `linear-gradient(to bottom, ${C.slate}, transparent)` }} />
+        </div>
+
+        {WR_CARDS.map((card, i) => (
+          <div
+            key={i}
+            ref={el => { cardEls.current[i] = el; }}
+            style={{
+              position: "absolute",
+              width: "min(980px, 92vw)",
+              height: "min(560px, 76vh)",
+              borderRadius: 28,
+              overflow: "hidden",
+              background: card.bg,
+              boxShadow: "0 40px 100px -40px rgba(11,44,24,.65)",
+              willChange: "transform, opacity",
+              opacity: i === 0 ? 1 : 0,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+            }}
+          >
+            {/* background image */}
+            {card.img && (
+              <img src={card.img} alt="" aria-hidden="true" style={{
+                position: "absolute", inset: 0, width: "100%", height: "100%",
+                objectFit: "cover", opacity: 1,
+              }} />
+            )}
+
+            {/* content */}
+            <div style={{ position: "relative", zIndex: 1, padding: "40px 48px" }}>
+              <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: C.goldL, marginBottom: 18, opacity: 0.88 }}>
+                {card.eyebrow}
+              </div>
+              {card.stat && (
+                <div style={{ fontFamily: "'Fraunces',serif", fontSize: "clamp(3rem,7vw,5.5rem)", fontWeight: 300, lineHeight: 1, color: "#fff", marginBottom: 6 }}>
+                  {card.stat}
+                </div>
+              )}
+              <div style={{ fontFamily: "'Fraunces',serif", fontSize: card.stat ? "clamp(1rem,1.8vw,1.3rem)" : "clamp(1.8rem,3.5vw,2.6rem)", color: C.goldL, marginBottom: 16, lineHeight: 1.25 }}>
+                {card.statLabel}
+              </div>
+              <p style={{ color: "rgba(247,244,236,.8)", fontSize: 15, lineHeight: 1.7, margin: 0, maxWidth: 540 }}>
+                {card.body}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function HeroForm() {
+  const [sent, setSent] = useState(false);
+  return (
+    <div className="hero-form-box">
+      <div className="eyebrow" style={{ marginBottom: 6 }}>Admissions 2026–27 Open</div>
+      <h2 style={{ color: C.ink, fontSize: "clamp(1.4rem,2vw,1.8rem)", fontWeight: 300, marginBottom: 6, lineHeight: 1.2 }}>
+        Begin Your <span className="grad-gold">Journey</span>
+      </h2>
+      <p style={{ color: C.slate, fontSize: 13.5, marginBottom: 20 }}>
+        A counsellor will reach out within one working day.
+      </p>
+      {sent ? (
+        <div style={{ textAlign: "center", padding: "36px 0" }}>
+          <CheckCircle size={48} color={C.emerald} style={{ marginBottom: 14 }} />
+          <p style={{ color: C.ink, fontSize: 16, fontWeight: 600 }}>Enquiry received!</p>
+          <p style={{ color: C.slate, fontSize: 13.5, marginTop: 8 }}>We'll be in touch shortly.</p>
+        </div>
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div className="hf-field"><input type="text" placeholder="Full Name *" /></div>
+          <div className="hf-field"><input type="tel" placeholder="Phone Number *" /></div>
+          <div className="hf-field"><input type="email" placeholder="Email Address" /></div>
+          <div className="hf-field">
+            <select defaultValue="">
+              <option value="" disabled>Programme of Interest *</option>
+              <option>M.B.B.S.</option>
+              <option>B.A.M.S.</option>
+              <option>B.H.M.S.</option>
+              <option>B.Sc. Nursing</option>
+              <option>Post Basic B.Sc. Nursing</option>
+              <option>B.Pharma</option>
+              <option>D.Pharma</option>
+              <option>B.P.T.</option>
+              <option>B.M.L.T.</option>
+              <option>Allied Sciences</option>
+            </select>
+          </div>
+          <button
+            className="btn btn-gold"
+            style={{ width: "100%", justifyContent: "center", marginTop: 4 }}
+            onClick={() => setSent(true)}
+          >
+            Submit Enquiry <Send size={16} />
+          </button>
+          <p style={{ fontSize: 12, color: C.slate, textAlign: "center", marginTop: 2 }}>
+            Or call: <a href="tel:+919404956221" style={{ color: C.emerald, textDecoration: "none", fontWeight: 600 }}>+91 94049 56221</a>
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
 
 /* ═══════════════════════════════════════════════════
    HOME PAGE
 ═══════════════════════════════════════════════════ */
 export default function Home() {
   const [voice, setVoice] = useState(0);
-  const [heroSlide, setHeroSlide] = useState(0);
-  const [animKey, setAnimKey] = useState(0);
-  const [heroFading, setHeroFading] = useState(false);
-  const studentRef = useRef(null);
-
-  const goToSlide = (i) => {
-    setHeroFading(true);
-    setTimeout(() => {
-      setHeroSlide(i);
-      setAnimKey((k) => k + 1);
-      setHeroFading(false);
-    }, 500);
-  };
+  const [posterIdx, setPosterIdx] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => setVoice((v) => (v + 1) % VOICES.length), 6000);
@@ -340,20 +731,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      goToSlide((heroSlide + 1) % HERO_SLIDES.length);
-    }, 5000);
+    const id = setInterval(() => setPosterIdx((i) => (i + 1) % POSTERS.length), 4000);
     return () => clearInterval(id);
-  }, [heroSlide]);
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (studentRef.current) {
-        studentRef.current.style.transform = `translateX(${-window.scrollY * 0.42}px)`;
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
@@ -363,14 +742,13 @@ export default function Home() {
           HERO
       ════════════════════════════════════════ */}
       <header className="hero">
-        {/* video/photo layer below canvas */}
+        {/* video background */}
         <div className="hero-bg-photo" aria-hidden="true">
           <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
             <source src="/assets/images%20of%20university/hero%20section/hero-video.mp4" type="video/mp4" />
           </video>
         </div>
 
-        {/* blobs — sit between bg photo and helix canvas */}
         <Blob color="rgba(18,134,63,.32)" size={420} blur={100} variant="a" delay={4}
           style={{ right: "12%", top: "22%", zIndex: 1 }} />
         <Blob color="rgba(246,224,5,.22)" size={300} blur={85}  variant="c" delay={11}
@@ -381,105 +759,43 @@ export default function Home() {
         <HelixCanvas />
 
         <div className="hero-glow" style={{ width: 460, height: 460, background: "rgba(18,134,63,.06)", left: "-120px", top: "10%" }} />
-        <div className="hero-glow" style={{ width: 380, height: 380, background: "rgba(246,224,5,.28)", right: "8%", bottom: "6%" }} />
+        <div className="hero-glow" style={{ width: 380, height: 380, background: "rgba(246,224,5,.18)", right: "8%", bottom: "6%" }} />
 
-        <div className="wrap hero-inner">
-          <div key={animKey} style={{ maxWidth: 760, opacity: heroFading ? 0 : 1, transition: heroFading ? "opacity .5s ease" : "none" }}>
-            <div className="eyebrow" style={{ color: C.goldL, opacity: 0, animation: "wordUp 1.2s .1s forwards" }}>
-              Dewas · Madhya Pradesh · Est. 2016
-            </div>
-            <h1 style={{ marginTop: 22 }}>
-              {HERO_SLIDES[heroSlide].words.map((wd, i) => (
-                <span key={i} className="word" style={{ animationDelay: `${0.3 + i * 0.2}s`, marginRight: 18 }}>
-                  {i === HERO_SLIDES[heroSlide].goldIdx ? <span className="grad-gold">{wd}</span> : wd}
-                </span>
+        {/* ── two-column layout: poster slider (left) + enquiry form (right) ── */}
+        <div className="wrap hero-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start", paddingTop: 170, paddingBottom: 80 }}>
+
+          {/* LEFT — poster carousel */}
+          <div>
+            <div className="poster-carousel">
+              {POSTERS.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`Admission poster ${i + 1}`}
+                  className={`poster-slide ${i === posterIdx ? "on" : ""}`}
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
               ))}
-            </h1>
-            <p className="hero-sub" style={{ fontSize: 19, color: "rgba(247,244,236,.78)", maxWidth: 560, marginTop: 26, opacity: 0, animation: "wordUp 1.4s 1.1s forwards" }}>
-              {HERO_SLIDES[heroSlide].sub}
-            </p>
-            <div style={{ display: "flex", gap: 14, marginTop: 34, flexWrap: "wrap", opacity: 0, animation: "wordUp 1.4s 1.4s forwards" }}>
-              <Link to={HERO_SLIDES[heroSlide].ctaTo} className="btn btn-gold">
-                {HERO_SLIDES[heroSlide].ctaLabel} <ArrowRight size={18} />
-              </Link>
-              <Link to="/institutions" className="btn btn-ghost"><Play size={16} /> Explore campus</Link>
+            </div>
+            {/* dot indicators */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
+              {POSTERS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPosterIdx(i)}
+                  aria-label={`Poster ${i + 1}`}
+                  style={{
+                    width: i === posterIdx ? 24 : 8, height: 8, borderRadius: 4,
+                    background: i === posterIdx ? C.goldL : "rgba(247,244,236,.35)",
+                    border: "none", cursor: "pointer", transition: "all .4s ease", padding: 0,
+                  }}
+                />
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* hero image — cutout PNG or full-bleed photo depending on slide */}
-        {HERO_SLIDES[heroSlide].imgType === "cutout" ? (
-          <div
-            key={animKey}
-            style={{ opacity: heroFading ? 0 : 1, transition: heroFading ? "opacity .5s ease" : "none" }}
-          >
-            <img
-              ref={studentRef}
-              src={HERO_SLIDES[heroSlide].img}
-              alt=""
-              aria-hidden="true"
-              className="hero-student-girl"
-              style={{
-                position: "absolute",
-                right: 0,
-                bottom: 0,
-                height: "70%",
-                width: "auto",
-                objectFit: "contain",
-                objectPosition: "bottom right",
-                zIndex: 2,
-                pointerEvents: "none",
-                userSelect: "none",
-                willChange: "transform",
-                animation: `studentEntrance 1.4s cubic-bezier(.16,1,.3,1) ${heroSlide === 0 ? "1.5s" : ".4s"} both`,
-              }}
-            />
-          </div>
-        ) : (
-          <div
-            key={animKey}
-            style={{
-              position: "absolute",
-              right: 0,
-              top: 0,
-              bottom: 0,
-              width: "44%",
-              zIndex: 2,
-              pointerEvents: "none",
-              maskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%)",
-              animation: "heroImgFade 1.4s ease .4s both",
-              opacity: heroFading ? 0 : undefined,
-              transition: heroFading ? "opacity .5s ease" : "none",
-            }}
-          >
-            <img
-              src={HERO_SLIDES[heroSlide].img}
-              alt=""
-              aria-hidden="true"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
-            />
-          </div>
-        )}
-
-        {/* slide indicators */}
-        <div style={{ position: "absolute", bottom: 72, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8, zIndex: 5 }}>
-          {HERO_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goToSlide(i)}
-              style={{
-                width: i === heroSlide ? 28 : 8,
-                height: 8,
-                borderRadius: 4,
-                background: i === heroSlide ? C.goldL : "rgba(247,244,236,.35)",
-                border: "none",
-                cursor: "pointer",
-                transition: "all .4s ease",
-                padding: 0,
-              }}
-            />
-          ))}
+          {/* RIGHT — static enquiry form */}
+          <HeroForm />
         </div>
 
         <div className="scrollcue">SCROLL<span className="dot" /></div>
@@ -493,143 +809,6 @@ export default function Home() {
 
       {/* ── QUICK LINKS ── */}
       <QuickLinksBar />
-
-      {/* ── MARQUEE ── */}
-      <div style={{ padding: "70px 0 30px", overflow: "hidden" }}>
-        <div className="wrap" style={{ textAlign: "center", marginBottom: 36 }}>
-          <span className="eyebrow" style={{ justifyContent: "center" }}>Recognised across disciplines</span>
-        </div>
-        <div style={{ position: "relative", maskImage: "linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)", WebkitMaskImage: "linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)" }}>
-          <div className="marquee marquee-logos">
-            {[...ACCREDITATIONS, ...ACCREDITATIONS].map((a, i) => (
-              <div className="mq-logo-card" key={i}>
-                {a.logo
-                  ? <img src={a.logo} alt={a.short} className="mq-logo-img" />
-                  : <div className="mq-seal" style={{ background: a.color }}>
-                      <span className="mq-seal-abbr">{a.short}</span>
-                    </div>
-                }
-                <div className="mq-logo-name">{a.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ════════════════════════════════════════
-          ADMISSION CTA  — light gradient
-      ════════════════════════════════════════ */}
-      <section className="sec admission-cta-section" style={{ position: "relative", overflow: "hidden" }}>
-        <Blob color="rgba(18,134,63,.1)"  size={580} blur={115} variant="b" delay={0}
-          style={{ left: "-10%", top: "-10%", zIndex: 1 }} />
-        <Blob color="rgba(246,224,5,.12)" size={450} blur={100} variant="a" delay={12}
-          style={{ right: "-6%", bottom: "-5%", zIndex: 1 }} />
-        <Blob color="rgba(35,166,83,.08)"  size={300} blur={85}  variant="c" delay={28}
-          style={{ left: "55%", top: "40%", zIndex: 1 }} />
-
-        <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
-          <div className="admission-cta-grid">
-            <Reveal variant="left">
-              <span className="eyebrow">Admissions 2026–27</span>
-              <h2 style={{ color: C.ink, marginTop: 14, fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
-                Your journey into<br />healthcare begins here.
-              </h2>
-              <p style={{ color: C.slate, marginTop: 16, fontSize: 17, maxWidth: 480 }}>
-                Applications are open for MBBS, BAMS, BHMS, B.Sc. Nursing, B.Pharma,
-                B.P.T., B.M.L.T., and allied health programmes for the 2026–27 session.
-              </p>
-              <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
-                <Link to="/admissions" className="btn btn-gold">Apply Now <ArrowRight size={18} /></Link>
-                <a href="tel:+919404956221" className="btn btn-dark"><Phone size={15} /> Call Helpline</a>
-              </div>
-
-              {/* quick admission pathways */}
-              <div className="admit-paths">
-                {ADMISSION_PATHS.map((p, i) => {
-                  const Icon = p.icon;
-                  return (
-                    <Link key={i} to={p.to} className="admit-path">
-                      <span className="admit-path-icon"><Icon size={18} /></span>
-                      <span className="admit-path-text">
-                        <span className="admit-path-label">{p.label}</span>
-                        <span className="admit-path-desc">{p.desc}</span>
-                      </span>
-                      <ArrowUpRight size={16} className="admit-path-arrow" />
-                    </Link>
-                  );
-                })}
-              </div>
-
-              {/* <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 12 }}>
-                {["BAMS Admissions: +91 7880154605", "Allied & Rehabilitation Sciences: +91 9617245556", "Toll Free: 1800-571-2131"].map((info, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: C.slate }}>
-                    <CheckCircle size={15} color={C.emerald} style={{ flexShrink: 0 }} />
-                    {info}
-                  </div>
-                ))}
-              </div> */}
-            </Reveal>
-
-            <Reveal delay="d2" variant="right">
-              <div className="inquiry-form-box">
-                <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 22, marginBottom: 22, color: C.ink }}>Quick Inquiry</h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  <div className="field"><label>Full Name</label><input type="text" placeholder="Your full name" /></div>
-                  <div className="field"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" /></div>
-                  <div className="field"><label>Email Address</label><input type="email" placeholder="your@email.com" /></div>
-                  <div className="field">
-                    <label>Program of Interest</label>
-                    <select>
-                      <option value="">Select program…</option>
-                      <option>M.B.B.S.</option><option>B.A.M.S.</option><option>B.H.M.S.</option>
-                      <option>B.Sc. Nursing</option><option>Post Basic B.Sc. Nursing</option>
-                      <option>B.Pharma</option><option>D.Pharma</option>
-                      <option>B.P.T.</option><option>B.M.L.T.</option><option>D.M.L.T.</option>
-                      <option>B.Sc. Clinical Psychology (Hons)</option><option>B.A.S.L.P.</option>
-                    </select>
-                  </div>
-                  <button className="btn btn-gold" style={{ width: "100%", justifyContent: "center", marginTop: 4 }}>
-                    Send Inquiry <Send size={16} />
-                  </button>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════
-          OUR PURPOSE  — two-column split
-      ════════════════════════════════════════ */}
-      <section className="purpose-section">
-        <Blob color="rgba(18,134,63,.11)" size={620} blur={120} variant="d" delay={2}
-          style={{ left: "-14%", top: "0%", zIndex: 0 }} />
-        <Blob color="rgba(246,224,5,.09)" size={500} blur={110} variant="b" delay={14}
-          style={{ right: "-10%", bottom: "-5%", zIndex: 0 }} />
-
-        <div className="purpose-split">
-          <div className="purpose-split-left">
-            <Reveal variant="left">
-              <span className="eyebrow">Our purpose</span>
-              <h2 style={{ fontSize: "clamp(2.2rem,5vw,3.4rem)", lineHeight: 1.1 }}>A university that began with a promise to a community.</h2>
-              <p className="lead">
-                Founded by the Amaltas Education Welfare Society in 2016, we set out to bring
-                world-class medical education to the heart of Madhya Pradesh — close to the
-                families who need care, and the students who dream of giving it.
-              </p>
-              <p style={{ color: C.slate, marginTop: 16, fontSize: 16.5 }}>
-                Today that promise lives across seven institutions and a living superspeciality
-                hospital, where the distance between learning and healing is measured in footsteps.
-              </p>
-              <Link to="/why" className="btn btn-em" style={{ marginTop: 28 }}>Why students choose us <ArrowRight size={18} /></Link>
-            </Reveal>
-          </div>
-
-          <div className="purpose-split-right">
-            <img src={IMGS.purposeMain} alt="Medical students in class at Amaltas" loading="lazy" />
-          </div>
-        </div>
-      </section>
 
       {/* ════════════════════════════════════════
           CAMPUS SHOWCASE  — video strip + blobs
@@ -682,92 +861,58 @@ export default function Home() {
       ════════════════════════════════════════ */}
       <LifeGrid />
 
-      {/* ════════════════════════════════════════
-          SEVEN WORLDS — scroll chapters
-      ════════════════════════════════════════ */}
-      <SevenWorldsPanel />
-
-      {/* ════════════════════════════════════════
-          EVENTS  — image-header cards + blob accent
-      ════════════════════════════════════════ */}
-      <section className="sec" style={{ paddingTop: 110, position: "relative", overflow: "hidden" }}>
-        {/* single ambient blob — gold warmth behind cards */}
-        <Blob color="rgba(246,224,5,.13)" size={500} blur={110} variant="a" delay={5}
-          style={{ right: "-8%", top: "10%" }} />
-        <Blob color="rgba(18,134,63,.1)"  size={380} blur={100} variant="d" delay={19}
-          style={{ left: "-6%", bottom: "5%" }} />
-
-        <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-          <Reveal>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20 }}>
-              <div>
-                <span className="eyebrow">Campus life</span>
-                <h2 style={{ marginTop: 12 }}>Events & Activities</h2>
-                <p className="lead" style={{ maxWidth: 520 }}>
-                  From world records to lamp-lighting ceremonies, campus life at Amaltas is vibrant and meaningful.
-                </p>
+      {/* ── MARQUEE ── */}
+      <div style={{ padding: "70px 0 30px", overflow: "hidden" }}>
+        <div className="wrap" style={{ textAlign: "center", marginBottom: 36 }}>
+          <span className="eyebrow" style={{ justifyContent: "center" }}>Recognised across disciplines</span>
+        </div>
+        <div style={{ position: "relative", maskImage: "linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)", WebkitMaskImage: "linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)" }}>
+          <div className="marquee marquee-logos">
+            {[...ACCREDITATIONS, ...ACCREDITATIONS].map((a, i) => (
+              <div className="mq-logo-card" key={i}>
+                {a.logo
+                  ? <img src={a.logo} alt={a.short} className="mq-logo-img" />
+                  : <div className="mq-seal" style={{ background: a.color }}>
+                      <span className="mq-seal-abbr">{a.short}</span>
+                    </div>
+                }
+                <div className="mq-logo-name">{a.name}</div>
               </div>
-              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-dark" style={{ marginBottom: 10 }}>
-                All Events <ArrowUpRight size={17} />
-              </a>
-            </div>
-          </Reveal>
-
-          <div className="events-photo-grid">
-            {EVENTS.map((ev, i) => (
-              <Reveal key={i} delay={`d${i + 1}`} variant="zoom">
-                <div className="event-photo-card">
-                  <div className="event-photo-header">
-                    <img src={ev.img} alt={ev.title} loading="lazy" />
-                    <div className="event-photo-overlay" />
-                    <span className="event-tag-over" style={{ background: ev.tagColor }}>{ev.tag}</span>
-                    <span className="event-date-chip"><Calendar size={11} /> {ev.date}</span>
-                  </div>
-                  <div className="event-photo-body">
-                    <h3 className="event-title">{ev.title}</h3>
-                    <p className="event-desc">{ev.desc}</p>
-                    <a href="#" onClick={(e) => e.preventDefault()} className="event-link">View details <ArrowRight size={14} /></a>
-                  </div>
-                </div>
-              </Reveal>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ════════════════════════════════════════
-          WORLD RECORD  — blob accents the dark card
+          OUR PURPOSE  — two-column split
       ════════════════════════════════════════ */}
-      <section className="sec" style={{ paddingTop: 30, position: "relative", overflow: "hidden" }}>
-        {/* soft blobs peek from edges into the record card area */}
-        <Blob color="rgba(246,224,5,.18)" size={360} blur={100} variant="c" delay={3}
-          style={{ left: "-6%", top: "20%" }} />
-        <Blob color="rgba(18,134,63,.15)" size={280} blur={90}  variant="a" delay={16}
-          style={{ right: "-4%", bottom: "10%" }} />
+      <section className="purpose-section">
+        <Blob color="rgba(18,134,63,.11)" size={620} blur={120} variant="d" delay={2}
+          style={{ left: "-14%", top: "0%", zIndex: 0 }} />
+        <Blob color="rgba(246,224,5,.09)" size={500} blur={110} variant="b" delay={14}
+          style={{ right: "-10%", bottom: "-5%", zIndex: 0 }} />
 
-        <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-          <Reveal>
-            <div className="record">
-              <img
-                src="/assets/images%20of%20university/yoga-hall.jpeg"
-                alt="World record yoga gathering at Amaltas"
-                className="record-img"
-              />
-              <div className="record-body">
-                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", gap: 30 }}>
-                  <div className="big">35,000+</div>
-                  <div style={{ maxWidth: 440, paddingBottom: 14 }}>
-                    <div style={{ fontFamily: "Fraunces,serif", fontSize: 24, marginBottom: 8 }}>A world record, in one breath.</div>
-                    <p style={{ color: "rgba(247,244,236,.78)", fontSize: 16 }}>
-                      Amaltas and the wider group brought together more than thirty-five thousand
-                      participants for a single collective yoga gathering — a record-setting
-                      testament to community, wellness, and what we build together.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+        <div className="purpose-split">
+          <div className="purpose-split-left">
+            <Reveal variant="left">
+              <span className="eyebrow">Our purpose</span>
+              <h2 style={{ fontSize: "clamp(2.2rem,5vw,3.4rem)", lineHeight: 1.1 }}>A university that began with a promise to a community.</h2>
+              <p className="lead">
+                Founded by the Amaltas Education Welfare Society in 2016, we set out to bring
+                world-class medical education to the heart of Madhya Pradesh — close to the
+                families who need care, and the students who dream of giving it.
+              </p>
+              <p style={{ color: C.slate, marginTop: 16, fontSize: 16.5 }}>
+                Today that promise lives across seven institutions and a living superspeciality
+                hospital, where the distance between learning and healing is measured in footsteps.
+              </p>
+              <Link to="/why" className="btn btn-em" style={{ marginTop: 28 }}>Why students choose us <ArrowRight size={18} /></Link>
+            </Reveal>
+          </div>
+
+          <div className="purpose-split-right">
+            <img src={IMGS.purposeMain} alt="Medical students in class at Amaltas" loading="lazy" />
+          </div>
         </div>
       </section>
 
@@ -800,18 +945,18 @@ export default function Home() {
               <h2 style={{ maxWidth: 720, margin: "12px auto 0" }}>Reasons families trust us with their most ambitious dreams.</h2>
             </div>
           </Reveal>
+        </div>
+        <div style={{ position: "relative", zIndex: 1, maxWidth: 1600, margin: "0 auto", padding: "0 28px" }}>
           <div className="why-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 22, marginTop: 56 }}>
             {WHY.map((w, i) => {
               const Icon = w.icon;
               return (
                 <Reveal key={i} delay={`d${(i % 4) + 1}`} variant="zoom">
                   <div className="card-lift why-card">
-                    {/* top visual — real photo or branded gradient */}
                     {w.img
                       ? <img src={w.img} alt={w.t} className="why-card-img" />
                       : <div className="why-card-gradient" />
                     }
-                    {/* text body */}
                     <div style={{ padding: "26px 26px 28px" }}>
                       <h3 style={{ fontSize: 18, margin: "0 0 8px" }}>{w.t}</h3>
                       <p style={{ color: C.slate, fontSize: 14.5 }}>{w.d}</p>
@@ -823,6 +968,21 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ════════════════════════════════════════
+          SEVEN WORLDS — scroll chapters
+      ════════════════════════════════════════ */}
+      <SevenWorldsPanel />
+
+      {/* ════════════════════════════════════════
+          EVENTS  — expanding filmstrip panels
+      ════════════════════════════════════════ */}
+      <EventsSection />
+
+      {/* ════════════════════════════════════════
+          WORLD RECORD  — stacking scroll cards
+      ════════════════════════════════════════ */}
+      <WorldRecordStack />
 
       {/* ════════════════════════════════════════
           OUTCOMES & CLINICAL NETWORK — commented out
@@ -876,7 +1036,7 @@ export default function Home() {
       {/* ════════════════════════════════════════
           LEADERSHIP  — dark photo section + blobs
       ════════════════════════════════════════ */}
-      <section className="leadership-sec">
+      <section className="sec leadership-sec">
         <div className="leadership-bg-wrap" aria-hidden="true">
           <img src={IMGS.leaderBg} alt="" loading="lazy" />
           <div className="leadership-bg-overlay" />
@@ -892,7 +1052,7 @@ export default function Home() {
         <Blob color="rgba(246,224,5,.08)"  size={400} blur={100} variant="a" delay={20}
           style={{ left: "5%",  bottom: "5%",  zIndex: 0 }} />
 
-        <div className="wrap" style={{ position: "relative", zIndex: 1, paddingTop: 110, paddingBottom: 110 }}>
+        <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
           <Reveal>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20 }}>
               <div>
@@ -909,8 +1069,8 @@ export default function Home() {
           </Reveal>
 
           <div className="leader-photo-grid">
-            {LEADERS.slice(0, 5).map((l, i) => (
-              <div key={i} className={i < 3 ? "lpc-span-2" : i === 3 ? "lpc-row2-first" : "lpc-row2-last"}>
+            {LEADERS.slice(0, 6).map((l, i) => (
+              <div key={i} className="lpc-span-2">
               <Reveal delay={`d${i + 1}`} variant="zoom">
                 <div className="leader-photo-card">
                   <div className="lpc-photo-area">
@@ -1030,42 +1190,12 @@ export default function Home() {
       </section>
 
       {/* ── NEWS & PRESS ── */}
-      <section className="sec" style={{ background: C.ivory, position: "relative", overflow: "hidden" }}>
-        <Blob color="rgba(18,134,63,.09)" size={450} blur={110} variant="a" delay={13}
-          style={{ right: "-6%", top: "10%" }} />
+      <NewsSection />
 
-        <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-          <Reveal>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20 }}>
-              <div>
-                <span className="eyebrow">Stay informed</span>
-                <h2 style={{ marginTop: 12 }}>News & Press Releases</h2>
-              </div>
-              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-dark" style={{ marginBottom: 10 }}>All News <ArrowUpRight size={17} /></a>
-            </div>
-          </Reveal>
-          <div className="news-grid">
-            {NEWS.map((n, i) => (
-              <Reveal key={i} delay={`d${i + 1}`} variant="zoom">
-                <div className="news-card">
-                  <div className="news-card-img">
-                    <img src={n.img} alt={n.title} loading="lazy" />
-                  </div>
-                  <div className="news-card-body">
-                    <div className="news-card-top">
-                      <span className="news-tag">{n.tag}</span>
-                      <span className="news-date"><Newspaper size={12} /> {n.date}</span>
-                    </div>
-                    <h3 className="news-title">{n.title}</h3>
-                    <p className="news-desc">{n.desc}</p>
-                    <a href="#" onClick={(e) => e.preventDefault()} className="news-link">Read more <ArrowRight size={14} /></a>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ════════════════════════════════════════
+          ASSURANCE — overcoming objections
+      ════════════════════════════════════════ */}
+      <AssuranceSection />
 
       {/* ── FAQ — clean, no blobs ── */}
       <section className="sec wrap">
@@ -1084,6 +1214,88 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* ════════════════════════════════════════
+          ADMISSION CTA  — final ask (light gradient)
+      ════════════════════════════════════════ */}
+      <section className="sec admission-cta-section" style={{ position: "relative", overflow: "hidden" }}>
+        <Blob color="rgba(18,134,63,.1)"  size={580} blur={115} variant="b" delay={0}
+          style={{ left: "-10%", top: "-10%", zIndex: 1 }} />
+        <Blob color="rgba(246,224,5,.12)" size={450} blur={100} variant="a" delay={12}
+          style={{ right: "-6%", bottom: "-5%", zIndex: 1 }} />
+        <Blob color="rgba(35,166,83,.08)"  size={300} blur={85}  variant="c" delay={28}
+          style={{ left: "55%", top: "40%", zIndex: 1 }} />
+
+        <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
+          <div className="admission-cta-grid">
+            <Reveal variant="left">
+              <span className="eyebrow">Admissions 2026–27</span>
+              <h2 style={{ color: C.ink, marginTop: 14, fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
+                Your journey into<br />healthcare begins here.
+              </h2>
+              <p style={{ color: C.slate, marginTop: 16, fontSize: 17, maxWidth: 480 }}>
+                Applications are open for MBBS, BAMS, BHMS, B.Sc. Nursing, B.Pharma,
+                B.P.T., B.M.L.T., and allied health programmes for the 2026–27 session.
+              </p>
+              <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
+                <Link to="/admissions" className="btn btn-gold">Apply Now <ArrowRight size={18} /></Link>
+                <a href="tel:+919404956221" className="btn btn-dark"><Phone size={15} /> Call Helpline</a>
+              </div>
+
+              {/* quick admission pathways */}
+              <div className="admit-paths">
+                {ADMISSION_PATHS.map((p, i) => {
+                  const Icon = p.icon;
+                  return (
+                    <Link key={i} to={p.to} className="admit-path">
+                      <span className="admit-path-icon"><Icon size={18} /></span>
+                      <span className="admit-path-text">
+                        <span className="admit-path-label">{p.label}</span>
+                        <span className="admit-path-desc">{p.desc}</span>
+                      </span>
+                      <ArrowUpRight size={16} className="admit-path-arrow" />
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 12 }}>
+                {["BAMS Admissions: +91 7880154605", "Allied & Rehabilitation Sciences: +91 9617245556", "Toll Free: 1800-571-2131"].map((info, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: C.slate }}>
+                    <CheckCircle size={15} color={C.emerald} style={{ flexShrink: 0 }} />
+                    {info}
+                  </div>
+                ))}
+              </div> */}
+            </Reveal>
+
+            <Reveal delay="d2" variant="right">
+              <div className="inquiry-form-box">
+                <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 22, marginBottom: 22, color: C.ink }}>Quick Inquiry</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                  <div className="field"><label>Full Name</label><input type="text" placeholder="Your full name" /></div>
+                  <div className="field"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" /></div>
+                  <div className="field"><label>Email Address</label><input type="email" placeholder="your@email.com" /></div>
+                  <div className="field">
+                    <label>Program of Interest</label>
+                    <select>
+                      <option value="">Select program…</option>
+                      <option>M.B.B.S.</option><option>B.A.M.S.</option><option>B.H.M.S.</option>
+                      <option>B.Sc. Nursing</option><option>Post Basic B.Sc. Nursing</option>
+                      <option>B.Pharma</option><option>D.Pharma</option>
+                      <option>B.P.T.</option><option>B.M.L.T.</option><option>D.M.L.T.</option>
+                      <option>B.Sc. Clinical Psychology (Hons)</option><option>B.A.S.L.P.</option>
+                    </select>
+                  </div>
+                  <button className="btn btn-gold" style={{ width: "100%", justifyContent: "center", marginTop: 4 }}>
+                    Send Inquiry <Send size={16} />
+                  </button>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* sticky conversion actions */}
       <FloatingActions />

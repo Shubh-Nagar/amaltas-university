@@ -11,7 +11,7 @@ export const INSTITUTIONS = [
     icon: Stethoscope, tag: "MBBS · MD · MS",
     name: "Institute of Medical Sciences",
     desc: "A teaching hospital with 1500+ beds where students train beside practising clinicians from day one.",
-    img: "/assets/images%20of%20university/all%20institutes/medical%20science.jpeg",
+    img: "/assets/images%20of%20university/all%20institutes/medical.png",
     studentImg: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=75",
     programs: ["M.B.B.S.", "MD / MS (various specialities)"],
   },
@@ -19,7 +19,7 @@ export const INSTITUTIONS = [
     icon: HeartPulse, tag: "BAMS",
     name: "Ayurvedic College & Research Centre",
     desc: "Classical Ayurveda met with modern research, clinical wards, and a dedicated herbal pharmacy.",
-    img: "/assets/images%20of%20university/all%20institutes/ayurveda.jpg",
+    img: "/assets/images%20of%20university/all%20institutes/ayurveda.png",
     studentImg: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=700&q=75",
     programs: ["B.A.M.S."],
   },
@@ -43,7 +43,7 @@ export const INSTITUTIONS = [
     icon: FlaskConical, tag: "B.Pharma · D.Pharma",
     name: "Institute of Pharmacy",
     desc: "Formulation, pharmacology and analysis labs aligned to PCI standards and industry demand.",
-    img: "/assets/images%20of%20university/all%20institutes/phamacycampus.jpeg",
+    img: "/assets/images%20of%20university/all%20institutes/pharmacy.png",
     studentImg: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=700&q=75",
     programs: ["B.Pharma", "D.Pharma"],
   },
@@ -92,7 +92,7 @@ export const LEADERS = [
   { role: "Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg" },
   { role: "Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir.jpg" },
   { role: "Vice Chancellor", nm: "Dr. RK Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions." },
-  { role: "Registrar", nm: "Shri Sanjay Rambole", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration." },
+  { role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration." },
 ];
 
 export const VOICES = [
@@ -105,8 +105,8 @@ export const VOICES = [
 export const STATS = [
   { v: 10, suf: "+", l: "Years shaping healers" },
   { v: 7, suf: "", l: "Health-science institutions" },
-  { v: 1500, suf: "+", l: "Teaching hospital beds" },
-  { v: 35000, suf: "+", l: "World-record yoga gathering" },
+  { v: 10000, suf: "+", l: "Students" },
+  { v: 200, suf: "+", l: "Faculty Members" },
 ];
 
 export const NAV = [
@@ -158,7 +158,6 @@ export const NAV = [
 export const ANNOUNCEMENTS = [
   "Entrance Examination for Ph.D. Program 2026 — Register Now",
   "Admission Open for Academic Year 2026-27 — Apply Today",
-  "BAMS Admissions Helpline: +91 7880154605  |  Allied & Rehabilitation Sciences: +91 9617245556",
   "Amaltas University achieves Guinness World Record — 35,000+ participants in a single mass yoga gathering",
 ];
 
@@ -374,14 +373,14 @@ export const AWARDS = [
 
 export const ACCREDITATIONS = [
   { short: "NMC",    color: "#1B3E8F", logo: "/assets/images%20of%20university/recognisation/nmc.jpg",    name: "National Medical Commission",              desc: "Statutory recognition for MBBS and postgraduate medical programmes.",                    scope: "Institute of Medical Sciences"      },
-  { short: "CCIM",   color: "#2E7D32",                                                                     name: "Central Council of Indian Medicine",       desc: "Approval for Bachelor of Ayurvedic Medicine & Surgery (BAMS).",                          scope: "Ayurvedic College & Research Centre" },
-  { short: "CCH",    color: "#6A1B9A", logo: "/assets/images%20of%20university/recognisation/ccrh.jpg",   name: "Central Council of Homoeopathy",           desc: "Recognition for BHMS programme under the national homeopathic regulatory framework.",     scope: "Institute of Homoeopathy"           },
-  { short: "INC",    color: "#00695C",                                                                     name: "Indian Nursing Council",                   desc: "Approval for B.Sc. Nursing and Post Basic B.Sc. Nursing programmes.",                    scope: "Institute of Nursing Sciences"      },
-  { short: "PCI",    color: "#D84315",                                                                     name: "Pharmacy Council of India",                desc: "Affiliation for Bachelor of Pharmacy (B.Pharma) and Diploma in Pharmacy (D.Pharma).",    scope: "Institute of Pharmacy"              },
-  { short: "RCI",    color: "#1565C0",                                                                     name: "Rehabilitation Council of India",          desc: "Approval for B.A.S.L.P. and allied rehabilitation science courses.",                     scope: "Allied & Rehabilitation Sciences"   },
-  { short: "UGC",    color: "#0D1B5E", logo: "/assets/images%20of%20university/recognisation/ugc.png",    name: "University Grants Commission",             desc: "Recognition as a Private University under Section 2(f) of the UGC Act, 1956.",           scope: "University-wide"                   },
-  { short: "MPUREC", color: "#6D4C41", logo: "/assets/images%20of%20university/recognisation/mppurc.jpg", name: "MP Private University Regulatory Commission", desc: "Established under the MP Niji Vishwavidyalaya (Sthapana Aur Sanchalan) Adhiniyam.",  scope: "University-wide"                   },
-  { short: "NABH",   color: "#880E4F",                                                                     name: "Natl. Accreditation Board for Hospitals",  desc: "NABH-linked teaching hospital ensuring patient safety and quality care standards.",       scope: "Teaching Hospital"                  },
+  { short: "CCIM",   color: "#2E7D32", logo: "/assets/images%20of%20university/recognisation/ccim.png",      name: "Central Council of Indian Medicine",          desc: "Approval for Bachelor of Ayurvedic Medicine & Surgery (BAMS).",                          scope: "Ayurvedic College & Research Centre" },
+  { short: "CCH",    color: "#6A1B9A", logo: "/assets/images%20of%20university/recognisation/ccrh.jpg",      name: "Central Council of Homoeopathy",              desc: "Recognition for BHMS programme under the national homeopathic regulatory framework.",     scope: "Institute of Homoeopathy"           },
+  { short: "INC",    color: "#00695C", logo: "/assets/images%20of%20university/recognisation/inc-logo.png",  name: "Indian Nursing Council",                      desc: "Approval for B.Sc. Nursing and Post Basic B.Sc. Nursing programmes.",                    scope: "Institute of Nursing Sciences"      },
+  { short: "PCI",    color: "#D84315", logo: "/assets/images%20of%20university/recognisation/pci-logo.png",  name: "Pharmacy Council of India",                   desc: "Affiliation for Bachelor of Pharmacy (B.Pharma) and Diploma in Pharmacy (D.Pharma).",    scope: "Institute of Pharmacy"              },
+  { short: "RCI",    color: "#1565C0", logo: "/assets/images%20of%20university/recognisation/rci.png",       name: "Rehabilitation Council of India",             desc: "Approval for B.A.S.L.P. and allied rehabilitation science courses.",                     scope: "Allied & Rehabilitation Sciences"   },
+  { short: "UGC",    color: "#0D1B5E", logo: "/assets/images%20of%20university/recognisation/ugc.png",       name: "University Grants Commission",                desc: "Recognition as a Private University under Section 2(f) of the UGC Act, 1956.",           scope: "University-wide"                   },
+  { short: "MPUREC", color: "#6D4C41", logo: "/assets/images%20of%20university/recognisation/mppurc.jpg",    name: "MP Private University Regulatory Commission", desc: "Established under the MP Niji Vishwavidyalaya (Sthapana Aur Sanchalan) Adhiniyam.",    scope: "University-wide"                   },
+  { short: "NABH",   color: "#880E4F", logo: "/assets/images%20of%20university/recognisation/nabh-logo.png", name: "Natl. Accreditation Board for Hospitals",     desc: "NABH-linked teaching hospital ensuring patient safety and quality care standards.",       scope: "Teaching Hospital"                  },
 ];
 
 export const DISCLOSURE_SECTIONS = [
@@ -464,3 +463,38 @@ export const VC_MESSAGE = {
   role: "Vice Chancellor, Amaltas University",
   photo: null,
 };
+
+/* Assurance — answers the objections families actually weigh before saying yes.
+   Concept copy; reuses facts already stated elsewhere in this file. */
+export const ASSURANCE = [
+  {
+    icon: BadgeIndianRupee,
+    t: "Scholarships & support",
+    d: "Merit and need-based scholarships, plus guidance on education loans and government schemes — so a deserving student is never turned away by cost alone.",
+  },
+  {
+    icon: FileText,
+    t: "Transparent fees",
+    d: "A clear, all-inclusive fee structure shared up front. No hidden charges — you know exactly what each year of study costs before you commit.",
+  },
+  {
+    icon: HomeIcon,
+    t: "Safe, separate hostels",
+    d: "Fully-equipped, separate hostels for male and female students with 24/7 security, wardens, and a nutritious multi-cuisine mess on campus.",
+  },
+  {
+    icon: HandHeart,
+    t: "Anti-ragging & welfare",
+    d: "A strict zero-tolerance anti-ragging policy, mentor-faculty for every student, and counselling support — a campus where every student is known by name.",
+  },
+  {
+    icon: HeartPulse,
+    t: "Care, around the clock",
+    d: "A 1500+ bed superspeciality teaching hospital on campus means students live beside round-the-clock medical care, not far from it.",
+  },
+  {
+    icon: Stethoscope,
+    t: "Clinical training from day one",
+    d: "Real wards, clinics, and labs from the first year — students graduate into a profession, not a job search, having already learned by caring.",
+  },
+];
