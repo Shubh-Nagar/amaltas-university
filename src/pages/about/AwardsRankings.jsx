@@ -16,6 +16,82 @@ const RANKINGS = [
   { org: "India Today", value: "Top 25", label: "Medical Colleges — Central India", pending: false },
 ];
 
+function HeroDecor() {
+  /* Amaltas raceme = a hanging branch with individual flowers dangling off at intervals.
+     Cassia fistula is called "golden shower" for exactly this reason — cascading gold clusters. */
+  const racemes = [
+    { bx: 1050, by: 0, bend: 1060, bendY: 55, flowers: [
+      { x: 1044, y: 30, r: 6 }, { x: 1052, y: 48 }, { x: 1058, y: 68 }, { x: 1052, y: 88 },
+      { x: 1058, y: 108 }, { x: 1062, y: 128 }, { x: 1056, y: 150 }, { x: 1065, y: 172 },
+    ]},
+    { bx: 1180, by: 0, bend: 1188, bendY: 48, flowers: [
+      { x: 1176, y: 22 }, { x: 1184, y: 42 }, { x: 1188, y: 64 }, { x: 1182, y: 84 },
+      { x: 1190, y: 104 }, { x: 1186, y: 125 }, { x: 1192, y: 146 },
+    ]},
+    { bx: 1310, by: 0, bend: 1315, bendY: 42, flowers: [
+      { x: 1308, y: 18 }, { x: 1316, y: 38 }, { x: 1312, y: 58 }, { x: 1318, y: 78 },
+      { x: 1314, y: 98 }, { x: 1320, y: 120 },
+    ]},
+    { bx: 920, by: 0, bend: 932, bendY: 62, flowers: [
+      { x: 916, y: 38 }, { x: 926, y: 58 }, { x: 932, y: 80 }, { x: 924, y: 100 },
+      { x: 934, y: 122 }, { x: 928, y: 145 }, { x: 938, y: 168 }, { x: 930, y: 192 }, { x: 940, y: 218 },
+    ]},
+  ];
+  return (
+    <svg
+      aria-hidden="true"
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 1 }}
+      viewBox="0 0 1400 380"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <defs>
+        <radialGradient id="ar-top" cx="85%" cy="0%" r="50%">
+          <stop offset="0%" stopColor="#F6E005" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#F6E005" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#ar-top)" />
+      {/* Horizontal branch from which racemes hang */}
+      <path d="M880,8 C940,6 1040,5 1160,5 C1240,5 1320,6 1400,8" stroke="#23A653" strokeWidth="2" fill="none" opacity="0.2" />
+      {racemes.map((rc, ri) => (
+        <g key={ri}>
+          {/* Main raceme stem */}
+          <path
+            d={`M${rc.bx},${rc.by} C${rc.bx + 2},${rc.bend * 0.5} ${rc.bend},${rc.bendY * 0.7} ${rc.flowers[rc.flowers.length - 1].x},${rc.flowers[rc.flowers.length - 1].y + 12}`}
+            stroke="#23A653"
+            strokeWidth="1.5"
+            fill="none"
+            opacity="0.3"
+          />
+          {/* Individual flower pedicels (short stalks) + flowers */}
+          {rc.flowers.map(({ x, y, r: fr = 5 }, fi) => (
+            <g key={fi}>
+              {/* Short stalk from main stem to flower */}
+              <line x1={rc.bx + (x - rc.bx) * 0.1} y1={y - 8} x2={x} y2={y} stroke="#23A653" strokeWidth="0.8" opacity="0.22" />
+              {/* Amaltas flower — 5-petal, gold */}
+              <g transform={`translate(${x},${y}) scale(${0.55 + (fi % 3) * 0.05})`}>
+                {[0, 72, 144, 216, 288].map(a => (
+                  <ellipse key={a} cx="0" cy="-18" rx="7" ry="15" fill="#F6E005" opacity={0.28 - fi * 0.015} transform={`rotate(${a})`} />
+                ))}
+                <circle r="3.5" fill="#23A653" opacity="0.4" />
+              </g>
+            </g>
+          ))}
+        </g>
+      ))}
+      {/* A few detached petals floating below — awards drifting down */}
+      {[
+        { x: 980, y: 285, rx: 5, ry: 12, r: 35 },
+        { x: 1120, y: 310, rx: 4, ry: 10, r: -25 },
+        { x: 1250, y: 270, rx: 6, ry: 13, r: 50 },
+        { x: 1070, y: 340, rx: 3.5, ry: 8, r: 15 },
+      ].map(({ x, y, rx, ry, r }, i) => (
+        <ellipse key={i} cx={x} cy={y} rx={rx} ry={ry} fill="#F6E005" opacity="0.08" transform={`rotate(${r},${x},${y})`} />
+      ))}
+    </svg>
+  );
+}
+
 export default function AwardsRankings() {
   return (
     <>
@@ -24,7 +100,10 @@ export default function AwardsRankings() {
         eyebrow="Recognition & Excellence"
         title="When the world took note."
         sub="From a Guinness World Record to state and national recognitions — each award reflects the dedication of our students, faculty, and the community we serve."
-      />
+        bg="linear-gradient(155deg, #0B2C18 0%, #0C3018 55%, #0E3820 100%)"
+      >
+        <HeroDecor />
+      </PageHero>
 
       {/* FEATURED AWARD: Guinness World Record */}
       {featured && (

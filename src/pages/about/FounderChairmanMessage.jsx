@@ -26,6 +26,58 @@ const MILESTONES = [
   { icon: Star, label: "Legacy", value: "10+ Years", desc: "Of uninterrupted commitment" },
 ];
 
+function HeroDecor() {
+  return (
+    <svg
+      aria-hidden="true"
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 1 }}
+      viewBox="0 0 1400 380"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      {/* The earth — a single conviction planted in the soil of Malwa */}
+      <line x1="600" y1="270" x2="1400" y2="270" stroke="#23A653" strokeWidth="1.2" opacity="0.2" />
+      <rect x="600" y="270" width="800" height="110" fill="#050E07" opacity="0.3" />
+      {/* Taproot going deep */}
+      <path d="M920,270 C920,295 918,330 917,372" stroke="#23A653" strokeWidth="2.5" fill="none" opacity="0.3" />
+      {/* Left root 1 */}
+      <path d="M920,270 C913,282 882,296 848,308 C814,320 778,328 742,342" stroke="#23A653" strokeWidth="1.5" fill="none" opacity="0.25" />
+      {/* Left root 2 */}
+      <path d="M920,276 C908,292 872,308 836,322 C804,334 768,345 738,356" stroke="#12863F" strokeWidth="1" fill="none" opacity="0.16" />
+      {/* Left lateral */}
+      <path d="M848,308 C832,313 815,316 800,322" stroke="#12863F" strokeWidth="0.8" fill="none" opacity="0.14" />
+      {/* Right root 1 */}
+      <path d="M920,270 C930,284 960,298 993,310 C1026,322 1062,330 1096,344" stroke="#23A653" strokeWidth="1.5" fill="none" opacity="0.25" />
+      {/* Right root 2 */}
+      <path d="M920,276 C934,294 968,312 1004,324 C1038,335 1078,346 1110,358" stroke="#12863F" strokeWidth="1" fill="none" opacity="0.16" />
+      {/* Right lateral */}
+      <path d="M993,310 C1010,316 1028,320 1044,326" stroke="#12863F" strokeWidth="0.8" fill="none" opacity="0.14" />
+      {/* Deep lateral from taproot */}
+      <path d="M918,320 C905,326 888,329 872,334" stroke="#23A653" strokeWidth="1" fill="none" opacity="0.16" />
+      <path d="M917,348 C930,354 946,360 962,364" stroke="#23A653" strokeWidth="0.8" fill="none" opacity="0.13" />
+      {/* Stem rising */}
+      <path d="M920,270 C920,248 921,222 920,188" stroke="#23A653" strokeWidth="2.5" fill="none" opacity="0.45" />
+      <path d="M920,220 C919,210 918,200 917,190" stroke="#23A653" strokeWidth="2" fill="none" opacity="0.38" />
+      {/* Left leaf (cotyledon) */}
+      <path d="M920,222 C903,208 872,205 860,222 C848,239 870,256 920,245" fill="#12863F" opacity="0.22" />
+      <path d="M920,222 C895,225 868,232 860,222" stroke="#23A653" strokeWidth="0.8" fill="none" opacity="0.22" />
+      {/* Right leaf (cotyledon) */}
+      <path d="M920,232 C937,218 968,215 980,232 C992,249 968,264 920,254" fill="#12863F" opacity="0.22" />
+      <path d="M920,232 C947,235 968,240 980,232" stroke="#23A653" strokeWidth="0.8" fill="none" opacity="0.22" />
+      {/* Apical bud — the gold of the future */}
+      <circle cx="920" cy="184" r="11" fill="#F6E005" opacity="0.18" />
+      <circle cx="920" cy="184" r="6" fill="#F6E005" opacity="0.28" />
+      <circle cx="920" cy="184" r="3" fill="#23A653" opacity="0.45" />
+      {/* Seed husk at soil line — the origin */}
+      <ellipse cx="920" cy="268" rx="32" ry="14" fill="none" stroke="#F6E005" strokeWidth="1" opacity="0.14" />
+      <ellipse cx="920" cy="268" rx="32" ry="14" fill="#F6E005" opacity="0.05" />
+      {/* Scattered seeds nearby — other possibilities */}
+      <ellipse cx="860" cy="262" rx="10" ry="5" fill="#F6E005" opacity="0.07" transform="rotate(-18,860,262)" />
+      <ellipse cx="988" cy="258" rx="9" ry="4" fill="#F6E005" opacity="0.06" transform="rotate(22,988,258)" />
+      <ellipse cx="810" cy="256" rx="7" ry="3.5" fill="#F6E005" opacity="0.05" transform="rotate(-8,810,256)" />
+    </svg>
+  );
+}
+
 export default function FounderChairmanMessage() {
   return (
     <>
@@ -34,8 +86,10 @@ export default function FounderChairmanMessage() {
         eyebrow="A message from the Founder"
         title="Rooted in service, grown with purpose."
         sub="Shri Suresh Singh Bhadoria — Founder Chairman, Mayank Welfare Society"
-        bg="radial-gradient(125% 130% at 85% 8%, #2a9155 0%, #1a5c35 55%)"
-      />
+        bg="linear-gradient(145deg, #071810 0%, #0B2818 45%, #0F3A1F 100%)"
+      >
+        <HeroDecor />
+      </PageHero>
 
       {/* MAIN MESSAGE SECTION */}
       <section className="sec wrap" style={{ paddingTop: 90 }}>

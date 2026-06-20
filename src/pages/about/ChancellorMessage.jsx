@@ -21,6 +21,61 @@ function MessageBlock({ msg, large }) {
   );
 }
 
+function HeroDecor() {
+  return (
+    <svg
+      aria-hidden="true"
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 1 }}
+      viewBox="0 0 1400 380"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <defs>
+        <radialGradient id="ch-dawn" cx="92%" cy="10%" r="55%">
+          <stop offset="0%" stopColor="#F6E005" stopOpacity="0.14" />
+          <stop offset="60%" stopColor="#F6E005" stopOpacity="0.04" />
+          <stop offset="100%" stopColor="#F6E005" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="1400" height="380" fill="url(#ch-dawn)" />
+      {/* Light rays from top-right — like dawn breaking */}
+      {[0, 15, 30, 45, 60, 75].map((a, i) => {
+        const rad = (a + 110) * Math.PI / 180;
+        return <line key={i} x1="1380" y1="0" x2={1380 + Math.cos(rad) * 700} y2={Math.sin(rad) * 700}
+          stroke="#F6E005" strokeWidth="0.6" opacity={0.05 - i * 0.007} />;
+      })}
+      {/* Amaltas flowers scattered on the right — the tree blooms before it shades */}
+      {[
+        { x: 1060, y: 58, s: 1.5, op: 0.22 },
+        { x: 890, y: 130, s: 1.0, op: 0.16 },
+        { x: 1200, y: 175, s: 1.1, op: 0.19 },
+        { x: 790, y: 265, s: 0.7, op: 0.12 },
+        { x: 1080, y: 295, s: 0.55, op: 0.1 },
+        { x: 1310, y: 80, s: 0.8, op: 0.13 },
+      ].map(({ x, y, s, op }, i) => (
+        <g key={i} transform={`translate(${x},${y}) scale(${s})`}>
+          {[0, 72, 144, 216, 288].map(a => (
+            <ellipse key={a} cx="0" cy="-22" rx="8" ry="19" fill="#F6E005" opacity={op} transform={`rotate(${a})`} />
+          ))}
+          <circle r="5" fill="#23A653" opacity={op * 1.4} />
+        </g>
+      ))}
+      {/* Loose petals drifting */}
+      {[
+        { x: 840, y: 85, rx: 6, ry: 13, r: 30 },
+        { x: 1140, y: 240, rx: 5, ry: 11, r: -20 },
+        { x: 970, y: 195, rx: 4, ry: 10, r: 60 },
+        { x: 1280, y: 130, rx: 7, ry: 14, r: 12 },
+        { x: 730, y: 310, rx: 4, ry: 9, r: -40 },
+      ].map(({ x, y, rx, ry, r }, i) => (
+        <ellipse key={i} cx={x} cy={y} rx={rx} ry={ry} fill="#F6E005" opacity="0.08" transform={`rotate(${r},${x},${y})`} />
+      ))}
+      {/* Thin gold arc — like a halo or the curve of the sun rising */}
+      <path d="M1300,0 C1350,80 1370,180 1340,280" stroke="#F6E005" strokeWidth="0.8" fill="none" opacity="0.1" />
+      <path d="M1380,20 C1420,120 1430,240 1390,340" stroke="#F6E005" strokeWidth="0.5" fill="none" opacity="0.07" />
+    </svg>
+  );
+}
+
 export default function ChancellorMessage() {
   return (
     <>
@@ -29,7 +84,9 @@ export default function ChancellorMessage() {
         eyebrow="A note from the Chancellor"
         title="Dear student, this is for you."
         sub="Mrs. Aruna Bhadoria — Chancellor, Amaltas University"
-      />
+      >
+        <HeroDecor />
+      </PageHero>
 
       {/* CHANCELLOR MESSAGE */}
       <section className="sec wrap" style={{ paddingTop: 90 }}>

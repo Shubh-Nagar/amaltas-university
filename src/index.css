@@ -70,6 +70,9 @@ body{margin:0;}
   transform:translateX(-130%);transition:transform .7s;}
 .btn:hover::after{transform:translateX(130%);}
 
+/* chancellor message preview (The University page) — stack on small screens */
+@media(max-width:760px){.chancellor-preview-grid{grid-template-columns:1fr !important;gap:36px !important;}}
+
 /* page hero (inner pages) */
 .page-hero{background:radial-gradient(125% 130% at 85% 8%,var(--navy2) 0%,var(--navy) 55%);color:var(--ivory);padding:160px 0 80px;position:relative;overflow:hidden;}
 .page-hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:300;line-height:1.02;}

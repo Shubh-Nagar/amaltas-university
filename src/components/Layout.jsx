@@ -8,7 +8,7 @@ export function ScrollToTop() {
   return null;
 }
 
-export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg }) {
+export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg, children }) {
   const floatRef = useRef(null);
 
   useEffect(() => {
@@ -36,6 +36,7 @@ export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg }) {
     <header className="page-hero" style={heroStyle}>
       <div className="hero-glow" style={{ width: 420, height: 420, background: "rgba(21,132,63,.4)", left: "-120px", top: "-10%" }} />
       <div className="hero-glow" style={{ width: 320, height: 320, background: "rgba(246,224,5,.2)", right: "4%", bottom: "-20%" }} />
+      {children}
       {floatImg && (
         <img
           ref={floatRef}

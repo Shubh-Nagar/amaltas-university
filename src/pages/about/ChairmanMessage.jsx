@@ -26,6 +26,65 @@ const PILLARS = [
   { icon: Building2, label: "Infrastructure", value: "Continually growing", desc: "State-of-the-art labs, simulation centres, libraries" },
 ];
 
+function HeroDecor() {
+  return (
+    <svg
+      aria-hidden="true"
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 1 }}
+      viewBox="0 0 1400 380"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      {/* Trunk — the lineage rising from the bottom */}
+      <path d="M1010,382 C1008,350 1005,310 1006,272 C1007,248 1003,224 1008,200" stroke="#23A653" strokeWidth="3" fill="none" opacity="0.28" />
+      {/* Main branch arching left — the inheritance reaching out */}
+      <path d="M1008,250 C990,232 962,215 928,196 C894,177 858,162 818,152" stroke="#23A653" strokeWidth="2" fill="none" opacity="0.24" />
+      <path d="M818,152 C796,145 770,142 748,150" stroke="#23A653" strokeWidth="1.5" fill="none" opacity="0.2" />
+      {/* Left twigs */}
+      <path d="M878,170 C864,160 846,156 830,162" stroke="#12863F" strokeWidth="1" fill="none" opacity="0.17" />
+      <path d="M928,196 C920,180 912,170 898,168" stroke="#12863F" strokeWidth="1" fill="none" opacity="0.15" />
+      {/* Main branch arching right — new growth, future earned */}
+      <path d="M1008,228 C1032,210 1065,195 1100,180 C1138,164 1172,156 1206,152" stroke="#23A653" strokeWidth="2" fill="none" opacity="0.24" />
+      <path d="M1206,152 C1234,146 1265,149 1285,160" stroke="#23A653" strokeWidth="1.5" fill="none" opacity="0.2" />
+      {/* Right twigs */}
+      <path d="M1140,168 C1158,158 1178,155 1195,162" stroke="#12863F" strokeWidth="1" fill="none" opacity="0.17" />
+      <path d="M1100,180 C1108,165 1118,156 1130,154" stroke="#12863F" strokeWidth="1" fill="none" opacity="0.15" />
+      {/* Upper central branch — continuity */}
+      <path d="M1008,215 C1020,198 1040,182 1062,172 C1084,162 1105,158 1128,155" stroke="#23A653" strokeWidth="1.5" fill="none" opacity="0.18" />
+      <path d="M1062,172 C1058,156 1056,142 1060,130" stroke="#12863F" strokeWidth="1" fill="none" opacity="0.15" />
+      {/* Leaf canopy — ellipses at branch tips */}
+      {[
+        { cx: 748, cy: 148, rx: 38, ry: 28, r: -18 },
+        { cx: 782, cy: 136, rx: 30, ry: 22, r: 8 },
+        { cx: 826, cy: 160, rx: 26, ry: 20, r: -4 },
+        { cx: 1206, cy: 148, rx: 34, ry: 26, r: 14 },
+        { cx: 1245, cy: 142, rx: 28, ry: 21, r: -10 },
+        { cx: 1285, cy: 160, rx: 30, ry: 23, r: 22 },
+        { cx: 1128, cy: 152, rx: 30, ry: 23, r: 5 },
+        { cx: 1060, cy: 128, rx: 26, ry: 20, r: -6 },
+        { cx: 898, cy: 165, rx: 24, ry: 18, r: 14 },
+      ].map(({ cx, cy, rx, ry, r }, i) => (
+        <ellipse key={i} cx={cx} cy={cy} rx={rx} ry={ry} fill="#12863F" opacity="0.13" transform={`rotate(${r},${cx},${cy})`} />
+      ))}
+      {/* Gold flowers in the canopy — the inherited promise blooming */}
+      {[
+        { x: 772, y: 138, s: 0.58 },
+        { x: 1228, y: 142, s: 0.62 },
+        { x: 1070, y: 128, s: 0.52 },
+        { x: 898, y: 162, s: 0.48 },
+      ].map(({ x, y, s }, i) => (
+        <g key={i} transform={`translate(${x},${y}) scale(${s})`}>
+          {[0, 72, 144, 216, 288].map(a => (
+            <ellipse key={a} cx="0" cy="-22" rx="8" ry="19" fill="#F6E005" opacity="0.24" transform={`rotate(${a})`} />
+          ))}
+        </g>
+      ))}
+      {/* Root ground hints */}
+      <path d="M1008,382 C1002,370 984,360 962,356" stroke="#0D3A20" strokeWidth="2" fill="none" opacity="0.45" />
+      <path d="M1008,382 C1015,370 1038,362 1058,358" stroke="#0D3A20" strokeWidth="2" fill="none" opacity="0.38" />
+    </svg>
+  );
+}
+
 export default function ChairmanMessage() {
   return (
     <>
@@ -34,8 +93,10 @@ export default function ChairmanMessage() {
         eyebrow="A message from the Chairman"
         title="A vision inherited, a future earned."
         sub="Shri Mayankraj Singh Bhadoria — Chairman, Amaltas University"
-        bg="radial-gradient(125% 130% at 15% 8%, #2a9155 0%, #1a5c35 55%)"
-      />
+        bg="linear-gradient(125deg, #0B2C18 0%, #0E3A20 60%, #1C5E35 100%)"
+      >
+        <HeroDecor />
+      </PageHero>
 
       {/* MAIN MESSAGE SECTION */}
       <section className="sec wrap" style={{ paddingTop: 90 }}>

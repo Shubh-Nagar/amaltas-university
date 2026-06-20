@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Play, Sparkles, Trophy, HeartPulse,
   Award, Quote, ChevronLeft, ChevronRight, ChevronDown,
@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import HelixCanvas from "../components/HelixCanvas.jsx";
 import Blob from "../components/Blob.jsx";
+import MagicBento from "../components/MagicBento.jsx";
 import ScholarshipPopup from "../components/ScholarshipPopup.jsx";
 import { Reveal, Tilt, StatNum } from "../components/Primitives.jsx";
 import { useInView } from "../hooks/useScroll.js";
@@ -236,10 +237,12 @@ function LifeGrid() {
   );
 }
 
-/* ─── Seven Worlds — simple card grid ─── */
+/* ─── Seven Worlds — Magic Bento grid ─── */
 function SevenWorldsPanel() {
+  const navigate = useNavigate();
+
   return (
-    <section className="sec inst-grid-section" style={{ position: "relative", overflow: "hidden" }}>
+    <section className="sec inst-grid-section" style={{ position: "relative", overflow: "hidden", background: "#fff" }}>
       {/* diagonal DNA helix — decorative background */}
       <div style={{
         position: "absolute",
@@ -248,7 +251,7 @@ function SevenWorldsPanel() {
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%) rotate(40deg)",
-        opacity: 0.55,
+        opacity: 0.35,
         pointerEvents: "none",
         zIndex: 0,
       }}>
@@ -268,34 +271,28 @@ function SevenWorldsPanel() {
       </div>
 
       <div style={{ position: "relative", zIndex: 1, padding: "0 28px" }}>
-        <div className="inst-grid">
-          {INSTITUTIONS.map((inst, i) => {
-            const Icon = inst.icon;
-            return (
-              <Reveal key={i} delay={`d${Math.min(i + 1, 6)}`}>
-                <Link to="/admissions" className="inst-card" onClick={(e) => e.currentTarget.blur()}>
-                  <img src={inst.img} alt={inst.name} loading="lazy" />
-                  <div className="inst-card-overlay" />
-                  <div className="inst-card-top">
-                    <span className="inst-card-icon"><Icon size={16} /></span>
-                    <span className="inst-card-tag">{inst.tag}</span>
-                  </div>
-                  <div className="inst-card-body">
-                    <div className="inst-card-name">{inst.name}</div>
-                    <div className="inst-card-cta">Apply now <ArrowRight size={14} /></div>
-                  </div>
-                </Link>
-              </Reveal>
-            );
-          })}
-        </div>
+        <MagicBento
+          items={INSTITUTIONS}
+          onCardClick={() => navigate("/admissions")}
+          enableStars={true}
+          enableSpotlight={true}
+          enableBorderGlow={true}
+          enableTilt={true}
+          enableMagnetism={true}
+          clickEffect={true}
+          textAutoHide={false}
+          spotlightRadius={320}
+          particleCount={10}
+          glowColor="246, 197, 30"
+        />
       </div>
 
       <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
         <div style={{ textAlign: "center", marginTop: 44 }}>
-          <Link to="/institutions" className="btn btn-dark">
+          <Link to="/institutions" className="btn btn-gold">
             Explore all programmes <ArrowUpRight size={18} />
           </Link>
+
         </div>
       </div>
     </section>
@@ -518,7 +515,7 @@ function EventsSection() {
 const WR_CARDS = [
   {
     bg: "linear-gradient(135deg,#0B2C18 0%,#1a5c35 100%)",
-    img: null,
+    img: "/assets/images%20of%20university/yoga-hall-1.jpeg",
     eyebrow: "Dewas · Madhya Pradesh · Est. 2016",
     stat: "7",
     statLabel: "Health-Science Institutions",
@@ -550,10 +547,10 @@ const WR_CARDS = [
   },
 ];
 
-/* ─── Scroll-driven stacking card section ─── */
+/* ─── Scroll-driven two-column milestone section ─── */
 function WorldRecordStack() {
   const sectionRef = useRef(null);
-  const cardEls = useRef([]);
+  const [activeCard, setActiveCard] = useState(0);
   const N = WR_CARDS.length;
 
   useEffect(() => {
@@ -563,103 +560,111 @@ function WorldRecordStack() {
       const rect = el.getBoundingClientRect();
       const scrollable = el.offsetHeight - window.innerHeight;
       if (scrollable <= 0) return;
-      const p = Math.max(0, Math.min(1, -rect.top / scrollable));
-      // card 0 is pre-shown; cards 1–(N-1) each get one scroll unit
-      const cp = 1 + p * (N - 1); // 1 → N
-
-      cardEls.current.forEach((cardEl, i) => {
-        if (!cardEl) return;
-        const t = cp - i; // negative = pending, 0–1 = entering, >1 = settled below stack
-        if (t <= 0) {
-          cardEl.style.transform = "translateY(100vh)";
-          cardEl.style.opacity = "0";
-        } else if (t < 1) {
-          const ease = t * t * (3 - 2 * t); // smoothstep
-          cardEl.style.transform = `translateY(${(1 - ease) * 100}vh)`;
-          cardEl.style.opacity = "1";
-        } else {
-          // settled — each extra card above it pushes it up and scales it down
-          const depth = Math.min(t - 1, N - 1 - i);
-          cardEl.style.transform = `translateY(${depth * -22}px) scale(${1 - depth * 0.04})`;
-          cardEl.style.opacity = "1";
-        }
-        cardEl.style.zIndex = String(i + 1);
-      });
+      const p = Math.max(0, Math.min(0.9999, -rect.top / scrollable));
+      setActiveCard(Math.min(Math.floor(p * N), N - 1));
     };
-
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [N]);
 
   return (
-    <div ref={sectionRef} style={{ height: `${(N + 1) * 100}vh`, position: "relative" }}>
+    <div ref={sectionRef} style={{ height: `${N * 100}vh`, position: "relative" }}>
       <div style={{
         position: "sticky", top: 0, height: "100vh",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        background: C.paper, overflow: "hidden",
+        display: "flex", overflow: "hidden",
       }}>
-        {/* ambient glow */}
-        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(18,134,63,.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
-        {/* heading — fades as first card arrives */}
-        <div style={{ position: "absolute", top: 64, left: 0, right: 0, textAlign: "center", zIndex: 0, pointerEvents: "none" }}>
-          <span className="eyebrow" style={{ justifyContent: "center" }}>Our milestones</span>
-          <h2 style={{ marginTop: 12 }}>A world record, in one breath.</h2>
-        </div>
-
-        {/* scroll cue */}
-        <div style={{ position: "absolute", bottom: 36, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, zIndex: 20, opacity: 0.5, pointerEvents: "none" }}>
-          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: C.slate }}>Scroll</span>
-          <div style={{ width: 1, height: 36, background: `linear-gradient(to bottom, ${C.slate}, transparent)` }} />
-        </div>
-
-        {WR_CARDS.map((card, i) => (
-          <div
-            key={i}
-            ref={el => { cardEls.current[i] = el; }}
-            style={{
-              position: "absolute",
-              width: "min(980px, 92vw)",
-              height: "min(560px, 76vh)",
-              borderRadius: 28,
-              overflow: "hidden",
-              background: card.bg,
-              boxShadow: "0 40px 100px -40px rgba(11,44,24,.65)",
-              willChange: "transform, opacity",
-              opacity: i === 0 ? 1 : 0,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-            }}
-          >
-            {/* background image */}
-            {card.img && (
-              <img src={card.img} alt="" aria-hidden="true" style={{
-                position: "absolute", inset: 0, width: "100%", height: "100%",
-                objectFit: "cover", opacity: 1,
-              }} />
-            )}
-
-            {/* content */}
-            <div style={{ position: "relative", zIndex: 1, padding: "40px 48px" }}>
-              <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: C.goldL, marginBottom: 18, opacity: 0.88 }}>
-                {card.eyebrow}
-              </div>
-              {card.stat && (
-                <div style={{ fontFamily: "'Fraunces',serif", fontSize: "clamp(3rem,7vw,5.5rem)", fontWeight: 300, lineHeight: 1, color: "#fff", marginBottom: 6 }}>
-                  {card.stat}
-                </div>
-              )}
-              <div style={{ fontFamily: "'Fraunces',serif", fontSize: card.stat ? "clamp(1rem,1.8vw,1.3rem)" : "clamp(1.8rem,3.5vw,2.6rem)", color: C.goldL, marginBottom: 16, lineHeight: 1.25 }}>
-                {card.statLabel}
-              </div>
-              <p style={{ color: "rgba(247,244,236,.8)", fontSize: 15, lineHeight: 1.7, margin: 0, maxWidth: 540 }}>
-                {card.body}
-              </p>
-            </div>
+        {/* ── LEFT: text panel ── */}
+        <div style={{
+          width: "50%",
+          background: "linear-gradient(160deg,#0B2C18 0%,#0d3520 100%)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "0 64px",
+          position: "relative",
+        }}>
+          {/* fixed section label */}
+          <div style={{ position: "absolute", top: 52, left: 64 }}>
+            <span className="eyebrow" style={{ color: C.goldL }}>Our milestones</span>
           </div>
-        ))}
+
+          {/* card content — fades + slides on scroll */}
+          <div style={{ position: "relative", minHeight: 340 }}>
+            {WR_CARDS.map((card, i) => (
+              <div key={i} style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                opacity: i === activeCard ? 1 : 0,
+                transform: i === activeCard
+                  ? "translateY(0)"
+                  : i < activeCard ? "translateY(-32px)" : "translateY(32px)",
+                transition: "opacity 0.55s ease, transform 0.55s ease",
+                pointerEvents: i === activeCard ? "auto" : "none",
+              }}>
+                <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", color: C.goldL, marginBottom: 16, opacity: 0.88 }}>
+                  {card.eyebrow}
+                </div>
+                {card.stat && (
+                  <div style={{ fontFamily: "'Fraunces',serif", fontSize: "clamp(3rem,7vw,5.5rem)", fontWeight: 300, lineHeight: 1, color: "#fff", marginBottom: 8 }}>
+                    {card.stat}
+                  </div>
+                )}
+                <div style={{ fontFamily: "'Fraunces',serif", fontSize: card.stat ? "clamp(1rem,1.8vw,1.3rem)" : "clamp(1.8rem,3.5vw,2.6rem)", color: C.goldL, marginBottom: 18, lineHeight: 1.25 }}>
+                  {card.statLabel}
+                </div>
+                <p style={{ color: "rgba(247,244,236,.8)", fontSize: 15.5, lineHeight: 1.75, margin: 0, maxWidth: 440 }}>
+                  {card.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* progress dots */}
+          <div style={{ position: "absolute", bottom: 48, left: 64, display: "flex", alignItems: "center", gap: 8 }}>
+            {WR_CARDS.map((_, i) => (
+              <div key={i} style={{
+                width: i === activeCard ? 24 : 8, height: 8, borderRadius: 4,
+                background: i === activeCard ? C.goldL : "rgba(247,244,236,.2)",
+                transition: "all .4s ease",
+              }} />
+            ))}
+          </div>
+
+          {/* scroll cue */}
+          <div style={{ position: "absolute", bottom: 44, right: 32, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, opacity: 0.35, pointerEvents: "none" }}>
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", color: C.ivory, writingMode: "vertical-lr" }}>Scroll</span>
+            <div style={{ width: 1, height: 32, background: `linear-gradient(to bottom, ${C.ivory}, transparent)` }} />
+          </div>
+        </div>
+
+        {/* ── RIGHT: image panel ── */}
+        <div style={{ width: "50%", position: "relative", overflow: "hidden" }}>
+          {WR_CARDS.map((card, i) => (
+            <React.Fragment key={i}>
+              <div style={{
+                position: "absolute", inset: 0,
+                background: card.bg,
+                opacity: i === activeCard ? 1 : 0,
+                transition: "opacity 0.6s ease",
+              }} />
+              {card.img && (
+                <img src={card.img} alt="" aria-hidden="true" style={{
+                  position: "absolute", inset: 0,
+                  width: "100%", height: "100%",
+                  objectFit: "cover",
+                  opacity: i === activeCard ? 1 : 0,
+                  transition: "opacity 0.6s ease",
+                }} />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+
       </div>
     </div>
   );
@@ -673,9 +678,9 @@ function HeroForm() {
       <h2 style={{ color: C.ink, fontSize: "clamp(1.4rem,2vw,1.8rem)", fontWeight: 300, marginBottom: 6, lineHeight: 1.2 }}>
         Begin Your <span className="grad-gold">Journey</span>
       </h2>
-      <p style={{ color: C.slate, fontSize: 13.5, marginBottom: 20 }}>
+      {/* <p style={{ color: C.slate, fontSize: 13.5, marginBottom: 20 }}>
         A counsellor will reach out within one working day.
-      </p>
+      </p> */}
       {sent ? (
         <div style={{ textAlign: "center", padding: "36px 0" }}>
           <CheckCircle size={48} color={C.emerald} style={{ marginBottom: 14 }} />

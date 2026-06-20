@@ -9,7 +9,7 @@ import {
 export const INSTITUTIONS = [
   {
     icon: Stethoscope, tag: "MBBS · MD · MS",
-    name: "Institute of Medical Sciences",
+    name: "Amaltas Institute of Medical Sciences",
     desc: "A teaching hospital with 1500+ beds where students train beside practising clinicians from day one.",
     img: "/assets/images%20of%20university/all%20institutes/medical.png",
     studentImg: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=75",
@@ -17,7 +17,7 @@ export const INSTITUTIONS = [
   },
   {
     icon: HeartPulse, tag: "BAMS",
-    name: "Ayurvedic College & Research Centre",
+    name: "Amaltas Ayurvedic College & Research Centre",
     desc: "Classical Ayurveda met with modern research, clinical wards, and a dedicated herbal pharmacy.",
     img: "/assets/images%20of%20university/all%20institutes/ayurveda.png",
     studentImg: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=700&q=75",
@@ -25,7 +25,7 @@ export const INSTITUTIONS = [
   },
   {
     icon: Activity, tag: "BHMS",
-    name: "Institute of Homoeopathy",
+    name: "Amaltas Institute of Homoeopathy",
     desc: "Evidence-informed homoeopathic medicine with an integrated outpatient department.",
     img: "/assets/images%20of%20university/all%20institutes/homoepathy.png",
     studentImg: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=75",
@@ -33,7 +33,7 @@ export const INSTITUTIONS = [
   },
   {
     icon: GraduationCap, tag: "B.Sc · PB B.Sc Nursing",
-    name: "Institute of Nursing Sciences",
+    name: "Amaltas Institute of Nursing Sciences",
     desc: "Simulation labs, the lamp-lighting tradition, and placements across the Amaltas hospital network.",
     img: "/assets/images%20of%20university/all%20institutes/nursing.jpeg",
     studentImg: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=75",
@@ -41,7 +41,7 @@ export const INSTITUTIONS = [
   },
   {
     icon: FlaskConical, tag: "B.Pharma · D.Pharma",
-    name: "Institute of Pharmacy",
+    name: "Amaltas Institute of Pharmacy",
     desc: "Formulation, pharmacology and analysis labs aligned to PCI standards and industry demand.",
     img: "/assets/images%20of%20university/all%20institutes/pharmacy.png",
     studentImg: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=700&q=75",
@@ -49,7 +49,7 @@ export const INSTITUTIONS = [
   },
   {
     icon: Microscope, tag: "BPT · BMLT · DMLT",
-    name: "Institute of Paramedical Sciences",
+    name: "Amaltas Institute of Paramedical Sciences",
     desc: "Hands-on allied health training in physiotherapy, imaging and laboratory technology.",
     img: "/assets/images%20of%20university/all%20institutes/paramedical.jpeg",
     studentImg: "https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=700&q=75",
@@ -57,7 +57,7 @@ export const INSTITUTIONS = [
   },
   {
     icon: Brain, tag: "Clinical Psy · BASLP · PDCP",
-    name: "Allied & Rehabilitation Sciences",
+    name: "Amaltas Allied & Rehabilitation Sciences",
     desc: "Speech, language, hearing and clinical psychology programmes with live rehabilitation clinics.",
     img: "/assets/images%20of%20university/all%20institutes/alied.jpg",
     studentImg: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=700&q=75",
