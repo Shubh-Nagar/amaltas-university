@@ -7,6 +7,7 @@ import {
   MessageCircle, ArrowUp, Check,
 } from "lucide-react";
 import HelixCanvas from "../components/HelixCanvas.jsx";
+import EnquiryWidget from "../components/EnquiryWidget.jsx";
 import Blob from "../components/Blob.jsx";
 import MagicBento from "../components/MagicBento.jsx";
 import ScholarshipPopup from "../components/ScholarshipPopup.jsx";
@@ -114,13 +115,7 @@ function FloatingActions() {
   }, []);
   return (
     <div className="fab-stack" aria-hidden="false">
-      <button
-        type="button"
-        className="npfWidgetButton npfWidget-b9e07b3b3898e1f019ca0c25a842d922 fab fab-enquire"
-        aria-label="Open enquiry form"
-      >
-        Enquire Now
-      </button>
+      <EnquiryWidget className="fab fab-enquire" />
       <a
         href="https://wa.me/919404956221?text=Hi%2C%20I%27d%20like%20to%20know%20about%20admissions%20at%20Amaltas%20University."
         target="_blank" rel="noreferrer"

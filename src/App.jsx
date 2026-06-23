@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import { ScrollToTop } from "./components/Layout.jsx";
-import AdmissionPopup from "./components/AdmissionPopup.jsx";
 import Home from "./pages/Home.jsx";
 import Institutions from "./pages/Institutions.jsx";
 import Admissions from "./pages/Admissions.jsx";
@@ -27,7 +26,6 @@ export default function App() {
 
   return (
     <div className="amaltas">
-      <AdmissionPopup />
       <ScrollToTop />
       <Navbar />
       <main>
