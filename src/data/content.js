@@ -128,7 +128,9 @@ export const NAV = [
     to: "/admissions",
     children: [
       { to: "/admissions", label: "Courses & Programs" },
-      { to: "/admissions", label: "Fee Details" },
+      { to: "/admissions/procedure", label: "Procedure" },
+      { to: "/admissions/fees", label: "Fee Details" },
+      { to: "/admissions/eligibility", label: "Eligibility Criteria" },
       { to: "/admissions", label: "Scholarship" },
     ],
   },
@@ -137,20 +139,43 @@ export const NAV = [
     to: "/institutions",
   },
   {
-    label: "Examination",
+    label: "Student Life",
     to: "#",
     children: [
-      { to: "#", label: "Gold Medalists" },
-      { to: "#", label: "Timetables" },
-      { to: "#", label: "Results" },
+      { to: "#", label: "Campus Life" },
+      { to: "#", label: "Sports & Recreation" },
+      { to: "#", label: "Clubs & Societies" },
+      { to: "#", label: "Hostel & Accommodation" },
     ],
   },
   {
-    label: "Login",
+    label: "Facilities",
     to: "#",
     children: [
-      { to: "#", label: "Student Portal" },
-      { to: "#", label: "Faculty Portal" },
+      { to: "#", label: "Hospital & Clinical Training" },
+      { to: "#", label: "Library" },
+      { to: "#", label: "Laboratories" },
+      { to: "#", label: "Sports Complex" },
+    ],
+  },
+  {
+    label: "Happenings",
+    to: "#",
+    children: [
+      { to: "#", label: "Events" },
+      { to: "#", label: "News & Press Releases" },
+      { to: "#", label: "Photo Gallery" },
+    ],
+  },
+  {
+    label: "Quick Links",
+    to: "#",
+    children: [
+      { to: "#", label: "Ph.D. Entrance 2026" },
+      { to: "#", label: "IQAC" },
+      { to: "#", label: "NCMSAP Certificates" },
+      { to: "#", label: "Alumni Network" },
+      { to: "#", label: "Grievances" },
     ],
   },
 ];

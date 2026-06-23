@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
@@ -19,22 +19,11 @@ import Accreditations from "./pages/about/Accreditations.jsx";
 import MandatoryDisclosure from "./pages/about/MandatoryDisclosure.jsx";
 import FounderChairmanMessage from "./pages/about/FounderChairmanMessage.jsx";
 import ChairmanMessage from "./pages/about/ChairmanMessage.jsx";
+import FeeDetails from "./pages/FeeDetails.jsx";
+import Eligibility from "./pages/Eligibility.jsx";
+import AdmissionProcedure from "./pages/AdmissionProcedure.jsx";
 
 export default function App() {
-  useEffect(() => {
-    if (window.NpfWidgetsInit) {
-      new window.NpfWidgetsInit({
-        widgetId: "b9e07b3b3898e1f019ca0c25a842d922",
-        baseurl: "widgets.in4.nopaperforms.com",
-        formTitle: "Enquiry Form",
-        titleColor: "#FF0033",
-        backgroundColor: "#ddd",
-        iframeHeight: "500px",
-        buttonbgColor: "#4c79dc",
-        buttonTextColor: "#FFF",
-      });
-    }
-  }, []);
 
   return (
     <div className="amaltas">
@@ -57,6 +46,9 @@ export default function App() {
           <Route path="/about/disclosure" element={<MandatoryDisclosure />} />
           <Route path="/about/founder-chairman-message" element={<FounderChairmanMessage />} />
           <Route path="/about/chairman-message" element={<ChairmanMessage />} />
+          <Route path="/admissions/fees" element={<FeeDetails />} />
+          <Route path="/admissions/eligibility" element={<Eligibility />} />
+          <Route path="/admissions/procedure" element={<AdmissionProcedure />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
