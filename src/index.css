@@ -1216,87 +1216,142 @@ body{margin:0;}
   to{opacity:1;transform:translateY(0) rotate(0deg);}
 }
 
+/* ══════════════════════════════════════════
+   HOSTEL & ACCOMMODATION PAGE
+══════════════════════════════════════════ */
+.hostel-stats-band{
+  background:#fff;border-radius:22px;
+  border:1px solid rgba(11,44,24,.07);
+  box-shadow:0 40px 90px -55px rgba(11,44,24,.5);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.hostel-stat-cell{padding:26px 20px;text-align:center;}
+
+/* 2-col split used in overview and mess sections */
+.hostel-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+
+/* hostel type cards grid */
+.hostel-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:50px;}
+.hostel-type-card{
+  background:#fff;border-radius:24px;overflow:hidden;
+  border:1px solid rgba(11,44,24,.07);height:100%;
+}
+.hostel-card-img{
+  position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--navy);
+}
+.hostel-card-img img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s cubic-bezier(.16,1,.3,1);
+}
+.hostel-type-card:hover .hostel-card-img img{transform:scale(1.05);}
+
+/* gallery filmstrip */
+.hostel-gallery{display:flex;gap:6px;height:340px;overflow:hidden;}
+.hostel-gallery > div:hover img{transform:scale(1.05);}
+
+@media(max-width:860px){
+  .hostel-split{grid-template-columns:1fr;gap:40px;}
+  .hostel-type-grid{grid-template-columns:1fr;}
+  .hostel-stats-band{grid-template-columns:repeat(2,1fr);}
+  .hostel-stat-cell:nth-child(2){border-right:none!important;}
+}
+@media(max-width:600px){
+  .hostel-gallery{height:auto;flex-direction:column;}
+  .hostel-gallery > div{height:200px;flex:none!important;}
+  .hostel-stats-band{grid-template-columns:1fr 1fr;}
+}
+
+@media(max-width:860px){
+  .photo-masonry{column-count:2!important;}
+}
+@media(max-width:520px){
+  .photo-masonry{column-count:1!important;}
+}
+
+/* ══════════════════════════════════════════
+   ACADEMIC FACILITIES PAGE
+══════════════════════════════════════════ */
+/* interactive facility explorer */
+.acad-tabs{display:flex;flex-wrap:wrap;gap:10px;}
+.acad-tab{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:inherit;font-size:13.5px;font-weight:600;
+  color:var(--slate);background:#fff;cursor:pointer;
+  border:1px solid rgba(11,44,24,.12);border-radius:100px;
+  padding:10px 18px;transition:.25s;
+}
+.acad-tab:hover{border-color:rgba(18,134,63,.4);color:var(--emerald);}
+.acad-tab.on{
+  background:linear-gradient(135deg,var(--emerald),var(--emeraldL));
+  border-color:transparent;color:#fff;
+  box-shadow:0 10px 24px -12px rgba(18,134,63,.7);
+}
+.acad-panel{
+  display:grid;grid-template-columns:1.05fr 1fr;gap:0;
+  margin-top:28px;background:#fff;border-radius:24px;overflow:hidden;
+  border:1px solid rgba(11,44,24,.07);
+  box-shadow:0 40px 90px -60px rgba(11,44,24,.5);
+  animation:acadFade .5s cubic-bezier(.16,1,.3,1);
+}
+.acad-panel-media{position:relative;min-height:340px;overflow:hidden;background:var(--navy);}
+.acad-panel-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.acad-panel-badge{
+  position:absolute;top:16px;left:16px;
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.15);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.22);border-radius:100px;
+  padding:7px 15px;font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:#fff;
+}
+.acad-panel-body{padding:38px 36px;display:flex;flex-direction:column;justify-content:center;}
+@keyframes acadFade{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+
+/* central library stat row (on dark) */
+.acad-lib-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px;
+}
+.acad-lib-stat{
+  padding:16px 12px;border-radius:14px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
+  text-align:center;
+}
+
+/* Ranganathan's five laws */
+.acad-laws{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.acad-law{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;padding:24px 18px;height:100%;
+}
+.acad-law-num{
+  width:40px;height:40px;border-radius:12px;margin-bottom:14px;
+  display:grid;place-items:center;color:var(--navy);font-weight:800;
+  font-family:Fraunces,serif;font-size:18px;
+  background:linear-gradient(135deg,var(--gold),var(--goldL));
+}
+
+@media(max-width:860px){
+  .acad-panel{grid-template-columns:1fr;}
+  .acad-panel-media{min-height:240px;aspect-ratio:16/9;}
+  .acad-lib-stats{grid-template-columns:1fr 1fr;}
+  .acad-laws{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:520px){
+  .acad-laws{grid-template-columns:1fr;}
+}
+
 /* ── reduce motion ── */
 @media(prefers-reduced-motion:reduce){
   .morphblob{animation:none!important;}
   .fab-wa{animation:none!important;}
   .hero-sub-text,.cta-swap{animation:none!important;}
   .lr-char{animation:none!important;opacity:1!important;transform:none!important;}
+  .acad-panel{animation:none!important;}
 }
 
 /* ══════════════════════════════════════════
    SEVEN WORLDS — interactive single-view panel
 ══════════════════════════════════════════ */
-/* ══════════════════════════════════════════
-   INSTITUTIONS CARD GRID
-══════════════════════════════════════════ */
 .inst-grid-section{padding:100px 0;background:var(--paper);}
-.inst-grid{
-  display:grid;
-  grid-template-columns:repeat(8,1fr);
-  gap:16px;
-}
-.inst-grid > *{grid-column:span 2;}
-/* centre the 3-card second row in the 8-virtual-column grid */
-.inst-grid > *:nth-child(5){grid-column:2 / span 2;}
-.inst-grid > *:nth-child(6){grid-column:4 / span 2;}
-.inst-grid > *:nth-child(7){grid-column:6 / span 2;}
-
-.inst-card{
-  position:relative;display:block;border-radius:20px;overflow:hidden;
-  aspect-ratio:4/3;text-decoration:none;
-  box-shadow:0 16px 48px -24px rgba(11,44,24,.45);
-  transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s;
-}
-.inst-card:hover{transform:translateY(-6px);box-shadow:0 32px 64px -28px rgba(11,44,24,.55);}
-.inst-card img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;transition:transform 7s ease;
-}
-.inst-card:hover img{transform:scale(1.05);}
-.inst-card-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(11,44,24,.92) 0%,rgba(11,44,24,.38) 55%,rgba(11,44,24,.08) 100%);
-  transition:background .4s;
-}
-.inst-card:hover .inst-card-overlay{
-  background:linear-gradient(to top,rgba(18,134,63,.92) 0%,rgba(11,44,24,.5) 55%,rgba(11,44,24,.1) 100%);
-}
-.inst-card-top{
-  position:absolute;top:16px;left:16px;right:16px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.inst-card-icon{
-  width:36px;height:36px;border-radius:10px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--gold),var(--goldL));
-  color:var(--ink);display:grid;place-items:center;
-  box-shadow:0 6px 18px -6px rgba(246,224,5,.55);
-}
-.inst-card-tag{
-  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:#fff;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.22);padding:4px 10px;border-radius:100px;
-}
-.inst-card-body{
-  position:absolute;bottom:0;left:0;right:0;padding:20px;
-}
-.inst-card-name{
-  font-family:'Fraunces',serif;font-size:17px;line-height:1.25;
-  color:#fff;margin-bottom:12px;
-}
-.inst-card-cta{
-  display:inline-flex;align-items:center;gap:6px;
-  background:var(--gold);color:var(--ink);
-  font-size:12.5px;font-weight:700;padding:8px 16px;
-  border-radius:100px;transition:background .25s,transform .25s;
-}
-.inst-card:hover .inst-card-cta{background:var(--goldL);transform:translateX(3px);}
-
-@media(max-width:1024px){
-  .inst-grid{grid-template-columns:repeat(3,1fr);}
-  .inst-grid > *,.inst-grid > *:nth-child(5),.inst-grid > *:nth-child(6),.inst-grid > *:nth-child(7){grid-column:auto;}
-}
-@media(max-width:640px){.inst-grid{grid-template-columns:repeat(2,1fr);}}
 
 /* ══════════════════════════════════════════
    ADMISSION POPUP
@@ -1482,3 +1537,29 @@ body{margin:0;}
 .assurance-desc{color:var(--slate);font-size:14.5px;line-height:1.6;margin:0;}
 @media(max-width:900px){.assurance-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.assurance-grid{grid-template-columns:1fr;}}
+
+/* ── Admission procedure: horizontal step flow ── */
+.step-flow-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;align-items:stretch;}
+.step-flow-card{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  height:100%;background:#fff;border-radius:18px;padding:26px 18px 22px;
+  border:1px solid rgba(11,44,24,.07);border-top:4px solid var(--step-color,var(--em));
+  position:relative;
+}
+.step-flow-icon{
+  width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;box-shadow:0 8px 24px -8px var(--step-color,var(--em));
+}
+.step-flow-tag{
+  margin-top:10px;font-size:10px;font-weight:800;letter-spacing:.1em;color:#fff;
+  background:var(--step-color,var(--em));padding:2px 9px;border-radius:100px;
+}
+.step-flow-title{font-size:15.5px;color:var(--navy);margin-top:14px;line-height:1.3;}
+.step-flow-desc{font-size:12.5px;color:var(--slate);line-height:1.55;margin-top:8px;}
+.step-flow-note{
+  display:inline-flex;align-items:center;justify-content:center;gap:5px;margin-top:auto;
+  padding-top:14px;font-size:10.5px;font-weight:700;color:var(--step-color,var(--em));
+}
+@media(max-width:1100px){.step-flow-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:640px){.step-flow-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:420px){.step-flow-grid{grid-template-columns:1fr;}}

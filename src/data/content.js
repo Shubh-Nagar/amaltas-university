@@ -66,23 +66,117 @@ export const INSTITUTIONS = [
 ];
 
 export const PROGRAMS = [
-  { n: "M.B.B.S.", d: "Undergraduate Medicine", t: "Medical" },
-  { n: "MD / MS", d: "Postgraduate Specialisation", t: "Medical" },
-  { n: "B.A.M.S.", d: "Ayurvedic Medicine & Surgery", t: "Ayurveda" },
-  { n: "B.H.M.S.", d: "Homoeopathic Medicine", t: "Homoeopathy" },
-  { n: "B.Sc. Nursing", d: "Nursing Sciences", t: "Nursing" },
-  { n: "B.Pharma / D.Pharma", d: "Pharmacy", t: "Pharmacy" },
-  { n: "B.P.T.", d: "Physiotherapy", t: "Allied" },
-  { n: "B.M.L.T. / D.M.L.T.", d: "Medical Lab Technology", t: "Allied" },
-  { n: "B.A.S.L.P.", d: "Audiology & Speech-Language", t: "Allied" },
+  { n: "M.B.B.S.", d: "Undergraduate Medicine · NEET UG", t: "Medical" },
+  { n: "MD / MS", d: "Postgraduate Specialisation · NEET PG", t: "Medical" },
+  { n: "DM / M.Ch.", d: "Super-Specialisation · NEET SS", t: "Medical" },
+  { n: "B.A.M.S.", d: "Ayurvedic Medicine & Surgery · NEET UG", t: "Ayurveda" },
+  { n: "B.H.M.S.", d: "Homoeopathic Medicine & Surgery · NEET UG", t: "Homoeopathy" },
+  { n: "B.Sc. Nursing", d: "Nursing Sciences · PNST", t: "Nursing" },
+  { n: "Post Basic B.Sc. Nursing", d: "Nursing Sciences", t: "Nursing" },
+  { n: "M.Sc. Nursing", d: "Postgraduate Nursing", t: "Nursing" },
+  { n: "GNM", d: "General Nursing & Midwifery", t: "Nursing" },
+  { n: "PhD Nursing", d: "Doctoral Nursing", t: "Nursing" },
+  { n: "B.Pharma", d: "Pharmacy · 12th with PCB/PCM", t: "Pharmacy" },
+  { n: "D.Pharma", d: "Diploma in Pharmacy · 12th with PCB/PCM", t: "Pharmacy" },
+  { n: "B.P.T.", d: "Bachelor of Physiotherapy", t: "Paramedical" },
+  { n: "B.M.L.T.", d: "Bachelor of Medical Lab Technology", t: "Paramedical" },
+  { n: "B.X.R.T.", d: "Bachelor of X-Ray Technology", t: "Paramedical" },
+  { n: "D.M.L.T.", d: "Diploma in Medical Lab Technology", t: "Paramedical" },
+  { n: "Diploma in Cath Lab Technology", d: "Allied Health Sciences", t: "Paramedical" },
+  { n: "Diploma in Dialysis Technology", d: "Allied Health Sciences", t: "Paramedical" },
+  { n: "Certificate in OT Technician", d: "Allied Health Sciences", t: "Paramedical" },
+  { n: "Certificate in X-Ray Technician", d: "Allied Health Sciences", t: "Paramedical" },
+  { n: "Certificate in USG Technician", d: "Ultrasound Technician", t: "Paramedical" },
   { n: "B.Sc. Clinical Psychology (Hons)", d: "Rehabilitation Sciences", t: "Allied" },
+  { n: "B.A.S.L.P.", d: "Audiology & Speech-Language Pathology", t: "Allied" },
+  { n: "ISITEP (HI/ID)", d: "Hearing / Intellectual Disability Programmes", t: "Allied" },
+  { n: "PDCP", d: "Professional Diploma in Clinical Psychology", t: "Allied" },
 ];
-export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", "Pharmacy", "Allied"];
+export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", "Pharmacy", "Paramedical", "Allied"];
+
+export const DEPARTMENT_HIGHLIGHTS = [
+  {
+    id: "Medical",
+    name: "Amaltas Institute of Medical Sciences",
+    highlights: [
+      { t: "Premier Medical Education Institution", d: "Established in 2016 to strengthen regional healthcare through quality medical education." },
+      { t: "NMC-Recognized MBBS & MD/MS Programs", d: "Comprehensive undergraduate and postgraduate medical programs approved by NMC." },
+      { t: "Extensive Clinical Training", d: "Hands-on learning through a 1400+ bed multispecialty teaching hospital." },
+      { t: "Technology-Integrated & Patient-Centered Learning", d: "Modern curriculum combining advanced technology with traditional clinical skills." },
+      { t: "Ethical & Compassionate Healthcare Professionals", d: "Focused on developing skilled doctors committed to lifelong learning and community well-being." },
+    ],
+  },
+  {
+    id: "Ayurveda",
+    name: "Amaltas Institute of Ayurveda",
+    highlights: [
+      { t: "NCISM-Approved Excellence", d: "Indian System of Medicine (NCISM), professional B.A.M.S. education combined with rigorous clinical standards." },
+      { t: "100-Bed Fully Functional Ayurvedic Hospital", d: "Comprehensive in-patient (IPD) and out-patient (OPD) facilities providing intensive medical training and high patient exposure." },
+      { t: "Advanced Panchakarma Therapy & Research Unit", d: "Equipped with a specialized state-of-the-art Panchakarma center providing complete traditional detoxification, rejuvenation, and hands-on clinical mastery." },
+      { t: "Integrated & Evidence-Based Learning", d: "Merging traditional Ayurvedic principles with modern medical advancements, backed by full-scale anatomy and physiology laboratories." },
+      { t: "Ethical Healthcare Professionals", d: "Deeply committed to nurturing skilled Ayurvedic physicians, prioritizing community well-being, lifestyle disorders management, and lifelong clinical learning." },
+    ],
+  },
+  {
+    id: "Homoeopathy",
+    name: "Amaltas Institute of Homoeopathy",
+    highlights: [
+      { t: "Premier Homoeopathic Medical Education Institution, Established in 2024", d: "Dedicated to strengthening regional healthcare through quality homoeopathic medical education and patient care." },
+      { t: "NCH, Government of India-Recognized BHMS Program", d: "Comprehensive undergraduate homoeopathic medical education approved by the National Commission for Homoeopathy (NCH)." },
+      { t: "Extensive Clinical Training & Hands-on Learning", d: "Practical clinical exposure through an attached 50-bed teaching hospital, community outreach programs, and supervised patient care." },
+      { t: "Technology-Integrated & Patient-Centered Learning", d: "Modern curriculum combining advanced educational technology with classical homoeopathic principles and clinical skills." },
+      { t: "Ethical & Compassionate Healthcare Professionals", d: "Focused on developing competent homoeopathic physicians committed to lifelong learning, research, and community well-being." },
+    ],
+  },
+  {
+    id: "Nursing",
+    name: "Amaltas Institute of Nursing Sciences",
+    highlights: [
+      { t: "Premier Nursing Education Institution", d: "Established in 2016 to strengthen regional healthcare through quality Nursing education." },
+      { t: "INC & MPNRC Recognized Programs", d: "Comprehensive undergraduate and postgraduate Nursing programs approved by INC & MPNRC." },
+      { t: "Extensive Clinical Training", d: "Hands-on learning through a 1400+ bed multispecialty teaching hospital." },
+      { t: "Technology-Integrated & Patient-Centered Learning", d: "Modern curriculum combining advanced technology with traditional clinical skills." },
+      { t: "Ethical & Compassionate Healthcare Professionals", d: "Focused on developing skilled Nursing Faculty committed to lifelong learning and community well-being." },
+    ],
+  },
+  {
+    id: "Pharmacy",
+    name: "Amaltas Institute of Pharmacy",
+    highlights: [
+      { t: "Premier Pharmacy Education Institution", d: "Established in 2023 to strengthen regional healthcare through quality Pharmacy education." },
+      { t: "Pharmacy Council of India", d: "Courses and curriculum are approved by PCI." },
+      { t: "Extensive Clinical Training", d: "Hands-on learning through a 1400+ bed multispecialty teaching hospital." },
+      { t: "Technology-Integrated & Patient-Centered Learning", d: "Modern curriculum combining advanced technology with traditional clinical skills." },
+      { t: "Ethical & Compassionate Healthcare Professionals", d: "Focused on developing skilled pharmacists committed to lifelong learning and community well-being." },
+    ],
+  },
+  {
+    id: "Paramedical",
+    name: "Amaltas Institute of Paramedical Sciences",
+    highlights: [
+      { t: "Premier Paramedical Education Institution", d: "Established in 2016 to strengthen regional healthcare through quality medical education." },
+      { t: "Affiliated to Madhya Pradesh Paramedical Council, Bhopal", d: "Courses recognised under the state paramedical council." },
+      { t: "Extensive Clinical Training", d: "Hands-on learning through a 1400+ bed multispecialty teaching hospital." },
+      { t: "Technology-Integrated & Patient-Centered Learning", d: "A future-ready curriculum designed to develop competent, skilled, and confident healthcare professionals." },
+      { t: "Ethical & Compassionate Healthcare Professionals", d: "Focused on developing skilled healthcare professionals committed to lifelong learning and community well-being." },
+    ],
+  },
+  {
+    id: "Allied",
+    name: "Department of Allied & Rehabilitation Sciences",
+    highlights: [
+      { t: "Recognized by the Rehabilitation Council of India (RCI)", d: "Ensures that rehabilitation and special education programs meet national standards and prepare qualified rehabilitation professionals." },
+      { t: "Professional Registration Opportunities", d: "Eligible graduates from approved programs can seek registration in the Central Rehabilitation Register (CRR), enhancing professional credibility and employability." },
+      { t: "Industry-Oriented Curriculum", d: "Programs aligned with RCI guidelines and disability rehabilitation standards." },
+      { t: "Multidisciplinary Learning Environment", d: "Integration of rehabilitation sciences, psychology, special education, speech and hearing, disability studies, and community rehabilitation." },
+    ],
+  },
+];
 
 export const WHY = [
   { icon: Building2, img: "/assets/images%20of%20university/The%20Amaltas%20difference/hospital.jpg",     t: "Hospital-Embedded Learning", d: "A live superspeciality hospital is your classroom — real patients, real outcomes, from year one." },
-  { icon: Users,                                                                                            t: "Mentors, Not Just Lecturers", d: "Renowned clinicians and scholars who know your name and shape your path." },
-  { icon: Award,                                                                                            t: "Recognised & Accredited",    d: "Programmes structured to national regulatory standards across every health discipline." },
+  { icon: Users,     img: "/assets/images%20of%20university/photo-gallery/2U8A1767.jpg",                   t: "Mentors, Not Just Lecturers", d: "Renowned clinicians and scholars who know your name and shape your path." },
+  { icon: Award,     img: "/assets/images%20of%20university/campus%20life/degree.JPG",                     t: "Recognised & Accredited",    d: "Programmes structured to national regulatory standards across every health discipline." },
   { icon: Sparkles, img: "/assets/images%20of%20university/The%20Amaltas%20difference/scolarship.JPG",    t: "Scholarships That Reach",    d: "Merit and need-based aid so that talent — not tuition — decides who heals tomorrow." },
 ];
 
@@ -91,8 +185,8 @@ export const LEADERS = [
   { role: "Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Mayank Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/mayank.jpeg" },
   { role: "Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg" },
   { role: "Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir.jpg" },
-  { role: "Vice Chancellor", nm: "Dr. RK Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions." },
-  { role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration." },
+  { role: "Vice Chancellor", nm: "Dr. RK Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg" },
+  { role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir.jpeg" },
 ];
 
 export const VOICES = [
@@ -145,26 +239,26 @@ export const NAV = [
       { to: "#", label: "Campus Life" },
       { to: "#", label: "Sports & Recreation" },
       { to: "#", label: "Clubs & Societies" },
-      { to: "#", label: "Hostel & Accommodation" },
+      { to: "/student-life/hostel", label: "Hostel & Accommodation" },
     ],
   },
   {
     label: "Facilities",
     to: "#",
     children: [
-      { to: "#", label: "Hospital & Clinical Training" },
-      { to: "#", label: "Library" },
-      { to: "#", label: "Laboratories" },
-      { to: "#", label: "Sports Complex" },
+      { to: "/facilities/academic", label: "Academic Facilities" },
+      { to: "#", label: "Campus Facilities" },
+      { to: "#", label: "Sports and Gym" },
+      { to: "#", label: "Other Facilities" },
     ],
   },
   {
     label: "Happenings",
     to: "#",
     children: [
-      { to: "#", label: "Events" },
-      { to: "#", label: "News & Press Releases" },
-      { to: "#", label: "Photo Gallery" },
+      { to: "/happenings/events", label: "Events" },
+      { to: "/happenings/news", label: "News & Press Releases" },
+      { to: "/happenings/photo-gallery", label: "Photo Gallery" },
     ],
   },
   {
@@ -477,16 +571,21 @@ export const CHANCELLOR_MESSAGE = {
 };
 
 export const VC_MESSAGE = {
-  salutation: "Dear Students and Colleagues,",
+  salutation: "Dear Students, Faculty, and Colleagues,",
   paragraphs: [
-    "Excellence in health sciences demands that we walk the razor's edge between compassion and competence. At Amaltas, we have built a curriculum that refuses to separate the two — because a brilliant clinician who lacks empathy, and a caring doctor who lacks skill, are both insufficient.",
-    "Our students learn beside practising clinicians from their very first year. They see, they feel, they understand — long before they are certified. That is the Amaltas pedagogy, and it is what sets our graduates apart.",
-    "I am personally committed to raising our research culture, our faculty quality, and our institutional depth, so that an Amaltas degree is recognised not merely as a qualification, but as a mark of a trusted healer.",
+    "As Kulguru (Vice-Chancellor) of Amaltas University, I would create an environment of academic freedom in the University where bright minds meet, discover, and learn to serve society by being a part of a global university of higher learning.",
+    "Leading this institution, I aim to inspire a passion for knowledge, strong problem-solving capabilities, and excellent leadership and communication skills among our students, faculty, and staff. I also want to instill a deep sense of mutual respect, equity, and dignity, empowering our community to offer the highest level of service to those in need.",
+    "Echoing the words of the poet W.B. Yeats, who noted that education is \"not the filling of a pail, but the lighting of a fire,\" my mission as an educator is to ignite curiosity. I strive to develop lifelong learners equipped with the essential skills to serve society effectively. Furthermore, I am committed to advancing knowledge through a rigorous yet joyful academic and research culture.",
+    "I will encourage the academic staff to upgrade their qualifications and skills in order to improve the overall quality of research and teaching-learning at the University by creating a congenial learning environment, developing an effective mechanism for student feedback, and attracting scholars from reputed national and international institutions. I will also encourage innovation in education, original research in sciences, patient-oriented discoveries, and motivate creative young minds to reach their fullest potential. Advocacy for community wellness and public welfare, with emphasis on quality and value in all endeavours, will be my prime motto.",
+    "I will promote and preserve academic freedom and diversity to provide need-based and quality-centric education in all branches of sciences, as may be deemed appropriate from time to time, enabling students to reap the benefits of tertiary education. The University shall emerge as a centre of excellence for research and development, contributing to the dissemination of knowledge and its relevant applications at regional, national, and global levels.",
+    "I will establish institutions of research, university colleges, departments, laboratories, and hospitals, and encourage cooperation among them for their fullest development and manifestation. For this purpose, I will coordinate with other universities and relevant authorities as well. The University will institute and award fellowships, scholarships, studentships, exhibitions, medals, and prizes to recognize and encourage excellence in science, service, research, and the overall development of its institutions.",
+    "Last but not least, my emphasis will be on creating an environment that nurtures students into becoming good human beings who derive satisfaction from alleviating the sufferings of mankind and serving humanity. They will become individuals of strong ethical values who respect and love their profession. They will be compassionate, knowledgeable, hardworking, and kind-hearted individuals. In such students, I see the true reflection of my vision, and their achievements will be a matter of pride and fulfilment for me.",
+    "I acknowledge the thoughtful vision and painstaking humanitarian efforts put forth by our respected Shri Suresh Singh Bhadoria Ji, Founder Chairman, to build and carry forward this mission for the welfare of the people living in the rural areas of Dewas district and surrounding regions.",
   ],
   closing: "With respect and high expectations,",
   name: "Dr. RK Singh",
   role: "Vice Chancellor, Amaltas University",
-  photo: null,
+  photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg",
 };
 
 /* Assurance — answers the objections families actually weigh before saying yes.

@@ -213,7 +213,7 @@ export default function ScholarshipPopup() {
               </div>
 
               <p className="apop-consent">
-                I authorize LPU to contact me with updates and notifications via
+                I authorize Amaltas University to contact me with updates and notifications via
                 Email, SMS, WhatsApp, and Call, overriding the DND/NDNC registry.
               </p>
 

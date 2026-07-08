@@ -84,92 +84,31 @@ export default function AdmissionProcedure() {
           <h2 style={{ marginTop: 8 }}>Follow the process.</h2>
         </Reveal>
 
-        <div style={{ marginTop: 60, position: "relative" }}>
-          {/* vertical spine */}
-          <div style={{
-            position: "absolute",
-            left: 36,
-            top: 0,
-            bottom: 0,
-            width: 2,
-            background: "linear-gradient(to bottom, rgba(18,134,63,.15), rgba(18,134,63,.05))",
-            borderRadius: 2,
-          }} />
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-            {STEPS.map((s, i) => {
-              const Icon = s.icon;
-              const isLast = i === STEPS.length - 1;
-              return (
-                <Reveal key={s.n} delay={`d${(i % 4) + 1}`}>
-                  <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "72px 1fr",
-                    gap: 28,
-                    paddingBottom: isLast ? 0 : 40,
-                    alignItems: "flex-start",
-                  }}>
-                    {/* Step circle */}
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0, position: "relative", zIndex: 1 }}>
-                      <div style={{
-                        width: 72,
-                        height: 72,
-                        borderRadius: "50%",
-                        background: `linear-gradient(135deg, ${s.color}, ${s.color}cc)`,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        boxShadow: `0 8px 28px -8px ${s.color}66`,
-                        flexShrink: 0,
-                      }}>
-                        <Icon size={22} color="#fff" />
-                      </div>
-                      {/* step number tag */}
-                      <div style={{
-                        marginTop: 6,
-                        background: s.color,
-                        color: "#fff",
-                        fontSize: 10,
-                        fontWeight: 800,
-                        letterSpacing: ".1em",
-                        padding: "2px 8px",
-                        borderRadius: 100,
-                      }}>
-                        STEP {s.n}
-                      </div>
-                    </div>
-
-                    {/* Card */}
-                    <div className="card-lift" style={{
-                      background: "#fff",
-                      borderRadius: 20,
-                      padding: "28px 32px",
-                      border: "1px solid rgba(11,44,24,.07)",
-                      borderLeft: `4px solid ${s.color}`,
-                    }}>
-                      <h3 style={{ fontSize: 20, color: C.navy, marginBottom: 10 }}>{s.title}</h3>
-                      <p style={{ color: C.slate, fontSize: 14.5, lineHeight: 1.7 }}>{s.desc}</p>
-                      <div style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 6,
-                        marginTop: 14,
-                        background: `${s.color}12`,
-                        color: s.color,
-                        borderRadius: 100,
-                        padding: "4px 14px",
-                        fontSize: 12,
-                        fontWeight: 700,
-                      }}>
-                        <ArrowRight size={12} /> {s.note}
-                      </div>
-                    </div>
+        <div className="step-flow-grid" style={{ marginTop: 60 }}>
+          {STEPS.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <Reveal key={s.n} delay={`d${(i % 6) + 1}`}>
+                <div
+                  className="step-flow-card card-lift"
+                  style={{ "--step-color": s.color }}
+                >
+                  <div
+                    className="step-flow-icon"
+                    style={{ background: `linear-gradient(135deg, ${s.color}, ${s.color}cc)` }}
+                  >
+                    <Icon size={22} color="#fff" />
                   </div>
-                </Reveal>
-              );
-            })}
-          </div>
+                  <div className="step-flow-tag">STEP {s.n}</div>
+                  <h3 className="step-flow-title">{s.title}</h3>
+                  <p className="step-flow-desc">{s.desc}</p>
+                  <div className="step-flow-note">
+                    <ArrowRight size={11} /> {s.note}
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 

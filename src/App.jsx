@@ -21,6 +21,11 @@ import ChairmanMessage from "./pages/about/ChairmanMessage.jsx";
 import FeeDetails from "./pages/FeeDetails.jsx";
 import Eligibility from "./pages/Eligibility.jsx";
 import AdmissionProcedure from "./pages/AdmissionProcedure.jsx";
+import HostelAccommodation from "./pages/student-life/HostelAccommodation.jsx";
+import AcademicFacilities from "./pages/facilities/AcademicFacilities.jsx";
+import NewsAndPress from "./pages/happenings/NewsAndPress.jsx";
+import Events from "./pages/happenings/Events.jsx";
+import PhotoGallery from "./pages/happenings/PhotoGallery.jsx";
 
 export default function App() {
 
@@ -47,6 +52,11 @@ export default function App() {
           <Route path="/admissions/fees" element={<FeeDetails />} />
           <Route path="/admissions/eligibility" element={<Eligibility />} />
           <Route path="/admissions/procedure" element={<AdmissionProcedure />} />
+          <Route path="/student-life/hostel" element={<HostelAccommodation />} />
+          <Route path="/facilities/academic" element={<AcademicFacilities />} />
+          <Route path="/happenings/news" element={<NewsAndPress />} />
+          <Route path="/happenings/events" element={<Events />} />
+          <Route path="/happenings/photo-gallery" element={<PhotoGallery />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
@@ -13,7 +13,6 @@ function MessageBlock({ msg, large }) {
       {msg.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
       <div className="letter-closing">
         <p>{msg.closing}</p>
-        <span className="letter-signature">{msg.name.split(" ").slice(-1)[0]}</span>
         <span className="letter-signame">{msg.name}</span>
         <span className="letter-sigrole">{msg.role}</span>
       </div>
@@ -130,26 +129,25 @@ export default function ChancellorMessage() {
 
       {/* VICE CHANCELLOR MESSAGE */}
       <section className="sec wrap" style={{ paddingTop: 0 }}>
-        <Reveal>
-          <span className="eyebrow">Vice Chancellor's Message</span>
-          <h2 style={{ marginTop: 14 }}>Excellence and empathy, inseparable.</h2>
-        </Reveal>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))", gap: 48, marginTop: 52, alignItems: "start" }}>
-          {/* VC portrait placeholder */}
+        <div className="chancellor-wrap">
+          {/* LEFT: portrait + nameplate */}
           <Reveal variant="left">
-            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-              <div style={{ width: "100%", maxWidth: 260, aspectRatio: "3/3.6", borderRadius: 24, background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, boxShadow: "0 40px 70px -40px rgba(11,44,24,.5)" }}>
-                <Users size={64} />
+            <div className="chancellor-portrait-box">
+              <div className="chancellor-photo">
+                <img src={VC_MESSAGE.photo} alt={VC_MESSAGE.name} />
               </div>
-              <div style={{ padding: "18px 20px", background: "#fff", borderRadius: 16, border: "1px solid rgba(11,44,24,.08)", boxShadow: "0 8px 28px -14px rgba(11,44,24,.15)" }}>
+              <div className="chancellor-name-plate">
                 <div className="cp-role">Vice Chancellor</div>
                 <div className="cp-name">{VC_MESSAGE.name}</div>
                 <div className="cp-org">Amaltas University</div>
               </div>
             </div>
           </Reveal>
+
+          {/* RIGHT: letter */}
           <Reveal variant="right">
-            <MessageBlock msg={VC_MESSAGE} />
+            <span className="eyebrow" style={{ marginBottom: 24, display: "block" }}>Vice Chancellor's Message</span>
+            <MessageBlock msg={VC_MESSAGE} large />
           </Reveal>
         </div>
       </section>

@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, Phone, Calendar, Check } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
-import { PROGRAMS, FILTERS, CONTACT } from "../data/content.js";
+import { PROGRAMS, FILTERS, CONTACT, DEPARTMENT_HIGHLIGHTS } from "../data/content.js";
 
 function Countdown() {
   const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
@@ -46,6 +46,9 @@ export default function Admissions() {
   const [filter, setFilter] = useState("All");
   const filtered = filter === "All" ? PROGRAMS : PROGRAMS.filter((p) => p.t === filter);
 
+  const [dept, setDept] = useState(DEPARTMENT_HIGHLIGHTS[0].id);
+  const activeDept = DEPARTMENT_HIGHLIGHTS.find((d) => d.id === dept);
+
   return (
     <>
       <PageHero
@@ -70,7 +73,7 @@ export default function Admissions() {
       <section className="sec wrap" style={{ paddingTop: 80 }}>
         <Reveal>
           <span className="eyebrow">Find your programme</span>
-          <h2>Ten ways to begin.</h2>
+          <h2>{PROGRAMS.length} ways to begin.</h2>
         </Reveal>
         <Reveal delay="d1">
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, margin: "30px 0 8px" }}>
@@ -95,6 +98,35 @@ export default function Admissions() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* DEPARTMENT HIGHLIGHTS */}
+      <section className="sec wrap" style={{ paddingTop: 0 }}>
+        <Reveal>
+          <span className="eyebrow">Why each department</span>
+          <h2>Department highlights.</h2>
+        </Reveal>
+        <Reveal delay="d1">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, margin: "30px 0 8px" }}>
+            {DEPARTMENT_HIGHLIGHTS.map((d) => (
+              <button key={d.id} className={`chip light ${dept === d.id ? "on" : ""}`} onClick={() => setDept(d.id)}>{d.id}</button>
+            ))}
+          </div>
+        </Reveal>
+        <Reveal delay="d2">
+          <div style={{ marginTop: 28 }}>
+            <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 22, fontWeight: 500, marginBottom: 22 }}>{activeDept.name}</h3>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 18 }}>
+              {activeDept.highlights.map((h, i) => (
+                <div key={i} style={{ background: "#fff", borderRadius: 16, padding: "22px 24px", border: "1px solid rgba(11,44,24,.07)" }}>
+                  <Check size={18} color={C.emerald} style={{ marginBottom: 10 }} />
+                  <h4 style={{ fontSize: 15, marginBottom: 6 }}>{h.t}</h4>
+                  <p style={{ color: C.slate, fontSize: 13.5, lineHeight: 1.55 }}>{h.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* PROCESS */}

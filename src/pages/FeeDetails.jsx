@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Download, IndianRupee, Users, ChevronRight, Phone } from "lucide-react";
+import { IndianRupee, ChevronRight, Phone } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
@@ -114,42 +114,6 @@ export default function FeeDetails() {
         sub="All fee figures are per annum. Scholarship and financial aid is available across programmes — speak to our admissions team to know more."
       />
 
-      {/* DOWNLOAD BAND */}
-      <section className="wrap" style={{ marginTop: -44, position: "relative", zIndex: 5 }}>
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: 20,
-            padding: "22px 32px",
-            border: "1px solid rgba(11,44,24,.08)",
-            boxShadow: "0 30px 80px -40px rgba(11,44,24,.38)",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 18,
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div>
-            <p style={{ fontWeight: 700, fontSize: 15, color: C.navy }}>
-              Download the official fee structure
-            </p>
-            <p style={{ fontSize: 13, color: C.slate, marginTop: 4 }}>
-              PDF issued by Amaltas University Dewas
-            </p>
-          </div>
-          <a
-            href="/assets/docs/FEE STRUCTURE - Google Sheets.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-burg"
-            style={{ gap: 10 }}
-          >
-            <Download size={16} /> Download PDF
-          </a>
-        </div>
-      </section>
-
       {/* CATEGORY TABS */}
       <section className="sec wrap" style={{ paddingTop: 70 }}>
         <Reveal>
@@ -199,7 +163,7 @@ export default function FeeDetails() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: isAll ? "140px 1fr 2fr 160px 100px" : "1fr 2fr 160px 100px",
+                gridTemplateColumns: isAll ? "140px 1fr 2fr 160px" : "1fr 2fr 160px",
                 background: cat.color,
                 padding: "14px 28px",
                 color: "#fff",
@@ -213,7 +177,6 @@ export default function FeeDetails() {
               <span>Course</span>
               <span>Specialization / Branch</span>
               <span style={{ textAlign: "right" }}>Fee Per Year</span>
-              <span style={{ textAlign: "right" }}>Seats</span>
             </div>
 
             {/* Rows */}
@@ -222,7 +185,7 @@ export default function FeeDetails() {
                 key={i}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: isAll ? "140px 1fr 2fr 160px 100px" : "1fr 2fr 160px 100px",
+                  gridTemplateColumns: isAll ? "140px 1fr 2fr 160px" : "1fr 2fr 160px",
                   padding: "18px 28px",
                   background: i % 2 === 0 ? "#fff" : "rgba(247,245,236,.55)",
                   borderBottom: i < displayRows.length - 1 ? "1px solid rgba(11,44,24,.06)" : "none",
@@ -286,28 +249,6 @@ export default function FeeDetails() {
                   </span>
                 </div>
 
-                {/* Seats */}
-                <div style={{ textAlign: "right" }}>
-                  {row.seats ? (
-                    <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 5,
-                        background: `${row._cat.color}18`,
-                        color: row._cat.color,
-                        borderRadius: 100,
-                        padding: "4px 12px",
-                        fontSize: 13,
-                        fontWeight: 700,
-                      }}
-                    >
-                      <Users size={12} /> {row.seats}
-                    </span>
-                  ) : (
-                    <span style={{ color: "rgba(86,104,91,.35)", fontSize: 13 }}>—</span>
-                  )}
-                </div>
               </div>
             ))}
           </div>
@@ -396,14 +337,6 @@ export default function FeeDetails() {
                   className="btn btn-em"
                 >
                   <Phone size={16} /> Call Admissions — {CONTACT.tollFree}
-                </a>
-                <a
-                  href="/assets/docs/FEE STRUCTURE - Google Sheets.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-dark"
-                >
-                  <Download size={16} /> Download Fee Structure PDF
                 </a>
               </div>
             </div>

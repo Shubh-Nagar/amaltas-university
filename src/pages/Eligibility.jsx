@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Download, BookOpen, ChevronRight, Phone, AlertCircle } from "lucide-react";
+import { ChevronRight, Phone, AlertCircle } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
@@ -96,42 +96,6 @@ const CATEGORIES = [
       { course: "D.Pharm", eligibility: "12th with PCM / PCB / PCMB", tags: [] },
     ],
   },
-  {
-    id: "science",
-    label: "Sciences & Arts",
-    color: "#2d5a8a",
-    courses: [
-      { course: "BSc (Hons) Agriculture", eligibility: "12th with PCM / PCB / PCMB / Agriculture",                                          tags: [] },
-      { course: "BSc Biochemistry",       eligibility: "12th with PCM / PCB",                                                               tags: [] },
-      { course: "BSc Microbiology",       eligibility: "12th with PCB",                                                                     tags: [] },
-      { course: "BSc Biotechnology",      eligibility: "12th with PCM / PCB",                                                               tags: [] },
-      { course: "BA",                     eligibility: "12th in any stream",                                                                 tags: ["Any Stream"] },
-      { course: "M.Sc Biochemistry",      eligibility: "B.Sc in Biochemistry, Chemistry, Life Sciences or related fields",                  tags: ["SC/ST –5%"] },
-      { course: "M.Sc Microbiology",      eligibility: "B.Sc in Microbiology, Biotechnology, Botany, Zoology, Agriculture or Allied Sciences", tags: ["SC/ST –5%"] },
-      { course: "M.Sc Biotechnology",     eligibility: "B.Sc in Biochemistry, Chemistry, Life Sciences or related fields",                  tags: ["SC/ST –5%"] },
-      { course: "MA",                     eligibility: "Any UG 3-Year Degree",                                                              tags: [] },
-    ],
-  },
-  {
-    id: "commerce",
-    label: "Commerce & Management",
-    color: "#1a5c8a",
-    courses: [
-      { course: "BBA", eligibility: "12th in any stream",    tags: ["Any Stream"] },
-      { course: "B.Com", eligibility: "12th in any stream",  tags: ["Any Stream"] },
-      { course: "MBA",   eligibility: "Any UG 3-Year Degree", tags: [] },
-    ],
-  },
-  {
-    id: "library",
-    label: "Library & Design",
-    color: "#4a6741",
-    courses: [
-      { course: "B.Lib Sci",  eligibility: "Bachelor's Degree in any stream", tags: ["SC/ST –5%"] },
-      { course: "M.Lib Sci",  eligibility: "UG in Library & Information Science (B.Lib.I.Sc) or Bachelor of Library Science (B.Lib.Sc)", tags: [] },
-      { course: "B.Design",   eligibility: "12th in any stream",               tags: ["Any Stream"] },
-    ],
-  },
 ];
 
 const ALL_CAT = { id: "all", label: "All", color: C.navy };
@@ -154,35 +118,6 @@ export default function Eligibility() {
         title="Find out if you qualify."
         sub="Essential qualifications for every programme offered at Amaltas University. Check the entrance requirement and subject combination before applying."
       />
-
-      {/* DOWNLOAD BAND */}
-      <section className="wrap" style={{ marginTop: -44, position: "relative", zIndex: 5 }}>
-        <div style={{
-          background: "#fff",
-          borderRadius: 20,
-          padding: "22px 32px",
-          border: "1px solid rgba(11,44,24,.08)",
-          boxShadow: "0 30px 80px -40px rgba(11,44,24,.38)",
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 18,
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}>
-          <div>
-            <p style={{ fontWeight: 700, fontSize: 15, color: C.navy }}>Download the official eligibility structure</p>
-            <p style={{ fontSize: 13, color: C.slate, marginTop: 4 }}>PDF issued by Amaltas University Dewas</p>
-          </div>
-          <a
-            href="/assets/docs/ELIGIBILITY STRUCTURE.docx - Google Docs.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-burg"
-          >
-            <Download size={16} /> Download PDF
-          </a>
-        </div>
-      </section>
 
       {/* LEGEND */}
       <section className="wrap" style={{ paddingTop: 48 }}>
@@ -404,14 +339,6 @@ export default function Eligibility() {
               <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 32 }}>
                 <a href={`tel:${CONTACT.tollFree.replace(/-/g, "")}`} className="btn btn-em">
                   <Phone size={16} /> Call — {CONTACT.tollFree}
-                </a>
-                <a
-                  href="/assets/docs/ELIGIBILITY STRUCTURE.docx - Google Docs.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-dark"
-                >
-                  <Download size={16} /> Download Eligibility PDF
                 </a>
               </div>
             </div>

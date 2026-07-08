@@ -18,7 +18,7 @@ import {
   INSTITUTIONS, WHY, VOICES, STATS, LEADERS,
   EVENTS, NEWS, FAQS, QUICK_LINKS, ANNOUNCEMENTS,
   AUDIENCES, ADMISSION_PATHS, LIFE, OUTCOMES, PARTNERS,
-  ACCREDITATIONS, ASSURANCE,
+  ACCREDITATIONS, ASSURANCE, PROGRAMS,
 } from "../data/content.js";
 
 const IMGS = {
@@ -690,16 +690,9 @@ function HeroForm() {
           <div className="hf-field">
             <select defaultValue="">
               <option value="" disabled>Programme of Interest *</option>
-              <option>M.B.B.S.</option>
-              <option>B.A.M.S.</option>
-              <option>B.H.M.S.</option>
-              <option>B.Sc. Nursing</option>
-              <option>Post Basic B.Sc. Nursing</option>
-              <option>B.Pharma</option>
-              <option>D.Pharma</option>
-              <option>B.P.T.</option>
-              <option>B.M.L.T.</option>
-              <option>Allied Sciences</option>
+              {PROGRAMS.map((p) => (
+                <option key={p.n}>{p.n}</option>
+              ))}
             </select>
           </div>
           <button
@@ -1280,11 +1273,9 @@ export default function Home() {
                     <label>Program of Interest</label>
                     <select>
                       <option value="">Select program…</option>
-                      <option>M.B.B.S.</option><option>B.A.M.S.</option><option>B.H.M.S.</option>
-                      <option>B.Sc. Nursing</option><option>Post Basic B.Sc. Nursing</option>
-                      <option>B.Pharma</option><option>D.Pharma</option>
-                      <option>B.P.T.</option><option>B.M.L.T.</option><option>D.M.L.T.</option>
-                      <option>B.Sc. Clinical Psychology (Hons)</option><option>B.A.S.L.P.</option>
+                      {PROGRAMS.map((p) => (
+                        <option key={p.n}>{p.n}</option>
+                      ))}
                     </select>
                   </div>
                   <button className="btn btn-gold" style={{ width: "100%", justifyContent: "center", marginTop: 4 }}>
