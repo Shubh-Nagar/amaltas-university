@@ -86,7 +86,7 @@ export default function FounderChairmanMessage() {
         eyebrow="A message from the Founder"
         title="Rooted in service, grown with purpose."
         sub="Shri Suresh Singh Bhadoria — Founder Chairman, Mayank Welfare Society"
-        bg="linear-gradient(145deg, #071810 0%, #0B2818 45%, #0F3A1F 100%)"
+        bgImg="/assets/images%20of%20university/photo-gallery/DJI_0019.jpg"
       >
         <HeroDecor />
       </PageHero>

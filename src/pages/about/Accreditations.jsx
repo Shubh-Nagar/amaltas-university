@@ -21,6 +21,7 @@ export default function Accreditations() {
         eyebrow="Approvals & Accreditations"
         title="Recognised. Regulated. Trusted."
         sub="Every programme at Amaltas University is approved by the relevant statutory council of the Government of India — so your degree is valid, valued, and portable."
+        bgImg="/assets/images%20of%20university/all%20institutes/university.jpg"
       />
 
       {/* WHY IT MATTERS */}

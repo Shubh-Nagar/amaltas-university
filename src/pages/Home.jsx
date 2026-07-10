@@ -76,7 +76,7 @@ function QuickLinksBar() {
 }
 
 function StatsBand() {
-  const [ref, seen] = useInView({ threshold: 0.4 });
+  const [ref, seen] = useInView({ threshold: 0.4, repeat: false });
   return (
     <div ref={ref} className="wrap" style={{ marginTop: -60, position: "relative", zIndex: 5 }}>
       <div className="statgrid" style={{ background: "#fff", borderRadius: 24, boxShadow: "0 40px 90px -50px rgba(11,44,24,.5)", border: "1px solid rgba(11,44,24,.06)" }}>
@@ -573,13 +573,33 @@ function WorldRecordStack() {
         {/* ── LEFT: text panel ── */}
         <div style={{
           width: "50%",
-          background: "linear-gradient(160deg,#0B2C18 0%,#0d3520 100%)",
+          background: `linear-gradient(160deg,${C.emerald} 0%,${C.emeraldL} 100%)`,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 64px",
           position: "relative",
         }}>
+          {/* decorative background layer: drifting blobs + a giant watermark of the active stat */}
+          <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }} aria-hidden="true">
+            <Blob color="rgba(246,224,5,.15)" size={440} blur={100} variant="a" delay={4} style={{ top: "-14%", left: "-10%" }} />
+            <Blob color="rgba(11,44,24,.32)" size={360} blur={90} variant="c" delay={10} style={{ bottom: "-16%", left: "20%" }} />
+            <Blob color="rgba(255,255,255,.10)" size={280} blur={80} variant="b" delay={2} style={{ top: "18%", right: "-12%" }} />
+            {WR_CARDS.map((card, i) => (
+              <div key={i} style={{
+                position: "absolute", top: "50%", left: 56, transform: "translateY(-50%)",
+                fontFamily: "'Fraunces',serif", fontWeight: 300,
+                fontSize: "clamp(9rem,23vw,21rem)", lineHeight: 1,
+                color: "rgba(255,255,255,.08)",
+                opacity: i === activeCard ? 1 : 0,
+                transition: "opacity 0.7s ease",
+                userSelect: "none", whiteSpace: "nowrap",
+              }}>
+                {card.stat || "♥"}
+              </div>
+            ))}
+          </div>
+
           {/* fixed section label */}
           <div style={{ position: "absolute", top: 52, left: 64 }}>
             <span className="eyebrow" style={{ color: C.goldL }}>Our milestones</span>
@@ -1227,7 +1247,7 @@ export default function Home() {
                 Your journey into<br />healthcare begins here.
               </h2>
               <p style={{ color: C.slate, marginTop: 16, fontSize: 17, maxWidth: 480 }}>
-                Applications are open for MBBS, BAMS, BHMS, B.Sc. Nursing, B.Pharma,
+                Applications are open for MBBS, BAMS, BHMS, B.Sc. Nursing, B.Pharm,
                 B.P.T., B.M.L.T., and allied health programmes for the 2026–27 session.
               </p>
               <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>

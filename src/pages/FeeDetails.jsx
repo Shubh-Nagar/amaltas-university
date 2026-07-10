@@ -112,6 +112,7 @@ export default function FeeDetails() {
         eyebrow="Fee Structure 2026–27"
         title="Transparent fees, every programme."
         sub="All fee figures are per annum. Scholarship and financial aid is available across programmes — speak to our admissions team to know more."
+        bgImg="/assets/images%20of%20university/The%20Amaltas%20difference/scolarship.JPG"
       />
 
       {/* CATEGORY TABS */}

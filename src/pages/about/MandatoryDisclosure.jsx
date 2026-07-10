@@ -23,6 +23,7 @@ export default function MandatoryDisclosure() {
         eyebrow="Transparency & Compliance"
         title="Mandatory Disclosure."
         sub="In accordance with UGC and MP Private University regulations, Amaltas University publishes this disclosure for the information of all stakeholders."
+        bgImg="/assets/images%20of%20university/all%20institutes/medical%20science.jpeg"
       />
 
       {/* NOTICE BAND */}

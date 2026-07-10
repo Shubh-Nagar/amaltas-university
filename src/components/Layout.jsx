@@ -22,15 +22,19 @@ export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg, chil
     return () => window.removeEventListener("scroll", onScroll);
   }, [floatImg]);
 
-  const heroStyle = bgImg
-    ? {
-        background: `linear-gradient(to right, rgba(11,44,24,.82) 0%, rgba(11,44,24,.48) 100%), url('${bgImg}')`,
+  // Uniform hero across every inner page: a relevant photo sitting *barely visible*
+  // behind a light-green brand overlay (deep green anchors the text, fading to a
+  // lighter emerald at the far edge). `bg` is still honoured as an explicit escape hatch.
+  const HERO_OVERLAY =
+    "linear-gradient(115deg, rgba(11,44,24,.95) 0%, rgba(16,58,34,.93) 42%, rgba(18,134,63,.88) 78%, rgba(35,166,83,.82) 100%)";
+  const heroImg = bgImg || "/assets/images%20of%20university/all%20institutes/university.jpg";
+  const heroStyle = bg
+    ? { background: bg }
+    : {
+        background: `${HERO_OVERLAY}, url('${heroImg}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-      }
-    : bg
-    ? { background: bg }
-    : undefined;
+      };
 
   return (
     <header className="page-hero" style={heroStyle}>

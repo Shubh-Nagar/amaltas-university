@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { ArrowRight, ArrowUpRight, Phone, Calendar, Check } from "lucide-react";
+import {
+  ArrowRight, ArrowUpRight, Phone, Calendar, Check,
+  Stethoscope, HeartPulse, Activity, GraduationCap, FlaskConical, Microscope, Brain,
+} from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { PROGRAMS, FILTERS, CONTACT, DEPARTMENT_HIGHLIGHTS } from "../data/content.js";
+
+/* category → icon + accent colours for the programme cards */
+const CAT_META = {
+  Medical:     { icon: Stethoscope,   pc: "#12863F", pc2: "#23A653", soft: "rgba(18,134,63,.10)" },
+  Ayurveda:    { icon: HeartPulse,    pc: "#2E7D32", pc2: "#4CAF50", soft: "rgba(46,125,50,.10)" },
+  Homoeopathy: { icon: Activity,      pc: "#147D6F", pc2: "#2CA594", soft: "rgba(20,125,111,.11)" },
+  Nursing:     { icon: GraduationCap, pc: "#872822", pc2: "#B24A3E", soft: "rgba(135,40,34,.09)" },
+  Pharmacy:    { icon: FlaskConical,  pc: "#9A6B04", pc2: "#C79215", soft: "rgba(154,107,4,.12)" },
+  Paramedical: { icon: Microscope,    pc: "#0B2C18", pc2: "#1C5E35", soft: "rgba(11,44,24,.08)" },
+  Allied:      { icon: Brain,         pc: "#A8392E", pc2: "#C85A4C", soft: "rgba(168,57,46,.10)" },
+};
+const catMeta = (t) => CAT_META[t] || CAT_META.Medical;
 
 function Countdown() {
   const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
@@ -56,6 +71,7 @@ export default function Admissions() {
         eyebrow="Admissions 2026–27 are open"
         title="Your first step toward a life in healthcare."
         sub="Applications for MBBS, BAMS, BHMS, Nursing, Pharmacy and Allied Sciences are live. Begin now — the intake window closes soon."
+        bgImg="/assets/images%20of%20university/campus%20life/degree.JPG"
       />
 
       {/* COUNTDOWN BAND */}
@@ -82,21 +98,27 @@ export default function Admissions() {
             ))}
           </div>
         </Reveal>
-        <div style={{ marginTop: 14 }}>
-          {filtered.map((p, i) => (
-            <Reveal key={p.n} delay={`d${(i % 4) + 1}`}>
-              <div className="prog">
-                <div className="pl">
-                  <span style={{ fontFamily: "Fraunces,serif", color: C.burg, fontSize: 15, width: 34 }}>{String(i + 1).padStart(2, "0")}</span>
-                  <div>
-                    <div className="pn">{p.n}</div>
-                    <div style={{ color: C.slate, fontSize: 13.5 }}>{p.d}</div>
+        <div className="prog-grid" style={{ marginTop: 24 }}>
+          {filtered.map((p, i) => {
+            const m = catMeta(p.t);
+            const Icon = m.icon;
+            return (
+              <Reveal key={p.n} delay={`d${(i % 4) + 1}`}>
+                <div
+                  className="prog-card"
+                  style={{ "--pc": m.pc, "--pc2": m.pc2, "--pc-soft": m.soft }}
+                >
+                  <div className="prog-card-top">
+                    <div className="prog-ic"><Icon size={20} /></div>
+                    <span className="prog-cat">{p.t}</span>
                   </div>
+                  <h3 className="prog-name">{p.n}</h3>
+                  <p className="prog-desc">{p.d}</p>
+                  <span className="prog-foot">Enquire now <ArrowUpRight size={14} /></span>
                 </div>
-                <ArrowUpRight className="arrow" size={26} />
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 

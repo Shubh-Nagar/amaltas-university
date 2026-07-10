@@ -83,6 +83,7 @@ export default function ChancellorMessage() {
         eyebrow="A note from the Chancellor"
         title="Dear student, this is for you."
         sub="Mrs. Aruna Bhadoria — Chancellor, Amaltas University"
+        bgImg="/assets/images%20of%20university/our%20purpose/university.jpg"
       >
         <HeroDecor />
       </PageHero>

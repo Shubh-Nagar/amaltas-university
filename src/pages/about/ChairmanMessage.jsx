@@ -93,7 +93,7 @@ export default function ChairmanMessage() {
         eyebrow="A message from the Chairman"
         title="A vision inherited, a future earned."
         sub="Shri Mayankraj Singh Bhadoria — Chairman, Amaltas University"
-        bg="linear-gradient(125deg, #0B2C18 0%, #0E3A20 60%, #1C5E35 100%)"
+        bgImg="/assets/images%20of%20university/The%20Amaltas%20difference/hospital.jpg"
       >
         <HeroDecor />
       </PageHero>

@@ -117,6 +117,7 @@ export default function Eligibility() {
         eyebrow="Eligibility Criteria 2026–27"
         title="Find out if you qualify."
         sub="Essential qualifications for every programme offered at Amaltas University. Check the entrance requirement and subject combination before applying."
+        bgImg="/assets/images%20of%20university/photo-gallery/2U8A8968.jpg"
       />
 
       {/* LEGEND */}

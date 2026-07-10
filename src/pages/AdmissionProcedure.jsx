@@ -75,6 +75,7 @@ export default function AdmissionProcedure() {
         eyebrow="Admission Procedure 2026–27"
         title="Six steps to your seat."
         sub="A clear, straightforward process designed to get you from enquiry to enrolment with confidence. Applications for 2026–27 are now open."
+        bgImg="/assets/images%20of%20university/photo-gallery/DJI_0034.jpg"
       />
 
       {/* STEP FLOW */}

@@ -227,7 +227,7 @@ export default function AcademicFacilities() {
           {STATS.map((s, i) => (
             <Reveal key={i} delay={`d${i + 1}`}>
               <div className="hostel-stat-cell" style={{ borderRight: i < 3 ? "1px solid rgba(11,44,24,.08)" : "none" }}>
-                <div style={{ fontFamily: "Fraunces,serif", fontSize: "clamp(2rem,4vw,3rem)", lineHeight: 1, background: `linear-gradient(120deg,${C.emerald},${C.burg})`, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
+                <div style={{ fontFamily: "Fraunces,serif", fontSize: "clamp(2rem,4vw,3rem)", lineHeight: 1, background: `linear-gradient(120deg,#11813D,${C.emeraldL})`, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
                   <StatNum v={s.v} suf={s.suf} run={statSeen} />
                 </div>
                 <div style={{ color: C.slate, marginTop: 8, fontSize: 14, fontWeight: 500 }}>{s.l}</div>
@@ -287,7 +287,7 @@ export default function AcademicFacilities() {
       </section>
 
       {/* ── CENTRAL LIBRARY FEATURE ── */}
-      <section style={{ background: `radial-gradient(130% 140% at 10% 8%,${C.navy2} 0%,${C.navy} 60%)`, padding: "100px 0" }} ref={libRef}>
+      <section style={{ background: `radial-gradient(130% 140% at 10% 8%,${C.navy2} 0%,${C.navy} 60%)`, padding: "100px 0" }}>
         <div className="wrap hostel-split">
           <Reveal variant="left">
             <span className="eyebrow" style={{ color: C.goldL }}>Central Library</span>
@@ -295,10 +295,10 @@ export default function AcademicFacilities() {
             <p style={{ color: "rgba(247,244,236,.75)", fontSize: 16, marginTop: 16, lineHeight: 1.75, maxWidth: 460 }}>
               Spanning multiple floors, the Central Library brings together an expansive print collection, rich digital resources, and quiet, well-lit study spaces. It is where research begins, doubts are resolved, and lifelong scholarship takes root.
             </p>
-            <div className="acad-lib-stats">
+            <div className="acad-lib-stats" ref={libRef}>
               {LIB_STATS.map((s, i) => (
                 <div key={i} className="acad-lib-stat">
-                  <div style={{ fontFamily: "Fraunces,serif", fontSize: "clamp(1.6rem,3vw,2.3rem)", color: C.goldL, lineHeight: 1 }}>
+                  <div style={{ fontFamily: "Fraunces,serif", fontSize: "clamp(1.6rem,3vw,2.3rem)", color: C.emeraldL, lineHeight: 1 }}>
                     <StatNum v={s.v} suf={s.suf} run={libSeen} />
                   </div>
                   <div style={{ color: "rgba(247,244,236,.7)", fontSize: 13, marginTop: 6 }}>{s.l}</div>
