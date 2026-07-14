@@ -493,9 +493,13 @@ export default function TheUniversity() {
         </div>
       </section>
 
-      {/* ══ CHANCELLOR'S MESSAGE ══ */}
+      {/* ══ CHANCELLOR'S MESSAGE ══
+          Short preview of CHANCELLOR_MESSAGE (from content.js) — photo, pull
+          quote, and paragraphs[1] only. The full letter lives on the
+          dedicated /about/chancellor route (ChancellorMessage.jsx). */}
       <section className="sec wrap" style={{ paddingTop: 90 }}>
         <div style={{ display: "grid", gridTemplateColumns: "minmax(260px,360px) 1fr", gap: 56, alignItems: "center" }} className="chancellor-preview-grid">
+          {/* Chancellor's photo, with a soft green/gold glow behind the frame */}
           <Reveal variant="left">
             <div style={{ position: "relative", maxWidth: 360, margin: "0 auto", width: "100%" }}>
               <div style={{ position: "absolute", inset: -12, borderRadius: 30, background: `linear-gradient(135deg,${G.green}22,${G.gold}28)`, filter: "blur(20px)", zIndex: 0 }} />
@@ -504,12 +508,14 @@ export default function TheUniversity() {
               </div>
             </div>
           </Reveal>
+          {/* Pull quote + excerpt + attribution + link to the full message */}
           <Reveal variant="right">
             <span className="eyebrow">Chancellor's Message</span>
             <Quote size={40} style={{ color: G.gold, margin: "20px 0 10px", opacity: 0.9 }} />
             <p style={{ fontFamily: "Fraunces,serif", fontStyle: "italic", fontSize: "clamp(20px,2.6vw,28px)", lineHeight: 1.55, color: G.ink, maxWidth: 720 }}>
               {CHANCELLOR_MESSAGE.quote}
             </p>
+            {/* Only the second paragraph of the full letter is shown here as a teaser */}
             <p style={{ color: G.slate, fontSize: 16, lineHeight: 1.85, marginTop: 22, maxWidth: 640 }}>
               {CHANCELLOR_MESSAGE.paragraphs[1]}
             </p>

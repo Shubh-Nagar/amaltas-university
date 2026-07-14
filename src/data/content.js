@@ -539,8 +539,11 @@ export const DISCLOSURE_SECTIONS = [
   },
 ];
 
+// Chancellor's Message — consumed by both the /about/university preview
+// (TheUniversity.jsx) and the full /about/chancellor page (ChancellorMessage.jsx).
 export const CHANCELLOR_MESSAGE = {
   salutation: "Dear Friends,",
+  // Full letter body; the preview on /about/university only shows paragraphs[1].
   paragraphs: [
     "At Amaltas University, we believe that the highest calling of any institution is not merely to teach, but to transform. When a young student walks through our gates, they carry with them the hopes of families, the dreams of communities, and the responsibility of a nation's health future.",
     "The name 'Amaltas' — the Indian laburnum — blooms in brilliant gold before it shades anyone. It gives first, without condition. That is the spirit we have tried to build here. Our seven institutes exist not as separate schools, but as one living ecosystem, each discipline in conversation with the others — much as the body itself works, as a whole.",
@@ -552,6 +555,7 @@ export const CHANCELLOR_MESSAGE = {
   name: "Mrs. Aruna Bhadoria",
   role: "Chancellor, Amaltas University",
   photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg",
+  // Pull quote shown in the /about/university preview card, above paragraphs[1].
   quote: "Amaltas doesn't just teach medicine — it nurtures the spirit of service that medicine demands of every healer.",
 };
 
