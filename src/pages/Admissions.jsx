@@ -61,8 +61,7 @@ export default function Admissions() {
   const [filter, setFilter] = useState("All");
   const filtered = filter === "All" ? PROGRAMS : PROGRAMS.filter((p) => p.t === filter);
 
-  const [dept, setDept] = useState(DEPARTMENT_HIGHLIGHTS[0].id);
-  const activeDept = DEPARTMENT_HIGHLIGHTS.find((d) => d.id === dept);
+  const [openProgram, setOpenProgram] = useState(null);
 
   return (
     <>
@@ -102,53 +101,59 @@ export default function Admissions() {
           {filtered.map((p, i) => {
             const m = catMeta(p.t);
             const Icon = m.icon;
+            const isOpen = openProgram === p.n;
+            const dept = DEPARTMENT_HIGHLIGHTS.find((d) => d.id === p.t);
             return (
-              <Reveal key={p.n} delay={`d${(i % 4) + 1}`}>
-                <div
-                  className="prog-card"
-                  style={{ "--pc": m.pc, "--pc2": m.pc2, "--pc-soft": m.soft }}
-                >
-                  <div className="prog-card-top">
-                    <div className="prog-ic"><Icon size={20} /></div>
-                    <span className="prog-cat">{p.t}</span>
+              <React.Fragment key={p.n}>
+                <Reveal delay={`d${(i % 4) + 1}`}>
+                  <div
+                    className="prog-card"
+                    style={{
+                      "--pc": m.pc, "--pc2": m.pc2, "--pc-soft": m.soft,
+                      cursor: "pointer",
+                      ...(isOpen ? { borderColor: m.pc, boxShadow: `0 26px 52px -32px ${m.pc}66` } : {}),
+                    }}
+                    onClick={() => setOpenProgram(isOpen ? null : p.n)}
+                  >
+                    <div className="prog-card-top">
+                      <div className="prog-ic"><Icon size={20} /></div>
+                      <span className="prog-cat">{p.t}</span>
+                    </div>
+                    <h3 className="prog-name">{p.n}</h3>
+                    <p className="prog-desc">{p.d}</p>
+                    <span className="prog-foot">
+                      {isOpen ? "Hide department details" : "View department details"}
+                      <ArrowUpRight size={14} style={{ transform: isOpen ? "rotate(135deg)" : "none", transition: "transform .25s" }} />
+                    </span>
                   </div>
-                  <h3 className="prog-name">{p.n}</h3>
-                  <p className="prog-desc">{p.d}</p>
-                  <span className="prog-foot">Enquire now <ArrowUpRight size={14} /></span>
-                </div>
-              </Reveal>
+                </Reveal>
+
+                {isOpen && dept && (
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <div style={{ background: "#fff", borderRadius: 20, border: `1px solid ${m.pc}33`, padding: "28px 32px" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
+                        <div>
+                          <span className="eyebrow" style={{ color: m.pc }}>Department</span>
+                          <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 21, fontWeight: 500, marginTop: 8 }}>{dept.name}</h3>
+                        </div>
+                        <button className="chip light" onClick={() => setOpenProgram(null)}>Close</button>
+                      </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 16, marginTop: 22 }}>
+                        {dept.highlights.map((h, hi) => (
+                          <div key={hi} style={{ background: m.soft, borderRadius: 14, padding: "18px 20px" }}>
+                            <Check size={16} color={m.pc} style={{ marginBottom: 8 }} />
+                            <h4 style={{ fontSize: 14, marginBottom: 6 }}>{h.t}</h4>
+                            <p style={{ color: C.slate, fontSize: 13, lineHeight: 1.5 }}>{h.d}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </React.Fragment>
             );
           })}
         </div>
-      </section>
-
-      {/* DEPARTMENT HIGHLIGHTS */}
-      <section className="sec wrap" style={{ paddingTop: 0 }}>
-        <Reveal>
-          <span className="eyebrow">Why each department</span>
-          <h2>Department highlights.</h2>
-        </Reveal>
-        <Reveal delay="d1">
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, margin: "30px 0 8px" }}>
-            {DEPARTMENT_HIGHLIGHTS.map((d) => (
-              <button key={d.id} className={`chip light ${dept === d.id ? "on" : ""}`} onClick={() => setDept(d.id)}>{d.id}</button>
-            ))}
-          </div>
-        </Reveal>
-        <Reveal delay="d2">
-          <div style={{ marginTop: 28 }}>
-            <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 22, fontWeight: 500, marginBottom: 22 }}>{activeDept.name}</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 18 }}>
-              {activeDept.highlights.map((h, i) => (
-                <div key={i} style={{ background: "#fff", borderRadius: 16, padding: "22px 24px", border: "1px solid rgba(11,44,24,.07)" }}>
-                  <Check size={18} color={C.emerald} style={{ marginBottom: 10 }} />
-                  <h4 style={{ fontSize: 15, marginBottom: 6 }}>{h.t}</h4>
-                  <p style={{ color: C.slate, fontSize: 13.5, lineHeight: 1.55 }}>{h.d}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       {/* PROCESS */}

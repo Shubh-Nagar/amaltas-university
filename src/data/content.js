@@ -257,17 +257,6 @@ export const NAV = [
       { to: "/happenings/photo-gallery", label: "Photo Gallery" },
     ],
   },
-  {
-    label: "Quick Links",
-    to: "#",
-    children: [
-      { to: "#", label: "Ph.D. Entrance 2026" },
-      { to: "#", label: "IQAC" },
-      { to: "#", label: "NCMSAP Certificates" },
-      { to: "#", label: "Alumni Network" },
-      { to: "#", label: "Grievances" },
-    ],
-  },
 ];
 
 export const ANNOUNCEMENTS = [

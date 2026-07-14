@@ -5,86 +5,43 @@ import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { CONTACT } from "../data/content.js";
 
-const TAG_STYLES = {
-  NEET:          { bg: "#fef2f2", color: "#b91c1c", border: "#fecaca" },
-  "NEET PG":     { bg: "#fff7ed", color: "#c2410c", border: "#fed7aa" },
-  "NEET SS":     { bg: "#fdf4ff", color: "#7c3aed", border: "#e9d5ff" },
-  "Any Stream":  { bg: "#f0fdf4", color: "#15803d", border: "#bbf7d0" },
-  "SC/ST –5%":   { bg: "#fffbeb", color: "#92400e", border: "#fde68a" },
-};
-
-function Tag({ label }) {
-  const s = TAG_STYLES[label] || { bg: "#f1f5f9", color: "#475569", border: "#cbd5e1" };
-  return (
-    <span style={{
-      display: "inline-block",
-      background: s.bg,
-      color: s.color,
-      border: `1px solid ${s.border}`,
-      borderRadius: 100,
-      padding: "2px 10px",
-      fontSize: 11,
-      fontWeight: 700,
-      letterSpacing: ".04em",
-      whiteSpace: "nowrap",
-    }}>
-      {label}
-    </span>
-  );
-}
-
 const CATEGORIES = [
   {
-    id: "medical",
-    label: "Medical",
+    id: "medical-sciences",
+    label: "Medical Sciences",
     color: C.burg,
     courses: [
-      { course: "MBBS",  eligibility: "12th passed with Physics, Chemistry & Biology",      tags: ["NEET"] },
-      { course: "BAMS",  eligibility: "12th passed with Physics, Chemistry & Biology",      tags: ["NEET"] },
-      { course: "BHMS",  eligibility: "12th passed with Physics, Chemistry & Biology",      tags: ["NEET"] },
-      { course: "MD / MS",         eligibility: "MBBS from a recognised institution",       tags: ["NEET PG"] },
-      { course: "DM – Cardiology", eligibility: "MD/MS/DNB in General Medicine, Pediatrics or Respiratory Medicine from an NMC-recognised institution", tags: ["NEET SS"] },
-      { course: "DM – Nephrology", eligibility: "MD/DNB in General Medicine or Paediatrics from an NMC-recognised institution",                         tags: ["NEET SS"] },
-      { course: "M.Ch – Neurosurgery", eligibility: "MS/DNB (General Surgery) from an NMC-recognised institution",                                      tags: ["NEET SS"] },
-      { course: "M.Ch – Urology",      eligibility: "MS/DNB (General Surgery) from an NMC-recognised institution",                                      tags: ["NEET SS"] },
+      { course: "MBBS",     eligibility: "12th passed with Physics, Chemistry & Biology — NEET UG required" },
+      { course: "MD / MS",  eligibility: "MBBS from an NMC-recognised institution — NEET PG required" },
+      { course: "DM / M.Ch", eligibility: "MD / MS / DNB in the relevant broad specialty from an NMC-recognised institution — NEET SS required" },
+    ],
+  },
+  {
+    id: "ayurveda",
+    label: "Ayurveda",
+    color: "#2f7d4f",
+    courses: [
+      { course: "BAMS", eligibility: "12th passed with Physics, Chemistry & Biology — NEET UG required" },
+    ],
+  },
+  {
+    id: "homoeopathy",
+    label: "Homoeopathy",
+    color: "#1a6fa6",
+    courses: [
+      { course: "BHMS", eligibility: "12th passed with Physics, Chemistry & Biology — NEET UG required" },
     ],
   },
   {
     id: "nursing",
-    label: "Nursing",
+    label: "Nursing Sciences",
     color: "#a0522d",
     courses: [
-      { course: "B.Sc Nursing",          eligibility: "12th with PCB + PNST (Pre-Nursing Selection Test)",                   tags: [] },
-      { course: "PB B.Sc Nursing",       eligibility: "12th with PCB + GNM with minimum 45% marks",                          tags: ["SC/ST –5%"] },
-      { course: "GNM",                   eligibility: "12th with PCB or Vocational Courses",                                  tags: [] },
-      { course: "M.Sc Nursing",          eligibility: "B.Sc Nursing / Post Basic B.Sc Nursing with minimum 55% marks",       tags: [] },
-    ],
-  },
-  {
-    id: "allied",
-    label: "Allied Health Sciences",
-    color: "#5a3e8a",
-    courses: [
-      { course: "BPT",               eligibility: "12th with PCB",           tags: [] },
-      { course: "BMLT",              eligibility: "12th with PCB",           tags: [] },
-      { course: "BXRT",              eligibility: "12th with PCB",           tags: [] },
-      { course: "DMLT",              eligibility: "12th with PCB",           tags: [] },
-      { course: "Dialysis Tech.",    eligibility: "12th with PCB / PCMB",    tags: [] },
-      { course: "Cath Lab Tech.",    eligibility: "12th with PCB",           tags: [] },
-      { course: "OT Technician",     eligibility: "12th with PCM / PCB",     tags: [] },
-      { course: "USG Technician",    eligibility: "12th with PCB",           tags: [] },
-    ],
-  },
-  {
-    id: "psychology",
-    label: "Psychology & Rehab",
-    color: "#7a5c1a",
-    courses: [
-      { course: "B.Sc Clinical Psychology",       eligibility: "12th with PCB / PCMB",                                                           tags: [] },
-      { course: "BASLP",                           eligibility: "10+2 with Physics, Chemistry, Biology / Mathematics / Computer Science / Psychology", tags: [] },
-      { course: "ISITEP (HI)",                    eligibility: "12th in any stream",                                                              tags: ["Any Stream"] },
-      { course: "ISITEP (ID)",                    eligibility: "12th in any stream",                                                              tags: ["Any Stream"] },
-      { course: "Prof. Diploma – Clinical Psych", eligibility: "M.A. / M.Sc. in Psychology (Clinical, Counselling, or Applied)",                  tags: [] },
+      { course: "B.Sc Nursing",            eligibility: "12th with PCB, subject to qualifying the Pre-Nursing Selection Test (PNST)" },
+      { course: "Post Basic B.Sc Nursing", eligibility: "As per UGC / Nursing Council guidelines" },
+      { course: "GNM",                     eligibility: "As per UGC / Nursing Council guidelines" },
+      { course: "M.Sc Nursing",            eligibility: "As per UGC / Nursing Council guidelines" },
+      { course: "PhD Nursing",             eligibility: "As per UGC / Nursing Council guidelines" },
     ],
   },
   {
@@ -92,8 +49,36 @@ const CATEGORIES = [
     label: "Pharmacy",
     color: "#1a7a6e",
     courses: [
-      { course: "B.Pharm", eligibility: "12th with PCM / PCB / PCMB", tags: [] },
-      { course: "D.Pharm", eligibility: "12th with PCM / PCB / PCMB", tags: [] },
+      { course: "B.Pharm", eligibility: "12th passed with PCB / PCM" },
+      { course: "D.Pharm", eligibility: "12th passed with PCB / PCM" },
+    ],
+  },
+  {
+    id: "paramedical",
+    label: "Paramedical Sciences",
+    color: "#5a3e8a",
+    courses: [
+      { course: "BPT",                           eligibility: "12th with PCB" },
+      { course: "BMLT",                          eligibility: "12th with PCB" },
+      { course: "BXRT",                          eligibility: "12th with PCB" },
+      { course: "DMLT",                          eligibility: "12th with PCB" },
+      { course: "Diploma – Cath Lab Technology", eligibility: "12th with PCB" },
+      { course: "Diploma – Dialysis Technology", eligibility: "12th with PCB" },
+      { course: "Certificate – OT Technician",   eligibility: "12th with PCB" },
+      { course: "Certificate – X-Ray Technician", eligibility: "12th with PCB" },
+      { course: "Certificate – USG Technician",  eligibility: "12th with PCB" },
+    ],
+  },
+  {
+    id: "allied-rehab",
+    label: "Allied & Rehabilitation",
+    color: "#7a5c1a",
+    courses: [
+      { course: "B.Sc (Hons.) Clinical Psychology",         eligibility: "12th with PCB / PCM" },
+      { course: "BASLP",                                     eligibility: "12th with PCB / PCM" },
+      { course: "ISITEP (HI)",                               eligibility: "12th with PCB / PCM" },
+      { course: "ISITEP (ID)",                               eligibility: "12th with PCB / PCM" },
+      { course: "Prof. Diploma – Clinical Psychology (PDCP)", eligibility: "12th with PCB / PCM" },
     ],
   },
 ];
@@ -134,8 +119,7 @@ export default function Eligibility() {
             border: "1px solid rgba(11,44,24,.08)",
           }}>
             <span style={{ fontSize: 12.5, fontWeight: 700, color: C.slate, marginRight: 6 }}>Key:</span>
-            {Object.entries(TAG_STYLES).map(([label]) => <Tag key={label} label={label} />)}
-            <span style={{ fontSize: 12, color: C.slate, marginLeft: 4 }}>PCB = Physics · Chemistry · Biology &nbsp;|&nbsp; PCM = Physics · Chemistry · Maths</span>
+            <span style={{ fontSize: 12, color: C.slate }}>PCB = Physics · Chemistry · Biology &nbsp;|&nbsp; PCM = Physics · Chemistry · Maths &nbsp;|&nbsp; PNST = Pre-Nursing Selection Test</span>
           </div>
         </Reveal>
       </section>
@@ -188,7 +172,7 @@ export default function Eligibility() {
             {/* Header */}
             <div style={{
               display: "grid",
-              gridTemplateColumns: isAll ? "140px 160px 1fr 160px" : "160px 1fr 160px",
+              gridTemplateColumns: isAll ? "190px 220px 1fr" : "220px 1fr",
               background: cat.color,
               padding: "14px 28px",
               color: "#fff",
@@ -201,7 +185,6 @@ export default function Eligibility() {
               {isAll && <span>Category</span>}
               <span>Course</span>
               <span>Essential Qualification</span>
-              <span style={{ textAlign: "right" }}>Requirement</span>
             </div>
 
             {/* Rows */}
@@ -210,7 +193,7 @@ export default function Eligibility() {
                 key={i}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: isAll ? "140px 160px 1fr 160px" : "160px 1fr 160px",
+                  gridTemplateColumns: isAll ? "190px 220px 1fr" : "220px 1fr",
                   padding: "18px 28px",
                   background: i % 2 === 0 ? "#fff" : "rgba(247,245,236,.55)",
                   borderBottom: i < displayRows.length - 1 ? "1px solid rgba(11,44,24,.06)" : "none",
@@ -252,14 +235,6 @@ export default function Eligibility() {
                   <ChevronRight size={13} style={{ display: "inline", marginRight: 4, color: row._cat.color, verticalAlign: "middle" }} />
                   {row.eligibility}
                 </div>
-
-                {/* Tags */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "flex-end" }}>
-                  {row.tags.length > 0
-                    ? row.tags.map((t) => <Tag key={t} label={t} />)
-                    : <span style={{ fontSize: 12, color: "rgba(86,104,91,.35)" }}>—</span>
-                  }
-                </div>
               </div>
             ))}
           </div>
@@ -279,8 +254,7 @@ export default function Eligibility() {
           }}>
             <AlertCircle size={15} color="#92400e" style={{ flexShrink: 0, marginTop: 2 }} />
             <p style={{ fontSize: 12.5, color: "#92400e", lineHeight: 1.6 }}>
-              Eligibility criteria are subject to regulatory updates. NEET / NEET PG / NEET SS scores are mandatory for medical programmes as per NMC guidelines.
-              5% marks relaxation for SC/ST candidates applies where indicated. Verify the latest guidelines before applying.
+              Eligibility criteria are subject to regulatory updates from the respective statutory councils (NMC, NCISM, NCH, INC, PCI, RCI, Paramedical Council). NEET UG / NEET PG / NEET SS scores are mandatory for Medical Sciences, Ayurveda and Homoeopathy programmes as per NMC / NCISM / NCH guidelines; Nursing programmes follow UGC and Nursing Council norms. Verify the latest guidelines before applying.
             </p>
           </div>
         </Reveal>
