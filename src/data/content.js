@@ -342,7 +342,7 @@ export const NEWS = [
 export const FAQS = [
   {
     q: "How do I apply for admission to Amaltas University?",
-    a: "You can apply online through our admissions portal or visit the campus directly. For assistance, call our helpline at +91 9404956221 or email registrar@amaltasuniversity.in. Our admissions team is available to guide you through every step.",
+    a: "You can apply online through our admissions portal or visit the campus directly. For assistance, call our helpline at +91 9977544111 or email registrar@amaltasuniversity.in. Our admissions team is available to guide you through every step.",
   },
   {
     q: "What hostel and accommodation facilities are available?",
@@ -413,7 +413,7 @@ export const PARTNERS = [
 ];
 
 export const CONTACT = {
-  tollFree: "1800-571-2131",
+  tollFree: "18005712131",
   phone: "07272-482580",
   email: "registrar@amaltasuniversity.in",
   address: "Village Bangar, Dewas–Ujjain Highway, District Dewas, MP 455001",
@@ -540,11 +540,11 @@ export const DISCLOSURE_SECTIONS = [
   {
     title: "Admissions & Contact",
     items: [
-      { label: "General Enquiry",       value: "+91 9404956221" },
+      { label: "General Enquiry",       value: "+91 9977544111" },
       { label: "BAMS Helpline",         value: "+91 7880154605" },
       { label: "Allied Sciences",       value: "+91 9617245556" },
       { label: "Office Number",         value: "07272-482580" },
-      { label: "Toll Free",             value: "1800-571-2131" },
+      { label: "Toll Free",             value: "18005712131" },
       { label: "Email",                 value: "registrar@amaltasuniversity.in" },
       { label: "Admissions Portal",     value: "Online application via official website" },
     ],

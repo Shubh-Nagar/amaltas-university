@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import HelixCanvas from "../components/HelixCanvas.jsx";
 import EnquiryWidget from "../components/EnquiryWidget.jsx";
+import NPFWidget from "../components/NPFWidget.jsx";
 import Blob from "../components/Blob.jsx";
 import MagicBento from "../components/MagicBento.jsx";
 import ScholarshipPopup from "../components/ScholarshipPopup.jsx";
@@ -117,7 +118,7 @@ function FloatingActions() {
     <div className="fab-stack" aria-hidden="false">
       <EnquiryWidget className="fab fab-enquire" />
       <a
-        href="https://wa.me/919404956221?text=Hi%2C%20I%27d%20like%20to%20know%20about%20admissions%20at%20Amaltas%20University."
+        href="https://wa.me/919977544111?text=Hi%2C%20I%27d%20like%20to%20know%20about%20admissions%20at%20Amaltas%20University."
         target="_blank" rel="noreferrer"
         className="fab fab-wa" aria-label="Chat with admissions on WhatsApp"
       >
@@ -686,47 +687,13 @@ function WorldRecordStack() {
 }
 
 function HeroForm() {
-  const [sent, setSent] = useState(false);
   return (
     <div className="hero-form-box">
       <div className="eyebrow" style={{ marginBottom: 6 }}>Admissions 2026–27 Open</div>
-      <h2 style={{ color: C.ink, fontSize: "clamp(1.4rem,2vw,1.8rem)", fontWeight: 300, marginBottom: 6, lineHeight: 1.2 }}>
+      <h2 style={{ color: C.ink, fontSize: "clamp(1.4rem,2vw,1.8rem)", fontWeight: 300, marginBottom: 16, lineHeight: 1.2 }}>
         Begin Your <span className="grad-gold">Journey</span>
       </h2>
-      {/* <p style={{ color: C.slate, fontSize: 13.5, marginBottom: 20 }}>
-        A counsellor will reach out within one working day.
-      </p> */}
-      {sent ? (
-        <div style={{ textAlign: "center", padding: "36px 0" }}>
-          <CheckCircle size={48} color={C.emerald} style={{ marginBottom: 14 }} />
-          <p style={{ color: C.ink, fontSize: 16, fontWeight: 600 }}>Enquiry received!</p>
-          <p style={{ color: C.slate, fontSize: 13.5, marginTop: 8 }}>We'll be in touch shortly.</p>
-        </div>
-      ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <div className="hf-field"><input type="text" placeholder="Full Name *" /></div>
-          <div className="hf-field"><input type="tel" placeholder="Phone Number *" /></div>
-          <div className="hf-field"><input type="email" placeholder="Email Address" /></div>
-          <div className="hf-field">
-            <select defaultValue="">
-              <option value="" disabled>Programme of Interest *</option>
-              {PROGRAMS.map((p) => (
-                <option key={p.n}>{p.n}</option>
-              ))}
-            </select>
-          </div>
-          <button
-            className="btn btn-gold"
-            style={{ width: "100%", justifyContent: "center", marginTop: 4 }}
-            onClick={() => setSent(true)}
-          >
-            Submit Enquiry <Send size={16} />
-          </button>
-          <p style={{ fontSize: 12, color: C.slate, textAlign: "center", marginTop: 2 }}>
-            Or call: <a href="tel:+919404956221" style={{ color: C.emerald, textDecoration: "none", fontWeight: 600 }}>+91 94049 56221</a>
-          </p>
-        </div>
-      )}
+      <NPFWidget />
     </div>
   );
 }
@@ -1252,7 +1219,7 @@ export default function Home() {
               </p>
               <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
                 <Link to="/admissions" className="btn btn-gold">Apply Now <ArrowRight size={18} /></Link>
-                <a href="tel:+919404956221" className="btn btn-dark"><Phone size={15} /> Call Helpline</a>
+                <a href="tel:+919977544111" className="btn btn-dark"><Phone size={15} /> Call Helpline</a>
               </div>
 
               {/* quick admission pathways */}

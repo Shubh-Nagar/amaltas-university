@@ -152,7 +152,7 @@ export default function AlumniEngage() {
                         </div>
                         <p style={{ color: "rgba(247,244,236,.62)", fontSize: 13, lineHeight: 1.7, margin: 0 }}>
                           alumni@amaltasuniversity.in<br />
-                          +91 9404956221
+                          +91 9977544111
                         </p>
                       </div>
                     </>
