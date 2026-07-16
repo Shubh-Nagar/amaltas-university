@@ -1187,11 +1187,9 @@ body{margin:0;}
 .acc-card{background:#fff;border-radius:20px;padding:28px;border:1px solid rgba(11,44,24,.08);
   transition:.35s;display:flex;flex-direction:column;gap:11px;height:100%;}
 .acc-card:hover{transform:translateY(-5px);box-shadow:0 24px 56px -28px rgba(11,44,24,.28);border-color:rgba(18,134,63,.2);}
-.acc-badge{width:54px;height:54px;border-radius:14px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--navy),var(--em));
-  color:var(--gold);display:grid;place-items:center;
-  font-family:'Fraunces',serif;font-size:10.5px;font-weight:700;
-  letter-spacing:.04em;text-align:center;line-height:1.2;padding:5px;}
+.acc-badge{width:72px;height:72px;border-radius:14px;flex-shrink:0;
+  background:#fff;border:1px solid rgba(11,44,24,.1);
+  display:grid;place-items:center;padding:8px;overflow:hidden;}
 .acc-short-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--em);}
 .acc-name{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);line-height:1.2;}
 .acc-desc{font-size:13.5px;color:var(--slate);line-height:1.65;flex:1;}
@@ -1721,3 +1719,112 @@ body{margin:0;}
 @media(max-width:1100px){.step-flow-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:640px){.step-flow-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:420px){.step-flow-grid{grid-template-columns:1fr;}}
+
+/* ══════════════════════════════════════════
+   ENQUIRY MODAL (EnquiryWidget)
+══════════════════════════════════════════ */
+@keyframes npfFadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes npfSlideUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+
+/* ══════════════════════════════════════════
+   ALUMNI PAGE
+══════════════════════════════════════════ */
+
+/* textarea inside .field — extends existing input/select rules */
+.field textarea{
+  font-family:inherit;font-size:15px;padding:13px 15px;border-radius:12px;
+  border:1px solid rgba(11,44,24,.15);background:#fff;color:var(--ink);
+  transition:border-color .25s,box-shadow .25s;resize:vertical;
+  width:100%;box-sizing:border-box;
+}
+.field textarea:focus{outline:none;border-color:var(--em);box-shadow:0 0 0 3px rgba(18,134,63,.18);}
+.alumni-textarea{
+  font-family:inherit;font-size:15px;padding:13px 15px;border-radius:12px;
+  border:1px solid rgba(11,44,24,.15);background:#fff;color:var(--ink);
+  transition:border-color .25s,box-shadow .25s;resize:vertical;
+  width:100%;box-sizing:border-box;
+}
+.alumni-textarea:focus{outline:none;border-color:var(--em);box-shadow:0 0 0 3px rgba(18,134,63,.18);}
+
+/* form two-column grid */
+.alumni-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;}
+@media(max-width:560px){.alumni-form-grid{grid-template-columns:1fr;}}
+
+/* stats strip */
+.alumni-stats-strip{display:grid;grid-template-columns:repeat(4,1fr);}
+@media(max-width:640px){
+  .alumni-stats-strip{grid-template-columns:repeat(2,1fr);}
+  .alumni-stats-strip>div:nth-child(2){border-right:none;}
+  .alumni-stats-strip>div:nth-child(3){border-right:1px solid rgba(255,255,255,.1);}
+  .alumni-stats-strip>div:nth-child(4){border-right:none;}
+}
+
+/* VC feature card */
+.alumni-vc-card{
+  display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;
+  background:linear-gradient(115deg,var(--navy) 0%,var(--navy2) 60%,#1a5c35 100%);
+  border-radius:24px;padding:42px 50px;margin-top:50px;
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 40px 80px -40px rgba(11,44,24,.6);
+}
+@media(max-width:680px){
+  .alumni-vc-card{grid-template-columns:1fr;text-align:center;padding:34px 28px;gap:22px;}
+  .alumni-vc-card>div:first-child{margin:0 auto;}
+}
+
+/* executive council card */
+.alumni-council-card{
+  background:#fff;border-radius:18px;padding:24px 22px;
+  border:1px solid rgba(11,44,24,.08);
+  box-shadow:0 4px 20px -8px rgba(11,44,24,.09);
+  height:100%;display:flex;flex-direction:column;gap:0;
+}
+
+/* engage layout: left info panel + right form */
+.alumni-engage-layout{
+  display:grid;grid-template-columns:300px 1fr;gap:30px;align-items:start;
+}
+@media(max-width:900px){.alumni-engage-layout{grid-template-columns:1fr;}}
+
+/* assist service card */
+.assist-card{
+  background:#fff;border-radius:22px;overflow:hidden;
+  border:1px solid rgba(11,44,24,.08);
+  transition:border-color .35s,box-shadow .35s;
+}
+
+/* achiever category card */
+.alumni-achiever-card{
+  border-radius:22px;padding:32px 28px;
+  border:1px solid rgba(255,255,255,.1);
+  display:flex;flex-direction:column;height:100%;
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;
+}
+
+/* alumni hub navigation card (home page) */
+.alumni-hub-card{
+  background:#fff;border-radius:20px;padding:28px 26px 24px;
+  border:1px solid rgba(11,44,24,.08);
+  box-shadow:0 4px 20px -8px rgba(11,44,24,.09);
+  height:100%;display:flex;flex-direction:column;
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s;
+}
+.alumni-hub-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 26px 56px -32px rgba(11,44,24,.38);
+  border-color:rgba(18,134,63,.2);
+}
+
+/* giving back — 3-col why grid */
+@media(max-width:760px){
+  section .wrap>[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important;}
+}
+
+/* merchandise card */
+.alumni-merch-card{
+  background:#fff;border-radius:16px;overflow:hidden;
+  border:1px solid rgba(11,44,24,.08);
+  box-shadow:0 4px 20px -8px rgba(11,44,24,.08);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s;
+  display:flex;flex-direction:column;
+}

@@ -257,6 +257,18 @@ export const NAV = [
       { to: "/happenings/photo-gallery", label: "Photo Gallery" },
     ],
   },
+  {
+    label: "Alumni",
+    to: "/alumni",
+    children: [
+      { to: "/alumni",              label: "Alumni Home"     },
+      { to: "/alumni/leadership",   label: "Leadership"      },
+      { to: "/alumni/engage",       label: "Engage"          },
+      { to: "/alumni/assist",       label: "Alumni Assist"   },
+      { to: "/alumni/achievers",    label: "Alumni Achievers"},
+      { to: "/alumni/giving-back",  label: "Giving Back"     },
+    ],
+  },
 ];
 
 export const ANNOUNCEMENTS = [
@@ -272,7 +284,7 @@ export const QUICK_LINKS = [
   { label: "IQAC", to: "#", icon: Award },
   { label: "News & Press Releases", to: "#", icon: Newspaper },
   { label: "NCMSAP Certificates", to: "#", icon: Download },
-  { label: "Alumni Network", to: "#", icon: Users },
+  { label: "Alumni Network", to: "/alumni", icon: Users },
   { label: "Grievances", to: "#", icon: MessageSquare },
 ];
 

@@ -28,6 +28,13 @@ import CampusFacilities from "./pages/facilities/CampusFacilities.jsx";
 import NewsAndPress from "./pages/happenings/NewsAndPress.jsx";
 import Events from "./pages/happenings/Events.jsx";
 import PhotoGallery from "./pages/happenings/PhotoGallery.jsx";
+import Alumni from "./pages/Alumni.jsx";
+import AlumniLeadership from "./pages/alumni/Leadership.jsx";
+import AlumniEngage from "./pages/alumni/Engage.jsx";
+import AlumniAssist from "./pages/alumni/Assist.jsx";
+import AlumniAchievers from "./pages/alumni/Achievers.jsx";
+import AlumniGivingBack from "./pages/alumni/GivingBack.jsx";
+import Mainpopup from "./components/Mainpopup.jsx";
 
 export default function App() {
 
@@ -61,6 +68,13 @@ export default function App() {
           <Route path="/happenings/news" element={<NewsAndPress />} />
           <Route path="/happenings/events" element={<Events />} />
           <Route path="/happenings/photo-gallery" element={<PhotoGallery />} />
+          <Route path="/alumni" element={<Alumni />} />
+          <Route path="/alumni/leadership" element={<AlumniLeadership />} />
+          <Route path="/alumni/engage" element={<AlumniEngage />} />
+          <Route path="/alumni/assist" element={<AlumniAssist />} />
+          <Route path="/alumni/achievers" element={<AlumniAchievers />} />
+          <Route path="/alumni/giving-back" element={<AlumniGivingBack />} />
+          <Route path="/test" element={<Mainpopup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

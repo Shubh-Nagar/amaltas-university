@@ -58,7 +58,9 @@ export default function Accreditations() {
             {ACCREDITATIONS.map((a, i) => (
               <Reveal key={i} delay={`d${(i % 4) + 1}`}>
                 <div className="acc-card">
-                  <div className="acc-badge">{a.short}</div>
+                  <div className="acc-badge">
+                    <img src={a.logo} alt={a.short} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                  </div>
                   <div>
                     <div className="acc-short-label">{a.short}</div>
                     <div className="acc-name">{a.name}</div>
