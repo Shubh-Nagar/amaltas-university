@@ -62,8 +62,10 @@ export default function Navbar() {
     setExpandedMobile(null);
   }, [loc.pathname]);
 
+  const solid = scrolled || !onHome;
+
   return (
-    <div className={`nav ${scrolled || !onHome ? "solid" : ""}`}>
+    <div className={`nav ${solid ? "solid" : ""}`}>
       {/* TOP INFO BAR — hidden when solid */}
       <div className="nav-topbar">
         <div className="nav-topbar-inner">
@@ -71,17 +73,14 @@ export default function Navbar() {
             <a href="tel:+919977544111">
               <Phone size={12} /> +91 9977544111
             </a>
-            <a href="tel:07272482580">
-              <Phone size={12} /> 07272-482580
+            <a href="tel:18005712131">
+              <Phone size={12} /> 1800-571-2131 (Toll Free)
             </a>
             <a href="mailto:registrar@amaltasuniversity.in">
               <Mail size={12} /> registrar@amaltasuniversity.in
             </a>
           </div>
           <div className="nav-topbar-right">
-            <a href="#" onClick={(e) => e.preventDefault()} className="topbar-pill">Photogallery</a>
-            <a href="#" onClick={(e) => e.preventDefault()} className="topbar-pill new">Upcoming Events</a>
-            <a href="#" onClick={(e) => e.preventDefault()} className="topbar-pill new">Ph.D. Entrance 2026</a>
             <a href="#" onClick={(e) => e.preventDefault()} className="topbar-pill">IQAC</a>
             <div className="topbar-socials">
               <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook size={14} /></a>
@@ -96,7 +95,15 @@ export default function Navbar() {
       {/* MAIN NAVBAR */}
       <div className="navbar">
         <Link to="/" className="logo">
-          <img src="/assets/images%20of%20university/logo/Amaltas-University-Logo.jpg" alt="Amaltas University" style={{ height: 68, width: "auto", objectFit: "contain" }} />
+          <img
+            src={
+              solid
+                ? "/assets/images%20of%20university/logo/Amaltas-University-Logo.jpg"
+                : "/assets/images%20of%20university/logo/white-logo.png"
+            }
+            alt="Amaltas University"
+            style={{ height: 68, width: "auto", objectFit: "contain" }}
+          />
         </Link>
 
         <nav className="navlinks">

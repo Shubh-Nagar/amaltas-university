@@ -376,10 +376,10 @@ body{margin:0;}
 .nav.solid .nav-topbar{max-height:0;opacity:0;pointer-events:none;border:none;}
 .nav-topbar-inner{max-width:1300px;margin:0 auto;padding:8px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .nav-topbar-contacts{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
-.nav-topbar-contacts a{display:inline-flex;align-items:center;gap:6px;color:rgba(247,244,236,.6);font-size:12px;text-decoration:none;transition:.2s;white-space:nowrap;}
+.nav-topbar-contacts a{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.92);font-size:12px;text-decoration:none;transition:.2s;white-space:nowrap;}
 .nav-topbar-contacts a:hover{color:var(--goldL);}
 .nav-topbar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.topbar-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;background:rgba(255,255,255,.06);color:rgba(247,244,236,.7);font-size:11.5px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.1);transition:.2s;white-space:nowrap;}
+.topbar-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:100px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.92);font-size:11.5px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.1);transition:.2s;white-space:nowrap;}
 .topbar-pill:hover{background:rgba(255,255,255,.14);color:var(--ivory);}
 .topbar-pill.new{border-color:rgba(246,224,5,.5);background:rgba(246,224,5,.14);color:var(--gold);}
 .topbar-pill.new::before{content:"●";margin-right:3px;font-size:7px;animation:blink 1.5s infinite;}
@@ -423,6 +423,8 @@ body{margin:0;}
 .announcement-scroll{display:flex;gap:80px;animation:scrollX 38s linear infinite;white-space:nowrap;width:max-content;padding:12px 60px;}
 .announcement-item{font-size:13px;color:rgba(247,244,236,.78);display:inline-flex;align-items:center;gap:0;}
 .announcement-item::before{content:"✦";color:var(--gold);margin-right:14px;font-size:10px;}
+.announcement-link{color:var(--goldL);text-decoration:underline;text-underline-offset:2px;}
+.announcement-link:hover{color:var(--gold);}
 .announcement-bar:hover .announcement-scroll{animation-play-state:paused;}
 
 /* ── QUICK LINKS BAR ── */

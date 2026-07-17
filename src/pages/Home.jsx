@@ -17,7 +17,7 @@ import { useInView } from "../hooks/useScroll.js";
 import { C, iconBtn } from "../theme.js";
 import {
   INSTITUTIONS, WHY, VOICES, STATS, LEADERS,
-  EVENTS, NEWS, FAQS, QUICK_LINKS, ANNOUNCEMENTS,
+  EVENTS, NEWS, FAQS, ANNOUNCEMENTS,
   AUDIENCES, ADMISSION_PATHS, LIFE, OUTCOMES, PARTNERS,
   ACCREDITATIONS, ASSURANCE, PROGRAMS,
 } from "../data/content.js";
@@ -48,28 +48,17 @@ function AnnouncementTicker() {
       <div className="announcement-track">
         <div className="announcement-scroll">
           {[...ANNOUNCEMENTS, ...ANNOUNCEMENTS].map((a, i) => (
-            <span key={i} className="announcement-item">{a}</span>
+            <span key={i} className="announcement-item">
+              {typeof a === "string" ? a : (
+                <>
+                  {a.text}
+                  <a href={a.href} target="_blank" rel="noreferrer" className="announcement-link">
+                    {a.linkText}
+                  </a>
+                </>
+              )}
+            </span>
           ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function QuickLinksBar() {
-  return (
-    <div className="quick-links-bar">
-      <div className="wrap">
-        <div className="quick-links-inner">
-          {QUICK_LINKS.map((ql, i) => {
-            const Icon = ql.icon;
-            return (
-              <a key={i} href={ql.to} onClick={(e) => ql.to === "#" && e.preventDefault()} className="quick-link-pill">
-                <Icon size={13} />{ql.label}
-                {ql.isNew && <span className="new-badge">NEW</span>}
-              </a>
-            );
-          })}
         </div>
       </div>
     </div>
@@ -704,6 +693,7 @@ function HeroForm() {
 export default function Home() {
   const [voice, setVoice] = useState(0);
   const [posterIdx, setPosterIdx] = useState(0);
+  const [tourNotice, setTourNotice] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => setVoice((v) => (v + 1) % VOICES.length), 6000);
@@ -787,9 +777,6 @@ export default function Home() {
       {/* ── ANNOUNCEMENT TICKER ── */}
       <AnnouncementTicker />
 
-      {/* ── QUICK LINKS ── */}
-      <QuickLinksBar />
-
       {/* ════════════════════════════════════════
           CAMPUS SHOWCASE  — video strip + blobs
       ════════════════════════════════════════ */}
@@ -827,9 +814,22 @@ export default function Home() {
               A full campus tour across all departments, research facilities, and student life — welcome to Amaltas University.
             </p>
             <div style={{ textAlign: "center" }}>
-              <button className="play-btn" aria-label="Watch campus tour video"><Play size={28} fill="currentColor" /></button>
-              <div style={{ color: "rgba(247,244,236,.5)", fontSize: 12.5, marginTop: 14, letterSpacing: ".12em", textTransform: "uppercase" }}>
-                Watch the campus tour
+              <button
+                className="play-btn"
+                aria-label="Watch campus tour video"
+                onClick={() => {
+                  setTourNotice(true);
+                  setTimeout(() => setTourNotice(false), 4000);
+                }}
+              >
+                <Play size={28} fill="currentColor" />
+              </button>
+              <div style={{
+                color: tourNotice ? C.goldL : "rgba(247,244,236,.5)",
+                fontSize: 12.5, marginTop: 14, letterSpacing: ".12em", textTransform: "uppercase",
+                transition: "color .2s",
+              }}>
+                {tourNotice ? "The virtual tour of the campus will be available shortly" : "Watch the campus tour"}
               </div>
             </div>
           </Reveal>
@@ -922,7 +922,7 @@ export default function Home() {
           <Reveal>
             <div style={{ textAlign: "center" }}>
               <span className="eyebrow" style={{ justifyContent: "center" }}>The Amaltas difference</span>
-              <h2 style={{ maxWidth: 720, margin: "12px auto 0" }}>Reasons families trust us with their most ambitious dreams.</h2>
+              <h2 style={{ maxWidth: 720, margin: "12px auto 0" }}>Reasons students trust us with their most ambitious dreams.</h2>
             </div>
           </Reveal>
         </div>

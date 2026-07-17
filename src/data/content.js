@@ -275,6 +275,7 @@ export const ANNOUNCEMENTS = [
   "Entrance Examination for Ph.D. Program 2026 — Register Now",
   "Admission Open for Academic Year 2026-27 — Apply Today",
   "Amaltas University achieves Guinness World Record — 35,000+ participants in a single mass yoga gathering",
+  { text: "IJRHM Website Launch — Visit at  ", linkText: "www.ijrhm.com", href: "https://www.ijrhm.com" },
 ];
 
 export const QUICK_LINKS = [

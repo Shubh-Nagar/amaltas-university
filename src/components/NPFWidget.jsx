@@ -2,19 +2,18 @@ import React, { useEffect } from "react";
 
 const NPFWidget = () => {
   useEffect(() => {
-    // Prevent loading the script multiple times
-    if (!document.querySelector('script[src="https://widgets.in4.nopaperforms.com/emwgts.js"]')) {
-      const script = document.createElement("script");
-      script.src = "https://widgets.in4.nopaperforms.com/emwgts.js";
-      script.async = true;
-      script.type = "text/javascript";
-      document.body.appendChild(script);
-    } else {
-      // If script already exists, reinitialize the widget
-      if (window.initializeNpfWidgets) {
-        window.initializeNpfWidgets();
-      }
-    }
+    // emwgts.js scans the DOM for .npf_wgts elements once, when it executes —
+    // it exposes no reinit API. So on every mount (e.g. navigating back to a
+    // page with this widget) we drop any previous copy of the script and
+    // re-append a fresh one to force it to re-scan and fill the new div.
+    const existing = document.querySelector('script[src="https://widgets.in4.nopaperforms.com/emwgts.js"]');
+    if (existing) existing.remove();
+
+    const script = document.createElement("script");
+    script.src = "https://widgets.in4.nopaperforms.com/emwgts.js";
+    script.async = true;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
   }, []);
 
   return (
