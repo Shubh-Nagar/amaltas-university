@@ -26,7 +26,7 @@ export default function MandatoryDisclosure() {
         bgImg="/assets/images%20of%20university/all%20institutes/medical%20science.jpeg"
       />
 
-      {/* NOTICE BAND */}
+      {/* NOTICE BAND — commented out
       <section className="wrap" style={{ marginTop: -50, position: "relative", zIndex: 5 }}>
         <div style={{ background: `linear-gradient(135deg,${C.navy2},${C.navy})`, borderRadius: 20, padding: "22px 30px", display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center", justifyContent: "space-between", boxShadow: `0 30px 60px -30px rgba(11,44,24,.5)` }}>
           <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
@@ -48,6 +48,7 @@ export default function MandatoryDisclosure() {
           </a>
         </div>
       </section>
+      */}
 
       {/* DISCLOSURE SECTIONS */}
       <section className="sec wrap" style={{ paddingTop: 80 }}>
@@ -76,7 +77,7 @@ export default function MandatoryDisclosure() {
         </div>
       </section>
 
-      {/* DOCUMENTS DOWNLOAD */}
+      {/* DOCUMENTS DOWNLOAD — commented out
       <section id="downloads" style={{ background: "linear-gradient(135deg,#eef6f1 0%,var(--ivory) 55%,#fdfce8 100%)", padding: "90px 0" }}>
         <div className="wrap">
           <Reveal>
@@ -113,8 +114,9 @@ export default function MandatoryDisclosure() {
           </Reveal>
         </div>
       </section>
+      */}
 
-      {/* DOWNLOAD STRIP */}
+      {/* DOWNLOAD STRIP — commented out
       <section className="wrap" style={{ paddingBottom: 80, paddingTop: 0 }}>
         <Reveal>
           <div className="disc-download-bar">
@@ -133,6 +135,7 @@ export default function MandatoryDisclosure() {
           </div>
         </Reveal>
       </section>
+      */}
     </>
   );
 }

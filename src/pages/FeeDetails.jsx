@@ -12,13 +12,6 @@ const CATEGORIES = [
     color: C.burg,
     courses: [
       { course: "MBBS", specialization: null, fee: 1723000, seats: 250 },
-    ],
-  },
-  {
-    id: "pg-medical",
-    label: "PG Medical",
-    color: "#1a5c8a",
-    courses: [
       { course: "MD / MS", specialization: "Dermatology, Radio-Diagnosis", fee: 2184000, seats: null },
       { course: "MD / MS", specialization: "General Medicine, OBS-Gynae", fee: 1950000, seats: null },
       { course: "MD / MS", specialization: "Orthopaedic, Anaesthesia, Paediatric, Psychiatry, Respiratory, ENT, General Surgery, Ophthalmology, Emergency Medicine, Pathology", fee: 1838000, seats: 134 },
@@ -30,10 +23,17 @@ const CATEGORIES = [
   },
   {
     id: "ayurveda",
-    label: "Ayurveda & Homeopathy",
+    label: "Ayurveda",
     color: "#2d7a4f",
     courses: [
       { course: "BAMS", specialization: "Bachelor of Ayurvedic Medicine & Surgery", fee: 350000, seats: 100 },
+    ],
+  },
+  {
+    id: "homoeopathy",
+    label: "Homoeopathy",
+    color: "#3f8f63",
+    courses: [
       { course: "BHMS", specialization: "Bachelor of Homeopathic Medicine & Surgery", fee: 165000, seats: 100 },
     ],
   },
@@ -46,11 +46,12 @@ const CATEGORIES = [
       { course: "B.Sc Post Basic Nursing", specialization: null, fee: 40000, seats: 40 },
       { course: "M.Sc Nursing", specialization: null, fee: 125000, seats: 34 },
       { course: "GNM", specialization: "General Nursing & Midwifery", fee: 51000, seats: 100 },
+      { course: "PhD Nursing", specialization: null, fee: 135000, seats: null },
     ],
   },
   {
     id: "allied",
-    label: "Allied Health Sciences",
+    label: "Paramedical",
     color: "#5a3e8a",
     courses: [
       { course: "BPT", specialization: "Bachelor of Physiotherapy", fee: 75000, seats: 50 },
@@ -66,7 +67,7 @@ const CATEGORIES = [
   },
   {
     id: "psychology",
-    label: "Psychology & Rehab",
+    label: "Allied and Rehabilitation",
     color: "#7a5c1a",
     courses: [
       { course: "B.Sc (Hons) Clinical Psychology", specialization: null, fee: 110000, seats: 20 },

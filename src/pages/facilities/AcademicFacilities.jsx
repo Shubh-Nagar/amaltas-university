@@ -74,7 +74,7 @@ const EXPLORER = [
       "Ethics & bio-safety committee oversight",
       "Access to digital research databases",
     ],
-    img: "/assets/images%20of%20university/all%20institutes/paramedical.jpeg",
+    img: "/assets/images%20of%20university/all%20institutes/paramedical.jpg",
   },
   {
     key: "library",

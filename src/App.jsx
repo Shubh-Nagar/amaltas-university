@@ -35,6 +35,7 @@ import AlumniAssist from "./pages/alumni/Assist.jsx";
 import AlumniAchievers from "./pages/alumni/Achievers.jsx";
 import AlumniGivingBack from "./pages/alumni/GivingBack.jsx";
 import Mainpopup from "./components/Mainpopup.jsx";
+import IQAC from "./pages/IQAC.jsx";
 
 export default function App() {
 
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/why" element={<Why />} />
           <Route path="/leadership" element={<Leadership />} />
           <Route path="/voices" element={<Voices />} />
+          <Route path="/iqac" element={<IQAC />} />
           <Route path="/about/university" element={<TheUniversity />} />
           <Route path="/about/leadership" element={<BoardOfManagement />} />
           <Route path="/about/chancellor" element={<ChancellorMessage />} />

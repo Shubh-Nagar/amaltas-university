@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
 import { C } from "../theme.js";
+import { CONTACT } from "../data/content.js";
 
-export default function AlumniForm({ fields, submitLabel = "Submit" }) {
+export default function AlumniForm({ fields, submitLabel = "Submit", sendTo = CONTACT.email }) {
   const [form, setForm] = useState({});
   const [done, setDone] = useState(false);
 
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
   const handleSubmit = (e) => {
     e.preventDefault();
+    const subject = encodeURIComponent(submitLabel);
+    const body = encodeURIComponent(
+      fields.map(f => `${f.label}: ${form[f.name] || "-"}`).join("\n")
+    );
+    window.location.href = `mailto:${sendTo}?subject=${subject}&body=${body}`;
     setDone(true);
   };
 

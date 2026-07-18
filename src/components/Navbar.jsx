@@ -73,20 +73,17 @@ export default function Navbar() {
             <a href="tel:+919977544111">
               <Phone size={12} /> +91 9977544111
             </a>
-            <a href="tel:18005712131">
-              <Phone size={12} /> 1800-571-2131 (Toll Free)
-            </a>
             <a href="mailto:registrar@amaltasuniversity.in">
               <Mail size={12} /> registrar@amaltasuniversity.in
             </a>
           </div>
           <div className="nav-topbar-right">
-            <a href="#" onClick={(e) => e.preventDefault()} className="topbar-pill">IQAC</a>
+            <Link to="/iqac" className="topbar-pill">IQAC</Link>
             <div className="topbar-socials">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook size={14} /></a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram size={14} /></a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter"><Twitter size={14} /></a>
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><Youtube size={14} /></a>
+              <a href="https://www.facebook.com/people/Amaltas-University-Dewas/100092261027732/" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook size={14} /></a>
+              <a href="https://www.instagram.com/amaltasuniversitydewas?igsh=MWVvOWw0MnBxNzE0dw==" target="_blank" rel="noreferrer" aria-label="Instagram"><Instagram size={14} /></a>
+              <a href="https://x.com/AmaltasDewas" target="_blank" rel="noreferrer" aria-label="Twitter"><Twitter size={14} /></a>
+              <a href="https://www.youtube.com/@AmaltasUniversity" target="_blank" rel="noreferrer" aria-label="YouTube"><Youtube size={14} /></a>
             </div>
           </div>
         </div>

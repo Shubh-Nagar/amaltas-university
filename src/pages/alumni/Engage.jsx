@@ -176,6 +176,7 @@ export default function AlumniEngage() {
                   key={active}
                   fields={tab.fields}
                   submitLabel={`Submit — ${tab.label}`}
+                  sendTo="alumni@amaltasuniversity.in"
                 />
               </div>
             </Reveal>

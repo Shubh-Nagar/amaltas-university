@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight, MapPin, Users, Leaf, CalendarDays, ShieldCheck,
   Building2, Award, Sparkles, FlaskConical, HandHeart, Stethoscope,
-  GraduationCap, Dumbbell, Music, Home as HomeIcon, Quote, FileText, Download,
+  Dumbbell, Music, Home as HomeIcon, Quote, FileText, Download,
 } from "lucide-react";
 import { Reveal } from "../../components/Primitives.jsx";
 import { VISION_MISSION, CHANCELLOR_MESSAGE } from "../../data/content.js";
@@ -38,7 +38,7 @@ const INSTITUTE_PHOTOS = [
   { name: "Amaltas Institute of Homoeopathy", short: "BHMS",                      photo: "/assets/images%20of%20university/all%20institutes/homoepathy.png" },
   { name: "Amaltas Nursing Sciences",         short: "B.Sc. · P.B.B.Sc. · M.Sc.",photo: "/assets/images%20of%20university/all%20institutes/nursing.jpeg" },
   { name: "Amaltas Institute of Pharmacy",    short: "B.Pharm · M.Pharm",         photo: "/assets/images%20of%20university/all%20institutes/pharmacy.png" },
-  { name: "Amaltas Paramedical Sciences",     short: "BMLT · DMLT · Imaging",     photo: "/assets/images%20of%20university/all%20institutes/paramedical.jpeg" },
+  { name: "Amaltas Paramedical Sciences",     short: "BMLT · DMLT · Imaging",     photo: "/assets/images%20of%20university/all%20institutes/paramedical.jpg" },
   { name: "Amaltas Allied & Rehabilitation",  short: "Physiotherapy · Psychology", photo: "/assets/images%20of%20university/all%20institutes/alied.jpg" },
 ];
 
@@ -49,22 +49,6 @@ const ADVANTAGES = [
   { icon: FlaskConical, t: "Research From Day One",         d: "Active labs, publications and Ph.D. programmes across all seven health disciplines — discovery is part of the curriculum." },
   { icon: Sparkles,     t: "Scholarships That Reach",       d: "Merit and need-based aid so that talent — not tuition — decides who heals tomorrow." },
   { icon: Award,        t: "Recognised & Accredited",       d: "Programmes structured to national regulatory standards across every health-science field we teach." },
-];
-
-const OUTCOMES = [
-  { icon: Building2,     v: "1500+",  l: "Beds for hands-on training" },
-  { icon: Stethoscope,   v: "Year 1", l: "Clinical exposure begins" },
-  { icon: GraduationCap, v: "7",      l: "Disciplines with career pathways" },
-  { icon: HandHeart,     v: "100%",   l: "Stipend-paid internships" },
-];
-
-const CAREER_PATHS = [
-  "Government & District Hospitals",
-  "Multispeciality Hospital Chains",
-  "AYUSH & Wellness Centres",
-  "Diagnostic & Pharma Laboratories",
-  "Rural Health & NGO Missions",
-  "PG · Residency · Ph.D. Research",
 ];
 
 const BEYOND = [
@@ -436,60 +420,6 @@ export default function TheUniversity() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* ══ PLACEMENTS / CAREER OUTCOMES — light green-to-yellow gradient ══ */}
-      <section style={{ background: `linear-gradient(120deg,${G.green} 0%,${G.greenL} 60%,#2ec76a 100%)`, padding: "96px 0", overflow: "hidden", position: "relative" }}>
-        {/* decorative gold blob */}
-        <div className="hero-glow" style={{ width: 420, height: 420, background: "rgba(246,224,5,.22)", right: "-4%", top: "-18%" }} />
-        <div className="hero-glow" style={{ width: 260, height: 260, background: "rgba(246,224,5,.14)", left: "5%", bottom: "-10%" }} />
-        <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-          <Reveal>
-            <span className="eyebrow" style={{ color: G.goldL }}>Careers &amp; Placements</span>
-            <h2 style={{ marginTop: 14, color: "#fff", maxWidth: 620 }}>Trained for the ward, ready for the world.</h2>
-            <p style={{ color: "rgba(255,255,255,.85)", fontSize: 17, maxWidth: 600, marginTop: 16, lineHeight: 1.7 }}>
-              Because clinical training begins in year one — inside our own teaching hospital — Amaltas graduates step into careers already knowing the weight of real responsibility.
-            </p>
-          </Reveal>
-
-          {/* Outcome stat cards — white on green */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 18, marginTop: 44 }}>
-            {OUTCOMES.map((o, i) => {
-              const Icon = o.icon;
-              return (
-                <Reveal key={i} delay={`d${(i % 4) + 1}`}>
-                  <div style={{ background: "rgba(255,255,255,.15)", border: "1px solid rgba(255,255,255,.3)", borderRadius: 18, padding: "26px 24px", backdropFilter: "blur(10px)", height: "100%" }}>
-                    <div style={{ width: 46, height: 46, borderRadius: 12, background: "rgba(255,255,255,.2)", border: "1px solid rgba(255,255,255,.35)", display: "grid", placeItems: "center", color: "#fff", marginBottom: 16 }}>
-                      <Icon size={20} />
-                    </div>
-                    <div style={{ fontFamily: "Fraunces,serif", fontSize: 30, color: "#fff", lineHeight: 1 }}>{o.v}</div>
-                    <div style={{ color: "rgba(255,255,255,.8)", fontSize: 13.5, marginTop: 8, lineHeight: 1.4 }}>{o.l}</div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-
-          {/* Career path chips */}
-          <Reveal>
-            <div style={{ marginTop: 44 }}>
-              <div style={{ color: G.goldL, fontSize: 12, fontWeight: 700, letterSpacing: ".16em", textTransform: "uppercase", marginBottom: 18 }}>Where our graduates build careers</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-                {CAREER_PATHS.map((p, i) => (
-                  <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "10px 18px", borderRadius: 100, background: "rgba(255,255,255,.15)", border: "1px solid rgba(255,255,255,.28)", color: "#fff", fontSize: 13.5, fontWeight: 500 }}>
-                    <Stethoscope size={14} color={G.goldL} style={{ flexShrink: 0 }} /> {p}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal>
-            <div style={{ marginTop: 40 }}>
-              <Link to="/admissions" className="btn btn-gold">Start your journey <ArrowRight size={18} /></Link>
-            </div>
-          </Reveal>
         </div>
       </section>
 

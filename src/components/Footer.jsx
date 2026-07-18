@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Globe, Mail, Phone, MapPin } from "lucide-react";
+import { MapPin, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import { C } from "../theme.js";
 import { CONTACT } from "../data/content.js";
 
@@ -18,33 +18,51 @@ export default function Footer() {
               who will care for India learn by caring.
             </p>
             <div style={{ display: "flex", gap: 12, marginTop: 18 }}>
-              {[Globe, Mail, Phone].map((Ic, i) => (
-                <div key={i} style={{ width: 40, height: 40, borderRadius: 10, display: "grid", placeItems: "center", background: "rgba(247,244,236,.07)", color: C.gold }}>
+              {[
+                { Ic: Facebook, href: "https://www.facebook.com/people/Amaltas-University-Dewas/100092261027732/", label: "Facebook" },
+                { Ic: Instagram, href: "https://www.instagram.com/amaltasuniversitydewas?igsh=MWVvOWw0MnBxNzE0dw==", label: "Instagram" },
+                { Ic: Twitter, href: "https://x.com/AmaltasDewas", label: "Twitter" },
+                { Ic: Youtube, href: "https://www.youtube.com/@AmaltasUniversity", label: "YouTube" },
+              ].map(({ Ic, href, label }, i) => (
+                <a
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  style={{ width: 40, height: 40, borderRadius: 10, display: "grid", placeItems: "center", background: "rgba(247,244,236,.07)", color: C.gold, transition: ".25s" }}
+                >
                   <Ic size={18} />
-                </div>
+                </a>
               ))}
             </div>
           </div>
           <div>
             <h4>Explore</h4>
+            <Link to="/about/university">About Us</Link>
+            <Link to="/admissions">Admission &amp; Fees</Link>
             <Link to="/institutions">Institutions</Link>
-            <Link to="/admissions">Admissions &amp; Fees</Link>
-            <Link to="/why">Why Amaltas</Link>
-            <Link to="/voices">Student Voices</Link>
+            <Link to="/student-life/campus-life">Student Life</Link>
+            <Link to="/facilities/academic">Facilities</Link>
+            <Link to="/happenings/events">Happenings</Link>
+            <Link to="/alumni">Alumni</Link>
           </div>
           <div>
             <h4>Quick Links</h4>
-            <Link to="/admissions">Scholarships</Link>
-            <Link to="/admissions">PhD Entrance 2026</Link>
-            <Link to="/leadership">Leadership</Link>
-            <a href="#">Anti-Ragging Cell</a>
+            <Link to="/about/leadership">Board of Management</Link>
+            <Link to="/admissions/fees">Fee Details</Link>
+            <Link to="/admissions/eligibility">Eligibility Criteria</Link>
+            <Link to="/student-life/hostel">Hostel &amp; Accommodation</Link>
+            <Link to="/happenings/news">News &amp; Press Releases</Link>
+            <Link to="/happenings/photo-gallery">Photo Gallery</Link>
+            <Link to="/alumni/giving-back">Giving Back</Link>
           </div>
           <div>
             <h4>Reach Us</h4>
             <p style={{ fontSize: 14, display: "flex", gap: 10 }}>
               <MapPin size={18} color={C.gold} style={{ flexShrink: 0 }} /> {CONTACT.address}
             </p>
-            <a href={`tel:${CONTACT.tollFree.replace(/-/g, "")}`}>Toll Free: {CONTACT.tollFree}</a>
+            <a href={`tel:${CONTACT.tollFree.replace(/-/g, "")}`}>Call: {CONTACT.tollFree}</a>
             <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
           </div>
         </div>

@@ -21,11 +21,15 @@ export default function Institutions() {
       <section className="sec wrap" style={{ paddingTop: 80 }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(330px,1fr))", gap: 24 }}>
           {INSTITUTIONS.map((it, i) => {
-            const Icon = it.icon;
             return (
               <Reveal key={i} delay={`d${(i % 3) + 1}`}>
-                <Tilt className="inst-card">
-                  <div className="ic"><Icon size={26} /></div>
+                <Tilt
+                  className="inst-card"
+                  onClick={() => window.open(it.website, "_blank", "noreferrer")}
+                >
+                  <div className="inst-card-img">
+                    <img src={it.img} alt={it.name} loading="lazy" />
+                  </div>
                   <span className="inst-tag">{it.tag}</span>
                   <h3>{it.name}</h3>
                   <p style={{ color: C.slate, fontSize: 14.5, marginBottom: 16 }}>{it.desc}</p>
@@ -36,9 +40,15 @@ export default function Institutions() {
                       </div>
                     ))}
                   </div>
-                  <Link to="/admissions" style={{ display: "inline-flex", alignItems: "center", gap: 7, color: C.emerald, fontWeight: 600, fontSize: 14, textDecoration: "none" }}>
-                    Admission details <ArrowUpRight size={16} />
-                  </Link>
+                  <a
+                    href={it.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 7, color: C.emerald, fontWeight: 600, fontSize: 14, textDecoration: "none" }}
+                  >
+                    Visit department website <ArrowUpRight size={16} />
+                  </a>
                 </Tilt>
               </Reveal>
             );

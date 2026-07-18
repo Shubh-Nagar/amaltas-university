@@ -4,14 +4,13 @@ import {
   ArrowRight, ArrowUpRight, Play, Sparkles, Trophy, HeartPulse,
   Award, Quote, ChevronLeft, ChevronRight, ChevronDown,
   Calendar, Phone, Send, CheckCircle, Newspaper, Users,
-  MessageCircle, ArrowUp, Check,
+  ArrowUp, Check,
 } from "lucide-react";
 import HelixCanvas from "../components/HelixCanvas.jsx";
 import EnquiryWidget from "../components/EnquiryWidget.jsx";
 import NPFWidget from "../components/NPFWidget.jsx";
 import Blob from "../components/Blob.jsx";
 import MagicBento from "../components/MagicBento.jsx";
-import ScholarshipPopup from "../components/ScholarshipPopup.jsx";
 import { Reveal, Tilt, StatNum } from "../components/Primitives.jsx";
 import { useInView } from "../hooks/useScroll.js";
 import { C, iconBtn } from "../theme.js";
@@ -94,6 +93,15 @@ function FaqItem({ q, a }) {
   );
 }
 
+/* Real WhatsApp glyph (lucide-react ships no brand icons) */
+function WhatsAppIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.7 4.607 1.907 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm0 21.8a9.76 9.76 0 0 1-4.98-1.36l-.357-.212-4.583 1.11 1.13-4.47-.233-.366A9.75 9.75 0 0 1 5.2 15c0-5.955 4.85-10.8 10.804-10.8 5.954 0 10.8 4.845 10.8 10.8s-4.846 10.8-10.8 10.8Zm5.94-8.09c-.325-.163-1.925-.95-2.223-1.058-.298-.109-.515-.163-.732.163-.217.325-.84 1.058-1.03 1.276-.19.217-.38.244-.705.081-.325-.163-1.372-.505-2.613-1.611-.966-.861-1.618-1.924-1.808-2.249-.19-.325-.02-.5.143-.663.147-.146.325-.38.488-.57.163-.19.217-.325.325-.542.108-.217.054-.407-.027-.57-.081-.163-.732-1.766-1.004-2.42-.264-.636-.532-.55-.732-.56l-.624-.011c-.217 0-.57.081-.868.407-.298.325-1.138 1.112-1.138 2.712 0 1.6 1.165 3.146 1.327 3.363.163.217 2.294 3.502 5.558 4.912.777.335 1.383.535 1.856.685.78.248 1.49.213 2.052.129.626-.093 1.925-.787 2.196-1.548.271-.76.271-1.412.19-1.548-.081-.136-.298-.217-.623-.38Z"/>
+    </svg>
+  );
+}
+
 /* Sticky conversion actions — WhatsApp + back-to-top (Medicaps floating-CTA pattern) */
 function FloatingActions() {
   const [showTop, setShowTop] = useState(false);
@@ -111,7 +119,7 @@ function FloatingActions() {
         target="_blank" rel="noreferrer"
         className="fab fab-wa" aria-label="Chat with admissions on WhatsApp"
       >
-        <MessageCircle size={24} />
+        <WhatsAppIcon size={24} />
         <span className="fab-tip">Chat with us</span>
       </a>
       <button
@@ -707,7 +715,6 @@ export default function Home() {
 
   return (
     <>
-      <ScholarshipPopup />
       {/* ════════════════════════════════════════
           HERO
       ════════════════════════════════════════ */}
@@ -731,38 +738,41 @@ export default function Home() {
         <div className="hero-glow" style={{ width: 460, height: 460, background: "rgba(18,134,63,.06)", left: "-120px", top: "10%" }} />
         <div className="hero-glow" style={{ width: 380, height: 380, background: "rgba(246,224,5,.18)", right: "8%", bottom: "6%" }} />
 
-        {/* ── two-column layout: poster slider (left) + enquiry form (right) ── */}
+        {/* ── two-column layout: admissions pitch (left) + enquiry form (right) ── */}
         <div className="wrap hero-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start", paddingTop: 170, paddingBottom: 80 }}>
 
-          {/* LEFT — poster carousel */}
-          <div>
-            <div className="poster-carousel">
-              {POSTERS.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`Admission poster ${i + 1}`}
-                  className={`poster-slide ${i === posterIdx ? "on" : ""}`}
-                  loading={i === 0 ? "eager" : "lazy"}
-                />
-              ))}
+          {/* LEFT — admissions pitch */}
+          <Reveal variant="left">
+            <span className="eyebrow" style={{ color: C.goldL }}>Admissions 2026–27</span>
+            <h2 style={{ color: C.ivory, marginTop: 14, fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
+              Your journey into<br />healthcare begins here.
+            </h2>
+            <p style={{ color: "rgba(247,244,236,.75)", marginTop: 16, fontSize: 17, maxWidth: 480 }}>
+              Applications are open across Medical Sciences, Ayurveda, Homoeopathy, Nursing,
+              Pharmacy, Paramedical Sciences, and Allied &amp; Rehabilitation Sciences for the 2026–27 session.
+            </p>
+            <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
+              <Link to="/admissions" className="btn btn-gold">Apply Now <ArrowRight size={18} /></Link>
+              <a href="tel:+919977544111" className="btn btn-ghost"><Phone size={15} /> Call Helpline</a>
             </div>
-            {/* dot indicators */}
-            <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
-              {POSTERS.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setPosterIdx(i)}
-                  aria-label={`Poster ${i + 1}`}
-                  style={{
-                    width: i === posterIdx ? 24 : 8, height: 8, borderRadius: 4,
-                    background: i === posterIdx ? C.goldL : "rgba(247,244,236,.35)",
-                    border: "none", cursor: "pointer", transition: "all .4s ease", padding: 0,
-                  }}
-                />
-              ))}
+
+            {/* quick admission pathways */}
+            <div className="admit-paths">
+              {ADMISSION_PATHS.map((p, i) => {
+                const Icon = p.icon;
+                return (
+                  <Link key={i} to={p.to} className="admit-path">
+                    <span className="admit-path-icon"><Icon size={18} /></span>
+                    <span className="admit-path-text">
+                      <span className="admit-path-label">{p.label}</span>
+                      <span className="admit-path-desc">{p.desc}</span>
+                    </span>
+                    <ArrowUpRight size={16} className="admit-path-arrow" />
+                  </Link>
+                );
+              })}
             </div>
-          </div>
+          </Reveal>
 
           {/* RIGHT — static enquiry form */}
           <HeroForm />
@@ -960,9 +970,9 @@ export default function Home() {
       <EventsSection />
 
       {/* ════════════════════════════════════════
-          WORLD RECORD  — stacking scroll cards
+          WORLD RECORD  — stacking scroll cards (Our milestones) — commented out
       ════════════════════════════════════════ */}
-      <WorldRecordStack />
+      {/* <WorldRecordStack /> */}
 
       {/* ════════════════════════════════════════
           OUTCOMES & CLINICAL NETWORK — commented out
@@ -1173,9 +1183,9 @@ export default function Home() {
       <NewsSection />
 
       {/* ════════════════════════════════════════
-          ASSURANCE — overcoming objections
+          ASSURANCE — overcoming objections — commented out
       ════════════════════════════════════════ */}
-      <AssuranceSection />
+      {/* <AssuranceSection /> */}
 
       {/* ── FAQ — clean, no blobs ── */}
       <section className="sec wrap">
@@ -1209,44 +1219,32 @@ export default function Home() {
         <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
           <div className="admission-cta-grid">
             <Reveal variant="left">
-              <span className="eyebrow">Admissions 2026–27</span>
-              <h2 style={{ color: C.ink, marginTop: 14, fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
-                Your journey into<br />healthcare begins here.
-              </h2>
-              <p style={{ color: C.slate, marginTop: 16, fontSize: 17, maxWidth: 480 }}>
-                Applications are open for MBBS, BAMS, BHMS, B.Sc. Nursing, B.Pharm,
-                B.P.T., B.M.L.T., and allied health programmes for the 2026–27 session.
-              </p>
-              <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
-                <Link to="/admissions" className="btn btn-gold">Apply Now <ArrowRight size={18} /></Link>
-                <a href="tel:+919977544111" className="btn btn-dark"><Phone size={15} /> Call Helpline</a>
-              </div>
-
-              {/* quick admission pathways */}
-              <div className="admit-paths">
-                {ADMISSION_PATHS.map((p, i) => {
-                  const Icon = p.icon;
-                  return (
-                    <Link key={i} to={p.to} className="admit-path">
-                      <span className="admit-path-icon"><Icon size={18} /></span>
-                      <span className="admit-path-text">
-                        <span className="admit-path-label">{p.label}</span>
-                        <span className="admit-path-desc">{p.desc}</span>
-                      </span>
-                      <ArrowUpRight size={16} className="admit-path-arrow" />
-                    </Link>
-                  );
-                })}
-              </div>
-
-              {/* <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 12 }}>
-                {["BAMS Admissions: +91 7880154605", "Allied & Rehabilitation Sciences: +91 9617245556", "Toll Free: 1800-571-2131"].map((info, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: C.slate }}>
-                    <CheckCircle size={15} color={C.emerald} style={{ flexShrink: 0 }} />
-                    {info}
-                  </div>
+              <div className="poster-carousel" style={{ height: 420 }}>
+                {POSTERS.map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`Admission poster ${i + 1}`}
+                    className={`poster-slide ${i === posterIdx ? "on" : ""}`}
+                    loading={i === 0 ? "eager" : "lazy"}
+                  />
                 ))}
-              </div> */}
+              </div>
+              {/* dot indicators */}
+              <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
+                {POSTERS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setPosterIdx(i)}
+                    aria-label={`Poster ${i + 1}`}
+                    style={{
+                      width: i === posterIdx ? 24 : 8, height: 8, borderRadius: 4,
+                      background: i === posterIdx ? C.emerald : "rgba(11,44,24,.16)",
+                      border: "none", cursor: "pointer", transition: "all .4s ease", padding: 0,
+                    }}
+                  />
+                ))}
+              </div>
             </Reveal>
 
             <Reveal delay="d2" variant="right">

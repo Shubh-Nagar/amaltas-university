@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  ArrowRight, ArrowUpRight, Phone, Calendar, Check,
+  ArrowRight, ArrowUpRight, Phone, Check,
   Stethoscope, HeartPulse, Activity, GraduationCap, FlaskConical, Microscope, Brain,
 } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
@@ -19,36 +19,6 @@ const CAT_META = {
   Allied:      { icon: Brain,         pc: "#A8392E", pc2: "#C85A4C", soft: "rgba(168,57,46,.10)" },
 };
 const catMeta = (t) => CAT_META[t] || CAT_META.Medical;
-
-function Countdown() {
-  const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
-  useEffect(() => {
-    const target = new Date();
-    target.setMonth(target.getMonth() + 2);
-    const tick = () => {
-      const diff = Math.max(0, target - new Date());
-      setT({
-        d: Math.floor(diff / 864e5),
-        h: Math.floor(diff / 36e5) % 24,
-        m: Math.floor(diff / 6e4) % 60,
-        s: Math.floor(diff / 1e3) % 60,
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
-  return (
-    <div style={{ display: "flex", gap: 12 }}>
-      {[["d", "Days"], ["h", "Hrs"], ["m", "Min"], ["s", "Sec"]].map(([k, l]) => (
-        <div className="count-box" key={k}>
-          <div className="cn">{String(t[k]).padStart(2, "0")}</div>
-          <div className="cl">{l}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 const STEPS = [
   { t: "Enquire", d: "Submit the enquiry form or call our admissions cell to begin." },
@@ -72,17 +42,6 @@ export default function Admissions() {
         sub="Applications for MBBS, BAMS, BHMS, Nursing, Pharmacy and Allied Sciences are live. Begin now — the intake window closes soon."
         bgImg="/assets/images%20of%20university/campus%20life/degree.JPG"
       />
-
-      {/* COUNTDOWN BAND */}
-      <section className="wrap" style={{ marginTop: -50, position: "relative", zIndex: 5 }}>
-        <div style={{ background: "#fff", borderRadius: 22, padding: "30px 34px", border: "1px solid rgba(11,44,24,.07)", boxShadow: "0 40px 90px -55px rgba(11,44,24,.5)", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "center", justifyContent: "space-between" }}>
-          <div>
-            <span className="eyebrow"><Calendar size={14} /> Next intake closes in</span>
-            <h3 style={{ fontSize: 24, marginTop: 8 }}>Seats fill in the order dreams arrive.</h3>
-          </div>
-          <Countdown />
-        </div>
-      </section>
 
       {/* PROGRAMS EXPLORER */}
       <section className="sec wrap" style={{ paddingTop: 80 }}>
@@ -185,7 +144,7 @@ export default function Admissions() {
           <p className="lead">A counsellor will reach out within one working day.</p>
           <div className="npf_wgts" data-height="400px" data-w="b9e07b3b3898e1f019ca0c25a842d922" style={{ marginTop: 28 }} />
           <p style={{ fontSize: 13, color: C.slate, marginTop: 16 }}>
-            Or call our admissions cell — Toll free <a href={`tel:${CONTACT.tollFree.replace(/-/g, "")}`} style={{ color: C.emerald, fontWeight: 600 }}>{CONTACT.tollFree}</a>
+            Or call our admissions cell — <a href={`tel:${CONTACT.tollFree.replace(/-/g, "")}`} style={{ color: C.emerald, fontWeight: 600 }}>{CONTACT.tollFree}</a>
           </p>
         </Reveal>
 

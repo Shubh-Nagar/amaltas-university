@@ -2,7 +2,7 @@ import {
   Microscope, GraduationCap, HeartPulse, FlaskConical, Stethoscope,
   Activity, Brain, Building2, Users, Award, Sparkles,
   Calendar, Download, MessageSquare, Newspaper, Image,
-  FileText, ClipboardCheck, BadgeIndianRupee, CalendarClock,
+  FileText, ClipboardCheck, BadgeIndianRupee,
   Trophy, Music, Dumbbell, BookOpen, Home as HomeIcon, HandHeart,
 } from "lucide-react";
 
@@ -13,7 +13,8 @@ export const INSTITUTIONS = [
     desc: "A teaching hospital with 1500+ beds where students train beside practising clinicians from day one.",
     img: "/assets/images%20of%20university/all%20institutes/medical.png",
     studentImg: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=75",
-    programs: ["M.B.B.S.", "MD / MS (various specialities)"],
+    programs: ["M.B.B.S.", "MD / MS", "DM / M.Ch."],
+    website: "https://amaltasmedicalcollege.in/",
   },
   {
     icon: HeartPulse, tag: "BAMS",
@@ -22,6 +23,7 @@ export const INSTITUTIONS = [
     img: "/assets/images%20of%20university/all%20institutes/ayurveda.png",
     studentImg: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=700&q=75",
     programs: ["B.A.M.S."],
+    website: "http://amaltasgroup.co.in/ayurvedic/",
   },
   {
     icon: Activity, tag: "BHMS",
@@ -30,6 +32,7 @@ export const INSTITUTIONS = [
     img: "/assets/images%20of%20university/all%20institutes/homoepathy.png",
     studentImg: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=700&q=75",
     programs: ["B.H.M.S."],
+    website: "https://snow-parrot-499878.hostingersite.com/",
   },
   {
     icon: GraduationCap, tag: "B.Sc · PB B.Sc Nursing",
@@ -37,7 +40,8 @@ export const INSTITUTIONS = [
     desc: "Simulation labs, the lamp-lighting tradition, and placements across the Amaltas hospital network.",
     img: "/assets/images%20of%20university/all%20institutes/nursing.jpeg",
     studentImg: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=75",
-    programs: ["B.Sc. Nursing", "Post Basic B.Sc. Nursing"],
+    programs: ["B.Sc. Nursing", "Post Basic B.Sc. Nursing", "M.Sc. Nursing", "GNM", "PhD Nursing"],
+    website: "http://amaltasgroup.co.in/nursing/",
   },
   {
     icon: FlaskConical, tag: "B.Pharm · D.Pharm",
@@ -46,14 +50,20 @@ export const INSTITUTIONS = [
     img: "/assets/images%20of%20university/all%20institutes/pharmacy.png",
     studentImg: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=700&q=75",
     programs: ["B.Pharm", "D.Pharm"],
+    website: "http://amaltasgroup.co.in/pharmacy/",
   },
   {
     icon: Microscope, tag: "BPT · BMLT · DMLT",
     name: "Amaltas Institute of Paramedical Sciences",
     desc: "Hands-on allied health training in physiotherapy, imaging and laboratory technology.",
-    img: "/assets/images%20of%20university/all%20institutes/paramedical.jpeg",
+    img: "/assets/images%20of%20university/all%20institutes/paramedical.jpg",
     studentImg: "https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&w=700&q=75",
-    programs: ["B.P.T.", "B.M.L.T.", "D.M.L.T."],
+    programs: [
+      "B.P.T.", "B.M.L.T.", "B.X.R.T.", "D.M.L.T.",
+      "Diploma in Cath Lab Technology", "Diploma in Dialysis Technology",
+      "Certificate in OT Technician", "Certificate in X-Ray Technician", "Certificate in USG Technician",
+    ],
+    website: "http://amaltasgroup.co.in/paramedical/#close",
   },
   {
     icon: Brain, tag: "Clinical Psy · BASLP · PDCP",
@@ -62,6 +72,7 @@ export const INSTITUTIONS = [
     img: "/assets/images%20of%20university/all%20institutes/alied.jpg",
     studentImg: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=700&q=75",
     programs: ["B.Sc. Clinical Psychology (Hons)", "B.A.S.L.P.", "PDCP", "ISITEP (HI/ID)"],
+    website: "https://amaltasuniversity.in/courses/department-of-allied-rehabilitation-sciences/",
   },
 ];
 
@@ -186,7 +197,7 @@ export const LEADERS = [
   { role: "Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg" },
   { role: "Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir.jpg" },
   { role: "Vice Chancellor", nm: "Dr. RK Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg" },
-  { role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir.jpeg" },
+  { role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir.png" },
 ];
 
 export const VOICES = [
@@ -225,7 +236,7 @@ export const NAV = [
       { to: "/admissions/procedure", label: "Procedure" },
       { to: "/admissions/fees", label: "Fee Details" },
       { to: "/admissions/eligibility", label: "Eligibility Criteria" },
-      { to: "/admissions", label: "Scholarship" },
+      // { to: "/admissions", label: "Scholarship" },
     ],
   },
   {
@@ -272,7 +283,6 @@ export const NAV = [
 ];
 
 export const ANNOUNCEMENTS = [
-  "Entrance Examination for Ph.D. Program 2026 — Register Now",
   "Admission Open for Academic Year 2026-27 — Apply Today",
   "Amaltas University achieves Guinness World Record — 35,000+ participants in a single mass yoga gathering",
   { text: "IJRHM Website Launch — Visit at  ", linkText: "www.ijrhm.com", href: "https://www.ijrhm.com" },
@@ -282,7 +292,7 @@ export const QUICK_LINKS = [
   { label: "Photogallery", to: "#", icon: Image },
   { label: "Upcoming Events", to: "#", icon: Calendar, isNew: true },
   { label: "Ph.D. Entrance 2026", to: "#", icon: GraduationCap, isNew: true },
-  { label: "IQAC", to: "#", icon: Award },
+  { label: "IQAC", to: "/iqac", icon: Award },
   { label: "News & Press Releases", to: "#", icon: Newspaper },
   { label: "NCMSAP Certificates", to: "#", icon: Download },
   { label: "Alumni Network", to: "/alumni", icon: Users },
@@ -388,8 +398,6 @@ export const AUDIENCES = {
 export const ADMISSION_PATHS = [
   { icon: FileText, label: "How to Apply", desc: "Step-by-step online application", to: "/admissions" },
   { icon: ClipboardCheck, label: "Eligibility Criteria", desc: "Programme-wise requirements", to: "/admissions" },
-  { icon: BadgeIndianRupee, label: "Fees & Scholarships", desc: "Merit & need-based aid", to: "/admissions" },
-  { icon: CalendarClock, label: "Important Dates", desc: "2026–27 admission calendar", to: "/admissions" },
 ];
 
 /* Life at Amaltas — clickable campus-life grid (Medicaps "Life@MU" pattern) */
@@ -400,6 +408,12 @@ export const LIFE = [
   { icon: HomeIcon, label: "Hostels & Dining", tag: "Live", img: "/assets/images%20of%20university/campus%20life/435A1853.JPG" },
   { icon: BookOpen, label: "Library & Labs", tag: "Learn", img: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG" },
   { icon: HandHeart, label: "Community Outreach", tag: "Serve", img: "/assets/images%20of%20university/event%20and%20activites/nurse.jpeg" },
+  { icon: Dumbbell, label: "Badminton", tag: "Play", img: "/assets/images%20of%20university/campus%20life/IMG-20250307-WA0065.jpg" },
+  { icon: Dumbbell, label: "Football", tag: "Play", img: "/assets/images%20of%20university/campus%20life/IMG-20250307-WA0066.jpg" },
+  { icon: Dumbbell, label: "Cricket", tag: "Play", img: "/assets/images%20of%20university/campus%20life/IMG-20250307-WA0067.jpg" },
+  { icon: Dumbbell, label: "Volleyball", tag: "Play", img: "/assets/images%20of%20university/campus%20life/IMG-20250307-WA0072.jpg" },
+  { icon: Trophy, label: "Kabaddi", tag: "Compete", img: "/assets/images%20of%20university/campus%20life/IMG-20250307-WA0073.jpg" },
+  { icon: Trophy, label: "Mass Yoga Day", tag: "World record", img: "/assets/images%20of%20university/campus%20life/P3_yoga.jpg" },
 ];
 
 /* Clinical & career network — honest health-sciences adaptation of Medicaps' placements/recruiters band */
@@ -414,7 +428,7 @@ export const PARTNERS = [
 ];
 
 export const CONTACT = {
-  tollFree: "18005712131",
+  tollFree: "9977544111",
   phone: "07272-482580",
   email: "registrar@amaltasuniversity.in",
   address: "Village Bangar, Dewas–Ujjain Highway, District Dewas, MP 455001",
@@ -545,7 +559,6 @@ export const DISCLOSURE_SECTIONS = [
       { label: "BAMS Helpline",         value: "+91 7880154605" },
       { label: "Allied Sciences",       value: "+91 9617245556" },
       { label: "Office Number",         value: "07272-482580" },
-      { label: "Toll Free",             value: "18005712131" },
       { label: "Email",                 value: "registrar@amaltasuniversity.in" },
       { label: "Admissions Portal",     value: "Online application via official website" },
     ],
@@ -588,6 +601,20 @@ export const VC_MESSAGE = {
   name: "Dr. RK Singh",
   role: "Vice Chancellor, Amaltas University",
   photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg",
+};
+
+/* Extracted from public/assets/docs/IQAC for Website.pdf */
+export const IQAC_MESSAGE = {
+  heading: "Working Together for Excellence: The IQAC Vision",
+  paragraphs: [
+    "The Internal Quality Assurance Cell (IQAC) of Amaltas University has been consistently working towards strengthening and sustaining quality in all academic, administrative, and institutional practices. Guided by the visionary leadership of the Founder Chairman, Shri Suresh Singh Bhadoria, and enriched by the valuable insights of Shri Mayankaraj Singh Bhadoria, the IQAC has made steady progress in fostering a culture of quality. The continued guidance and support of the Pro-Chancellor, Dr. Salil Bhargava, Vice-Chancellor, Dr. R. K. Singh, and Registrar, Dr. Abhay Gupta have been instrumental in driving these initiatives forward.",
+    "The University is committed to aligning its systems and processes with the quality standards prescribed by the University Grants Commission (UGC) and the National Assessment and Accreditation Council (NAAC). While the Binary Accreditation framework proposed by NAAC is yet to be implemented, the University is proactively preparing to align with its requirements once it comes into effect. In this journey, the IQAC serves as the central coordinating body, facilitating quality enhancement initiatives across all constituent institutions.",
+    "Over the past year, sustained efforts have been directed towards strengthening academic and administrative processes through systematic quality initiatives. These include enhancing teaching-learning methodologies, promoting Outcome-Based Education (OBE) and Competency-Based Medical Education (CBME), strengthening student support and mentoring systems, and establishing effective mechanisms for collecting, analysing, and utilizing stakeholder feedback. The IQAC has also actively encouraged research and innovation, organizing faculty development programmes, improved institutional data management practices, ensured timely submission of statutory reports, and enhanced interdepartmental coordination. Collectively, these initiatives have contributed to building a robust quality assurance ecosystem and preparing the University to meet national benchmarks of excellence.",
+    "The successful implementation of these initiatives has been possible through the unwavering support of the University leadership and the dedicated efforts of the heads of institutions, IQAC coordinators, departmental heads, faculty members, and nodal officers across the constituent units of Amaltas University. Their commitment and collaborative approach have significantly strengthened the University's quality assurance framework.",
+    "As Amaltas University continues its journey towards academic excellence and institutional growth, the IQAC remains committed to nurturing a culture of continuous improvement, innovation, accountability, and excellence. Through collective effort and a shared vision, the University is steadily progressing towards achieving higher standards of quality, excellence, and national recognition.",
+  ],
+  name: "Dr. Abhilasha Dutta",
+  role: "Director, IQAC, Amaltas University, Dewas",
 };
 
 /* Assurance — answers the objections families actually weigh before saying yes.
