@@ -153,6 +153,7 @@ export default function FeeDetails() {
         <Reveal delay="d2">
           <div
             key={active}
+            className="data-table"
             style={{
               marginTop: 36,
               borderRadius: 20,
@@ -163,6 +164,7 @@ export default function FeeDetails() {
           >
             {/* Table header */}
             <div
+              className="data-table-row"
               style={{
                 display: "grid",
                 gridTemplateColumns: isAll ? "140px 1fr 2fr 160px" : "1fr 2fr 160px",
@@ -185,6 +187,7 @@ export default function FeeDetails() {
             {displayRows.map((row, i) => (
               <div
                 key={i}
+                className="data-table-row"
                 style={{
                   display: "grid",
                   gridTemplateColumns: isAll ? "140px 1fr 2fr 160px" : "1fr 2fr 160px",

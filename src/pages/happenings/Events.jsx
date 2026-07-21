@@ -1,46 +1,82 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone, CalendarDays } from "lucide-react";
+import { ArrowRight, Phone, CalendarDays, X, ChevronLeft, ChevronRight, Images } from "lucide-react";
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
+
+/* builds encoded gallery paths from a folder name + file list */
+const EV_BASE = "/assets/images%20of%20university/events";
+const gal = (folder, files) => files.map((f) => `${EV_BASE}/${encodeURIComponent(folder)}/${f}`);
 
 const EVENTS = [
   {
     img: "/assets/images%20of%20university/events/u1.jpg",
     date: "2026",
     title: "Early Detection Saves Lives: AI & Bronchoscopy in Focus at Bronchopulmonary World Congress 2026",
+    desc: "Amaltas University hosted the Bronchopulmonary World Congress 2026, convening pulmonologists, researchers and clinicians from across the globe. Sessions spotlighted the growing role of artificial intelligence and advanced bronchoscopy in the early detection of respiratory disease — alongside keynote lectures, hands-on demonstrations and collaborative research presentations.",
+    gallery: gal("Bronchopulmonary World Congress", [
+      "1078759148.jpg", "1098045294.jpg", "2961273970.jpg", "3098288172.jpg", "3159100228.jpg",
+      "369119561.jpg", "4007722889.jpg", "4186091772.jpg", "45357817.jpg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/we1.jpg",
     date: "2026",
     title: "World Environment Day Celebration at Amaltas University",
+    desc: "Students, faculty and staff came together to mark World Environment Day with tree-plantation drives, awareness walks and sustainability pledges across the campus. The celebration reaffirmed the Amaltas commitment to a greener, healthier future — where healing grows for both people and the planet.",
+    gallery: gal("World Environment Day", [
+      "1631972698.jpg", "2603873168.jpg", "2754476936.jpg", "3031353413.jpg", "3554367168.jpg", "3658607544.jpg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/P1_yoga.jpg",
     date: "2026",
     title: "Index Group & Amaltas Set a World Record with a Mass Yoga Session of 35,000+ Participants",
+    desc: "In partnership with the Index Group, Amaltas took part in a record-setting mass yoga session with more than 35,000 participants. The sea of practitioners moved as one through guided asanas and pranayama, celebrating wellness, discipline and the enduring spirit of community that defines campus life.",
+    gallery: gal("World Record with a Mass Yoga Session", [
+      "1672916145.jpg", "2381182752.jpg", "2533750096.jpg", "3118974039.jpg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-05-13-at-13.48.30.jpeg",
     date: "2026",
     title: "Nurses Day Celebration",
+    desc: "The Amaltas Institute of Nursing Sciences honoured its students and faculty on International Nurses Day with a heartfelt ceremony of lamp-lighting, oath renewal and cultural performances — a tribute to the compassion, courage and care that nurses bring to every bedside.",
+    gallery: gal("Nurses Day Celebration", [
+      "184447220.jpeg", "1984864632.jpeg", "2016098136.jpeg", "2344910398.jpeg", "3000633580.jpeg",
+      "3189715197.jpeg", "373299387.jpeg", "3853472221.jpeg", "405114523.jpeg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-04-23-at-10.46.55-2.jpeg",
     date: "2026",
     title: "Grand Lamp Lighting & Oath Taking Ceremony held at Amaltas Institute of Nursing Science, Dewas",
+    desc: "The incoming nursing cohort was formally welcomed at the Grand Lamp Lighting & Oath Taking Ceremony at the Amaltas Institute of Nursing Science, Dewas. Carrying the lamp — a symbol of knowledge and service — students pledged themselves to the Nightingale ideals of dignity, integrity and selfless patient care.",
+    gallery: gal("Grand Lamp Lighting", [
+      "141757211.jpeg", "2548327512.jpeg", "2777917031.jpeg", "3367670757.jpeg", "3806233540.jpeg", "902668302.jpeg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-04-18-at-18.06.07.jpeg",
     date: "2026",
     title: "Workshop on Advanced Medical Techniques at Amaltas Medical College",
+    desc: "Amaltas Medical College conducted an intensive workshop on advanced medical techniques, giving students and young clinicians hands-on exposure to modern diagnostic and procedural skills. Expert-led stations, simulation practice and live demonstrations bridged classroom theory with real-world clinical confidence.",
+    gallery: gal("Workshop on Advanced Medical", [
+      "135491927.jpeg", "1460543249.jpeg", "2688546606.jpeg", "3461667021.jpeg", "35206013.jpeg",
+      "395516020.jpeg", "4105597983.jpeg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/2.jpeg",
     date: "2026",
     title: "World Homoeopathy Day Celebration",
+    desc: "The Amaltas Institute of Homoeopathy marked World Homoeopathy Day with lectures, awareness sessions and student presentations honouring the legacy of Dr. Samuel Hahnemann. The celebration reaffirmed the university's commitment to gentle, patient-centred healing and the continued advancement of homoeopathic education and research.",
+    gallery: gal("World Homoeopathy Day Celebration", [
+      "1059695508.jpeg", "147216227.jpeg", "1509994228.jpeg", "1629207928.jpeg", "2412249410.jpeg",
+      "2588556869.jpeg", "3056387985.jpeg", "31754711.jpeg", "3217034130.jpeg", "4184558858.jpeg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-04-13-at-10.13.17-1.jpeg",
@@ -51,11 +87,25 @@ const EVENTS = [
     img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-04-13-at-16.58.39.jpeg",
     date: "2026",
     title: "Graduation Ceremony",
+    desc: "Amaltas University celebrated its graduating cohort at a proud convocation of caps, gowns and heartfelt farewells. Faculty, families and friends gathered to honour the achievements of the new healers stepping into the world — a milestone marking the end of one journey and the beginning of a lifetime of care and service.",
+    gallery: gal("Graduation Ceremony", [
+      "123863021.jpeg", "1518999223.jpeg", "2091041859.jpeg", "2275031415.jpeg", "2435276082.jpeg",
+      "2694355762.jpeg", "283588566.jpeg", "2912066821.jpeg", "3058615207.jpeg", "3543631332.jpeg",
+      "3731153976.jpeg", "4254481663.jpeg", "45267966.jpeg", "503457223.jpeg", "566631592.jpeg",
+      "705010436.jpeg", "967192149.jpeg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-03-23-at-21.48.31.jpeg",
     date: "2026",
     title: "National Conference on “Emerging Trends in Artificial Intelligence for Advanced Health Care Delivery”",
+    desc: "Amaltas University hosted a National Conference exploring how artificial intelligence is reshaping modern healthcare delivery. Academicians, clinicians and industry experts shared research on AI-driven diagnostics, predictive care and digital health — sparking rich discussion on the future of technology-enabled, patient-first medicine.",
+    gallery: gal("National Conference", [
+      "1213249757.jpeg", "1322534202.jpeg", "1505087871.jpeg", "1624770962.jpeg", "1740693344.jpeg",
+      "1864246546.jpeg", "1987359000.jpeg", "24447729.jpeg", "2702887579.jpeg", "3791936862.jpeg",
+      "3806879209.jpeg", "3930057147.jpeg", "4068829486.jpeg", "408677529.jpeg", "422106650.jpeg",
+      "997386420.jpeg", "998804634.jpeg",
+    ]),
   },
   {
     img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-03-17-at-15.26.47.jpeg",
@@ -100,6 +150,30 @@ const EVENTS = [
 ];
 
 export default function Events() {
+  const [open, setOpen] = useState(null);        // event object shown in the modal
+  const [lightbox, setLightbox] = useState(null); // index into open.gallery, or null
+
+  // body-scroll lock + Escape / arrow-key handling while a modal is open
+  useEffect(() => {
+    if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        if (lightbox !== null) setLightbox(null);
+        else setOpen(null);
+      } else if (lightbox !== null && open.gallery) {
+        if (e.key === "ArrowRight") setLightbox((i) => (i + 1) % open.gallery.length);
+        if (e.key === "ArrowLeft") setLightbox((i) => (i - 1 + open.gallery.length) % open.gallery.length);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open, lightbox]);
+
   return (
     <>
       <PageHero
@@ -113,25 +187,47 @@ export default function Events() {
       {/* ── EVENTS GRID ── */}
       <section className="sec wrap">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 24 }}>
-          {EVENTS.map((ev, i) => (
-            <Reveal key={ev.img} delay={`d${(i % 3) + 1}`}>
-              <div className="card-lift" style={{ background: "#fff", borderRadius: 18, overflow: "hidden", border: "1px solid rgba(11,44,24,.07)", height: "100%", display: "flex", flexDirection: "column" }}>
-                <div style={{ aspectRatio: "4/3", overflow: "hidden" }}>
-                  <img
-                    src={ev.img}
-                    alt={ev.title}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                  />
-                </div>
-                <div style={{ padding: "18px 20px 22px", display: "flex", flexDirection: "column", flex: 1 }}>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, color: C.slate, marginBottom: 9 }}>
-                    <CalendarDays size={13} /> {ev.date}
+          {EVENTS.map((ev, i) => {
+            const hasGallery = Array.isArray(ev.gallery) && ev.gallery.length > 0;
+            return (
+              <Reveal key={ev.img} delay={`d${(i % 3) + 1}`}>
+                <div
+                  className="card-lift"
+                  onClick={hasGallery ? () => setOpen(ev) : undefined}
+                  role={hasGallery ? "button" : undefined}
+                  tabIndex={hasGallery ? 0 : undefined}
+                  onKeyDown={hasGallery ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen(ev); } } : undefined}
+                  aria-label={hasGallery ? `${ev.title} — view photo gallery` : undefined}
+                  style={{ background: "#fff", borderRadius: 18, overflow: "hidden", border: "1px solid rgba(11,44,24,.07)", height: "100%", display: "flex", flexDirection: "column", cursor: hasGallery ? "pointer" : "default" }}
+                >
+                  <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden" }}>
+                    <img
+                      src={ev.img}
+                      alt={ev.title}
+                      loading="lazy"
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                    />
+                    {hasGallery && (
+                      <span className="ev-photo-badge">
+                        <Images size={13} /> {ev.gallery.length} photos
+                      </span>
+                    )}
                   </div>
-                  <h3 style={{ fontSize: 15.5, lineHeight: 1.4, margin: 0 }}>{ev.title}</h3>
+                  <div style={{ padding: "18px 20px 22px", display: "flex", flexDirection: "column", flex: 1 }}>
+                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, color: C.slate, marginBottom: 9 }}>
+                      <CalendarDays size={13} /> {ev.date}
+                    </div>
+                    <h3 style={{ fontSize: 15.5, lineHeight: 1.4, margin: 0 }}>{ev.title}</h3>
+                    {hasGallery && (
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 5, marginTop: 12, fontSize: 12.5, fontWeight: 700, color: C.emerald }}>
+                        View gallery <ArrowRight size={14} />
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -155,6 +251,58 @@ export default function Events() {
           </Reveal>
         </div>
       </section>
+
+      {/* ── EVENT GALLERY MODAL ── */}
+      {open && (
+        <div className="ev-modal-backdrop" onClick={() => setOpen(null)}>
+          <div className="ev-modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={open.title}>
+            <button className="ev-modal-close" onClick={() => setOpen(null)} aria-label="Close">
+              <X size={18} />
+            </button>
+            <div className="ev-modal-date"><CalendarDays size={13} /> {open.date}</div>
+            <h2 className="ev-modal-title">{open.title}</h2>
+            {open.desc && <p className="ev-modal-desc">{open.desc}</p>}
+            {Array.isArray(open.gallery) && open.gallery.length > 0 && (
+              <div className="ev-modal-gallery">
+                {open.gallery.map((src, i) => (
+                  <button key={src} className="ev-modal-thumb" onClick={() => setLightbox(i)} aria-label={`Open photo ${i + 1}`}>
+                    <img src={src} alt={`${open.title} — photo ${i + 1}`} loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ── FULL-SIZE LIGHTBOX ── */}
+      {open && lightbox !== null && open.gallery && (
+        <div className="ev-lightbox" onClick={() => setLightbox(null)}>
+          <button className="ev-lightbox-close" onClick={() => setLightbox(null)} aria-label="Close photo">
+            <X size={22} />
+          </button>
+          {open.gallery.length > 1 && (
+            <button
+              className="ev-lightbox-nav prev"
+              onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + open.gallery.length) % open.gallery.length); }}
+              aria-label="Previous photo"
+            >
+              <ChevronLeft size={26} />
+            </button>
+          )}
+          <img className="ev-lightbox-img" src={open.gallery[lightbox]} alt={`${open.title} — photo ${lightbox + 1}`} onClick={(e) => e.stopPropagation()} />
+          {open.gallery.length > 1 && (
+            <button
+              className="ev-lightbox-nav next"
+              onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % open.gallery.length); }}
+              aria-label="Next photo"
+            >
+              <ChevronRight size={26} />
+            </button>
+          )}
+          <div className="ev-lightbox-count">{lightbox + 1} / {open.gallery.length}</div>
+        </div>
+      )}
     </>
   );
 }

@@ -93,7 +93,7 @@ export default function Accreditations() {
                 </p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                {["NMC · CCIM · CCH approvals active", "INC · PCI · RCI approvals active", "UGC Section 2(f) recognition", "MP Private University Act compliance", "Annual audit by MPUREC"].map((item, i) => (
+                {["NMC · CCIM · CCH approvals active", "INC · PCI · RCI approvals active", "UGC Section 2(f) recognition", "MP Private University Act compliance", "Annual audit by MPPUREC"].map((item, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 12, color: "rgba(247,244,236,.85)", fontSize: 14.5 }}>
                     <CheckCircle size={16} color={C.emeraldL} style={{ flexShrink: 0 }} />
                     {item}

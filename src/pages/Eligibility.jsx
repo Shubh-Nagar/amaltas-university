@@ -161,6 +161,7 @@ export default function Eligibility() {
         <Reveal delay="d2">
           <div
             key={active}
+            className="data-table"
             style={{
               marginTop: 36,
               borderRadius: 20,
@@ -170,7 +171,7 @@ export default function Eligibility() {
             }}
           >
             {/* Header */}
-            <div style={{
+            <div className="data-table-row" style={{
               display: "grid",
               gridTemplateColumns: isAll ? "190px 220px 1fr" : "220px 1fr",
               background: cat.color,
@@ -191,6 +192,7 @@ export default function Eligibility() {
             {displayRows.map((row, i) => (
               <div
                 key={i}
+                className="data-table-row"
                 style={{
                   display: "grid",
                   gridTemplateColumns: isAll ? "190px 220px 1fr" : "220px 1fr",

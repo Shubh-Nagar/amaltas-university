@@ -4,6 +4,7 @@ import {
   Calendar, Download, MessageSquare, Newspaper, Image,
   FileText, ClipboardCheck, BadgeIndianRupee,
   Trophy, Music, Dumbbell, BookOpen, Home as HomeIcon, HandHeart,
+  Leaf, Heart, Star,
 } from "lucide-react";
 
 export const INSTITUTIONS = [
@@ -192,18 +193,18 @@ export const WHY = [
 ];
 
 export const LEADERS = [
-  { role: "Founder Chairman", nm: "Shri Suresh Singh Bhadoria", org: "Mayank Welfare Society", bio: "Visionary founder whose tireless dedication and philanthropic resolve laid the cornerstone of the Amaltas group and its mission to serve society.", photo: "/assets/images%20of%20university/leadership/suresh-sir.jpeg" },
-  { role: "Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Mayank Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/mayank.jpeg" },
-  { role: "Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg" },
-  { role: "Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir.jpg" },
-  { role: "Vice Chancellor", nm: "Dr. RK Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg" },
-  { role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir.png" },
+  { slug: "founder-chairman", role: "Founder Chairman", nm: "Shri Suresh Singh Bhadoria", org: "Mayank Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/suresh-sir.jpeg" },
+  { slug: "chairman", role: "Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Mayank Welfare Society", bio: "Visionary founder whose tireless dedication and philanthropic resolve laid the cornerstone of the Amaltas group and its mission to serve society.", photo: "/assets/images%20of%20university/leadership/mayank.jpeg" },
+  { slug: "chancellor", role: "Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg" },
+  { slug: "pro-chancellor", role: "Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir.jpg" },
+  { slug: "vice-chancellor", role: "Vice Chancellor", nm: "Dr. RK Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg" },
+  { slug: "registrar", role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir.png" },
 ];
 
 export const VOICES = [
   { q: "I walked into a real hospital ward in my second month. Nowhere else gives you that. Amaltas didn't just teach me medicine — it made me a doctor patients trust.", n: "Final-year MBBS student", r: "Institute of Medical Sciences", photo: "/assets/images%20of%20university/testimonials/t1.JPG" },
-  { q: "As a parent, I wanted my daughter safe and seen. The faculty call us by name. The campus feels like a family that happens to be world-class.", n: "Parent of a Nursing student", r: "Dewas, Madhya Pradesh", photo: "/assets/images%20of%20university/testimonials/t2.JPG" },
-  { q: "The research culture surprised me. We were publishing and presenting before I expected to even understand the labs. The mentorship is the real differentiator.", n: "BAMS graduate", r: "Ayurvedic College & Research Centre", photo: "/assets/images%20of%20university/testimonials/435A1861.JPG" },
+  { q: "I came from a small town and was nervous at first, but the faculty know me by name and the labs stay open whenever I want extra practice. The campus feels like a family that happens to be world-class.", n: "B.Pharm student", r: "Institute of Pharmacy", photo: "/assets/images%20of%20university/testimonials/t2.JPG" },
+  { q: "The research culture surprised me. We were publishing and presenting before I expected to even understand the labs. The mentorship is the real differentiator.", n: "Final-year BAMS student", r: "Ayurvedic College & Research Centre", photo: "/assets/images%20of%20university/testimonials/435A1861.JPG" },
   { q: "From the lamp-lighting ceremony to my first clinical posting, I felt I belonged. The simulation labs prepared me for a career, not just an exam.", n: "B.Sc. Nursing student", r: "Institute of Nursing Sciences", photo: "/assets/images%20of%20university/testimonials/t3.JPG" },
 ];
 
@@ -221,8 +222,7 @@ export const NAV = [
     mega: true,
     children: [
       { to: "/about/university",     label: "The University",             desc: "Our story, vision & mission",  icon: Building2     },
-      { to: "/about/leadership",     label: "Board of Management",        desc: "Trustees & governing council", icon: Users         },
-      { to: "/about/chancellor",     label: "Chancellor's Message",       desc: "Words from our Chancellor",    icon: MessageSquare },
+      { to: "/leadership",           label: "Leadership",                 desc: "Board, chancellors & messages", icon: Users         },
       { to: "/about/awards",         label: "Awards & Rankings",          desc: "Recognition & achievements",   icon: Trophy        },
       { to: "/about/accreditations", label: "Approvals & Accreditations", desc: "Regulatory body approvals",   icon: Award         },
       { to: "/about/disclosure",     label: "Mandatory Disclosure",       desc: "AISHE & UGC compliance",      icon: FileText      },
@@ -510,7 +510,7 @@ export const ACCREDITATIONS = [
   { short: "PCI",    color: "#D84315", logo: "/assets/images%20of%20university/recognisation/pci-logo.png",  name: "Pharmacy Council of India",                   desc: "Affiliation for Bachelor of Pharmacy (B.Pharm) and Diploma in Pharmacy (D.Pharm).",    scope: "Institute of Pharmacy"              },
   { short: "RCI",    color: "#1565C0", logo: "/assets/images%20of%20university/recognisation/rci.png",       name: "Rehabilitation Council of India",             desc: "Approval for B.A.S.L.P. and allied rehabilitation science courses.",                     scope: "Allied & Rehabilitation Sciences"   },
   { short: "UGC",    color: "#0D1B5E", logo: "/assets/images%20of%20university/recognisation/ugc.png",       name: "University Grants Commission",                desc: "Recognition as a Private University under Section 2(f) of the UGC Act, 1956.",           scope: "University-wide"                   },
-  { short: "MPUREC", color: "#6D4C41", logo: "/assets/images%20of%20university/recognisation/mppurc.jpg",    name: "MP Private University Regulatory Commission", desc: "Established under the MP Niji Vishwavidyalaya (Sthapana Aur Sanchalan) Adhiniyam.",    scope: "University-wide"                   },
+  { short: "MPPUREC", color: "#6D4C41", logo: "/assets/images%20of%20university/recognisation/mppurc.jpg",    name: "MP Private University Regulatory Commission", desc: "Established under the MP Niji Vishwavidyalaya (Sthapana Aur Sanchalan) Adhiniyam.",    scope: "University-wide"                   },
   { short: "NABH",   color: "#880E4F", logo: "/assets/images%20of%20university/recognisation/nabh-logo.png", name: "Natl. Accreditation Board for Hospitals",     desc: "NABH-linked teaching hospital ensuring patient safety and quality care standards.",       scope: "Teaching Hospital"                  },
 ];
 
@@ -525,7 +525,7 @@ export const DISCLOSURE_SECTIONS = [
       { label: "Chancellor",            value: "Mrs. Aruna Bhadoria" },
       { label: "Pro-Chancellor",        value: "Dr. Salil Bhargava" },
       { label: "Vice Chancellor",       value: "Dr. RK Singh" },
-      { label: "Registrar",             value: "Shri Sanjay Rambole" },
+      { label: "Registrar",             value: "Dr. Abhay Gupta" },
       { label: "Address",               value: "Village Bangar, Dewas–Ujjain Highway, District Dewas, Madhya Pradesh – 455001" },
       { label: "Website",               value: "www.amaltasuniversity.in" },
     ],
@@ -566,7 +566,8 @@ export const DISCLOSURE_SECTIONS = [
 ];
 
 // Chancellor's Message — consumed by both the /about/university preview
-// (TheUniversity.jsx) and the full /about/chancellor page (ChancellorMessage.jsx).
+// (TheUniversity.jsx) and reused as LEADER_MESSAGES.chancellor for the full
+// /leadership/chancellor page (LeaderMessage.jsx).
 export const CHANCELLOR_MESSAGE = {
   salutation: "Dear Friends,",
   // Full letter body; the preview on /about/university only shows paragraphs[1].
@@ -601,6 +602,121 @@ export const VC_MESSAGE = {
   name: "Dr. RK Singh",
   role: "Vice Chancellor, Amaltas University",
   photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg",
+  quote: "My mission as an educator is to ignite curiosity and develop lifelong learners equipped to serve society effectively.",
+};
+
+// Full message-page content for every /leadership/:slug route (LeaderMessage.jsx).
+// Keyed by LEADERS[].slug. Chancellor & Vice Chancellor reuse the letter text
+// already authored above; the rest are authored directly here.
+export const LEADER_MESSAGES = {
+  "founder-chairman": {
+    salutation: "Dear Friends, Faculty, and Students,",
+    paragraphs: [
+      "When I established Mayank Welfare Society in 2013, I carried a single, unwavering conviction: that the people of Malwa — of Dewas, of every village and town across this heartland — deserved world-class healthcare education within reach. Not in a distant city, not beyond the means of the ordinary family, but here, close to home.",
+      "I have spent my life in service of this community. I have seen the consequences of a healthcare gap — families travelling hundreds of kilometres for treatment, young people with the aptitude to become doctors but no institution willing to open its doors to them. Amaltas was my answer to that silence.",
+      "Building a university is not the work of one man or one year. It is the accumulation of thousands of decisions, sacrifices, and acts of faith. Every building you walk through, every laboratory you learn in, every patient you will one day treat — each of these traces its origin to a belief that service is the highest calling.",
+      "To our students: you did not come to Amaltas by accident. You came because something in you recognised this place as more than an institution — it is a family, a mission, and a promise. I ask only one thing of you: carry that promise into the world with the same sincerity with which we planted it.",
+      "Amaltas means Cassia fistula — the golden shower tree. It blooms fully, without hesitation, transforming its surroundings. I hope each of you will do the same.",
+    ],
+    closing: "With deep respect and enduring hope,",
+    quote: "I did not build Amaltas for today — I built it for every generation of healer that will follow.",
+    heroEyebrow: "A message from the Founder",
+    heroTitle: "Rooted in service, grown with purpose.",
+    heroBg: "/assets/images%20of%20university/photo-gallery/DJI_0019.jpg",
+    stats: [
+      { icon: Leaf, label: "Founded", value: "2013", desc: "Mayank Welfare Society established" },
+      { icon: Heart, label: "Mission", value: "Service", desc: "Healthcare access for Malwa heartland" },
+      { icon: Star, label: "Legacy", value: "10+ Years", desc: "Of uninterrupted commitment" },
+    ],
+  },
+  chairman: {
+    salutation: "Dear Members of the Amaltas Family,",
+    paragraphs: [
+      "I grew up watching my father build something from nothing — a welfare society, then a hospital, then a university. I did not merely inherit a title when I became Chairman. I inherited a responsibility: to ensure that what he started would not only survive but flourish in ways even he had not yet imagined.",
+      "Amaltas University today stands as a testament to what focused resolve and genuine service can achieve. We are not the largest institution in India. But I believe we are among the most sincere. Every decision made at this university begins from a single question: does this serve our students and our community?",
+      "In an era when education risks becoming a transaction, I am determined that Amaltas remains a transformation. The student who walks into our Institute of Medical Sciences, our Ayurvedic College, our Pharmacy or Nursing programmes — they are not customers. They are the future of healthcare in this region, and we owe them the very best we have.",
+      "I am particularly proud of the clinical exposure we provide from the earliest semesters. Theory without practice produces knowledge without confidence. Our teaching hospital, our community outreach programmes, our research culture — these exist because we believe a healer must know the world they are healing.",
+      "To every student reading this: Amaltas chose you as much as you chose us. We will not let you down. I give you my personal commitment to that.",
+    ],
+    closing: "With respect and confidence in what we will build together,",
+    quote: "Every student who graduates from Amaltas carries with them the weight of a community's hope and the strength of a family's belief.",
+    heroEyebrow: "A message from the Chairman",
+    heroTitle: "A vision inherited, a future earned.",
+    heroBg: "/assets/images%20of%20university/The%20Amaltas%20difference/hospital.jpg",
+    stats: [
+      { icon: GraduationCap, label: "Academic Excellence", value: "First priority", desc: "Curriculum, faculty, and outcomes held to the highest standard" },
+      { icon: Stethoscope, label: "Clinical Depth", value: "From Semester 1", desc: "Real hospital exposure before graduation year" },
+      { icon: Building2, label: "Infrastructure", value: "Continually growing", desc: "State-of-the-art labs, simulation centres, libraries" },
+    ],
+  },
+  chancellor: {
+    salutation: CHANCELLOR_MESSAGE.salutation,
+    paragraphs: CHANCELLOR_MESSAGE.paragraphs,
+    closing: CHANCELLOR_MESSAGE.closing,
+    quote: CHANCELLOR_MESSAGE.quote,
+    heroEyebrow: "A note from the Chancellor",
+    heroTitle: "Dear student, this is for you.",
+    heroBg: "/assets/images%20of%20university/our%20purpose/university.jpg",
+    stats: [
+      { icon: HandHeart, label: "Focus", value: "Nurturing Care", desc: "Guiding an institution rooted in compassion and access" },
+      { icon: Users, label: "Community", value: "Malwa Region", desc: "Bringing world-class healthcare education close to home" },
+      { icon: Trophy, label: "Milestone", value: "35,000+", desc: "Participants in the 2024 mass yoga world record" },
+    ],
+  },
+  "vice-chancellor": {
+    salutation: VC_MESSAGE.salutation,
+    paragraphs: VC_MESSAGE.paragraphs,
+    closing: VC_MESSAGE.closing,
+    quote: VC_MESSAGE.quote,
+    heroEyebrow: "A message from the Vice Chancellor",
+    heroTitle: "Igniting curiosity, one mind at a time.",
+    heroBg: "/assets/images%20of%20university/photo-gallery/2U8A8968.jpg",
+    stats: [
+      { icon: BookOpen, label: "Focus", value: "Academic Freedom", desc: "Fostering a rigorous, curiosity-driven research culture" },
+      { icon: Users, label: "Community", value: "Student-Centred", desc: "Mutual respect, equity and dignity for every learner" },
+      { icon: Award, label: "Vision", value: "Centre of Excellence", desc: "Research and development at a global scale" },
+    ],
+  },
+  // PLACEHOLDER — Pro-Chancellor has no authored letter yet; replace with his
+  // real message when available. Drafted generically from his LEADERS bio line.
+  "pro-chancellor": {
+    salutation: "Dear Students and Colleagues,",
+    paragraphs: [
+      "It is a privilege to serve Amaltas University as Pro-Chancellor, working alongside a leadership team committed to bridging rigorous academics with genuine clinical practice.",
+      "Over decades in clinical and academic settings, I have seen how the strongest healthcare professionals are shaped as much by mentorship and hands-on exposure as by textbooks. That belief guides how we grow every institute at Amaltas.",
+      "I am committed to supporting our faculty and students as they build a university that the Malwa region can rely on for generations to come.",
+    ],
+    closing: "With commitment to your growth,",
+    quote: "The strongest healthcare professionals are shaped as much by mentorship and hands-on exposure as by textbooks.",
+    heroEyebrow: "A message from the Pro-Chancellor",
+    heroTitle: "Bridging clinical practice and academic vision.",
+    heroBg: "/assets/images%20of%20university/photo-gallery/2U8A9378.jpg",
+    stats: [
+      { icon: Stethoscope, label: "Focus", value: "Clinical Practice", desc: "Decades of hands-on healthcare leadership" },
+      { icon: GraduationCap, label: "Role", value: "Academic Bridge", desc: "Connecting classroom learning to real practice" },
+      { icon: ClipboardCheck, label: "Priority", value: "Faculty Growth", desc: "Supporting educators across every institute" },
+    ],
+  },
+  // PLACEHOLDER — Registrar has no authored letter yet; replace with his
+  // real message when available. Drafted generically from his LEADERS bio line.
+  registrar: {
+    salutation: "Dear Students and Members of the Amaltas Community,",
+    paragraphs: [
+      "As Registrar, my role is to ensure that the university runs with the integrity, transparency, and consistency our students and families expect from us.",
+      "From admissions to examinations to daily administration, our office works to make sure the systems behind your education are dependable — so that your focus can stay where it belongs: on learning.",
+      "I welcome every student and parent to reach out to our administration with questions or concerns. Good governance is a promise we intend to keep every single day.",
+    ],
+    closing: "With commitment to integrity and service,",
+    quote: "Good governance is a promise we intend to keep every single day.",
+    heroEyebrow: "A message from the Registrar",
+    heroTitle: "Governance built on integrity.",
+    heroBg: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",
+    stats: [
+      { icon: FileText, label: "Focus", value: "Admissions Integrity", desc: "Transparent, dependable enrolment processes" },
+      { icon: ClipboardCheck, label: "Oversight", value: "University Administration", desc: "Consistent systems across every institute" },
+      { icon: Building2, label: "Priority", value: "Governance", desc: "Reliable structure behind student life" },
+    ],
+  },
 };
 
 /* Extracted from public/assets/docs/IQAC for Website.pdf */

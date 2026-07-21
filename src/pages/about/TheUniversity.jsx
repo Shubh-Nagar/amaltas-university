@@ -426,7 +426,7 @@ export default function TheUniversity() {
       {/* ══ CHANCELLOR'S MESSAGE ══
           Short preview of CHANCELLOR_MESSAGE (from content.js) — photo, pull
           quote, and paragraphs[1] only. The full letter lives on the
-          dedicated /about/chancellor route (ChancellorMessage.jsx). */}
+          shared /leadership/chancellor route (LeaderMessage.jsx). */}
       <section className="sec wrap" style={{ paddingTop: 90 }}>
         <div style={{ display: "grid", gridTemplateColumns: "minmax(260px,360px) 1fr", gap: 56, alignItems: "center" }} className="chancellor-preview-grid">
           {/* Chancellor's photo, with a soft green/gold glow behind the frame */}
@@ -454,7 +454,7 @@ export default function TheUniversity() {
               <div style={{ color: G.green, fontSize: 13, fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", marginTop: 4 }}>{CHANCELLOR_MESSAGE.role}</div>
             </div>
             <div style={{ marginTop: 26 }}>
-              <Link to="/about/chancellor" className="btn btn-dark">Read full message <ArrowRight size={18} /></Link>
+              <Link to="/leadership/chancellor" className="btn btn-dark">Read full message <ArrowRight size={18} /></Link>
             </div>
           </Reveal>
         </div>

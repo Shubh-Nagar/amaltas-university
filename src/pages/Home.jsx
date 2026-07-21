@@ -3,11 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Play, Sparkles, Trophy, HeartPulse,
   Award, Quote, ChevronLeft, ChevronRight, ChevronDown,
-  Calendar, Phone, Send, CheckCircle, Newspaper, Users,
-  ArrowUp, Check,
+  Calendar, Phone, CheckCircle, Newspaper, Users,
+  Check,
 } from "lucide-react";
 import HelixCanvas from "../components/HelixCanvas.jsx";
-import EnquiryWidget from "../components/EnquiryWidget.jsx";
 import NPFWidget from "../components/NPFWidget.jsx";
 import Blob from "../components/Blob.jsx";
 import MagicBento from "../components/MagicBento.jsx";
@@ -18,7 +17,7 @@ import {
   INSTITUTIONS, WHY, VOICES, STATS, LEADERS,
   EVENTS, NEWS, FAQS, ANNOUNCEMENTS,
   AUDIENCES, ADMISSION_PATHS, LIFE, OUTCOMES, PARTNERS,
-  ACCREDITATIONS, ASSURANCE, PROGRAMS,
+  ACCREDITATIONS, ASSURANCE,
 } from "../data/content.js";
 
 const IMGS = {
@@ -28,15 +27,6 @@ const IMGS = {
   instBanner:   "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=80",
 };
 
-const POSTERS = [
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130301_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130315_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130325_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130337_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130355_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130449_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130505_Instagram.jpg.jpeg",
-];
 
 /* ─── tiny sub-components ─── */
 
@@ -93,45 +83,6 @@ function FaqItem({ q, a }) {
   );
 }
 
-/* Real WhatsApp glyph (lucide-react ships no brand icons) */
-function WhatsAppIcon({ size = 24 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-      <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.7 4.607 1.907 6.47L4 29l7.72-1.87A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm0 21.8a9.76 9.76 0 0 1-4.98-1.36l-.357-.212-4.583 1.11 1.13-4.47-.233-.366A9.75 9.75 0 0 1 5.2 15c0-5.955 4.85-10.8 10.804-10.8 5.954 0 10.8 4.845 10.8 10.8s-4.846 10.8-10.8 10.8Zm5.94-8.09c-.325-.163-1.925-.95-2.223-1.058-.298-.109-.515-.163-.732.163-.217.325-.84 1.058-1.03 1.276-.19.217-.38.244-.705.081-.325-.163-1.372-.505-2.613-1.611-.966-.861-1.618-1.924-1.808-2.249-.19-.325-.02-.5.143-.663.147-.146.325-.38.488-.57.163-.19.217-.325.325-.542.108-.217.054-.407-.027-.57-.081-.163-.732-1.766-1.004-2.42-.264-.636-.532-.55-.732-.56l-.624-.011c-.217 0-.57.081-.868.407-.298.325-1.138 1.112-1.138 2.712 0 1.6 1.165 3.146 1.327 3.363.163.217 2.294 3.502 5.558 4.912.777.335 1.383.535 1.856.685.78.248 1.49.213 2.052.129.626-.093 1.925-.787 2.196-1.548.271-.76.271-1.412.19-1.548-.081-.136-.298-.217-.623-.38Z"/>
-    </svg>
-  );
-}
-
-/* Sticky conversion actions — WhatsApp + back-to-top (Medicaps floating-CTA pattern) */
-function FloatingActions() {
-  const [showTop, setShowTop] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 700);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return (
-    <div className="fab-stack" aria-hidden="false">
-      <EnquiryWidget className="fab fab-enquire" />
-      <a
-        href="https://wa.me/919977544111?text=Hi%2C%20I%27d%20like%20to%20know%20about%20admissions%20at%20Amaltas%20University."
-        target="_blank" rel="noreferrer"
-        className="fab fab-wa" aria-label="Chat with admissions on WhatsApp"
-      >
-        <WhatsAppIcon size={24} />
-        <span className="fab-tip">Chat with us</span>
-      </a>
-      <button
-        className={`fab fab-top ${showTop ? "show" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-      >
-        <ArrowUp size={20} />
-      </button>
-    </div>
-  );
-}
 
 function LifeGrid() {
   const row1 = [...LIFE, ...LIFE, ...LIFE];
@@ -700,16 +651,10 @@ function HeroForm() {
 ═══════════════════════════════════════════════════ */
 export default function Home() {
   const [voice, setVoice] = useState(0);
-  const [posterIdx, setPosterIdx] = useState(0);
   const [tourNotice, setTourNotice] = useState(false);
 
   useEffect(() => {
     const id = setInterval(() => setVoice((v) => (v + 1) % VOICES.length), 6000);
-    return () => clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    const id = setInterval(() => setPosterIdx((i) => (i + 1) % POSTERS.length), 4000);
     return () => clearInterval(id);
   }, []);
 
@@ -1097,7 +1042,7 @@ export default function Home() {
             <span className="eyebrow" style={{ color: C.goldL, marginBottom: 48, display: "block" }}>Voices of Amaltas</span>
           </Reveal>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 56, alignItems: "start" }}>
+          <div className="voices-split" style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 56, alignItems: "start" }}>
 
             {/* ── LEFT: featured quote ── */}
             <Reveal variant="left">
@@ -1205,76 +1150,6 @@ export default function Home() {
       </section>
 
 
-      {/* ════════════════════════════════════════
-          ADMISSION CTA  — final ask (light gradient)
-      ════════════════════════════════════════ */}
-      <section className="sec admission-cta-section" style={{ position: "relative", overflow: "hidden" }}>
-        <Blob color="rgba(18,134,63,.1)"  size={580} blur={115} variant="b" delay={0}
-          style={{ left: "-10%", top: "-10%", zIndex: 1 }} />
-        <Blob color="rgba(246,224,5,.12)" size={450} blur={100} variant="a" delay={12}
-          style={{ right: "-6%", bottom: "-5%", zIndex: 1 }} />
-        <Blob color="rgba(35,166,83,.08)"  size={300} blur={85}  variant="c" delay={28}
-          style={{ left: "55%", top: "40%", zIndex: 1 }} />
-
-        <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
-          <div className="admission-cta-grid">
-            <Reveal variant="left">
-              <div className="poster-carousel" style={{ height: 420 }}>
-                {POSTERS.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Admission poster ${i + 1}`}
-                    className={`poster-slide ${i === posterIdx ? "on" : ""}`}
-                    loading={i === 0 ? "eager" : "lazy"}
-                  />
-                ))}
-              </div>
-              {/* dot indicators */}
-              <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
-                {POSTERS.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setPosterIdx(i)}
-                    aria-label={`Poster ${i + 1}`}
-                    style={{
-                      width: i === posterIdx ? 24 : 8, height: 8, borderRadius: 4,
-                      background: i === posterIdx ? C.emerald : "rgba(11,44,24,.16)",
-                      border: "none", cursor: "pointer", transition: "all .4s ease", padding: 0,
-                    }}
-                  />
-                ))}
-              </div>
-            </Reveal>
-
-            <Reveal delay="d2" variant="right">
-              <div className="inquiry-form-box">
-                <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 22, marginBottom: 22, color: C.ink }}>Quick Inquiry</h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  <div className="field"><label>Full Name</label><input type="text" placeholder="Your full name" /></div>
-                  <div className="field"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" /></div>
-                  <div className="field"><label>Email Address</label><input type="email" placeholder="your@email.com" /></div>
-                  <div className="field">
-                    <label>Program of Interest</label>
-                    <select>
-                      <option value="">Select program…</option>
-                      {PROGRAMS.map((p) => (
-                        <option key={p.n}>{p.n}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <button className="btn btn-gold" style={{ width: "100%", justifyContent: "center", marginTop: 4 }}>
-                    Send Inquiry <Send size={16} />
-                  </button>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* sticky conversion actions */}
-      <FloatingActions />
     </>
   );
 }

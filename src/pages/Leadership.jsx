@@ -1,8 +1,8 @@
 import React from "react";
-import { Users } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
-import { C } from "../theme.js";
 import { LEADERS } from "../data/content.js";
 
 export default function Leadership() {
@@ -17,41 +17,26 @@ export default function Leadership() {
       />
 
       <section className="sec wrap" style={{ paddingTop: 80 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", gap: 20 }}>
+        <div className="leadership-cards-grid" style={{ display: "grid", gap: 28 }}>
           {LEADERS.map((l, i) => (
-            <Reveal key={i} delay={`d${(i % 5) + 1}`}>
-              <div className="leader">
-                <div className="av" style={{ overflow: "hidden" }}>
-                  {l.photo ? <img src={l.photo} alt={l.nm} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <Users size={64} />}
-                </div>
-                <div className="meta">
-                  <div className="role">{l.role}</div>
-                  <div className="nm">{l.nm}</div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="sec wrap" style={{ paddingTop: 0 }}>
-        <div style={{ display: "grid", gap: 18 }}>
-          {LEADERS.map((l, i) => (
-            <Reveal key={i} delay={`d${(i % 4) + 1}`}>
-              <div style={{ display: "flex", gap: 26, alignItems: "center", background: "#fff", borderRadius: 18, padding: 26, border: "1px solid rgba(11,44,24,.07)", flexWrap: "wrap" }}>
-                <div style={{ width: 70, height: 70, borderRadius: "50%", flexShrink: 0, background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 24, overflow: "hidden" }}>
-                  {l.photo
-                    ? <img src={l.photo} alt={l.nm} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    : l.nm.split(" ").filter(Boolean).slice(-1)[0][0]}
-                </div>
-                <div style={{ flex: 1, minWidth: 240 }}>
-                  <div style={{ display: "flex", gap: 12, alignItems: "baseline", flexWrap: "wrap" }}>
-                    <h3 style={{ fontSize: 21 }}>{l.nm}</h3>
-                    <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: C.emerald }}>{l.role}</span>
+            <Reveal key={l.slug} delay={`d${(i % 5) + 1}`}>
+              <Link to={`/leadership/${l.slug}`} style={{ textDecoration: "none", display: "block", height: "100%" }}>
+                <div className="leader-photo-card card-lift" style={{ height: "100%", cursor: "pointer" }}>
+                  <div className="lpc-photo-area">
+                    {l.photo
+                      ? <img src={l.photo} alt={l.nm} />
+                      : <div className="lpc-photo-initials">{l.nm.split(" ").filter(Boolean).pop()[0]}</div>}
                   </div>
-                  <p style={{ color: C.slate, fontSize: 15, marginTop: 6 }}>{l.bio}</p>
+                  <div className="lpc-info">
+                    <div className="lpc-role">{l.role}</div>
+                    <div className="lpc-name">{l.nm}</div>
+                    <p className="lpc-bio">{l.bio}</p>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 14, fontSize: 13, fontWeight: 700, color: "var(--em)", letterSpacing: ".04em" }}>
+                      Read full message <ArrowUpRight size={15} />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </Reveal>
           ))}
         </div>

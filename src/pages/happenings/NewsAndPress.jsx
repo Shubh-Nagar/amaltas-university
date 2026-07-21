@@ -46,7 +46,7 @@ export default function NewsAndPress() {
 
       {/* ── PRESS CONTACT ── */}
       <section style={{ background: `radial-gradient(120% 140% at 80% 20%,${C.emerald} 0%,${C.navy} 55%)`, padding: "90px 0" }}>
-        <div className="wrap" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 40, alignItems: "center" }}>
+        <div className="wrap press-split" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 40, alignItems: "center" }}>
           <Reveal variant="left">
             <span className="eyebrow" style={{ color: C.goldL }}>Media & Press</span>
             <h2 style={{ color: C.ivory, marginTop: 14 }}>For press inquiries and media requests.</h2>

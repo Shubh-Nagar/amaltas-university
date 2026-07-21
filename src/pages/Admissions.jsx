@@ -137,7 +137,7 @@ export default function Admissions() {
       </section>
 
       {/* ENQUIRY + FEES/SCHOLARSHIP */}
-      <section className="sec wrap" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 50, alignItems: "start" }}>
+      <section className="sec wrap admissions-split" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 50, alignItems: "start" }}>
         <Reveal>
           <span className="eyebrow">Admission enquiry</span>
           <h2 style={{ fontSize: "clamp(1.9rem,4vw,2.8rem)" }}>Tell us about you.</h2>

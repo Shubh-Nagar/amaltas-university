@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="foot">
       <div className="wrap">
-        <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr", gap: 40 }}>
+        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr", gap: 40 }}>
           <div>
             <Link to="/" className="logo">
               <img src="/assets/images%20of%20university/logo/Amaltas-University-Logo.jpg" alt="Amaltas University" style={{ height: 52, width: "auto", objectFit: "contain" }} />
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
           <div>
             <h4>Quick Links</h4>
-            <Link to="/about/leadership">Board of Management</Link>
+            <Link to="/leadership">Leadership</Link>
             <Link to="/admissions/fees">Fee Details</Link>
             <Link to="/admissions/eligibility">Eligibility Criteria</Link>
             <Link to="/student-life/hostel">Hostel &amp; Accommodation</Link>

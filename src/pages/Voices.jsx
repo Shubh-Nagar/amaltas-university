@@ -19,7 +19,7 @@ export default function Voices() {
         crumb="Voices"
         eyebrow="Voices of Amaltas"
         title="Stories that don't read like brochures."
-        sub="The real measure of a university is what its students and families say when no one's selling them anything. Here are theirs."
+        sub="The real measure of a university is what its students say when no one's selling them anything. Here are theirs."
         bgImg="/assets/images%20of%20university/photo-gallery/2U8A9378.jpg"
       />
 
@@ -31,8 +31,10 @@ export default function Voices() {
             <p className="qt" style={{ margin: "16px 0 28px" }}>{VOICES[voice].q}</p>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                <div style={{ width: 50, height: 50, borderRadius: "50%", background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 18 }}>
-                  {VOICES[voice].n[0]}
+                <div style={{ width: 50, height: 50, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: `2px solid rgba(11,44,24,.1)` }}>
+                  {VOICES[voice].photo
+                    ? <img src={VOICES[voice].photo} alt={VOICES[voice].n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                    : <div style={{ width: "100%", height: "100%", background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 18 }}>{VOICES[voice].n[0]}</div>}
                 </div>
                 <div>
                   <div style={{ fontWeight: 700 }}>{VOICES[voice].n}</div>
@@ -64,11 +66,20 @@ export default function Voices() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 22, marginTop: 44 }}>
           {VOICES.map((v, i) => (
             <Reveal key={i} delay={`d${(i % 3) + 1}`}>
-              <div className="card-lift" style={{ background: "#fff", borderRadius: 20, padding: 32, border: "1px solid rgba(11,44,24,.07)", height: "100%" }}>
+              <div className="card-lift" style={{ background: "#fff", borderRadius: 20, padding: 32, border: "1px solid rgba(11,44,24,.07)", height: "100%", display: "flex", flexDirection: "column" }}>
                 <Quote size={28} color={C.burg} />
                 <p style={{ fontFamily: "Fraunces,serif", fontStyle: "italic", fontSize: 17, lineHeight: 1.5, margin: "12px 0 20px", color: C.ink }}>{v.q}</p>
-                <div style={{ fontWeight: 700, fontSize: 14.5 }}>{v.n}</div>
-                <div style={{ color: C.slate, fontSize: 13 }}>{v.r}</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: "auto" }}>
+                  <div style={{ width: 44, height: 44, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: `2px solid rgba(11,44,24,.1)` }}>
+                    {v.photo
+                      ? <img src={v.photo} alt={v.n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                      : <div style={{ width: "100%", height: "100%", background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 16 }}>{v.n[0]}</div>}
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: 14.5 }}>{v.n}</div>
+                    <div style={{ color: C.slate, fontSize: 13 }}>{v.r}</div>
+                  </div>
+                </div>
               </div>
             </Reveal>
           ))}
