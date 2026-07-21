@@ -11,9 +11,9 @@ import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
 
 const HOSTEL_STATS = [
-  { v: "500+", l: "Boys' Hostel Seats" },
-  { v: "400+", l: "Girls' Hostel Seats" },
+  { v: "2", l: "Separate Hostel Blocks" },
   { v: "24/7", l: "Campus Security" },
+  { v: "Zero", l: "Tolerance Anti-Ragging" },
   { v: "100%", l: "Wi-Fi Coverage" },
 ];
 
@@ -21,7 +21,6 @@ const HOSTEL_TYPES = [
   {
     gender: "Boys' Hostel",
     tag: "Male Students",
-    capacity: "500+ seats",
     desc: "Purpose-built for male students, the boys' hostel offers a secure, well-maintained environment just steps from every academic institute on campus. Multiple blocks ensure a comfortable, community-oriented living experience throughout the academic year.",
     features: [
       "Furnished single & double-occupancy rooms",
@@ -34,13 +33,12 @@ const HOSTEL_TYPES = [
       "Power backup & CCTV",
       "Laundry service on campus",
     ],
-    img: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",
+    img: "/assets/images%20of%20university/hostel/boys-hostel.jpeg",
     gradientEnd: "#0B2C18",
   },
   {
     gender: "Girls' Hostel",
     tag: "Female Students",
-    capacity: "400+ seats",
     desc: "The girls' hostel offers a fully secure, lady-warden-supervised residence with dedicated entry protocols and round-the-clock staff support. Designed with comfort and safety as the first priority for female students across all health-sciences programmes.",
     features: [
       "Furnished single & double-occupancy rooms",
@@ -53,7 +51,7 @@ const HOSTEL_TYPES = [
       "Power backup & CCTV",
       "Laundry & ironing facility",
     ],
-    img: "/assets/images%20of%20university/campus%20life/435A1853.JPG",
+    img: "/assets/images%20of%20university/hostel/girls-hostel.jpeg",
     gradientEnd: "#103A22",
   },
 ];
@@ -74,7 +72,7 @@ const AMENITIES = [
 ];
 
 const MESS_HIGHLIGHTS = [
-  "Breakfast, lunch, evening snacks & dinner served daily",
+  "Breakfast, lunch & dinner served daily, plus evening tea & snacks",
   "Rotating multi-cuisine menu — North Indian, South Indian & Continental",
   "Diet and medical-need meals available on prior request",
   "Hygiene-certified kitchen with regular food-safety audits",
@@ -209,14 +207,14 @@ export default function HostelAccommodation() {
           <Reveal variant="right" delay="d2">
             <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", aspectRatio: "4/3" }}>
               <img
-                src="/assets/images%20of%20university/campus%20life/435A1853.JPG"
+                src="/assets/images%20of%20university/hostel/2U8A0028.jpg"
                 alt="Campus hostel life"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top right,rgba(11,44,24,.45),transparent)" }} />
               <div style={{ position: "absolute", bottom: 20, left: 20, background: "rgba(255,255,255,.95)", borderRadius: 14, padding: "14px 20px", backdropFilter: "blur(10px)", boxShadow: "0 8px 28px -10px rgba(11,44,24,.22)" }}>
-                <div style={{ fontFamily: "Fraunces,serif", fontSize: 24, color: C.emerald, lineHeight: 1 }}>900+</div>
-                <div style={{ fontSize: 12.5, color: C.slate, marginTop: 5, fontWeight: 500 }}>Total hostel capacity</div>
+                <div style={{ fontFamily: "Fraunces,serif", fontSize: 24, color: C.emerald, lineHeight: 1 }}>24/7</div>
+                <div style={{ fontSize: 12.5, color: C.slate, marginTop: 5, fontWeight: 500 }}>Warden-supervised living</div>
               </div>
               <div style={{ position: "absolute", top: 20, right: 20, background: C.navy, color: C.goldL, borderRadius: 12, padding: "10px 16px", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase" }}>
                 Dewas Campus
@@ -246,10 +244,7 @@ export default function HostelAccommodation() {
                       {h.tag}
                     </div>
                     <div style={{ position: "absolute", bottom: 20, left: 22 }}>
-                      <div style={{ fontFamily: "Fraunces,serif", fontSize: 26, color: "#fff", marginBottom: 5 }}>{h.gender}</div>
-                      <div style={{ fontSize: 13, color: "rgba(255,255,255,.8)", display: "inline-flex", alignItems: "center", gap: 6 }}>
-                        <BedDouble size={13} /> {h.capacity}
-                      </div>
+                      <div style={{ fontFamily: "Fraunces,serif", fontSize: 26, color: "#fff" }}>{h.gender}</div>
                     </div>
                   </div>
 
@@ -333,7 +328,7 @@ export default function HostelAccommodation() {
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,rgba(11,44,24,.35),transparent)" }} />
               <div style={{ position: "absolute", bottom: 20, right: 20, background: C.gold, color: C.navy, borderRadius: 12, padding: "12px 18px", fontWeight: 700, fontSize: 13 }}>
-                4 meals daily
+                3 meals daily
               </div>
             </div>
           </Reveal>
@@ -410,7 +405,7 @@ export default function HostelAccommodation() {
         <div className="wrap" style={{ textAlign: "center", color: C.ivory }}>
           <Reveal>
             <span className="eyebrow" style={{ color: C.goldL }}>Ready to join us?</span>
-            <h2 style={{ color: C.ivory, margin: "14px auto 0", maxWidth: 600 }}>Secure your hostel seat today.</h2>
+            <h2 style={{ color: C.ivory, margin: "14px auto 0", maxWidth: 600 }}>Secure your hostel room today.</h2>
             <p style={{ color: "rgba(247,244,236,.72)", fontSize: 16, maxWidth: 460, margin: "16px auto 34px", lineHeight: 1.7 }}>
               Hostel allotment follows admission confirmation and is subject to availability. Reach out early to secure your preferred accommodation.
             </p>

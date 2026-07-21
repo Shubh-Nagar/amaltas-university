@@ -15,7 +15,7 @@ const SLIDES = [
     t1: "LIVING &",
     t2: "LEARNING",
     sub: "Beyond the classroom, campus life at Amaltas is festivals, friendships, sport, and quiet mornings — all in one place.",
-    img: "/assets/images%20of%20university/photo-gallery/DJI_0019.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/medical.png",
   },
   {
     tag: "Culture & Festivals",
@@ -29,7 +29,7 @@ const SLIDES = [
     t1: "SPORT &",
     t2: "WELLNESS",
     sub: "A fully-equipped gym, open grounds, and daily yoga keep the mind as sharp as the syllabus demands.",
-    img: "/assets/images%20of%20university/photo-gallery/2U8A0526.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/IMG-20250307-WA0066.jpg",
   },
   {
     tag: "Friends & Memories",

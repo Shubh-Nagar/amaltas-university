@@ -188,7 +188,7 @@ export const DEPARTMENT_HIGHLIGHTS = [
 export const WHY = [
   { icon: Building2, img: "/assets/images%20of%20university/The%20Amaltas%20difference/hospital.jpg",     t: "Hospital-Embedded Learning", d: "A live superspeciality hospital is your classroom — real patients, real outcomes, from year one." },
   { icon: Users,     img: "/assets/images%20of%20university/photo-gallery/2U8A1767.jpg",                   t: "Mentors, Not Just Lecturers", d: "Renowned clinicians and scholars who know your name and shape your path." },
-  { icon: Award,     img: "/assets/images%20of%20university/campus%20life/degree.JPG",                     t: "Recognised & Accredited",    d: "Programmes structured to national regulatory standards across every health discipline." },
+  { icon: Award,     img: "/assets/images%20of%20university/recognisations.png",                          t: "Recognised & Accredited",    d: "Programmes structured to national regulatory standards across every health discipline." },
   { icon: Sparkles, img: "/assets/images%20of%20university/The%20Amaltas%20difference/scolarship.JPG",    t: "Scholarships That Reach",    d: "Merit and need-based aid so that talent — not tuition — decides who heals tomorrow." },
 ];
 
@@ -204,7 +204,7 @@ export const LEADERS = [
 export const VOICES = [
   { q: "I walked into a real hospital ward in my second month. Nowhere else gives you that. Amaltas didn't just teach me medicine — it made me a doctor patients trust.", n: "Final-year MBBS student", r: "Institute of Medical Sciences", photo: "/assets/images%20of%20university/testimonials/t1.JPG" },
   { q: "I came from a small town and was nervous at first, but the faculty know me by name and the labs stay open whenever I want extra practice. The campus feels like a family that happens to be world-class.", n: "B.Pharm student", r: "Institute of Pharmacy", photo: "/assets/images%20of%20university/testimonials/t2.JPG" },
-  { q: "The research culture surprised me. We were publishing and presenting before I expected to even understand the labs. The mentorship is the real differentiator.", n: "Final-year BAMS student", r: "Ayurvedic College & Research Centre", photo: "/assets/images%20of%20university/testimonials/435A1861.JPG" },
+  { q: "The research culture surprised me. We were publishing and presenting before I expected to even understand the labs. The mentorship is the real differentiator.", n: "BAMS graduate", r: "Ayurvedic College & Research Centre", photo: "/assets/images%20of%20university/testimonials/435A1861.JPG" },
   { q: "From the lamp-lighting ceremony to my first clinical posting, I felt I belonged. The simulation labs prepared me for a career, not just an exam.", n: "B.Sc. Nursing student", r: "Institute of Nursing Sciences", photo: "/assets/images%20of%20university/testimonials/t3.JPG" },
 ];
 

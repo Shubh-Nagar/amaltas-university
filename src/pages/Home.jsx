@@ -407,9 +407,9 @@ function EventsSection() {
                 From world records to lamp-lighting ceremonies, campus life at Amaltas is vibrant and meaningful.
               </p>
             </div>
-            <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-dark" style={{ marginBottom: 10 }}>
+            <Link to="/happenings/events" className="btn btn-dark" style={{ marginBottom: 10 }}>
               All Events <ArrowUpRight size={17} />
-            </a>
+            </Link>
           </div>
         </Reveal>
 
