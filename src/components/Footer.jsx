@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1.2fr", gap: 40 }}>
           <div>
             <Link to="/" className="logo">
-              <img src="/assets/images%20of%20university/logo/Amaltas-University-Logo.jpg" alt="Amaltas University" style={{ height: 52, width: "auto", objectFit: "contain" }} />
+              <img src="/assets/images%20of%20university/logo/white-logo.png" alt="Amaltas University" style={{ height: 72, width: "auto", objectFit: "contain" }} />
             </Link>
             <p style={{ marginTop: 16, fontSize: 14.5, lineHeight: 1.7 }}>
               A medical university of the Amaltas Education Welfare Society — where the people
