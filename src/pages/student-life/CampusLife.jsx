@@ -22,7 +22,7 @@ const SLIDES = [
     t1: "CULTURE &",
     t2: "CELEBRATION",
     sub: "From folk dance to convocation, every season on campus brings its own festival — and everyone belongs on stage.",
-    img: "/assets/images%20of%20university/campus%20life/435A9602.JPG",
+    img: "/assets/images%20of%20university/campus%20life/435A9602.JP ,G",
   },
   {
     tag: "Sport & Wellness",

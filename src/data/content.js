@@ -285,7 +285,7 @@ export const NAV = [
 export const ANNOUNCEMENTS = [
   "Admission Open for Academic Year 2026-27 — Apply Today",
   "Amaltas University achieves Guinness World Record — 35,000+ participants in a single mass yoga gathering",
-  { text: "IJRHM Website Launch — Visit at  ", linkText: "www.ijrhm.com", href: "https://www.ijrhm.com" },
+  { text: "IJRHM Website Launch — Visit at ", linkText: "www.ijrhm.com", href: "https://www.ijrhm.com" },
 ];
 
 export const QUICK_LINKS = [
@@ -300,6 +300,22 @@ export const QUICK_LINKS = [
 ];
 
 export const EVENTS = [
+  {
+    date: "2026",
+    tag: "Global Congress",
+    tagColor: "#15843F",
+    title: "Early Detection Saves Lives: AI & Bronchoscopy in Focus at Bronchopulmonary World Congress 2026",
+    desc: "Amaltas University hosted the Bronchopulmonary World Congress 2026, convening pulmonologists, researchers and clinicians from across the globe — spotlighting the growing role of AI and advanced bronchoscopy in the early detection of respiratory disease.",
+    img: "/assets/images%20of%20university/events/u1.jpg",
+  },
+  {
+    date: "2026",
+    tag: "Environment",
+    tagColor: "#15843F",
+    title: "World Environment Day Celebration at Amaltas University",
+    desc: "Students, faculty and staff came together to mark World Environment Day with tree-plantation drives, awareness walks and sustainability pledges across the campus — reaffirming the Amaltas commitment to a greener, healthier future.",
+    img: "/assets/images%20of%20university/events/we1.jpg",
+  },
   {
     date: "Jun 21, 2026",
     tag: "विश्व कीर्तिमान",
@@ -656,7 +672,7 @@ export const LEADER_MESSAGES = {
     quote: CHANCELLOR_MESSAGE.quote,
     heroEyebrow: "A note from the Chancellor",
     heroTitle: "Dear student, this is for you.",
-    heroBg: "/assets/images%20of%20university/our%20purpose/university.jpg",
+    heroBg: "/assets/images%20of%20university/our%20purpose/university.png",
     stats: [
       { icon: HandHeart, label: "Focus", value: "Nurturing Care", desc: "Guiding an institution rooted in compassion and access" },
       { icon: Users, label: "Community", value: "Malwa Region", desc: "Bringing world-class healthcare education close to home" },

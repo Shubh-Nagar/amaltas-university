@@ -1,22 +1,46 @@
-import React from "react";
-import { Mail, Phone, Download } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Mail, Phone, Download, X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
 
+/* Latest 20 news images, mirrored from https://amaltasuniversity.in/news-release/
+   and hosted locally in /public/assets/images of university/news-press. */
+const NP = "/assets/images%20of%20university/news-press";
 const GALLERY = [
-  "/assets/images%20of%20university/news-press/yoga.jpg",
-  "/assets/images%20of%20university/news-press/DRISHTI-CPS.jpg",
-  "/assets/images%20of%20university/news-press/Workshop.jpg",
-  "/assets/images%20of%20university/news-press/value-added.jpg",
-  "/assets/images%20of%20university/news-press/dehdaan.jpg",
-  "/assets/images%20of%20university/news-press/workshop.jpg",
-  "/assets/images%20of%20university/news-press/mayank-sir-news.jpg",
-  "/assets/images%20of%20university/news-press/light-lampning.jpg",
+  `${NP}/news-01.jpg`,  `${NP}/news-02.jpg`,  `${NP}/news-03.jpg`,  `${NP}/news-04.jpg`,
+  `${NP}/news-05.jpeg`, `${NP}/news-06.jpeg`, `${NP}/news-07.jpg`,  `${NP}/news-08.jpg`,
+  `${NP}/news-09.jpg`,  `${NP}/news-10.jpeg`, `${NP}/news-11.jpeg`, `${NP}/news-12.jpeg`,
+  `${NP}/news-13.jpg`,  `${NP}/news-14.jpg`,  `${NP}/news-15.jpg`,  `${NP}/news-16.jpg`,
+  `${NP}/news-17.jpg`,  `${NP}/news-18.jpg`,  `${NP}/news-19.jpg`,  `${NP}/news-20.jpg`,
 ];
 
 export default function NewsAndPress() {
+  const [lightbox, setLightbox] = useState(null); // index into GALLERY, or null
+
+  const show = (i) => setLightbox(((i % GALLERY.length) + GALLERY.length) % GALLERY.length);
+  const close = () => setLightbox(null);
+  const next = () => setLightbox((i) => (i + 1) % GALLERY.length);
+  const prev = () => setLightbox((i) => (i - 1 + GALLERY.length) % GALLERY.length);
+
+  // body-scroll lock + keyboard navigation while the lightbox is open
+  useEffect(() => {
+    if (lightbox === null) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowRight") next();
+      else if (e.key === "ArrowLeft") prev();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [lightbox]);
+
   return (
     <>
       <PageHero
@@ -32,12 +56,22 @@ export default function NewsAndPress() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 20 }}>
           {GALLERY.map((img, i) => (
             <Reveal key={img} delay={`d${(i % 3) + 1}`}>
-              <div className="card-lift" style={{ borderRadius: 18, overflow: "hidden", aspectRatio: "4/3" }}>
+              <div
+                className="card-lift news-tile"
+                role="button"
+                tabIndex={0}
+                aria-label={`Enlarge news image ${i + 1}`}
+                onClick={() => show(i)}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(i); } }}
+                style={{ borderRadius: 18, overflow: "hidden", aspectRatio: "4/3", cursor: "pointer", position: "relative" }}
+              >
                 <img
                   src={img}
-                  alt="Amaltas University news"
+                  alt={`Amaltas University news ${i + 1}`}
+                  loading="lazy"
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
+                <span className="news-tile-zoom"><ZoomIn size={18} /></span>
               </div>
             </Reveal>
           ))}
@@ -69,6 +103,36 @@ export default function NewsAndPress() {
           </Reveal>
         </div>
       </section>
+
+      {/* ── FULL-SIZE LIGHTBOX with slide navigation ── */}
+      {lightbox !== null && (
+        <div className="ev-lightbox" onClick={close}>
+          <button className="ev-lightbox-close" onClick={close} aria-label="Close">
+            <X size={22} />
+          </button>
+          <button
+            className="ev-lightbox-nav prev"
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+            aria-label="Previous news"
+          >
+            <ChevronLeft size={26} />
+          </button>
+          <img
+            className="ev-lightbox-img"
+            src={GALLERY[lightbox]}
+            alt={`Amaltas University news ${lightbox + 1}`}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            className="ev-lightbox-nav next"
+            onClick={(e) => { e.stopPropagation(); next(); }}
+            aria-label="Next news"
+          >
+            <ChevronRight size={26} />
+          </button>
+          <div className="ev-lightbox-count">{lightbox + 1} / {GALLERY.length}</div>
+        </div>
+      )}
     </>
   );
 }

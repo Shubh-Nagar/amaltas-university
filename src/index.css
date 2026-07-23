@@ -430,7 +430,7 @@ body{margin:0;}
 .announcement-scroll{display:flex;gap:80px;animation:scrollX 38s linear infinite;white-space:nowrap;width:max-content;padding:12px 60px;}
 .announcement-item{font-size:13px;color:rgba(247,244,236,.78);display:inline-flex;align-items:center;gap:0;}
 .announcement-item::before{content:"✦";color:var(--gold);margin-right:14px;font-size:10px;}
-.announcement-link{color:var(--goldL);text-decoration:underline;text-underline-offset:2px;}
+.announcement-link{color:var(--goldL);text-decoration:underline;text-underline-offset:2px;margin-left:6px;}
 .announcement-link:hover{color:var(--gold);}
 .announcement-bar:hover .announcement-scroll{animation-play-state:paused;}
 
@@ -1924,6 +1924,18 @@ body{margin:0;}
   transition:transform .5s cubic-bezier(.16,1,.3,1);
 }
 .ev-modal-thumb:hover img{transform:scale(1.07);}
+
+/* news gallery tile — zoom hint badge on hover */
+.news-tile-zoom{
+  position:absolute;top:12px;right:12px;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(11,44,24,.55);color:#fff;
+  display:grid;place-items:center;
+  opacity:0;transform:scale(.8);transition:.25s;pointer-events:none;
+  backdrop-filter:blur(4px);
+}
+.news-tile:hover .news-tile-zoom,
+.news-tile:focus-visible .news-tile-zoom{opacity:1;transform:scale(1);}
 
 .ev-lightbox{
   position:fixed;inset:0;z-index:320;

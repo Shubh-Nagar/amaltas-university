@@ -35,6 +35,10 @@ import AlumniAchievers from "./pages/alumni/Achievers.jsx";
 import AlumniGivingBack from "./pages/alumni/GivingBack.jsx";
 import Mainpopup from "./components/Mainpopup.jsx";
 import IQAC from "./pages/IQAC.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import PrivacyPolicy2 from "./pages/PrivacyPolicy2.jsx";
+import PublicSelfDisclosure from "./pages/PublicSelfDisclosure.jsx";
+import AntiRaggingCommittee from "./pages/AntiRaggingCommittee.jsx";
 
 /* Real WhatsApp glyph (lucide-react ships no brand icons) */
 function WhatsAppIcon({ size = 24 }) {
@@ -114,6 +118,10 @@ export default function App() {
           <Route path="/alumni/assist" element={<AlumniAssist />} />
           <Route path="/alumni/achievers" element={<AlumniAchievers />} />
           <Route path="/alumni/giving-back" element={<AlumniGivingBack />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy-policy-2" element={<PrivacyPolicy2 />} />
+          <Route path="/public-self-disclosure" element={<PublicSelfDisclosure />} />
+          <Route path="/anti-ragging-committee" element={<AntiRaggingCommittee />} />
           <Route path="/test" element={<Mainpopup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

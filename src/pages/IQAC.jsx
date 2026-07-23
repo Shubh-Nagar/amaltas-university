@@ -14,7 +14,7 @@ export default function IQAC() {
         eyebrow="Internal Quality Assurance Cell"
         title="Working together for excellence."
         sub="Amaltas University, Dewas — building a culture of continuous quality improvement across every constituent institution."
-        bgImg="/assets/images%20of%20university/all%20institutes/university.jpg"
+        bgImg="/assets/images%20of%20university/all%20institutes/university.png"
       />
 
       <section className="sec wrap" style={{ paddingTop: 90, paddingBottom: 90 }}>

@@ -55,6 +55,9 @@ export default function Footer() {
             <Link to="/student-life/hostel">Hostel &amp; Accommodation</Link>
             <Link to="/happenings/news">News &amp; Press Releases</Link>
             <Link to="/happenings/photo-gallery">Photo Gallery</Link>
+            <Link to="/public-self-disclosure">Public Self Disclosure</Link>
+            <Link to="/anti-ragging-committee">Anti-Ragging Committee</Link>
+            <a href="/disclosure/Students-Grievance-Redressal-Committee-2024.pdf" target="_blank" rel="noreferrer">Students Grievance Redressal Committee</a>
             <Link to="/alumni/giving-back">Giving Back</Link>
           </div>
           <div>
@@ -68,7 +71,11 @@ export default function Footer() {
         </div>
         <div style={{ borderTop: "1px solid rgba(247,244,236,.1)", marginTop: 50, paddingTop: 22, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 10, fontSize: 13.5, color: "rgba(247,244,236,.5)" }}>
           <span>© {new Date().getFullYear()} Amaltas University, Dewas. All rights reserved.</span>
-          <span>Concept redesign · "Where healing grows."</span>
+          <span style={{ display: "flex", gap: 18, alignItems: "center" }}>
+            <Link to="/privacy-policy" style={{ color: "inherit" }}>Privacy Policy</Link>
+            <Link to="/privacy-policy-2" style={{ color: "inherit" }}>Privacy Policy 2</Link>
+            <span>Concept redesign · "Where healing grows."</span>
+          </span>
         </div>
       </div>
     </footer>

@@ -313,7 +313,7 @@ export default function TheUniversity() {
           <Reveal variant="img">
             <div style={{ position: "relative", borderRadius: 26, overflow: "hidden", aspectRatio: "4/3", boxShadow: `0 40px 80px -40px rgba(16,128,59,.25)`, border: `3px solid ${G.greenBg}` }}>
               <img
-                src="/assets/images%20of%20university/our%20purpose/university.jpg"
+                src="/assets/images%20of%20university/our%20purpose/university.png"
                 alt="Amaltas University"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />

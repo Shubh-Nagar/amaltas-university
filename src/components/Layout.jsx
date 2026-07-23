@@ -27,7 +27,7 @@ export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg, chil
   // lighter emerald at the far edge). `bg` is still honoured as an explicit escape hatch.
   const HERO_OVERLAY =
     "linear-gradient(115deg, rgba(11,44,24,.95) 0%, rgba(16,58,34,.93) 42%, rgba(18,134,63,.88) 78%, rgba(35,166,83,.82) 100%)";
-  const heroImg = bgImg || "/assets/images%20of%20university/all%20institutes/university.jpg";
+  const heroImg = bgImg || "/assets/images%20of%20university/all%20institutes/university.png";
   const heroStyle = bg
     ? { background: bg }
     : {

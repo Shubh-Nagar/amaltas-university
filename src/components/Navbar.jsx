@@ -153,13 +153,15 @@ export default function Navbar() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <Link
-            to="/admissions"
+          <a
+            href="https://admission.amaltasuniversity.in/"
+            target="_blank"
+            rel="noreferrer"
             className="btn btn-gold"
             style={{ padding: "11px 20px", fontSize: 14 }}
           >
             Apply 2026–27 <ArrowRight size={16} />
-          </Link>
+          </a>
           <button
             className="burger"
             onClick={() => setOpen(!open)}
@@ -221,9 +223,9 @@ export default function Navbar() {
             )
           )}
           <div className="mobile-menu-footer">
-            <Link to="/admissions" className="btn btn-gold" style={{ width: "100%", justifyContent: "center" }}>
+            <a href="https://admission.amaltasuniversity.in/" target="_blank" rel="noreferrer" className="btn btn-gold" style={{ width: "100%", justifyContent: "center" }}>
               Apply 2026–27 <ArrowRight size={16} />
-            </Link>
+            </a>
           </div>
         </div>
       )}

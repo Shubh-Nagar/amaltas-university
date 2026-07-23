@@ -21,7 +21,7 @@ import {
 } from "../data/content.js";
 
 const IMGS = {
-  purposeMain:  "/assets/images%20of%20university/our%20purpose/university.jpg",
+  purposeMain:  "/assets/images%20of%20university/our%20purpose/university.png",
   campusBanner: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=80",
   leaderBg:     "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=70",
   instBanner:   "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=80",
@@ -217,7 +217,7 @@ function SevenWorldsPanel() {
       <div style={{ position: "relative", zIndex: 1, padding: "0 28px" }}>
         <MagicBento
           items={INSTITUTIONS}
-          onCardClick={() => navigate("/admissions")}
+          onCardClick={() => window.open("https://admission.amaltasuniversity.in/", "_blank", "noopener,noreferrer")}
           enableStars={true}
           enableSpotlight={true}
           enableBorderGlow={true}
@@ -307,7 +307,7 @@ function NewsSection() {
               <span className="eyebrow">Stay informed</span>
               <h2 style={{ marginTop: 12 }}>News & Press Releases</h2>
             </div>
-            <a href="#" onClick={(e) => e.preventDefault()} className="btn btn-dark" style={{ marginBottom: 10 }}>All News <ArrowUpRight size={17} /></a>
+            <Link to="/happenings/news" className="btn btn-dark" style={{ marginBottom: 10 }}>All News <ArrowUpRight size={17} /></Link>
           </div>
         </Reveal>
 
@@ -444,7 +444,7 @@ function EventsSection() {
                   </div>
                   <h3 className="events-panel-title">{ev.title}</h3>
                   {ev.desc && <p className="events-panel-desc">{ev.desc}</p>}
-                  <a href="#" onClick={(e) => e.preventDefault()} className="event-link">View details <ArrowRight size={14} /></a>
+                  <Link to="/happenings/events" className="event-link">View details <ArrowRight size={14} /></Link>
                 </div>
               </article>
             ))}
@@ -697,7 +697,7 @@ export default function Home() {
               Pharmacy, Paramedical Sciences, and Allied &amp; Rehabilitation Sciences for the 2026–27 session.
             </p>
             <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
-              <Link to="/admissions" className="btn btn-gold">Apply Now <ArrowRight size={18} /></Link>
+              <a href="https://admission.amaltasuniversity.in/" target="_blank" rel="noreferrer" className="btn btn-gold">Apply Now <ArrowRight size={18} /></a>
               <a href="tel:+919977544111" className="btn btn-ghost"><Phone size={15} /> Call Helpline</a>
             </div>
 

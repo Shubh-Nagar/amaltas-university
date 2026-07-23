@@ -12,7 +12,7 @@ import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
 
 const IMG = {
-  hero:     "/assets/images%20of%20university/all%20institutes/university.jpg",
+  hero:     "/assets/images%20of%20university/all%20institutes/university.png",
   overview: "/assets/images%20of%20university/all%20institutes/medical%20science.jpeg",
   library:  "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",
   fallback: "/assets/images%20of%20university/campus%20life/435A1853.JPG",
