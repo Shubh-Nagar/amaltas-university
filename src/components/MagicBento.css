@@ -243,8 +243,7 @@
   .magic-bento-card:nth-child(3) { grid-column: 5 / span 2; }
   .magic-bento-card:nth-child(4) { grid-column: 7 / span 2; }
 
-  /* row 2 — 3 cards centred (cols 2-7, col 1 & 8 empty) */
-  .magic-bento-card:nth-child(5) { grid-column: 2 / span 2; }
-  .magic-bento-card:nth-child(6) { grid-column: 4 / span 2; }
-  .magic-bento-card:nth-child(7) { grid-column: 6 / span 2; }
+  /* row 2 — 2 cards centred (cols 3-6, col 1-2 & 7-8 empty) */
+  .magic-bento-card:nth-child(5) { grid-column: 3 / span 2; }
+  .magic-bento-card:nth-child(6) { grid-column: 5 / span 2; }
 }

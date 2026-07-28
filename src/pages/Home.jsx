@@ -181,7 +181,7 @@ function LifeGrid() {
   );
 }
 
-/* ─── Seven Worlds — Magic Bento grid ─── */
+/* ─── Six Worlds — Magic Bento grid ─── */
 function SevenWorldsPanel() {
   const navigate = useNavigate();
 
@@ -205,7 +205,7 @@ function SevenWorldsPanel() {
       <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <span className="eyebrow" style={{ justifyContent: "center" }}>Seven worlds, one campus</span>
+            <span className="eyebrow" style={{ justifyContent: "center" }}>Six worlds, one campus</span>
             <h2 style={{ marginTop: 14 }}>Find your calling in healthcare.</h2>
             <p className="lead" style={{ maxWidth: 560, margin: "14px auto 0" }}>
               Every discipline of modern and traditional healthcare — all under one campus, beside a working hospital.
@@ -461,9 +461,9 @@ const WR_CARDS = [
     bg: "linear-gradient(135deg,#0B2C18 0%,#1a5c35 100%)",
     img: "/assets/images%20of%20university/yoga-hall-1.jpeg",
     eyebrow: "Dewas · Madhya Pradesh · Est. 2016",
-    stat: "7",
+    stat: "6",
     statLabel: "Health-Science Institutions",
-    body: "One campus uniting medicine, Ayurveda, homoeopathy, nursing, pharmacy, physiotherapy and allied sciences — every discipline of modern and traditional healthcare under a single roof.",
+    body: "One campus uniting medicine, Ayurveda, homoeopathy, nursing, pharmacy and physiotherapy — every discipline of modern and traditional healthcare under a single roof.",
   },
   {
     bg: "linear-gradient(135deg,#103A22 0%,#0B2C18 100%)",
@@ -694,7 +694,7 @@ export default function Home() {
             </h2>
             <p style={{ color: "rgba(247,244,236,.75)", marginTop: 16, fontSize: 17, maxWidth: 480 }}>
               Applications are open across Medical Sciences, Ayurveda, Homoeopathy, Nursing,
-              Pharmacy, Paramedical Sciences, and Allied &amp; Rehabilitation Sciences for the 2026–27 session.
+              Pharmacy, and Paramedical Sciences for the 2026–27 session.
             </p>
             <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
               <a href="https://admission.amaltasuniversity.in/" target="_blank" rel="noreferrer" className="btn btn-gold">Apply Now <ArrowRight size={18} /></a>
@@ -838,7 +838,7 @@ export default function Home() {
                 families who need care, and the students who dream of giving it.
               </p>
               <p style={{ color: C.slate, marginTop: 16, fontSize: 16.5 }}>
-                Today that promise lives across seven institutions and a living superspeciality
+                Today that promise lives across six institutions and a living superspeciality
                 hospital, where the distance between learning and healing is measured in footsteps.
               </p>
               <Link to="/why" className="btn btn-em" style={{ marginTop: 28 }}>Why students choose us <ArrowRight size={18} /></Link>

@@ -11,7 +11,7 @@ export default function Institutions() {
     <>
       <PageHero
         crumb="Institutions"
-        eyebrow="Seven worlds, one campus"
+        eyebrow="Six worlds, one campus"
         title="Choose where you'll change a life."
         sub="From modern medicine to classical Ayurveda, nursing to rehabilitation — every Amaltas institution is built around a single working hospital."
         bgImg="/assets/images%20of%20university/all%20institutes/nursing.jpeg"

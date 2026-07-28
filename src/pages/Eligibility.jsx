@@ -69,18 +69,19 @@ const CATEGORIES = [
       { course: "Certificate – USG Technician",  eligibility: "12th with PCB" },
     ],
   },
-  {
-    id: "allied-rehab",
-    label: "Allied & Rehabilitation",
-    color: "#7a5c1a",
-    courses: [
-      { course: "B.Sc (Hons.) Clinical Psychology",         eligibility: "12th with PCB / PCM" },
-      { course: "BASLP",                                     eligibility: "12th with PCB / PCM" },
-      { course: "ISITEP (HI)",                               eligibility: "12th with PCB / PCM" },
-      { course: "ISITEP (ID)",                               eligibility: "12th with PCB / PCM" },
-      { course: "Prof. Diploma – Clinical Psychology (PDCP)", eligibility: "12th with PCB / PCM" },
-    ],
-  },
+  // Hidden — Allied & Rehabilitation eligibility category temporarily unlisted.
+  // {
+  //   id: "allied-rehab",
+  //   label: "Allied & Rehabilitation",
+  //   color: "#7a5c1a",
+  //   courses: [
+  //     { course: "B.Sc (Hons.) Clinical Psychology",         eligibility: "12th with PCB / PCM" },
+  //     { course: "BASLP",                                     eligibility: "12th with PCB / PCM" },
+  //     { course: "ISITEP (HI)",                               eligibility: "12th with PCB / PCM" },
+  //     { course: "ISITEP (ID)",                               eligibility: "12th with PCB / PCM" },
+  //     { course: "Prof. Diploma – Clinical Psychology (PDCP)", eligibility: "12th with PCB / PCM" },
+  //   ],
+  // },
 ];
 
 const ALL_CAT = { id: "all", label: "All", color: C.navy };

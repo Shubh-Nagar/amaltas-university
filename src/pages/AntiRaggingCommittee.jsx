@@ -7,7 +7,7 @@ import { C } from "../theme.js";
 /* Content mirrored from https://amaltasuniversity.in/anti-ragging-committee/ */
 
 const COMMITTEE = [
-  { n: 1,  name: "Dr. RK Singh",  designation: "Vice-Chancellor",                              post: "Chairperson",       mobile: "9822268026", email: "vicechancellor@amaltasuniversity.in" },
+  { n: 1,  name: "Dr. R.K. Singh",  designation: "Vice-Chancellor",                              post: "Chairperson",       mobile: "9822268026", email: "vicechancellor@amaltasuniversity.in" },
   { n: 2,  name: "Dr. Abhay Gupta",         designation: "Registrar",                                    post: "Member",            mobile: "9404956221", email: "registrar@amaltasuniversity.in" },
   { n: 3,  name: "Dr. Madhurendra Rajput",     designation: "Boys Chief Warden, Dy. Dean",                  post: "Member",            mobile: "8770754769", email: "drmadhurendrarajput@gmail.com" },
   { n: 4,  name: "Dr. Abhilasha Dutta",        designation: "Director IQAC",                                post: "Member",            mobile: "9981964722", email: "drabhilashadutta@gmail.com" },

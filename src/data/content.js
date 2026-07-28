@@ -66,21 +66,22 @@ export const INSTITUTIONS = [
     ],
     website: "http://amaltasgroup.co.in/paramedical/#close",
   },
-  {
-    icon: Brain, tag: "Clinical Psy · BASLP · PDCP",
-    name: "Amaltas Allied & Rehabilitation Sciences",
-    desc: "Speech, language, hearing and clinical psychology programmes with live rehabilitation clinics.",
-    img: "/assets/images%20of%20university/all%20institutes/alied.jpg",
-    studentImg: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=700&q=75",
-    programs: ["B.Sc. Clinical Psychology (Hons)", "B.A.S.L.P.", "PDCP", "ISITEP (HI/ID)"],
-    website: "https://amaltasuniversity.in/courses/department-of-allied-rehabilitation-sciences/",
-  },
+  // Hidden — Allied & Rehabilitation Sciences institute temporarily unlisted.
+  // {
+  //   icon: Brain, tag: "Clinical Psy · BASLP · PDCP",
+  //   name: "Amaltas Allied & Rehabilitation Sciences",
+  //   desc: "Speech, language, hearing and clinical psychology programmes with live rehabilitation clinics.",
+  //   img: "/assets/images%20of%20university/all%20institutes/alied.jpg",
+  //   studentImg: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=700&q=75",
+  //   programs: ["B.Sc. Clinical Psychology (Hons)", "B.A.S.L.P.", "PDCP", "ISITEP (HI/ID)"],
+  //   website: "https://amaltasuniversity.in/courses/department-of-allied-rehabilitation-sciences/",
+  // },
 ];
 
 export const PROGRAMS = [
   { n: "M.B.B.S.", d: "Undergraduate Medicine · NEET UG", t: "Medical" },
   { n: "MD / MS", d: "Postgraduate Specialisation · NEET PG", t: "Medical" },
-  { n: "DM / M.Ch.", d: "Super-Specialisation · NEET SS", t: "Medical" },
+  // { n: "DM / M.Ch.", d: "Super-Specialisation · NEET SS", t: "Medical" },
   { n: "B.A.M.S.", d: "Ayurvedic Medicine & Surgery · NEET UG", t: "Ayurveda" },
   { n: "B.H.M.S.", d: "Homoeopathic Medicine & Surgery · NEET UG", t: "Homoeopathy" },
   { n: "B.Sc. Nursing", d: "Nursing Sciences · PNST", t: "Nursing" },
@@ -99,12 +100,13 @@ export const PROGRAMS = [
   { n: "Certificate in OT Technician", d: "Allied Health Sciences", t: "Paramedical" },
   { n: "Certificate in X-Ray Technician", d: "Allied Health Sciences", t: "Paramedical" },
   { n: "Certificate in USG Technician", d: "Ultrasound Technician", t: "Paramedical" },
-  { n: "B.Sc. Clinical Psychology (Hons)", d: "Rehabilitation Sciences", t: "Allied" },
-  { n: "B.A.S.L.P.", d: "Audiology & Speech-Language Pathology", t: "Allied" },
-  { n: "ISITEP (HI/ID)", d: "Hearing / Intellectual Disability Programmes", t: "Allied" },
-  { n: "PDCP", d: "Professional Diploma in Clinical Psychology", t: "Allied" },
+  // Hidden — Allied & Rehabilitation Sciences programmes temporarily unlisted.
+  // { n: "B.Sc. Clinical Psychology (Hons)", d: "Rehabilitation Sciences", t: "Allied" },
+  // { n: "B.A.S.L.P.", d: "Audiology & Speech-Language Pathology", t: "Allied" },
+  // { n: "ISITEP (HI/ID)", d: "Hearing / Intellectual Disability Programmes", t: "Allied" },
+  // { n: "PDCP", d: "Professional Diploma in Clinical Psychology", t: "Allied" },
 ];
-export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", "Pharmacy", "Paramedical", "Allied"];
+export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", "Pharmacy", "Paramedical" /* , "Allied" */];
 
 export const DEPARTMENT_HIGHLIGHTS = [
   {
@@ -173,16 +175,17 @@ export const DEPARTMENT_HIGHLIGHTS = [
       { t: "Ethical & Compassionate Healthcare Professionals", d: "Focused on developing skilled healthcare professionals committed to lifelong learning and community well-being." },
     ],
   },
-  {
-    id: "Allied",
-    name: "Department of Allied & Rehabilitation Sciences",
-    highlights: [
-      { t: "Recognized by the Rehabilitation Council of India (RCI)", d: "Ensures that rehabilitation and special education programs meet national standards and prepare qualified rehabilitation professionals." },
-      { t: "Professional Registration Opportunities", d: "Eligible graduates from approved programs can seek registration in the Central Rehabilitation Register (CRR), enhancing professional credibility and employability." },
-      { t: "Industry-Oriented Curriculum", d: "Programs aligned with RCI guidelines and disability rehabilitation standards." },
-      { t: "Multidisciplinary Learning Environment", d: "Integration of rehabilitation sciences, psychology, special education, speech and hearing, disability studies, and community rehabilitation." },
-    ],
-  },
+  // Hidden — Allied & Rehabilitation Sciences department temporarily unlisted.
+  // {
+  //   id: "Allied",
+  //   name: "Department of Allied & Rehabilitation Sciences",
+  //   highlights: [
+  //     { t: "Recognized by the Rehabilitation Council of India (RCI)", d: "Ensures that rehabilitation and special education programs meet national standards and prepare qualified rehabilitation professionals." },
+  //     { t: "Professional Registration Opportunities", d: "Eligible graduates from approved programs can seek registration in the Central Rehabilitation Register (CRR), enhancing professional credibility and employability." },
+  //     { t: "Industry-Oriented Curriculum", d: "Programs aligned with RCI guidelines and disability rehabilitation standards." },
+  //     { t: "Multidisciplinary Learning Environment", d: "Integration of rehabilitation sciences, psychology, special education, speech and hearing, disability studies, and community rehabilitation." },
+  //   ],
+  // },
 ];
 
 export const WHY = [
@@ -193,11 +196,11 @@ export const WHY = [
 ];
 
 export const LEADERS = [
-  { slug: "founder-chairman", role: "Founder Chairman", nm: "Shri Suresh Singh Bhadoria", org: "Mayank Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/suresh-sir.jpeg" },
-  { slug: "chairman", role: "Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Mayank Welfare Society", bio: "Visionary founder whose tireless dedication and philanthropic resolve laid the cornerstone of the Amaltas group and its mission to serve society.", photo: "/assets/images%20of%20university/leadership/mayank.jpeg" },
-  { slug: "chancellor", role: "Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg" },
-  { slug: "pro-chancellor", role: "Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir.jpg" },
-  { slug: "vice-chancellor", role: "Vice Chancellor", nm: "Dr. RK Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg" },
+  { slug: "founder-chairman", role: "Hon'ble Founder Chairman", nm: "Shri Suresh Singh Bhadoria", org: "Mayank Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/suresh-sir.jpeg" },
+  { slug: "chairman", role: "Hon'ble Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Mayank Welfare Society", bio: "Visionary founder whose tireless dedication and philanthropic resolve laid the cornerstone of the Amaltas group and its mission to serve society.", photo: "/assets/images%20of%20university/leadership/mayank.jpeg" },
+  { slug: "chancellor", role: "Hon'ble Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg" },
+  { slug: "pro-chancellor", role: "Hon'ble Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir.png" },
+  { slug: "vice-chancellor", role: "Hon'ble Vice Chancellor", nm: "Dr. R.K. Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg" },
   { slug: "registrar", role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir.png" },
 ];
 
@@ -210,7 +213,7 @@ export const VOICES = [
 
 export const STATS = [
   { v: 10, suf: "+", l: "Years shaping healers" },
-  { v: 7, suf: "", l: "Health-science institutions" },
+  { v: 6, suf: "", l: "Health-science institutions" },
   { v: 10000, suf: "+", l: "Students" },
   { v: 200, suf: "+", l: "Faculty Members" },
 ];
@@ -346,7 +349,7 @@ export const NEWS = [
   {
     date: "Jun 2026",
     title: "Ph.D. Entrance Examination 2026 Announced",
-    desc: "Amaltas University announces entrance examinations for Ph.D. programs across Medical Sciences, Nursing, Pharmacy, and Allied Sciences.",
+    desc: "Amaltas University announces entrance examinations for Ph.D. programs across Medical Sciences, Nursing, and Pharmacy.",
     tag: "Admissions",
     img: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",
   },
@@ -357,13 +360,14 @@ export const NEWS = [
     tag: "Achievement",
     img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",
   },
-  {
-    date: "Apr 2026",
-    title: "New Allied & Rehabilitation Sciences Labs Inaugurated",
-    desc: "State-of-the-art rehabilitation and speech-language pathology labs inaugurated to support clinical training in allied health sciences.",
-    tag: "Infrastructure",
-    img: "/assets/images%20of%20university/event%20and%20activites/nurse.jpeg",
-  },
+  // Hidden — news item about the Allied & Rehabilitation Sciences labs.
+  // {
+  //   date: "Apr 2026",
+  //   title: "New Allied & Rehabilitation Sciences Labs Inaugurated",
+  //   desc: "State-of-the-art rehabilitation and speech-language pathology labs inaugurated to support clinical training in allied health sciences.",
+  //   tag: "Infrastructure",
+  //   img: "/assets/images%20of%20university/event%20and%20activites/nurse.jpeg",
+  // },
 ];
 
 export const FAQS = [
@@ -389,7 +393,7 @@ export const FAQS = [
    Inspired by Medicaps' multi-angle hero, but user-controlled. */
 export const AUDIENCES = {
   "Future Student": {
-    line: "Seven institutions. One living teaching hospital. A university built so the people who will care for India learn by caring — from the very first day.",
+    line: "Six institutions. One living teaching hospital. A university built so the people who will care for India learn by caring — from the very first day.",
     ctaLabel: "Begin your application",
     ctaTo: "/admissions",
   },
@@ -436,7 +440,7 @@ export const LIFE = [
 export const OUTCOMES = [
   { v: "100%", l: "Clinical exposure from year one" },
   { v: "800+", l: "Teaching-hospital beds for training" },
-  { v: "7", l: "Health-science disciplines under one campus" },
+  { v: "6", l: "Health-science disciplines under one campus" },
 ];
 export const PARTNERS = [
   "Superspeciality Teaching Hospital", "District Health Network", "AYUSH Wellness Centres",
@@ -458,19 +462,20 @@ export const UNIVERSITY_MILESTONES = [
   { year: "2016", title: "BAMS & BHMS Institutes", desc: "Ayurvedic College & Research Centre and Institute of Homoeopathy launched, recognising India's plural healing traditions as equally worthy of academic excellence." },
   { year: "2017", title: "Nursing Institute Inaugurated", desc: "The lamp-lighting ceremony welcomed the first batch of B.Sc. Nursing students — a tradition that continues to define the Amaltas spirit." },
   { year: "2019", title: "Pharmacy & University Status", desc: "Institute of Pharmacy established. Madhya Pradesh gazette-notified Amaltas University, unifying all institutes under one academic umbrella." },
-  { year: "2022", title: "Allied & Rehabilitation Sciences", desc: "A dedicated institute for speech-language pathology, clinical psychology, physiotherapy and medical imaging sciences joined the Amaltas family." },
+  // Hidden — timeline entry for the Allied & Rehabilitation Sciences institute.
+  // { year: "2022", title: "Allied & Rehabilitation Sciences", desc: "A dedicated institute for speech-language pathology, clinical psychology, physiotherapy and medical imaging sciences joined the Amaltas family." },
   { year: "2024", title: "Guinness World Record", desc: "Over 35,000 participants gathered for a single mass yoga event — an unprecedented testament to community, wellness and Amaltas's spirit of togetherness." },
-  { year: "2026", title: "Ph.D. Research Expansion", desc: "Doctoral programmes launched across all seven health disciplines, cementing Amaltas as a research-driven force in Indian health-sciences education." },
+  { year: "2026", title: "Ph.D. Research Expansion", desc: "Doctoral programmes launched across all six health disciplines, cementing Amaltas as a research-driven force in Indian health-sciences education." },
 ];
 
 export const VISION_MISSION = {
-  vision: "To be a premier health-sciences university recognised for producing compassionate, competent healers — rooted in India's plural medical traditions and prepared for the demands of global healthcare.",
+  vision: "To be a premier health-sciences university shaping compassionate, competent healers across diverse medical traditions for global healthcare.",
   mission: [
-    "Provide integrated health-sciences education blending classical Indian medicine with evidence-based modern practice.",
-    "Deliver live hospital-embedded training from the very first year of every programme.",
-    "Foster research, innovation and community service as inseparable from academic rigour.",
-    "Make quality medical education accessible to talented students regardless of socioeconomic background.",
-    "Build a campus culture where every student is known by name and mentored toward their fullest potential.",
+    "Integrated Education: Blend classical Indian wisdom with modern, evidence-based medicine.",
+    "Immersive Training: Provide live hospital-embedded clinical practice from day one.",
+    "Impactful Research: Drive innovation, research, and community service alongside academic rigor.",
+    "Accessible Excellence: Deliver high-quality medical education to every talented mind.",
+    "Mentorship-Driven Culture: Nurture students individually toward their highest personal and professional potential.",
   ],
   values: [
     { icon: HandHeart, t: "Compassion First",   d: "Every clinical interaction, every lesson, begins with the understanding that healing is a human act above all else." },
@@ -524,7 +529,8 @@ export const ACCREDITATIONS = [
   { short: "CCH",    color: "#6A1B9A", logo: "/assets/images%20of%20university/recognisation/ccrh.jpg",      name: "Central Council of Homoeopathy",              desc: "Recognition for BHMS programme under the national homeopathic regulatory framework.",     scope: "Institute of Homoeopathy"           },
   { short: "INC",    color: "#00695C", logo: "/assets/images%20of%20university/recognisation/inc-logo.png",  name: "Indian Nursing Council",                      desc: "Approval for B.Sc. Nursing and Post Basic B.Sc. Nursing programmes.",                    scope: "Institute of Nursing Sciences"      },
   { short: "PCI",    color: "#D84315", logo: "/assets/images%20of%20university/recognisation/pci-logo.png",  name: "Pharmacy Council of India",                   desc: "Affiliation for Bachelor of Pharmacy (B.Pharm) and Diploma in Pharmacy (D.Pharm).",    scope: "Institute of Pharmacy"              },
-  { short: "RCI",    color: "#1565C0", logo: "/assets/images%20of%20university/recognisation/rci.png",       name: "Rehabilitation Council of India",             desc: "Approval for B.A.S.L.P. and allied rehabilitation science courses.",                     scope: "Allied & Rehabilitation Sciences"   },
+  // Hidden — RCI approval tied to the Allied & Rehabilitation Sciences institute.
+  // { short: "RCI",    color: "#1565C0", logo: "/assets/images%20of%20university/recognisation/rci.png",       name: "Rehabilitation Council of India",             desc: "Approval for B.A.S.L.P. and allied rehabilitation science courses.",                     scope: "Allied & Rehabilitation Sciences"   },
   { short: "UGC",    color: "#0D1B5E", logo: "/assets/images%20of%20university/recognisation/ugc.png",       name: "University Grants Commission",                desc: "Recognition as a Private University under Section 2(f) of the UGC Act, 1956.",           scope: "University-wide"                   },
   { short: "MPPUREC", color: "#6D4C41", logo: "/assets/images%20of%20university/recognisation/mppurc.jpg",    name: "MP Private University Regulatory Commission", desc: "Established under the MP Niji Vishwavidyalaya (Sthapana Aur Sanchalan) Adhiniyam.",    scope: "University-wide"                   },
   { short: "NABH",   color: "#880E4F", logo: "/assets/images%20of%20university/recognisation/nabh-logo.png", name: "Natl. Accreditation Board for Hospitals",     desc: "NABH-linked teaching hospital ensuring patient safety and quality care standards.",       scope: "Teaching Hospital"                  },
@@ -540,7 +546,7 @@ export const DISCLOSURE_SECTIONS = [
       { label: "Founding Society",      value: "Mayank Welfare Society" },
       { label: "Chancellor",            value: "Mrs. Aruna Bhadoria" },
       { label: "Pro-Chancellor",        value: "Dr. Salil Bhargava" },
-      { label: "Vice Chancellor",       value: "Dr. RK Singh" },
+      { label: "Vice Chancellor",       value: "Dr. R.K. Singh" },
       { label: "Registrar",             value: "Dr. Abhay Gupta" },
       { label: "Address",               value: "Village Bangar, Dewas–Ujjain Highway, District Dewas, Madhya Pradesh – 455001" },
       { label: "Website",               value: "www.amaltasuniversity.in" },
@@ -549,12 +555,12 @@ export const DISCLOSURE_SECTIONS = [
   {
     title: "Academic Information",
     items: [
-      { label: "Number of Institutes",       value: "7 Health-Science Institutes" },
-      { label: "Programmes Offered",         value: "MBBS · MD/MS · BAMS · BHMS · B.Sc. Nursing · Post Basic B.Sc. Nursing · B.Pharm · D.Pharm · BPT · BMLT · DMLT · BASLP · B.Sc. Clinical Psychology (Hons)" },
+      { label: "Number of Institutes",       value: "6 Health-Science Institutes" },
+      { label: "Programmes Offered",         value: "MBBS · MD/MS · BAMS · BHMS · B.Sc. Nursing · Post Basic B.Sc. Nursing · B.Pharm · D.Pharm · BPT · BMLT · DMLT" },
       { label: "Teaching Hospital",          value: "1500+ bed Superspeciality Teaching Hospital (integrated on campus)" },
       { label: "Medium of Instruction",      value: "English (Hindi language support available)" },
       { label: "Academic Calendar",          value: "August – June (Annual System)" },
-      { label: "Ph.D. Programmes",          value: "Available across all 7 health-science disciplines from 2026" },
+      { label: "Ph.D. Programmes",          value: "Available across all 6 health-science disciplines from 2026" },
     ],
   },
   {
@@ -573,7 +579,7 @@ export const DISCLOSURE_SECTIONS = [
     items: [
       { label: "General Enquiry",       value: "+91 9977544111" },
       { label: "BAMS Helpline",         value: "+91 7880154605" },
-      { label: "Allied Sciences",       value: "+91 9617245556" },
+      // { label: "Allied Sciences",       value: "+91 9617245556" },
       { label: "Office Number",         value: "07272-482580" },
       { label: "Email",                 value: "registrar@amaltasuniversity.in" },
       { label: "Admissions Portal",     value: "Online application via official website" },
@@ -585,13 +591,13 @@ export const DISCLOSURE_SECTIONS = [
 // (TheUniversity.jsx) and reused as LEADER_MESSAGES.chancellor for the full
 // /leadership/chancellor page (LeaderMessage.jsx).
 export const CHANCELLOR_MESSAGE = {
-  salutation: "Dear Friends,",
+  salutation: "Dear Students,",
   // Full letter body; the preview on /about/university only shows paragraphs[1].
   paragraphs: [
     "At Amaltas University, we believe that the highest calling of any institution is not merely to teach, but to transform. When a young student walks through our gates, they carry with them the hopes of families, the dreams of communities, and the responsibility of a nation's health future.",
-    "The name 'Amaltas' — the Indian laburnum — blooms in brilliant gold before it shades anyone. It gives first, without condition. That is the spirit we have tried to build here. Our seven institutes exist not as separate schools, but as one living ecosystem, each discipline in conversation with the others — much as the body itself works, as a whole.",
-    "I am proud of what our students have achieved: the research they have pursued, the communities they have served in our outreach clinics, and the world record we set together in 2024 as thirty-five thousand souls breathed in unison. These moments remind us why we exist.",
-    "Our teaching hospital is not a resource that supplements education — it is the education. From the first year, our students walk wards, observe procedures, and carry the weight of real responsibility. That is our promise and our method.",
+    "The name Amaltas—the Indian laburnum—blooms in brilliant gold, offering shade and beauty without condition. That is the spirit we have cultivated here. Our six institutes exist not as separate schools, but as one living ecosystem, where disciplines converse with one another—just as the human body works as a whole.",
+    "I am proud of what our students have achieved: the research they have pursued, the communities they have served in our outreach clinics, and the world record we set together in 2026 as thirty-five thousand souls breathed in unison. These moments remind us why we exist.",
+    "Our teaching hospital is not a resource that supplements education — *it is the education*. From the first year, our students walk wards, observe procedures, and carry the weight of real responsibility. That is our promise and our method.",
     "As you explore Amaltas University, I invite you not only to study our programmes and infrastructure, but to feel our purpose. Come and see a campus where healing is not a subject — it is a way of life.",
   ],
   closing: "With faith in tomorrow's healers,",
@@ -603,7 +609,7 @@ export const CHANCELLOR_MESSAGE = {
 };
 
 export const VC_MESSAGE = {
-  salutation: "Dear Students, Faculty, and Colleagues,",
+  salutation: "Dear Students",
   paragraphs: [
     "As Kulguru (Vice-Chancellor) of Amaltas University, I would create an environment of academic freedom in the University where bright minds meet, discover, and learn to serve society by being a part of a global university of higher learning.",
     "Leading this institution, I aim to inspire a passion for knowledge, strong problem-solving capabilities, and excellent leadership and communication skills among our students, faculty, and staff. I also want to instill a deep sense of mutual respect, equity, and dignity, empowering our community to offer the highest level of service to those in need.",
@@ -615,7 +621,7 @@ export const VC_MESSAGE = {
     "I acknowledge the thoughtful vision and painstaking humanitarian efforts put forth by our respected Shri Suresh Singh Bhadoria Ji, Founder Chairman, to build and carry forward this mission for the welfare of the people living in the rural areas of Dewas district and surrounding regions.",
   ],
   closing: "With respect and high expectations,",
-  name: "Dr. RK Singh",
+  name: "Dr. R.K. Singh",
   role: "Vice Chancellor, Amaltas University",
   photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg",
   quote: "My mission as an educator is to ignite curiosity and develop lifelong learners equipped to serve society effectively.",
@@ -626,7 +632,7 @@ export const VC_MESSAGE = {
 // already authored above; the rest are authored directly here.
 export const LEADER_MESSAGES = {
   "founder-chairman": {
-    salutation: "Dear Friends, Faculty, and Students,",
+    salutation: "Dear Students,",
     paragraphs: [
       "When I established Mayank Welfare Society in 2013, I carried a single, unwavering conviction: that the people of Malwa — of Dewas, of every village and town across this heartland — deserved world-class healthcare education within reach. Not in a distant city, not beyond the means of the ordinary family, but here, close to home.",
       "I have spent my life in service of this community. I have seen the consequences of a healthcare gap — families travelling hundreds of kilometres for treatment, young people with the aptitude to become doctors but no institution willing to open its doors to them. Amaltas was my answer to that silence.",
@@ -646,7 +652,7 @@ export const LEADER_MESSAGES = {
     ],
   },
   chairman: {
-    salutation: "Dear Members of the Amaltas Family,",
+    salutation: "Dear Students,",
     paragraphs: [
       "I grew up watching my father build something from nothing — a welfare society, then a hospital, then a university. I did not merely inherit a title when I became Chairman. I inherited a responsibility: to ensure that what he started would not only survive but flourish in ways even he had not yet imagined.",
       "Amaltas University today stands as a testament to what focused resolve and genuine service can achieve. We are not the largest institution in India. But I believe we are among the most sincere. Every decision made at this university begins from a single question: does this serve our students and our community?",
@@ -696,7 +702,7 @@ export const LEADER_MESSAGES = {
   // PLACEHOLDER — Pro-Chancellor has no authored letter yet; replace with his
   // real message when available. Drafted generically from his LEADERS bio line.
   "pro-chancellor": {
-    salutation: "Dear Students and Colleagues,",
+    salutation: "Dear Students,",
     paragraphs: [
       "It is a privilege to serve Amaltas University as Pro-Chancellor, working alongside a leadership team committed to bridging rigorous academics with genuine clinical practice.",
       "Over decades in clinical and academic settings, I have seen how the strongest healthcare professionals are shaped as much by mentorship and hands-on exposure as by textbooks. That belief guides how we grow every institute at Amaltas.",
@@ -716,7 +722,7 @@ export const LEADER_MESSAGES = {
   // PLACEHOLDER — Registrar has no authored letter yet; replace with his
   // real message when available. Drafted generically from his LEADERS bio line.
   registrar: {
-    salutation: "Dear Students and Members of the Amaltas Community,",
+    salutation: "Dear Students,",
     paragraphs: [
       "As Registrar, my role is to ensure that the university runs with the integrity, transparency, and consistency our students and families expect from us.",
       "From admissions to examinations to daily administration, our office works to make sure the systems behind your education are dependable — so that your focus can stay where it belongs: on learning.",

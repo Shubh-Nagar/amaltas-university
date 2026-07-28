@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Trophy, Star } from "lucide-react";
+import { ArrowRight, Trophy } from "lucide-react";
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
@@ -178,25 +178,6 @@ export default function AwardsRankings() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* RECOGNITIONS STRIP */}
-      <section className="sec wrap">
-        <Reveal>
-          <span className="eyebrow">Recognition From</span>
-          <h2 style={{ marginTop: 14 }}>Endorsements that matter.</h2>
-          <p className="lead" style={{ marginTop: 18 }}>Our programmes are recognised and regulated by the premier statutory bodies of the Government of India.</p>
-        </Reveal>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 44 }}>
-          {["National Medical Commission (NMC)", "Central Council of Indian Medicine (CCIM)", "Central Council of Homoeopathy (CCH)", "Indian Nursing Council (INC)", "Pharmacy Council of India (PCI)", "Rehabilitation Council of India (RCI)", "University Grants Commission (UGC)", "Ministry of AYUSH"].map((r, i) => (
-            <Reveal key={i} delay={`d${(i % 4) + 1}`}>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 18px", borderRadius: 100, background: "#fff", border: "1px solid rgba(11,44,24,.1)", fontSize: 13.5, fontWeight: 500, color: C.ink }}>
-                <Star size={13} color={C.gold} style={{ flexShrink: 0 }} />
-                {r}
-              </div>
-            </Reveal>
-          ))}
         </div>
       </section>
 

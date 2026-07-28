@@ -8,7 +8,6 @@ import { C } from "../theme.js";
    The documents themselves are downloaded into /public/disclosure and served
    locally — `localDoc()` maps each source PDF URL to its bundled local file. */
 
-const OFFICIAL_URL = "https://amaltasuniversity.in/public-self-disclosure/";
 const U = "https://amaltasuniversity.in/wp-content/uploads";
 
 /* Map a source PDF URL to the locally-hosted copy in /public/disclosure.
@@ -28,7 +27,7 @@ function localDoc(href) {
 const LEADERS = [
   { role: "Chancellor",      name: "Mrs. Aruna Bhadoria",        email: "chancellor@amaltasuniversity.in",    phone: "07272-482580",   profile: `${U}/2025/06/Mrs.-Aruna-Bhadoria-Chancellor.pdf` },
   { role: "Pro Chancellor",  name: "Dr. Salil Bhargava",         email: "prochancellor@amaltasuniversity.in", phone: "070890 40404",   profile: `${U}/2025/06/Dr.-Salil-Bhargava-Pro-Chancellor.pdf` },
-  { role: "Vice-Chancellor", name: "Dr. RK Singh", email: "vicechancellor@amaltasuniversity.in", phone: "098222 68026",  profile: `${U}/2025/06/Dr.-Sharadchandra-WankhedeVice-chancellor-1.pdf` },
+  { role: "Vice-Chancellor", name: "Dr. R.K. Singh", email: "vicechancellor@amaltasuniversity.in", phone: "098222 68026",  profile: `${U}/2025/06/Dr.-Sharadchandra-WankhedeVice-chancellor-1.pdf` },
   { role: "Registrar",       name: "Dr. Abhay Gupta",        email: "registrar@amaltasuniversity.in",     phone: "07272-482580",   profile: `${U}/2025/06/Shri-Sanjay-Rambole-Registrar.pdf` },
   { role: "Ombudsperson",    name: "Dr. Satish Kumar S. Gupta",  email: "surajbhanji@gmail.com",              phone: "+91 94221-14037", profile: `${U}/2025/06/Dr.-Satish-Kumar-S.-Gupta-Ombudsperson.pdf` },
 ];
@@ -234,20 +233,6 @@ export default function PublicSelfDisclosure() {
         sub="Institutional information published for all stakeholders, as mandated by regulatory disclosure requirements."
         bgImg="/assets/images%20of%20university/all%20institutes/medical%20science.jpeg"
       />
-
-      {/* Official portal link */}
-      <section className="wrap" style={{ paddingTop: 40 }}>
-        <Reveal>
-          <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap", justifyContent: "space-between", background: "linear-gradient(135deg,#eef6f1 0%,#fdfce8 100%)", border: "1px solid rgba(11,44,24,.1)", borderRadius: 18, padding: "20px 26px" }}>
-            <p style={{ margin: 0, color: C.slate, fontSize: 14.5, lineHeight: 1.6, maxWidth: 640 }}>
-              Every document below opens a copy hosted on this site. You can also browse the University's complete disclosure portal directly.
-            </p>
-            <a href={OFFICIAL_URL} target="_blank" rel="noreferrer" className="btn btn-gold" style={{ padding: "11px 20px", fontSize: 14 }}>
-              Open official portal <ExternalLink size={15} />
-            </a>
-          </div>
-        </Reveal>
-      </section>
 
       {/* Leadership contacts */}
       <section className="sec wrap" style={{ paddingTop: 60 }}>

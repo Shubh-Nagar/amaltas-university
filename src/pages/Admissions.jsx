@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   ArrowRight, ArrowUpRight, Phone, Check,
-  Stethoscope, HeartPulse, Activity, GraduationCap, FlaskConical, Microscope, Brain,
+  Stethoscope, HeartPulse, Activity, GraduationCap, FlaskConical, Microscope,
 } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
@@ -16,7 +16,8 @@ const CAT_META = {
   Nursing:     { icon: GraduationCap, pc: "#872822", pc2: "#B24A3E", soft: "rgba(135,40,34,.09)" },
   Pharmacy:    { icon: FlaskConical,  pc: "#9A6B04", pc2: "#C79215", soft: "rgba(154,107,4,.12)" },
   Paramedical: { icon: Microscope,    pc: "#0B2C18", pc2: "#1C5E35", soft: "rgba(11,44,24,.08)" },
-  Allied:      { icon: Brain,         pc: "#A8392E", pc2: "#C85A4C", soft: "rgba(168,57,46,.10)" },
+  // Hidden — Allied & Rehabilitation programmes temporarily unlisted.
+  // Allied:      { icon: Brain,         pc: "#A8392E", pc2: "#C85A4C", soft: "rgba(168,57,46,.10)" },
 };
 const catMeta = (t) => CAT_META[t] || CAT_META.Medical;
 
@@ -39,7 +40,7 @@ export default function Admissions() {
         crumb="Admissions"
         eyebrow="Admissions 2026–27 are open"
         title="Your first step toward a life in healthcare."
-        sub="Applications for MBBS, BAMS, BHMS, Nursing, Pharmacy and Allied Sciences are live. Begin now — the intake window closes soon."
+        sub="Applications for MBBS, BAMS, BHMS, Nursing and Pharmacy are live. Begin now — the intake window closes soon."
         bgImg="/assets/images%20of%20university/campus%20life/degree.JPG"
       />
 

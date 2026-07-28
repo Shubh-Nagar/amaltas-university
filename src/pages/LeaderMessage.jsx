@@ -6,6 +6,10 @@ import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { LEADERS, LEADER_MESSAGES } from "../data/content.js";
 
+function renderParagraph(text) {
+  return text.split(/\*(.+?)\*/g).map((part, i) => (i % 2 === 1 ? <em key={i}>{part}</em> : part));
+}
+
 export default function LeaderMessage() {
   const { slug } = useParams();
   const leader = LEADERS.find((l) => l.slug === slug);
@@ -34,7 +38,7 @@ export default function LeaderMessage() {
             <span className="eyebrow" style={{ marginBottom: 24, display: "block" }}>{leader.role}'s Message</span>
             <div className="chancellor-letter">
               <p className="letter-salutation">{msg.salutation}</p>
-              {msg.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+              {msg.paragraphs.map((p, i) => <p key={i}>{renderParagraph(p)}</p>)}
               <div className="letter-closing">
                 <p>{msg.closing}</p>
                 <span className="letter-signame">{leader.nm}</span>

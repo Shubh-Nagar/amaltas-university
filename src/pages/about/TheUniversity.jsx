@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {
   ArrowRight, MapPin, Users, Leaf, CalendarDays, ShieldCheck,
   Building2, Award, Sparkles, FlaskConical, HandHeart, Stethoscope,
-  Dumbbell, Music, Home as HomeIcon, Quote, FileText, Download,
+  Dumbbell, Music, Home as HomeIcon, Quote, Newspaper, Download,
 } from "lucide-react";
 import { Reveal } from "../../components/Primitives.jsx";
 import { VISION_MISSION, CHANCELLOR_MESSAGE } from "../../data/content.js";
@@ -39,20 +39,21 @@ const INSTITUTE_PHOTOS = [
   { name: "Amaltas Nursing Sciences",         short: "B.Sc. · P.B.B.Sc. · M.Sc.",photo: "/assets/images%20of%20university/all%20institutes/nursing.jpeg" },
   { name: "Amaltas Institute of Pharmacy",    short: "B.Pharm · M.Pharm",         photo: "/assets/images%20of%20university/all%20institutes/pharmacy.png" },
   { name: "Amaltas Paramedical Sciences",     short: "BMLT · DMLT · Imaging",     photo: "/assets/images%20of%20university/all%20institutes/paramedical.jpg" },
-  { name: "Amaltas Allied & Rehabilitation",  short: "Physiotherapy · Psychology", photo: "/assets/images%20of%20university/all%20institutes/alied.jpg" },
+  // Hidden — Allied & Rehabilitation institute photo temporarily unlisted.
+  // { name: "Amaltas Allied & Rehabilitation",  short: "Physiotherapy · Psychology", photo: "/assets/images%20of%20university/all%20institutes/alied.jpg" },
 ];
 
 const ADVANTAGES = [
   { icon: Building2,    t: "Hospital-Embedded Learning",    d: "A live 1500+ bed teaching hospital is your classroom — real patients, real outcomes, from your very first year." },
-  { icon: Stethoscope,  t: "Seven Disciplines, One Campus", d: "Modern medicine, Ayurveda, Homoeopathy, Nursing, Pharmacy, Paramedical and Allied Sciences under a single roof." },
+  { icon: Stethoscope,  t: "Six Disciplines, One Campus", d: "Modern medicine, Ayurveda, Homoeopathy, Nursing, Pharmacy and Paramedical under a single roof." },
   { icon: Users,        t: "Mentors, Not Just Lecturers",   d: "Renowned clinicians and scholars who know your name and shape your path through every semester." },
-  { icon: FlaskConical, t: "Research From Day One",         d: "Active labs, publications and Ph.D. programmes across all seven health disciplines — discovery is part of the curriculum." },
+  { icon: FlaskConical, t: "Research From Day One",         d: "Active labs, publications and Ph.D. programmes across all six health disciplines — discovery is part of the curriculum." },
   { icon: Sparkles,     t: "Scholarships That Reach",       d: "Merit and need-based aid so that talent — not tuition — decides who heals tomorrow." },
   { icon: Award,        t: "Recognised & Accredited",       d: "Programmes structured to national regulatory standards across every health-science field we teach." },
 ];
 
 const BEYOND = [
-  { icon: FlaskConical, t: "Research & Innovation",     d: "Active labs, peer-reviewed publications and Ph.D. programmes across all seven health disciplines.", img: "/assets/images%20of%20university/event%20and%20activites/nurse.jpeg" },
+  { icon: FlaskConical, t: "Research & Innovation",     d: "Active labs, peer-reviewed publications and Ph.D. programmes across all six health disciplines.", img: "/assets/images%20of%20university/event%20and%20activites/nurse.jpeg" },
   { icon: HandHeart,    t: "Community Health Outreach", d: "Rural health missions, free wellness camps and outreach clinics woven into the academic calendar.",  img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg" },
   { icon: Stethoscope,  t: "Skill & Simulation Labs",   d: "State-of-the-art simulation centres where students rehearse clinical skills before the ward.",       img: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG" },
   { icon: Dumbbell,     t: "Sports & Wellness",         d: "Courts, grounds and a culture that treats physical wellbeing as part of a healer's training.",        img: "/assets/images%20of%20university/campus%20life/sport.JPG" },
@@ -67,14 +68,15 @@ const APPROVALS = [
   { src: "/assets/images%20of%20university/recognisation/ccrh.jpg",     label: "Central Council of Homoeopathy" },
   { src: "/assets/images%20of%20university/recognisation/inc-logo.png", label: "Indian Nursing Council" },
   { src: "/assets/images%20of%20university/recognisation/pci-logo.png", label: "Pharmacy Council of India" },
-  { src: "/assets/images%20of%20university/recognisation/rci.png",      label: "Rehabilitation Council of India" },
+  // Hidden — RCI approval tied to the Allied & Rehabilitation Sciences institute.
+  // { src: "/assets/images%20of%20university/recognisation/rci.png",      label: "Rehabilitation Council of India" },
   { src: "/assets/images%20of%20university/recognisation/nabh-logo.png",label: "NABH" },
 ];
 
 const HERO_CHIPS = [
   { icon: CalendarDays, label: "Established 2013" },
   { icon: MapPin,       label: "Dewas, Madhya Pradesh" },
-  { icon: Building2,    label: "7 Health-Science Institutes" },
+  { icon: Building2,    label: "6 Health-Science Institutes" },
   { icon: ShieldCheck,  label: "Govt. Recognised & Accredited" },
 ];
 
@@ -289,13 +291,13 @@ export default function TheUniversity() {
               <span className="eyebrow">Amaltas University</span>
               <h2 style={{ marginTop: 14, color: G.ink }}>A single resolve that became a university.</h2>
               <p style={{ color: G.slate, fontSize: 16.5, lineHeight: 1.85, marginTop: 20 }}>
-                Amaltas University began not in a boardroom, but in a conviction — that the Malwa heartland of Madhya Pradesh deserved a medical institution worthy of its people's ambitions.
+                Amaltas University began not in a boardroom, but with a conviction — that the Malwa heartland of Madhya Pradesh deserved a university worthy of its people's ambitions.
               </p>
               <p style={{ color: G.slate, fontSize: 16.5, lineHeight: 1.85, marginTop: 16 }}>
-                Founded under the Mayank Welfare Society by Shri Suresh Singh Bhadoria, the university grew institute by institute: first a medical college with a live teaching hospital, then Ayurveda, Homoeopathy, Nursing, Pharmacy, Paramedical, and Allied Sciences — seven disciplines mirroring the full spectrum of human healing.
+                Founded under the Mayank Welfare Society by Shri Suresh Singh Bhadoria, the university grew institute by institute: first a medical college with a 900-bedded teaching hospital, then Ayurveda, Homeopathy, Nursing, Pharmacy, and Paramedical — six disciplines mirroring the full spectrum of human healing.
               </p>
               <p style={{ color: G.slate, fontSize: 16.5, lineHeight: 1.85, marginTop: 16 }}>
-                Today, Amaltas University stands in Village Bangar on the Dewas–Ujjain Highway — a campus where 1500+ hospital beds, research labs, simulation centres, and hostel communities form a living ecosystem for tomorrow's healers.
+                Today, Amaltas University stands in Village Bangar on the Dewas–Ujjain Highway — a campus where 1,500+ hospital beds, research labs, simulation centers, and hostel communities form a living ecosystem for tomorrow's healers.
               </p>
               <div style={{ display: "flex", gap: 18, marginTop: 28, flexWrap: "wrap", alignItems: "center" }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13.5, color: G.slate, fontWeight: 500 }}>
@@ -398,7 +400,7 @@ export default function TheUniversity() {
             <span className="eyebrow">The Amaltas Advantage</span>
             <h2 style={{ marginTop: 14, maxWidth: 640, color: G.ink }}>Why a healer's education belongs here.</h2>
             <p style={{ color: G.slate, marginTop: 14, fontSize: 17, maxWidth: 580, lineHeight: 1.7 }}>
-              Everything at Amaltas is built around a single idea — that you learn to heal by healing, beside people who have done it for decades.
+              "Everything at Amaltas rests on one simple truth: you learn to heal by healing, guided by experts who have done it for decades."
             </p>
           </Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 20, marginTop: 44 }}>
@@ -467,7 +469,7 @@ export default function TheUniversity() {
             <Reveal variant="left">
               <div>
                 <span className="eyebrow">Academics &amp; Collaboration</span>
-                <h2 style={{ marginTop: 14, color: G.ink, maxWidth: 520 }}>Seven institutes. One academic ecosystem.</h2>
+                <h2 style={{ marginTop: 14, color: G.ink, maxWidth: 520 }}>Six institutes. One academic ecosystem.</h2>
                 <p style={{ color: G.slate, fontSize: 16.5, lineHeight: 1.8, marginTop: 18 }}>
                   Amaltas is built as a meeting ground for disciplines — where modern medicine, classical Indian traditions, and allied sciences learn from one another. Research collaborations, clinical partnerships and community outreach give every student exposure beyond the textbook.
                 </p>
@@ -485,7 +487,7 @@ export default function TheUniversity() {
             </Reveal>
           </div>
 
-          {/* Seven institutes grid */}
+          {/* Six institutes grid */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: 14, marginTop: 56 }}>
             {INSTITUTE_PHOTOS.map((inst, i) => (
               <Reveal key={i} delay={`d${(i % 4) + 1}`} variant="zoom">
@@ -548,7 +550,7 @@ export default function TheUniversity() {
         </div>
       </section>
 
-      {/* ══ ANNUAL REPORT — light green-to-yellow gradient banner ══ */}
+      {/* ══ QUARTERLY NEWSLETTER — light green-to-yellow gradient banner ══ */}
       <section className="sec wrap">
         <Reveal>
           <div
@@ -565,13 +567,13 @@ export default function TheUniversity() {
             <div style={{ position: "absolute", width: 140, height: 140, borderRadius: "50%", border: `1px solid rgba(246,224,5,.4)`, right: 40, top: -20, pointerEvents: "none" }} />
             <div style={{ display: "flex", gap: 22, alignItems: "center", position: "relative", zIndex: 1, minWidth: 280, flex: 1 }}>
               <div style={{ width: 60, height: 60, borderRadius: 16, background: `linear-gradient(135deg,${G.green},${G.greenL})`, display: "grid", placeItems: "center", color: "#fff", flexShrink: 0, boxShadow: `0 8px 24px rgba(16,128,59,.3)` }}>
-                <FileText size={26} />
+                <Newspaper size={26} />
               </div>
               <div>
-                <div style={{ color: G.green, fontSize: 12, fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", marginBottom: 6 }}>Annual Report 2025–26</div>
-                <div style={{ fontFamily: "Fraunces,serif", fontSize: 23, color: G.ink, lineHeight: 1.25 }}>A year of growing healers, in full detail.</div>
+                <div style={{ color: G.green, fontSize: 12, fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", marginBottom: 6 }}>Quarterly Newsletter</div>
+                <div style={{ fontFamily: "Fraunces,serif", fontSize: 23, color: G.ink, lineHeight: 1.25 }}>A season of growing healers, in full detail.</div>
                 <p style={{ color: G.slate, fontSize: 14, margin: "8px 0 0", maxWidth: 520 }}>
-                  Our institutional performance, academics, research and community impact — published for all stakeholders.
+                  Campus stories, research highlights and community impact — delivered every quarter.
                 </p>
               </div>
             </div>

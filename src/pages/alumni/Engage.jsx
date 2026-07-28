@@ -18,7 +18,7 @@ const TABS = [
       { name: "alumni_id",    label: "Alumni ID / Batch Year",   type: "text",     placeholder: "e.g. AIMS-2018" },
       { name: "email",        label: "Email Address",            type: "email",    placeholder: "you@example.com" },
       { name: "phone",        label: "Phone Number",             type: "tel",      placeholder: "+91 XXXXX XXXXX" },
-      { name: "department",   label: "Department / Institute",   type: "select",   options: ["Select Institute", "Institute of Medical Sciences", "Ayurvedic College & Research Centre", "Institute of Homoeopathy", "Institute of Nursing Sciences", "Institute of Pharmacy", "Institute of Paramedical Sciences", "Allied & Rehabilitation Sciences"] },
+      { name: "department",   label: "Department / Institute",   type: "select",   options: ["Select Institute", "Institute of Medical Sciences", "Ayurvedic College & Research Centre", "Institute of Homoeopathy", "Institute of Nursing Sciences", "Institute of Pharmacy", "Institute of Paramedical Sciences" /* , "Allied & Rehabilitation Sciences" */] },
       { name: "expertise",    label: "Area of Expertise",        type: "text",     placeholder: "e.g. Cardiology, Research, Hospital Administration" },
       { name: "availability", label: "Availability",             type: "select",   options: ["Select Availability", "Weekdays – Morning", "Weekdays – Evening", "Weekends", "Flexible / Online only"] },
       { name: "message",      label: "Motivation & Introduction", type: "textarea", placeholder: "Tell us about your career journey and what you'd like to offer as a mentor...", optional: true },

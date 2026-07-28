@@ -7,8 +7,8 @@ import { C } from "../../theme.js";
 
 const VC_INFO = {
   role: "Vice Chancellor",
-  name: "Dr. RK Singh",
-  bio: "Academic visionary and guiding patron of the Alumni Association — committed to building lifelong bonds between Amaltas University and its graduates across all seven institutions.",
+  name: "Dr. R.K. Singh",
+  bio: "Academic visionary and guiding patron of the Alumni Association — committed to building lifelong bonds between Amaltas University and its graduates across all six institutions.",
   photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg",
 };
 

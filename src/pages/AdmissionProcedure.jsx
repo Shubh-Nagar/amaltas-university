@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Globe, ClipboardList, Banknote, Trophy, ShieldCheck, GraduationCap, Phone, ArrowRight } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
@@ -12,7 +13,7 @@ const STEPS = [
     title: "Visit Our Website",
     desc: "Go to amaltasuniversity.in and explore the programmes offered. Browse course details, eligibility criteria, and fee structure to find the right fit for you.",
     note: "amaltasuniversity.in",
-    color: C.em,
+    color: C.emerald,
   },
   {
     n: "02",
@@ -146,7 +147,7 @@ export default function AdmissionProcedure() {
                     width: 28,
                     height: 28,
                     borderRadius: 8,
-                    background: `${C.em}14`,
+                    background: `${C.emerald}14`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -154,7 +155,7 @@ export default function AdmissionProcedure() {
                     fontFamily: "Fraunces,serif",
                     fontWeight: 700,
                     fontSize: 13,
-                    color: C.em,
+                    color: C.emerald,
                   }}>
                     {String(i + 1).padStart(2, "0")}
                   </div>
@@ -213,7 +214,7 @@ export default function AdmissionProcedure() {
                   { label: "View fee structure",        to: "/admissions/fees" },
                   { label: "Courses & programmes",      to: "/admissions" },
                 ].map(({ label, to }) => (
-                  <a key={to} href={to} style={{
+                  <Link key={to} to={to} style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
@@ -228,8 +229,8 @@ export default function AdmissionProcedure() {
                     transition: "all .2s",
                   }}>
                     {label}
-                    <ArrowRight size={16} color={C.em} />
-                  </a>
+                    <ArrowRight size={16} color={C.emerald} />
+                  </Link>
                 ))}
               </div>
             </div>

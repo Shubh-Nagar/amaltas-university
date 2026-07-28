@@ -74,7 +74,7 @@ export default function Alumni() {
             {[
               { v: 10,   suf: "+", l: "Years of graduates"  },
               { v: 5000, suf: "+", l: "Alumni worldwide"    },
-              { v: 7,    suf: "",  l: "Health disciplines"  },
+              { v: 6,    suf: "",  l: "Health disciplines"  },
               { v: 200,  suf: "+", l: "Mentors enrolled"    },
             ].map((s, i) => (
               <div key={i} style={{
@@ -105,7 +105,7 @@ export default function Alumni() {
             <span className="eyebrow">Who We Are</span>
             <h2 style={{ marginTop: 14 }}>The Amaltas alumni network.</h2>
             <p className="lead" style={{ marginTop: 18 }}>
-              The Amaltas University Alumni Association connects graduates across all seven health-science institutions — fostering mentorship, career growth, giving back, and lifelong belonging to the Amaltas family.
+              The Amaltas University Alumni Association connects graduates across all six health-science institutions — fostering mentorship, career growth, giving back, and lifelong belonging to the Amaltas family.
             </p>
           </Reveal>
 

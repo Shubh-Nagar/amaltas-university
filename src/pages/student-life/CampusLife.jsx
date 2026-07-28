@@ -109,7 +109,7 @@ const MOSAIC = [
 ];
 
 const STATS = [
-  { v: 7,   suf: "",  l: "Institutes, One Campus Family" },
+  { v: 6,   suf: "",  l: "Institutes, One Campus Family" },
   { v: 25,  suf: "+", l: "Cultural & Sports Events a Year" },
   { v: 900, suf: "+", l: "Hostel Residents" },
   { v: 100, suf: "%", l: "Wi-Fi Campus Coverage" },

@@ -11,10 +11,11 @@ const CATEGORIES = [
     label: "Medical",
     color: C.burg,
     courses: [
-      { course: "MBBS", specialization: null, fee: 1723000, seats: 250 },
+      { course: "MBBS", specialization: null, fee: 1698000, seats: 250 },
       { course: "MD / MS", specialization: "Dermatology, Radio-Diagnosis", fee: 2184000, seats: null },
       { course: "MD / MS", specialization: "General Medicine, OBS-Gynae", fee: 1950000, seats: null },
-      { course: "MD / MS", specialization: "Orthopaedic, Anaesthesia, Paediatric, Psychiatry, Respiratory, ENT, General Surgery, Ophthalmology, Emergency Medicine, Pathology", fee: 1838000, seats: 134 },
+      { course: "MD / MS", specialization: "Orthopaedic, Anaesthesia, Paediatric, Psychiatry, Respiratory, ENT, General Surgery, Ophthalmology, Emergency Medicine", fee: 1838000, seats: 134 },
+      { course: "MD", specialization: "Pathology", fee: 950000, seats: null },
       { course: "DM", specialization: "Cardiology, Nephrology", fee: 1215000, seats: null },
       { course: "M.Ch", specialization: "Neurosurgery, Urology", fee: 1805000, seats: null },
       { course: "MD", specialization: "Anatomy, Biochemistry, Physiology, Forensic Medicine", fee: 10000, seats: null },
@@ -26,7 +27,7 @@ const CATEGORIES = [
     label: "Ayurveda",
     color: "#2d7a4f",
     courses: [
-      { course: "BAMS", specialization: "Bachelor of Ayurvedic Medicine & Surgery", fee: 350000, seats: 100 },
+      { course: "BAMS", specialization: "Bachelor of Ayurvedic Medicine & Surgery", fee: 310000, seats: 100 },
     ],
   },
   {
@@ -34,7 +35,7 @@ const CATEGORIES = [
     label: "Homoeopathy",
     color: "#3f8f63",
     courses: [
-      { course: "BHMS", specialization: "Bachelor of Homeopathic Medicine & Surgery", fee: 165000, seats: 100 },
+      { course: "BHMS", specialization: "Bachelor of Homeopathic Medicine & Surgery", fee: 155000, seats: 100 },
     ],
   },
   {
@@ -42,11 +43,20 @@ const CATEGORIES = [
     label: "Nursing",
     color: "#a0522d",
     courses: [
-      { course: "B.Sc Nursing", specialization: null, fee: 99000, seats: 100 },
-      { course: "B.Sc Post Basic Nursing", specialization: null, fee: 40000, seats: 40 },
-      { course: "M.Sc Nursing", specialization: null, fee: 125000, seats: 34 },
+      { course: "B.Sc Nursing", specialization: null, fee: 90000, seats: 100 },
+      { course: "B.Sc Post Basic Nursing", specialization: null, fee: 61000, seats: 40 },
+      { course: "M.Sc Nursing", specialization: null, fee: 135000, seats: 34 },
       { course: "GNM", specialization: "General Nursing & Midwifery", fee: 51000, seats: 100 },
       { course: "PhD Nursing", specialization: null, fee: 135000, seats: null },
+    ],
+  },
+  {
+    id: "pharmacy",
+    label: "Pharmacy",
+    color: "#1a7a6e",
+    courses: [
+      { course: "B.Pharm", specialization: "Bachelor of Pharmacy", fee: 69500, seats: 60 },
+      { course: "D.Pharm", specialization: "Diploma in Pharmacy", fee: 75000, seats: 60 },
     ],
   },
   {
@@ -65,27 +75,19 @@ const CATEGORIES = [
       { course: "USG Technician", specialization: "Ultrasonography Technician", fee: 20000, seats: 50 },
     ],
   },
-  {
-    id: "psychology",
-    label: "Allied and Rehabilitation",
-    color: "#7a5c1a",
-    courses: [
-      { course: "B.Sc (Hons) Clinical Psychology", specialization: null, fee: 110000, seats: 20 },
-      { course: "BASLP", specialization: "Audiology & Speech Language Pathology", fee: 110000, seats: null },
-      { course: "ISITEP (HI)", specialization: "Hearing Impairment", fee: 110000, seats: null },
-      { course: "ISITEP (ID)", specialization: "Intellectual Disability", fee: 110000, seats: 20 },
-      { course: "Prof. Diploma", specialization: "Clinical Psychology", fee: 230000, seats: 12 },
-    ],
-  },
-  {
-    id: "pharmacy",
-    label: "Pharmacy",
-    color: "#1a7a6e",
-    courses: [
-      { course: "B.Pharm", specialization: "Bachelor of Pharmacy", fee: 60000, seats: 60 },
-      { course: "D.Pharm", specialization: "Diploma in Pharmacy", fee: 50000, seats: 60 },
-    ],
-  },
+  // Hidden — Allied and Rehabilitation fee category temporarily unlisted.
+  // {
+  //   id: "psychology",
+  //   label: "Allied and Rehabilitation",
+  //   color: "#7a5c1a",
+  //   courses: [
+  //     { course: "B.Sc (Hons) Clinical Psychology", specialization: null, fee: 110000, seats: 20 },
+  //     { course: "BASLP", specialization: "Audiology & Speech Language Pathology", fee: 110000, seats: null },
+  //     { course: "ISITEP (HI)", specialization: "Hearing Impairment", fee: 110000, seats: null },
+  //     { course: "ISITEP (ID)", specialization: "Intellectual Disability", fee: 110000, seats: 20 },
+  //     { course: "Prof. Diploma", specialization: "Clinical Psychology", fee: 230000, seats: 12 },
+  //   ],
+  // },
 ];
 
 function fmt(n) {
@@ -112,7 +114,7 @@ export default function FeeDetails() {
         crumb="Admissions / Fee Details"
         eyebrow="Fee Structure 2026–27"
         title="Transparent fees, every programme."
-        sub="All fee figures are per annum. Scholarship and financial aid is available across programmes — speak to our admissions team to know more."
+        sub="As approved by MPPUREC and the Fee Review Committee. All fee figures are per annum. Scholarship and financial aid is available across programmes — speak to our admissions team to know more."
         bgImg="/assets/images%20of%20university/The%20Amaltas%20difference/scolarship.JPG"
       />
 

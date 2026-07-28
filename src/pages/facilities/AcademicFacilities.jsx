@@ -12,8 +12,8 @@ import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
 
 const IMG = {
-  hero:     "/assets/images%20of%20university/all%20institutes/university.png",
-  overview: "/assets/images%20of%20university/all%20institutes/medical%20science.jpeg",
+  hero:     "/assets/images%20of%20university/photo-gallery/DJI_0019.jpg",
+  overview: "/assets/images%20of%20university/campus%20life/IMG_9478.JPG.jpeg",
   library:  "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",
   fallback: "/assets/images%20of%20university/campus%20life/435A1853.JPG",
 };
@@ -42,7 +42,7 @@ const EXPLORER = [
       "Recorded-lecture & e-learning ready",
       "Climate-controlled environments",
     ],
-    img: "/assets/images%20of%20university/campus%20life/degree.JPG",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A8968.jpg",
   },
   {
     key: "teaching-labs",
@@ -58,7 +58,7 @@ const EXPLORER = [
       "Strict bio-safety & hygiene protocols",
       "Faculty-supervised practical sessions",
     ],
-    img: "/assets/images%20of%20university/event%20and%20activites/nurse.jpeg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A1433.jpg",
   },
   {
     key: "research-labs",
@@ -74,7 +74,7 @@ const EXPLORER = [
       "Ethics & bio-safety committee oversight",
       "Access to digital research databases",
     ],
-    img: "/assets/images%20of%20university/all%20institutes/paramedical.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A0849.jpg",
   },
   {
     key: "library",
@@ -106,7 +106,7 @@ const EXPLORER = [
       "Ideal for CME & conferences",
       "Multiple breakout seminar rooms",
     ],
-    img: "/assets/images%20of%20university/event%20and%20activites/lamp.jpeg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A1075.jpg",
   },
   {
     key: "digital",
@@ -122,7 +122,7 @@ const EXPLORER = [
       "Digital library & database portals",
       "Dedicated IT support desk",
     ],
-    img: "/assets/images%20of%20university/campus%20life/435A9602.JPG",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A2411.jpg",
   },
 ];
 

@@ -136,6 +136,15 @@ export default function MandatoryDisclosure() {
         </Reveal>
       </section>
       */}
+
+      {/* PUBLIC SELF DISCLOSURE CTA */}
+      <section className="wrap" style={{ textAlign: "center", padding: "30px 0 70px" }}>
+        <Reveal>
+          <Link to="/public-self-disclosure" className="btn btn-gold">
+            Public Self Disclosure <ArrowRight size={18} />
+          </Link>
+        </Reveal>
+      </section>
     </>
   );
 }

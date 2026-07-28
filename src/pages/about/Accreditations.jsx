@@ -52,7 +52,7 @@ export default function Accreditations() {
           <Reveal>
             <span className="eyebrow">Statutory Approvals</span>
             <h2 style={{ marginTop: 14 }}>Our regulatory body approvals.</h2>
-            <p className="lead" style={{ marginTop: 18 }}>Amaltas holds active approvals from all relevant statutory councils across its seven health-science institutes.</p>
+            <p className="lead" style={{ marginTop: 18 }}>Amaltas holds active approvals from all relevant statutory councils across its six health-science institutes.</p>
           </Reveal>
           <div className="acc-grid">
             {ACCREDITATIONS.map((a, i) => (
