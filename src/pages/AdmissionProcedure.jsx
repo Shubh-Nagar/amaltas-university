@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Globe, ClipboardList, Banknote, Trophy, ShieldCheck, GraduationCap, Phone, ArrowRight } from "lucide-react";
+import { Globe, ClipboardList, Banknote, PenTool, Trophy, ShieldCheck, GraduationCap, Phone, ArrowRight } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
@@ -33,6 +33,14 @@ const STEPS = [
   },
   {
     n: "04",
+    icon: PenTool,
+    title: "Entrance Exam",
+    desc: "Appear for the university entrance exam (or qualifying test as applicable to your programme) on the scheduled date. Admit cards are issued after fee payment and registration are confirmed.",
+    note: "As per exam schedule",
+    color: "#b8562e",
+  },
+  {
+    n: "05",
     icon: Trophy,
     title: "Merit Declaration",
     desc: "Merit lists are published based on qualifying examination scores (NEET / academic performance). Check your rank and allotted programme on the notice board or university website.",
@@ -40,7 +48,7 @@ const STEPS = [
     color: "#7a5c1a",
   },
   {
-    n: "05",
+    n: "06",
     icon: ShieldCheck,
     title: "Document Verification",
     desc: "Bring all original documents to the Admissions Office for verification — mark sheets, ID proof, category certificate (if applicable), and passport-size photographs.",
@@ -48,7 +56,7 @@ const STEPS = [
     color: "#5a3e8a",
   },
   {
-    n: "06",
+    n: "07",
     icon: GraduationCap,
     title: "Allotment of Seat",
     desc: "Upon successful document verification, your seat is confirmed and allotted. Welcome to Amaltas University — your journey in healthcare begins here.",
@@ -74,19 +82,21 @@ export default function AdmissionProcedure() {
       <PageHero
         crumb="Admissions / Procedure"
         eyebrow="Admission Procedure 2026–27"
-        title="Six steps to your seat."
+        title="Seven steps to your seat."
         sub="A clear, straightforward process designed to get you from enquiry to enrolment with confidence. Applications for 2026–27 are now open."
         bgImg="/assets/images%20of%20university/photo-gallery/DJI_0034.jpg"
       />
 
       {/* STEP FLOW */}
-      <section className="sec wrap" style={{ paddingTop: 80 }}>
-        <Reveal>
-          <span className="eyebrow">How it works</span>
-          <h2 style={{ marginTop: 8 }}>Follow the process.</h2>
-        </Reveal>
+      <section className="sec" style={{ paddingTop: 80 }}>
+        <div className="wrap">
+          <Reveal>
+            <span className="eyebrow">How it works</span>
+            <h2 style={{ marginTop: 8 }}>Follow the process.</h2>
+          </Reveal>
+        </div>
 
-        <div className="step-flow-grid" style={{ marginTop: 60 }}>
+        <div className="step-flow-grid" style={{ marginTop: 60, padding: "0 40px" }}>
           {STEPS.map((s, i) => {
             const Icon = s.icon;
             return (
