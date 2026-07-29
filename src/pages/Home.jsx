@@ -479,7 +479,7 @@ const WR_CARDS = [
   {
     bg: "linear-gradient(135deg,#1e3a1a 0%,#0B2C18 100%)",
     img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",
-    eyebrow: "विश्व कीर्तिमान · Guinness · 2024",
+    eyebrow: "विश्व कीर्तिमान · 2024",
     stat: "35,000+",
     statLabel: "Participants · Mass Yoga",
     body: "The Amaltas group brought together more than thirty-five thousand participants in a single collective yoga gathering — a record-setting testament to community, wellness, and what we build together.",

@@ -287,7 +287,7 @@ export const NAV = [
 
 export const ANNOUNCEMENTS = [
   "Admission Open for Academic Year 2026-27 — Apply Today",
-  "Amaltas University achieves Guinness World Record — 35,000+ participants in a single mass yoga gathering",
+  "Amaltas University sets a World Record — 35,000+ participants in a single mass yoga gathering",
   { text: "IJRHM Website Launch — Visit at ", linkText: "www.ijrhm.com", href: "https://www.ijrhm.com" },
 ];
 
@@ -355,7 +355,7 @@ export const NEWS = [
   },
   {
     date: "May 2026",
-    title: "Guinness World Record in Mass Yoga Achieved",
+    title: "World Record in Mass Yoga Achieved",
     desc: "The Amaltas group set a world record with over 35,000 participants in a single mass yoga gathering, celebrating wellness and community.",
     tag: "Achievement",
     img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",
@@ -467,7 +467,7 @@ export const UNIVERSITY_MILESTONES = [
   { year: "2019", title: "Pharmacy & University Status", desc: "Institute of Pharmacy established. Madhya Pradesh gazette-notified Amaltas University, unifying all institutes under one academic umbrella." },
   // Hidden — timeline entry for the Allied & Rehabilitation Sciences institute.
   // { year: "2022", title: "Allied & Rehabilitation Sciences", desc: "A dedicated institute for speech-language pathology, clinical psychology, physiotherapy and medical imaging sciences joined the Amaltas family." },
-  { year: "2024", title: "Guinness World Record", desc: "Over 35,000 participants gathered for a single mass yoga event — an unprecedented testament to community, wellness and Amaltas's spirit of togetherness." },
+  { year: "2024", title: "World Record", desc: "Over 35,000 participants gathered for a single mass yoga event — an unprecedented testament to community, wellness and Amaltas's spirit of togetherness." },
   { year: "2026", title: "Ph.D. Research Expansion", desc: "Doctoral programmes launched across all six health disciplines, cementing Amaltas as a research-driven force in Indian health-sciences education." },
 ];
 
@@ -490,9 +490,9 @@ export const VISION_MISSION = {
 
 export const AWARDS = [
   {
-    title: "Guinness World Record — Mass Yoga",
+    title: "World Record — Mass Yoga",
     year: "2024",
-    org: "Guinness World Records",
+    org: "Ministry of AYUSH, Government of India",
     desc: "35,000+ participants joined a single mass yoga gathering under the AYUSH Ministry's Yoga Mahotsav programme — an unprecedented display of wellness and community that set a global record.",
     type: "World Record",
     color: "#12863F",

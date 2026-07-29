@@ -99,13 +99,13 @@ export default function AwardsRankings() {
         crumb="About Us / Awards & Rankings"
         eyebrow="Recognition & Excellence"
         title="When the world took note."
-        sub="From a Guinness World Record to state and national recognitions — each award reflects the dedication of our students, faculty, and the community we serve."
+        sub="From a landmark World Record to state and national recognitions — each award reflects the dedication of our students, faculty, and the community we serve."
         bgImg="/assets/images%20of%20university/event%20and%20activites/yoga.jpg"
       >
         <HeroDecor />
       </PageHero>
 
-      {/* FEATURED AWARD: Guinness World Record */}
+      {/* FEATURED AWARD: World Record */}
       {featured && (
         <section className="sec wrap" style={{ paddingTop: 90 }}>
           <Reveal>
@@ -187,7 +187,7 @@ export default function AwardsRankings() {
           <Reveal>
             <span className="eyebrow" style={{ color: C.goldL }}>Your achievement starts here</span>
             <h2 style={{ marginTop: 14, color: C.ivory, maxWidth: 580, margin: "14px auto 0" }}>Be part of our next milestone.</h2>
-            <p style={{ color: "rgba(247,244,236,.7)", marginTop: 16, marginBottom: 30, fontSize: 17 }}>The next Guinness record belongs to our graduating class.</p>
+            <p style={{ color: "rgba(247,244,236,.7)", marginTop: 16, marginBottom: 30, fontSize: 17 }}>The next world record belongs to our graduating class.</p>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
               <Link to="/admissions" className="btn btn-gold">Apply for 2026–27 <ArrowRight size={18} /></Link>
               <Link to="/about/accreditations" className="btn btn-ghost">Our Accreditations <ArrowRight size={18} /></Link>
