@@ -201,7 +201,7 @@ export const LEADERS = [
   { slug: "chancellor", role: "Hon'ble Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.jpg" },
   { slug: "pro-chancellor", role: "Hon'ble Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir.png" },
   { slug: "vice-chancellor", role: "Hon'ble Vice Chancellor", nm: "Dr. R.K. Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg" },
-  { slug: "registrar", role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir.png" },
+  { slug: "registrar", role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir.jpeg" },
 ];
 
 export const VOICES = [
@@ -467,7 +467,7 @@ export const UNIVERSITY_MILESTONES = [
   { year: "2019", title: "Pharmacy & University Status", desc: "Institute of Pharmacy established. Madhya Pradesh gazette-notified Amaltas University, unifying all institutes under one academic umbrella." },
   // Hidden — timeline entry for the Allied & Rehabilitation Sciences institute.
   // { year: "2022", title: "Allied & Rehabilitation Sciences", desc: "A dedicated institute for speech-language pathology, clinical psychology, physiotherapy and medical imaging sciences joined the Amaltas family." },
-  { year: "2024", title: "World Record", desc: "Over 35,000 participants gathered for a single mass yoga event — an unprecedented testament to community, wellness and Amaltas's spirit of togetherness." },
+  { year: "2026", title: "World Record", desc: "Over 35,000 participants gathered for a single mass yoga event — an unprecedented testament to community, wellness and Amaltas's spirit of togetherness." },
   { year: "2026", title: "Ph.D. Research Expansion", desc: "Doctoral programmes launched across all six health disciplines, cementing Amaltas as a research-driven force in Indian health-sciences education." },
 ];
 
@@ -491,7 +491,7 @@ export const VISION_MISSION = {
 export const AWARDS = [
   {
     title: "World Record — Mass Yoga",
-    year: "2024",
+    year: "2026",
     org: "Ministry of AYUSH, Government of India",
     desc: "35,000+ participants joined a single mass yoga gathering under the AYUSH Ministry's Yoga Mahotsav programme — an unprecedented display of wellness and community that set a global record.",
     type: "World Record",
@@ -499,6 +499,13 @@ export const AWARDS = [
     featured: true,
     number: "35,000+",
     img: "/assets/images%20of%20university/campus%20life/yoga-hall.jpeg",
+    certificate: {
+      title: "World Record — Thalassemia Awareness Oath Ceremony",
+      year: "2024",
+      org: "World Book of Records, London",
+      desc: "Provisional Certificate awarded for organising the oath ceremony “Let Us Make Indore Thalassemia Mukt” — Thalassemia blood-test awareness before marriage involving 6,500 students, in collaboration with Malwanchal University and the Thalassemia and Child Welfare Group, Indore.",
+      img: "/assets/images%20of%20university/yoga2024.jpeg",
+    },
   },
   {
     title: "Excellence in Medical Education",
@@ -686,7 +693,7 @@ export const LEADER_MESSAGES = {
     stats: [
       { icon: HandHeart, label: "Focus", value: "Nurturing Care", desc: "Guiding an institution rooted in compassion and access" },
       { icon: Users, label: "Community", value: "Malwa Region", desc: "Bringing world-class healthcare education close to home" },
-      { icon: Trophy, label: "Milestone", value: "35,000+", desc: "Participants in the 2024 mass yoga world record" },
+      { icon: Trophy, label: "Milestone", value: "35,000+", desc: "Participants in the 2026 mass yoga world record" },
     ],
   },
   "vice-chancellor": {

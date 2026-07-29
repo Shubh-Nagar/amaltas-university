@@ -73,7 +73,7 @@ export default function Alumni() {
           <div className="alumni-stats-strip">
             {[
               { v: 10,   suf: "+", l: "Years of graduates"  },
-              { v: 5000, suf: "+", l: "Alumni worldwide"    },
+              { v: 2000, suf: "+", l: "Alumni worldwide"    },
               { v: 6,    suf: "",  l: "Health disciplines"  },
               { v: 200,  suf: "+", l: "Mentors enrolled"    },
             ].map((s, i) => (

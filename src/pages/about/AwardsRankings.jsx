@@ -108,25 +108,42 @@ export default function AwardsRankings() {
       {/* FEATURED AWARD: World Record */}
       {featured && (
         <section className="sec wrap" style={{ paddingTop: 90 }}>
-          <Reveal>
-            <div className="award-featured">
-              {/* Background image layer */}
-              <div className="award-featured-img">
-                <img src={featured.img} alt={featured.title} />
-              </div>
-              {/* Content */}
-              <div style={{ position: "relative", zIndex: 1, maxWidth: 640 }}>
-                <div className="af-eyebrow">{featured.type} · {featured.year}</div>
-                <span className="af-number">{featured.number}</span>
-                <div className="af-title">{featured.title}</div>
-                <p className="af-desc">{featured.desc}</p>
-                <div className="af-badge">
-                  <Trophy size={15} />
-                  {featured.org}
+          <div className={featured.certificate ? "award-featured-row" : undefined}>
+            {featured.certificate && (
+              <Reveal>
+                <div className="award-cert">
+                  <div className="award-cert-img">
+                    <img src={featured.certificate.img} alt={featured.certificate.title} />
+                  </div>
+                  <div className="award-cert-body">
+                    <span className="award-card-year">{featured.certificate.org} · {featured.certificate.year}</span>
+                    <div className="award-card-title">{featured.certificate.title}</div>
+                    <p className="award-card-desc">{featured.certificate.desc}</p>
+                  </div>
+                </div>
+              </Reveal>
+            )}
+
+            <Reveal>
+              <div className="award-featured">
+                {/* Background image layer */}
+                <div className="award-featured-img">
+                  <img src={featured.img} alt={featured.title} />
+                </div>
+                {/* Content */}
+                <div style={{ position: "relative", zIndex: 1, maxWidth: 640 }}>
+                  <div className="af-eyebrow">{featured.type} · {featured.year}</div>
+                  <span className="af-number">{featured.number}</span>
+                  <div className="af-title">{featured.title}</div>
+                  <p className="af-desc">{featured.desc}</p>
+                  <div className="af-badge">
+                    <Trophy size={15} />
+                    {featured.org}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
 
           {/* OTHER AWARDS GRID */}
           <Reveal>
