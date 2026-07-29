@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowLeft, ArrowRightCircle, Phone, Quote } from "lucide-react";
+import { ArrowRight, ArrowLeft, ArrowRightCircle, Phone, Quote, X } from "lucide-react";
 import { Reveal, StatNum } from "../../components/Primitives.jsx";
 import { useInView } from "../../hooks/useScroll.js";
 import { C } from "../../theme.js";
@@ -22,7 +22,7 @@ const SLIDES = [
     t1: "CULTURE &",
     t2: "CELEBRATION",
     sub: "From folk dance to convocation, every season on campus brings its own festival — and everyone belongs on stage.",
-    img: "/assets/images%20of%20university/campus%20life/435A9602.JP ,G",
+    img: "/assets/images%20of%20university/campus%20life/435A9602.JPG",
   },
   {
     tag: "Sport & Wellness",
@@ -244,8 +244,48 @@ function StoryScroller() {
   );
 }
 
+function MosaicLightbox({ items, index, onClose, onPrev, onNext }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose, onPrev, onNext]);
+
+  const m = items[index];
+
+  return (
+    <div className="cl-lightbox" onClick={onClose}>
+      <button className="cl-lightbox-close" aria-label="Close" onClick={onClose}>
+        <X size={20} />
+      </button>
+      <button className="cl-lightbox-arrow left" aria-label="Previous image" onClick={(e) => { e.stopPropagation(); onPrev(); }}>
+        <ArrowLeft size={20} />
+      </button>
+      <div className="cl-lightbox-stage" onClick={(e) => e.stopPropagation()}>
+        <img src={m.img} alt={m.cap} onError={(e) => { e.target.src = FALLBACK; }} />
+        <div className="cl-lightbox-cap">{m.cap}</div>
+      </div>
+      <button className="cl-lightbox-arrow right" aria-label="Next image" onClick={(e) => { e.stopPropagation(); onNext(); }}>
+        <ArrowRightCircle size={22} />
+      </button>
+    </div>
+  );
+}
+
 export default function CampusLife() {
   const [statRef, statSeen] = useInView({ repeat: false });
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const closeLightbox = () => setLightboxIndex(null);
+  const prevImage = () => setLightboxIndex((i) => (i - 1 + MOSAIC.length) % MOSAIC.length);
+  const nextImage = () => setLightboxIndex((i) => (i + 1) % MOSAIC.length);
 
   return (
     <>
@@ -296,7 +336,14 @@ export default function CampusLife() {
             <Reveal variant="zoom">
               <div className="cl-mosaic">
                 {MOSAIC.map((m, i) => (
-                  <div key={i} className={`cl-mosaic-tile ${m.tall ? "tall" : ""}`}>
+                  <div
+                    key={i}
+                    className={`cl-mosaic-tile ${m.tall ? "tall" : ""}`}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setLightboxIndex(i)}
+                    onKeyDown={(e) => { if (e.key === "Enter") setLightboxIndex(i); }}
+                  >
                     <img src={m.img} alt={m.cap} onError={(e) => { e.target.src = FALLBACK; }} />
                     <div className="cl-mosaic-tile-label">{m.cap}</div>
                   </div>
@@ -306,6 +353,16 @@ export default function CampusLife() {
           </div>
         </div>
       </section>
+
+      {lightboxIndex !== null && (
+        <MosaicLightbox
+          items={MOSAIC}
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onPrev={prevImage}
+          onNext={nextImage}
+        />
+      )}
 
       {/* ── CTA ── */}
       <section style={{ background: `radial-gradient(120% 140% at 80% 20%,${C.emerald} 0%,${C.navy} 55%)`, padding: "100px 0" }}>

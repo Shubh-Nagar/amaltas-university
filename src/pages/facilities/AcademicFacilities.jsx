@@ -22,7 +22,7 @@ const IMG = {
 const STATS = [
   { v: 300, suf: "+",  l: "Smart Classrooms" },
   { v: 120, suf: "+",  l: "Teaching & Research Labs" },
-  { v: 111000, suf: "+", l: "Volumes in the Library" },
+  { v: 89800, suf: "+", l: "Volumes in the Library" },
   { v: 100, suf: "%",  l: "Wi-Fi Campus Coverage" },
 ];
 
@@ -128,7 +128,7 @@ const EXPLORER = [
 
 /* ── central library stats ── */
 const LIB_STATS = [
-  { v: 111000, suf: "+", l: "Total Volumes" },
+  { v: 89800, suf: "+", l: "Total Volumes" },
   { v: 500,    suf: "+", l: "Seating Capacity" },
   { v: 50000,  suf: "+", l: "E-Journals" },
   { v: 3,      suf: "",  l: "Floors of Reading Space" },

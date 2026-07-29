@@ -65,12 +65,13 @@ const APPROVALS = [
   { src: "/assets/images%20of%20university/recognisation/nmc.jpg",      label: "National Medical Commission" },
   { src: "/assets/images%20of%20university/recognisation/ugc.png",      label: "University Grants Commission" },
   { src: "/assets/images%20of%20university/recognisation/ccim.png",     label: "Central Council of Indian Medicine" },
-  { src: "/assets/images%20of%20university/recognisation/ccrh.jpg",     label: "Central Council of Homoeopathy" },
+  { src: "/assets/images%20of%20university/recognisation/nch.png",     label: "National Commission for Homoeopathy" },
   { src: "/assets/images%20of%20university/recognisation/inc-logo.png", label: "Indian Nursing Council" },
   { src: "/assets/images%20of%20university/recognisation/pci-logo.png", label: "Pharmacy Council of India" },
   // Hidden — RCI approval tied to the Allied & Rehabilitation Sciences institute.
   // { src: "/assets/images%20of%20university/recognisation/rci.png",      label: "Rehabilitation Council of India" },
   { src: "/assets/images%20of%20university/recognisation/nabh-logo.png",label: "NABH" },
+  { src: "/assets/images%20of%20university/recognisation/NABL.png",     label: "NABL" },
 ];
 
 const HERO_CHIPS = [
@@ -514,7 +515,7 @@ export default function TheUniversity() {
           <span className="eyebrow" style={{ justifyContent: "center" }}>Approvals &amp; Recognition</span>
           <h2 style={{ marginTop: 14, color: G.ink }}>Recognised by India's statutory councils.</h2>
           <p style={{ color: G.slate, margin: "14px auto 0", maxWidth: 620, fontSize: 17, lineHeight: 1.7 }}>
-            Every programme is approved by the relevant regulatory body of the Government of India — so your degree is valid, valued and portable.
+            Every program is approved by the relevant statutory councils of the Government of India—ensuring your degree is globally respected, nationally accredited, and career-ready.
           </p>
         </Reveal>
         <Reveal>

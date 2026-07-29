@@ -11,7 +11,7 @@ import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
 
 const HOSTEL_STATS = [
-  { v: "2", l: "Separate Hostel Blocks" },
+  { v: "10+", l: "Hostel Blocks" },
   { v: "24/7", l: "Campus Security" },
   { v: "Zero", l: "Tolerance Anti-Ragging" },
   { v: "100%", l: "Wi-Fi Coverage" },
@@ -21,9 +21,10 @@ const HOSTEL_TYPES = [
   {
     gender: "Boys' Hostel",
     tag: "Male Students",
-    desc: "Purpose-built for male students, the boys' hostel offers a secure, well-maintained environment just steps from every academic institute on campus. Multiple blocks ensure a comfortable, community-oriented living experience throughout the academic year.",
+    desc: "Purpose-built for male students, the boys' hostels offer a secure, well-maintained environment just steps from every academic institute on campus. Several dedicated blocks ensure a comfortable, community-oriented living experience throughout the academic year.",
     features: [
       "Furnished single & double-occupancy rooms",
+      "AC & Non-AC room options available",
       "Attached and common bathrooms",
       "High-speed Wi-Fi throughout",
       "24/7 warden & security personnel",
@@ -39,9 +40,10 @@ const HOSTEL_TYPES = [
   {
     gender: "Girls' Hostel",
     tag: "Female Students",
-    desc: "The girls' hostel offers a fully secure, lady-warden-supervised residence with dedicated entry protocols and round-the-clock staff support. Designed with comfort and safety as the first priority for female students across all health-sciences programmes.",
+    desc: "The girls' hostels offer a fully secure, lady-warden-supervised residence across multiple dedicated blocks, with entry protocols and round-the-clock staff support. Designed with comfort and safety as the first priority for female students across all health-sciences programmes.",
     features: [
       "Furnished single & double-occupancy rooms",
+      "AC & Non-AC room options available",
       "Attached bathrooms in premium rooms",
       "High-speed Wi-Fi throughout",
       "24/7 lady warden & security",
@@ -196,7 +198,7 @@ export default function HostelAccommodation() {
               Amaltas University maintains separate, fully-equipped hostels for male and female students on its Dewas campus. Every facility is designed so that students spend less time worrying and more time becoming the healers they came here to be.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 30 }}>
-              {["Separate blocks for boys & girls", "Warden-supervised 24 / 7", "Hospital on campus", "Zero-tolerance anti-ragging"].map((f) => (
+              {["10+ hostel blocks for boys & girls", "AC & Non-AC room options", "Warden-supervised 24 / 7", "Hospital on campus"].map((f) => (
                 <div key={f} style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13.5, color: C.ink, background: "rgba(18,134,63,.07)", border: "1px solid rgba(18,134,63,.14)", borderRadius: 100, padding: "7px 14px" }}>
                   <Check size={13} color={C.emerald} /> {f}
                 </div>
@@ -229,8 +231,8 @@ export default function HostelAccommodation() {
         <div className="wrap">
           <Reveal>
             <span className="eyebrow">Accommodations</span>
-            <h2>Two hostels, one campus family.</h2>
-            <p className="lead">Purposefully designed for the well-being and security of every student — regardless of programme or year of study.</p>
+            <h2>10+ hostels, one campus family.</h2>
+            <p className="lead">Ten-plus dedicated blocks for male and female students, purposefully designed for the well-being and security of every student — regardless of programme or year of study.</p>
           </Reveal>
 
           <div className="hostel-type-grid">

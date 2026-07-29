@@ -85,8 +85,11 @@ function FaqItem({ q, a }) {
 
 
 function LifeGrid() {
-  const row1 = [...LIFE, ...LIFE, ...LIFE];
-  const row2 = [...[...LIFE].reverse(), ...[...LIFE].reverse(), ...[...LIFE].reverse()];
+  const half = Math.ceil(LIFE.length / 2);
+  const life1 = LIFE.slice(0, half);
+  const life2 = LIFE.slice(half);
+  const row1 = [...life1, ...life1, ...life1];
+  const row2 = [...[...life2].reverse(), ...[...life2].reverse(), ...[...life2].reverse()];
   const sectionRef = useRef(null);
   const track1Ref  = useRef(null);
   const track2Ref  = useRef(null);
@@ -666,6 +669,7 @@ export default function Home() {
       <header className="hero">
         {/* video background */}
         <div className="hero-bg-photo" aria-hidden="true">
+          
           <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
             <source src="/assets/images%20of%20university/hero%20section/hero-video.mp4" type="video/mp4" />
           </video>

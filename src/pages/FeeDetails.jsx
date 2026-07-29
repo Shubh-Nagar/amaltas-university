@@ -114,7 +114,7 @@ export default function FeeDetails() {
         crumb="Admissions / Fee Details"
         eyebrow="Fee Structure 2026–27"
         title="Transparent fees, every programme."
-        sub="As approved by MPPUREC and the Fee Review Committee. All fee figures are per annum. Scholarship and financial aid is available across programmes — speak to our admissions team to know more."
+        sub="As approved by MPPURC and the AFSR. All fee figures are per annum. Scholarship and financial aid is available across programmes — speak to our admissions team to know more."
         bgImg="/assets/images%20of%20university/The%20Amaltas%20difference/scolarship.JPG"
       />
 

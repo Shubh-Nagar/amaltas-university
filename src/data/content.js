@@ -434,6 +434,9 @@ export const LIFE = [
   { icon: Dumbbell, label: "Volleyball", tag: "Play", img: "/assets/images%20of%20university/campus%20life/IMG-20250307-WA0072.jpg" },
   { icon: Trophy, label: "Kabaddi", tag: "Compete", img: "/assets/images%20of%20university/campus%20life/IMG-20250307-WA0073.jpg" },
   { icon: Trophy, label: "Mass Yoga Day", tag: "World record", img: "/assets/images%20of%20university/campus%20life/P3_yoga.jpg" },
+  { icon: Leaf, label: "Green Campus", tag: "Sustain", img: "/assets/images%20of%20university/campus%20life/green.png" },
+  { icon: Music, label: "Culture & Celebration", tag: "Celebrate", img: "/assets/images%20of%20university/campus%20life/435A9602.JPG" },
+  { icon: GraduationCap, label: "Classrooms & Lectures", tag: "Learn", img: "/assets/images%20of%20university/campus%20life/2U8A8968.jpg" },
 ];
 
 /* Clinical & career network — honest health-sciences adaptation of Medicaps' placements/recruiters band */
@@ -492,10 +495,10 @@ export const AWARDS = [
     org: "Guinness World Records",
     desc: "35,000+ participants joined a single mass yoga gathering under the AYUSH Ministry's Yoga Mahotsav programme — an unprecedented display of wellness and community that set a global record.",
     type: "World Record",
-    color: "#F6A000",
+    color: "#12863F",
     featured: true,
     number: "35,000+",
-    img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",
+    img: "/assets/images%20of%20university/campus%20life/yoga-hall.jpeg",
   },
   {
     title: "Excellence in Medical Education",
@@ -526,14 +529,15 @@ export const AWARDS = [
 export const ACCREDITATIONS = [
   { short: "NMC",    color: "#1B3E8F", logo: "/assets/images%20of%20university/recognisation/nmc.jpg",    name: "National Medical Commission",              desc: "Statutory recognition for MBBS and postgraduate medical programmes.",                    scope: "Institute of Medical Sciences"      },
   { short: "CCIM",   color: "#2E7D32", logo: "/assets/images%20of%20university/recognisation/ccim.png",      name: "Central Council of Indian Medicine",          desc: "Approval for Bachelor of Ayurvedic Medicine & Surgery (BAMS).",                          scope: "Ayurvedic College & Research Centre" },
-  { short: "CCH",    color: "#6A1B9A", logo: "/assets/images%20of%20university/recognisation/ccrh.jpg",      name: "Central Council of Homoeopathy",              desc: "Recognition for BHMS programme under the national homeopathic regulatory framework.",     scope: "Institute of Homoeopathy"           },
+  { short: "NCH",    color: "#6A1B9A", logo: "/assets/images%20of%20university/recognisation/nch.png",      name: "National Commission for Homoeopathy",         desc: "Recognition for BHMS programme under the national homeopathic regulatory framework.",     scope: "Institute of Homoeopathy"           },
   { short: "INC",    color: "#00695C", logo: "/assets/images%20of%20university/recognisation/inc-logo.png",  name: "Indian Nursing Council",                      desc: "Approval for B.Sc. Nursing and Post Basic B.Sc. Nursing programmes.",                    scope: "Institute of Nursing Sciences"      },
   { short: "PCI",    color: "#D84315", logo: "/assets/images%20of%20university/recognisation/pci-logo.png",  name: "Pharmacy Council of India",                   desc: "Affiliation for Bachelor of Pharmacy (B.Pharm) and Diploma in Pharmacy (D.Pharm).",    scope: "Institute of Pharmacy"              },
   // Hidden — RCI approval tied to the Allied & Rehabilitation Sciences institute.
   // { short: "RCI",    color: "#1565C0", logo: "/assets/images%20of%20university/recognisation/rci.png",       name: "Rehabilitation Council of India",             desc: "Approval for B.A.S.L.P. and allied rehabilitation science courses.",                     scope: "Allied & Rehabilitation Sciences"   },
   { short: "UGC",    color: "#0D1B5E", logo: "/assets/images%20of%20university/recognisation/ugc.png",       name: "University Grants Commission",                desc: "Recognition as a Private University under Section 2(f) of the UGC Act, 1956.",           scope: "University-wide"                   },
-  { short: "MPPUREC", color: "#6D4C41", logo: "/assets/images%20of%20university/recognisation/mppurc.jpg",    name: "MP Private University Regulatory Commission", desc: "Established under the MP Niji Vishwavidyalaya (Sthapana Aur Sanchalan) Adhiniyam.",    scope: "University-wide"                   },
+  { short: "MPPURC", color: "#6D4C41", logo: "/assets/images%20of%20university/recognisation/mppurc.jpg",    name: "MP Private University Regulatory Commission", desc: "Established under the MP Niji Vishwavidyalaya (Sthapana Aur Sanchalan) Adhiniyam.",    scope: "University-wide"                   },
   { short: "NABH",   color: "#880E4F", logo: "/assets/images%20of%20university/recognisation/nabh-logo.png", name: "Natl. Accreditation Board for Hospitals",     desc: "NABH-linked teaching hospital ensuring patient safety and quality care standards.",       scope: "Teaching Hospital"                  },
+  { short: "NABL",   color: "#4527A0", logo: "/assets/images%20of%20university/recognisation/NABL.png",     name: "Natl. Accreditation Board for Testing and Calibration Laboratories", desc: "NABL accreditation for diagnostic and testing laboratories ensuring calibrated, quality-assured results.", scope: "Teaching Hospital"                  },
 ];
 
 export const DISCLOSURE_SECTIONS = [
