@@ -214,8 +214,8 @@ export const VOICES = [
 export const STATS = [
   { v: 10, suf: "+", l: "Years shaping healers" },
   { v: 6, suf: "", l: "Health-science institutions" },
-  { v: 10000, suf: "+", l: "Students" },
-  { v: 200, suf: "+", l: "Faculty Members" },
+  { v: 3000, suf: "+", l: "Students" },
+  { v: 400, suf: "+", l: "Faculty Members" },
 ];
 
 export const NAV = [
@@ -288,7 +288,7 @@ export const NAV = [
 export const ANNOUNCEMENTS = [
   "Admission Open for Academic Year 2026-27 — Apply Today",
   "Amaltas University sets a World Record — 35,000+ participants in a single mass yoga gathering",
-  { text: "IJRHM Website Launch — Visit at ", linkText: "www.ijrhm.com", href: "https://www.ijrhm.com" },
+  { text: "International Journal of Rural Health & Medicine Website Launch — Visit at ", linkText: "www.ijrhm.com", href: "https://www.ijrhm.com" },
 ];
 
 export const QUICK_LINKS = [
