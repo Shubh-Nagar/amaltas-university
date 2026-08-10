@@ -12,8 +12,71 @@ const gal = (folder, files) => files.map((f) => `${EV_BASE}/${encodeURIComponent
 
 const EVENTS = [
   {
-    img: "/assets/images%20of%20university/events/u1.jpg",
+    img: "/assets/images%20of%20university/events/International%20Yoga%20Day/1.jpg",
+    date: "21 June 2026",
+    title: "अंतरराष्ट्रीय योग दिवस प्रेरणादायक वातावरण में मनाया गया",
+    desc: "अमलतास विश्वविद्यालय में अंतरराष्ट्रीय योग दिवस प्रेरणादायक वातावरण में मनाया गया। विद्यार्थियों, शिक्षकों एवं स्टाफ ने सामूहिक रूप से योगाभ्यास कर स्वस्थ जीवनशैली और आत्मिक शांति का संदेश दिया।",
+    gallery: gal("International Yoga Day", ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/MoU%20Vikram%20University/1.jpg",
+    date: "9 June 2026",
+    title: "अमलतास विश्वविद्यालय और विक्रम विश्वविद्यालय के बीच MoU हस्ताक्षरित",
+    desc: "देवास। चिकित्सा शिक्षा, अनुसंधान एवं नवाचार को नई दिशा देने के उद्देश्य से अमलतास विश्वविद्यालय, देवास एवं विक्रम विश्वविद्यालय, उज्जैन के मध्य एक महत्वपूर्ण समझौता ज्ञापन (MoU) पर हस्ताक्षर किए गए। इस शैक्षणिक एवं शोध सहयोग के तहत चिकित्सा, फार्मेसी, बायोटेक्नोलॉजी, मॉलिक्यूलर बायोलॉजी, माइक्रोबायोलॉजी तथा स्वास्थ्य विज्ञान के क्षेत्रों में संयुक्त अनुसंधान को बढ़ावा दिया जाएगा। इस अवसर पर विक्रम विश्वविद्यालय के कुलगुरु प्रो. अर्पण भारद्वाज, अमलतास विश्वविद्यालय के कुलगुरु डॉ. आर.के. सिंह, प्रो-चांसलर डॉ. सलिल भार्गव सहित अन्य वरिष्ठ शिक्षाविद उपस्थित रहे।",
+    gallery: gal("MoU Vikram University", ["1.jpg", "2.jpg", "3.jpg", "4.jpg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Tree%20Plantation%20by%20Special%20Guest/1.jpg",
+    date: "24 July 2026",
+    title: "अमलतास विश्वविद्यालय में पधारे विशेष अतिथि द्वारा पौधारोपण",
+    desc: "अमलतास विश्वविद्यालय में पधारे विशेष अतिथि द्वारा परिसर में पौधारोपण किया गया, जो पर्यावरण संरक्षण एवं हरियाली को बढ़ावा देने की दिशा में विश्वविद्यालय की प्रतिबद्धता को दर्शाता है।",
+    gallery: gal("Tree Plantation by Special Guest", ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Guru%20Purnima%20Mahotsav/1.jpeg",
+    date: "29 July 2026",
+    title: "अमलतास इंस्टीट्यूट ऑफ आयुर्वेद में श्रद्धा एवं उत्साह के साथ मनाया गया 'गुरु पूर्णिमा महोत्सव'",
+    desc: "देवास: अमलतास इंस्टीट्यूट ऑफ आयुर्वेद में 'गुरु पूर्णिमा' का पावन पर्व अत्यंत श्रद्धा, उत्साह और गरिमामय वातावरण में संपन्न हुआ। कार्यक्रम की शुरुआत भगवान धन्वंतरि और महर्षि चरक के पूजन व वंदना के साथ हुई। समारोह के दौरान विद्यार्थियों ने अपने गुरुजनों का पारंपरिक रूप से तिलक लगाकर और पुष्पगुच्छ भेंट कर आत्मीय स्वागत किया तथा उनके प्रति कृतज्ञता व्यक्त की।",
+    gallery: gal("Guru Purnima Mahotsav", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Medhavi%20Samman%20Samaroh/1.jpeg",
+    date: "23 July 2026",
+    title: "दैनिक भास्कर मेधावी सम्मान समारोह",
+    desc: "दैनिक भास्कर द्वारा आयोजित मेधावी सम्मान समारोह में देवास जिले के 54 स्कूलों के 700 से अधिक प्रतिभाशाली विद्यार्थियों को उनकी शैक्षणिक उत्कृष्टता के लिए सम्मानित किया गया। इस गरिमामयी अवसर पर अमलतास यूनिवर्सिटी के चेयरमैन श्री मयंकराज सिंह भदौरिया विशेष अतिथि के रूप में उपस्थित रहे और विद्यार्थियों को उनके उज्ज्वल भविष्य के लिए शुभकामनाएँ देते हुए मेहनत, अनुशासन और लक्ष्य के प्रति समर्पण का संदेश दिया।",
+    gallery: gal("Medhavi Samman Samaroh", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Pediatrics%20UG%20Quiz%20Competition%202026/1.jpeg",
+    date: "1 August 2026",
+    title: "Pediatrics UG Quiz Competition 2026",
+    desc: "The Pediatrics UG Quiz Competition was successfully conducted at Amaltas Institute of Medical Sciences. MBBS students showcased their knowledge, teamwork and clinical skills with great enthusiasm and excellence — knowledge today, better care tomorrow.",
+    gallery: gal("Pediatrics UG Quiz Competition 2026", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/World%20Breastfeeding%20Week/1.jpeg",
     date: "2026",
+    title: "World Breastfeeding Week Celebration",
+    desc: "Nourishing the future, one feed at a time — Amaltas marked World Breastfeeding Week by creating spaces where every parent feels supported, celebrating the grit, grace and dedication behind the breastfeeding journey.",
+    gallery: gal("World Breastfeeding Week", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/World%20Brain%20Day/1.jpeg",
+    date: "22 July 2026",
+    title: "World Brain Day",
+    desc: "Amaltas observed World Brain Day on 22 July 2026 with an awareness programme highlighting brain health and neurological wellbeing.",
+    gallery: gal("World Brain Day", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Visit%20to%20Anatomy%20Lab/1.jpeg",
+    date: "20 July 2026",
+    title: "Student Visit to Anatomy Lab",
+    desc: "Students visited the Anatomy Lab on 20 July 2026 for a hands-on academic session.",
+    gallery: gal("Visit to Anatomy Lab", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/u1.jpg",
+    date: "4 July 2026",
     title: "Early Detection Saves Lives: AI & Bronchoscopy in Focus at Bronchopulmonary World Congress 2026",
     desc: "Amaltas University hosted the Bronchopulmonary World Congress 2026, convening pulmonologists, researchers and clinicians from across the globe. Sessions spotlighted the growing role of artificial intelligence and advanced bronchoscopy in the early detection of respiratory disease — alongside keynote lectures, hands-on demonstrations and collaborative research presentations.",
     gallery: gal("Bronchopulmonary World Congress", [
@@ -23,7 +86,7 @@ const EVENTS = [
   },
   {
     img: "/assets/images%20of%20university/events/we1.jpg",
-    date: "2026",
+    date: "5 June 2026",
     title: "World Environment Day Celebration at Amaltas University",
     desc: "Students, faculty and staff came together to mark World Environment Day with tree-plantation drives, awareness walks and sustainability pledges across the campus. The celebration reaffirmed the Amaltas commitment to a greener, healthier future — where healing grows for both people and the planet.",
     gallery: gal("World Environment Day", [
@@ -32,7 +95,7 @@ const EVENTS = [
   },
   {
     img: "/assets/images%20of%20university/events/P1_yoga.jpg",
-    date: "2026",
+    date: "1 June 2026",
     title: "Index Group & Amaltas Set a World Record with a Mass Yoga Session of 35,000+ Participants",
     desc: "In partnership with the Index Group, Amaltas took part in a record-setting mass yoga session with more than 35,000 participants. The sea of practitioners moved as one through guided asanas and pranayama, celebrating wellness, discipline and the enduring spirit of community that defines campus life.",
     gallery: gal("World Record with a Mass Yoga Session", [

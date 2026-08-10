@@ -64,7 +64,7 @@ const BEYOND = [
 const APPROVALS = [
   { src: "/assets/images%20of%20university/recognisation/nmc.jpg",      label: "National Medical Commission" },
   { src: "/assets/images%20of%20university/recognisation/ugc.png",      label: "University Grants Commission" },
-  { src: "/assets/images%20of%20university/recognisation/ccim.png",     label: "Central Council of Indian Medicine" },
+  { src: "/assets/images%20of%20university/recognisation/ncism.jpg",     label: "Central Council of Indian Medicine" },
   { src: "/assets/images%20of%20university/recognisation/nch.png",     label: "National Commission for Homoeopathy" },
   { src: "/assets/images%20of%20university/recognisation/inc-logo.png", label: "Indian Nursing Council" },
   { src: "/assets/images%20of%20university/recognisation/pci-logo.png", label: "Pharmacy Council of India" },
