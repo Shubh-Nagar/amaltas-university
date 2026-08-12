@@ -212,9 +212,35 @@ const EVENTS = [
   },
 ];
 
+function formatEventDate(iso) {
+  const d = new Date(`${iso}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
+}
+
 export default function Events() {
   const [open, setOpen] = useState(null);        // event object shown in the modal
   const [lightbox, setLightbox] = useState(null); // index into open.gallery, or null
+  const [liveEvents, setLiveEvents] = useState([]);
+
+  // pull in events added from the admin dashboard and show them alongside the curated list
+  useEffect(() => {
+    fetch("/api/events")
+      .then((r) => r.json())
+      .then((data) => {
+        const mapped = (data.events || []).map((ev) => ({
+          img: ev.images?.[0] || "/assets/images%20of%20university/all%20institutes/university.png",
+          date: formatEventDate(ev.date),
+          title: ev.title,
+          desc: ev.description || undefined,
+          gallery: ev.images?.length ? ev.images : undefined,
+        }));
+        setLiveEvents(mapped);
+      })
+      .catch(() => setLiveEvents([]));
+  }, []);
+
+  const allEvents = [...liveEvents, ...EVENTS];
 
   // body-scroll lock + Escape / arrow-key handling while a modal is open
   useEffect(() => {
@@ -250,10 +276,10 @@ export default function Events() {
       {/* ── EVENTS GRID ── */}
       <section className="sec wrap">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 24 }}>
-          {EVENTS.map((ev, i) => {
+          {allEvents.map((ev, i) => {
             const hasGallery = Array.isArray(ev.gallery) && ev.gallery.length > 0;
             return (
-              <Reveal key={ev.img} delay={`d${(i % 3) + 1}`}>
+              <Reveal key={`${ev.title}-${i}`} delay={`d${(i % 3) + 1}`}>
                 <div
                   className="card-lift"
                   onClick={hasGallery ? () => setOpen(ev) : undefined}

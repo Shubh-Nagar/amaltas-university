@@ -5,3 +5,8 @@ dist-ssr
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
+
+# backend runtime data
+server/uploads/*
+!server/uploads/.gitkeep
+.env
