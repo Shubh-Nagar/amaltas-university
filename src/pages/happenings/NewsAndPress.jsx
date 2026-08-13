@@ -29,12 +29,23 @@ const GALLERY = [
 ];
 
 export default function NewsAndPress() {
-  const [lightbox, setLightbox] = useState(null); // index into GALLERY, or null
+  const [lightbox, setLightbox] = useState(null); // index into gallery, or null
+  const [liveNews, setLiveNews] = useState([]);
 
-  const show = (i) => setLightbox(((i % GALLERY.length) + GALLERY.length) % GALLERY.length);
+  // pull in news added from the admin dashboard and show them alongside the curated list
+  useEffect(() => {
+    fetch("/api/news")
+      .then((r) => r.json())
+      .then((data) => setLiveNews((data.news || []).map((n) => n.image).filter(Boolean)))
+      .catch(() => setLiveNews([]));
+  }, []);
+
+  const gallery = [...liveNews, ...GALLERY];
+
+  const show = (i) => setLightbox(((i % gallery.length) + gallery.length) % gallery.length);
   const close = () => setLightbox(null);
-  const next = () => setLightbox((i) => (i + 1) % GALLERY.length);
-  const prev = () => setLightbox((i) => (i - 1 + GALLERY.length) % GALLERY.length);
+  const next = () => setLightbox((i) => (i + 1) % gallery.length);
+  const prev = () => setLightbox((i) => (i - 1 + gallery.length) % gallery.length);
 
   // body-scroll lock + keyboard navigation while the lightbox is open
   useEffect(() => {
@@ -66,8 +77,8 @@ export default function NewsAndPress() {
       {/* ── PHOTO GALLERY ── */}
       <section className="sec wrap">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(280px,1fr))", gap: 20 }}>
-          {GALLERY.map((img, i) => (
-            <Reveal key={img} delay={`d${(i % 3) + 1}`}>
+          {gallery.map((img, i) => (
+            <Reveal key={`${img}-${i}`} delay={`d${(i % 3) + 1}`}>
               <div
                 className="card-lift news-tile"
                 role="button"
@@ -131,7 +142,7 @@ export default function NewsAndPress() {
           </button>
           <img
             className="ev-lightbox-img"
-            src={GALLERY[lightbox]}
+            src={gallery[lightbox]}
             alt={`Amaltas University news ${lightbox + 1}`}
             onClick={(e) => e.stopPropagation()}
           />
@@ -142,7 +153,7 @@ export default function NewsAndPress() {
           >
             <ChevronRight size={26} />
           </button>
-          <div className="ev-lightbox-count">{lightbox + 1} / {GALLERY.length}</div>
+          <div className="ev-lightbox-count">{lightbox + 1} / {gallery.length}</div>
         </div>
       )}
     </>
