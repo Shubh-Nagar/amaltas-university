@@ -5,6 +5,8 @@ import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { CONTACT } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 const STEPS = [
   {
@@ -79,6 +81,12 @@ const DOCS = [
 export default function AdmissionProcedure() {
   return (
     <>
+      <SEO
+        title="Admission Procedure — Step-by-Step Application Guide"
+        description="How to apply to Amaltas University, Dewas: visit the website, complete online registration, pay fees, submit documents and confirm your seat for the 2026-27 academic year."
+        path="/admissions/procedure"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Admissions", path: "/admissions" }, { name: "Procedure", path: "/admissions/procedure" }])}
+      />
       <PageHero
         crumb="Admissions / Procedure"
         eyebrow="Admission Procedure 2026–27"

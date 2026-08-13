@@ -5,6 +5,8 @@ import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { LEADERS, LEADER_MESSAGES } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema, personSchema } from "../data/schema.js";
 
 function renderParagraph(text) {
   return text.split(/\*(.+?)\*/g).map((part, i) => (i % 2 === 1 ? <em key={i}>{part}</em> : part));
@@ -21,6 +23,15 @@ export default function LeaderMessage() {
 
   return (
     <>
+      <SEO
+        title={`${leader.nm} — ${leader.role}'s Message`}
+        description={`A message from ${leader.nm}, ${leader.role} of Amaltas University, Dewas. ${leader.bio}`}
+        path={`/leadership/${slug}`}
+        jsonLd={[
+          breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Leadership", path: "/leadership" }, { name: leader.role, path: `/leadership/${slug}` }]),
+          personSchema(slug),
+        ]}
+      />
       <PageHero
         crumb={`Leadership / ${leader.role}'s Message`}
         eyebrow={msg.heroEyebrow}

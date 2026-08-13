@@ -5,10 +5,19 @@ import { PageHero } from "../components/Layout.jsx";
 import { Reveal, Tilt } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { INSTITUTIONS } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 export default function Institutions() {
   return (
     <>
+      <SEO
+        title="Our Institutions — Medical, Ayurveda, Homoeopathy, Nursing, Pharmacy & Paramedical"
+        description="Explore Amaltas University's six health-science institutions in Dewas: Medical Sciences (MBBS, MD/MS), Ayurvedic College (BAMS), Homoeopathy (BHMS), Nursing Sciences, Pharmacy (B.Pharm, D.Pharm) and Paramedical Sciences — all built around one working teaching hospital."
+        path="/institutions"
+        keywords="Amaltas Institute of Medical Sciences, Amaltas Ayurvedic College, Amaltas Institute of Homoeopathy, Amaltas Institute of Nursing Sciences, Amaltas Institute of Pharmacy, Amaltas Institute of Paramedical Sciences"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Institutions", path: "/institutions" }])}
+      />
       <PageHero
         crumb="Institutions"
         eyebrow="Six worlds, one campus"

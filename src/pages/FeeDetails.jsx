@@ -4,6 +4,8 @@ import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { CONTACT } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 const CATEGORIES = [
   {
@@ -110,6 +112,13 @@ export default function FeeDetails() {
 
   return (
     <>
+      <SEO
+        title="Fee Structure 2026-27 — MBBS, BAMS, BHMS, Nursing & Pharmacy"
+        description="Transparent, all-inclusive fee structure for Amaltas University's MBBS, MD/MS, BAMS, BHMS, B.Sc Nursing, B.Pharm and paramedical programmes for the 2026-27 academic year — no hidden charges."
+        path="/admissions/fees"
+        keywords="Amaltas University MBBS fees, BAMS fees Madhya Pradesh, B.Sc Nursing fees, B.Pharm fees Dewas"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Admissions", path: "/admissions" }, { name: "Fee Details", path: "/admissions/fees" }])}
+      />
       <PageHero
         crumb="Admissions / Fee Details"
         eyebrow="Fee Structure 2026–27"

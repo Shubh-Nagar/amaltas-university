@@ -5,6 +5,8 @@ import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import AlumniForm from "../../components/AlumniForm.jsx";
 import { C } from "../../theme.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const SERVICES = [
   {
@@ -100,6 +102,12 @@ function ServiceCard({ svc, index }) {
 export default function AlumniAssist() {
   return (
     <>
+      <SEO
+        title="Alumni Assist — University Visits, Records & Support"
+        description="Request university visits, transcript and record support, and other alumni services from Amaltas University, Dewas."
+        path="/alumni/assist"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Alumni", path: "/alumni" }, { name: "Assist", path: "/alumni/assist" }])}
+      />
       <PageHero
         crumb="Alumni / Alumni Assist"
         eyebrow="Alumni Assist"

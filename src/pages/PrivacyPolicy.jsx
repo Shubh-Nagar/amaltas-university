@@ -2,6 +2,7 @@ import React from "react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
+import SEO from "../components/SEO.jsx";
 
 /* Content mirrored verbatim from https://amaltasuniversity.in/privacy-policy/ */
 const SECTIONS = [
@@ -98,6 +99,11 @@ const SECTIONS = [
 export default function PrivacyPolicy() {
   return (
     <>
+      <SEO
+        title="Privacy Policy"
+        description="Privacy policy for Amaltas University's OAP Caller application — how personal data is collected, used and protected."
+        path="/privacy-policy"
+      />
       <PageHero
         crumb="Privacy Policy"
         eyebrow="Legal"

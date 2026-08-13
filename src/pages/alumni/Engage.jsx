@@ -5,6 +5,8 @@ import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import AlumniForm from "../../components/AlumniForm.jsx";
 import { C } from "../../theme.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const TABS = [
   {
@@ -79,6 +81,12 @@ export default function AlumniEngage() {
 
   return (
     <>
+      <SEO
+        title="Alumni Engage — Mentor, Share & Connect"
+        description="Ways to engage as an Amaltas University alumnus: become a mentor to current students, share your career journey, and stay connected with your alma mater."
+        path="/alumni/engage"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Alumni", path: "/alumni" }, { name: "Engage", path: "/alumni/engage" }])}
+      />
       <PageHero
         crumb="Alumni / Engage"
         eyebrow="Engage"

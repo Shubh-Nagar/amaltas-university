@@ -4,6 +4,8 @@ import { ArrowRight, ShoppingBag, Heart, GraduationCap, Mail } from "lucide-reac
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const MERCH_ITEMS = [
   { name: "Alumni Polo Tee",       tag: "Apparel",     price: "₹699",   badge: "Best Seller", color: C.emerald },
@@ -25,6 +27,12 @@ const REQUIREMENTS = [
 export default function AlumniGivingBack() {
   return (
     <>
+      <SEO
+        title="Giving Back — Support Amaltas University"
+        description="Ways alumni can give back to Amaltas University, Dewas — merchandise, donations and staying connected through the alumni network."
+        path="/alumni/giving-back"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Alumni", path: "/alumni" }, { name: "Giving Back", path: "/alumni/giving-back" }])}
+      />
       <PageHero
         crumb="Alumni / Giving Back"
         eyebrow="Giving Back"

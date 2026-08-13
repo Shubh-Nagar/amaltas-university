@@ -13,6 +13,8 @@ import MagicBento from "../components/MagicBento.jsx";
 import { Reveal, Tilt, StatNum } from "../components/Primitives.jsx";
 import { useInView } from "../hooks/useScroll.js";
 import { C, iconBtn } from "../theme.js";
+import SEO from "../components/SEO.jsx";
+import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA, FAQ_SCHEMA } from "../data/schema.js";
 import {
   INSTITUTIONS, WHY, VOICES, STATS, LEADERS,
   EVENTS, NEWS, FAQS, ANNOUNCEMENTS,
@@ -663,6 +665,13 @@ export default function Home() {
 
   return (
     <>
+      <SEO
+        title="Amaltas University, Dewas · MBBS, BAMS, BHMS, Nursing & Pharmacy Admissions"
+        description="Amaltas University, Dewas (Madhya Pradesh) — a UGC-recognised health-sciences university with 6 institutions offering MBBS, BAMS, BHMS, B.Sc Nursing, B.Pharm and paramedical programmes, anchored by a 1500+ bed teaching hospital. Admissions open for 2026-27."
+        path="/"
+        keywords="Amaltas University, Amaltas University Dewas, MBBS admission Dewas, BAMS college Madhya Pradesh, BHMS college Dewas, B.Sc Nursing admission Madhya Pradesh, B.Pharm college Dewas, best medical university Madhya Pradesh"
+        jsonLd={[ORGANIZATION_SCHEMA, WEBSITE_SCHEMA, FAQ_SCHEMA]}
+      />
       {/* ════════════════════════════════════════
           HERO
       ════════════════════════════════════════ */}
@@ -693,9 +702,9 @@ export default function Home() {
           {/* LEFT — admissions pitch */}
           <Reveal variant="left">
             <span className="eyebrow" style={{ color: C.goldL }}>Admissions 2026–27</span>
-            <h2 style={{ color: C.ivory, marginTop: 14, fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
+            <h1 style={{ color: C.ivory, marginTop: 14, fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
               Your journey into<br />healthcare begins here.
-            </h2>
+            </h1>
             <p style={{ color: "rgba(247,244,236,.75)", marginTop: 16, fontSize: 17, maxWidth: 480 }}>
               Applications are open across Medical Sciences, Ayurveda, Homoeopathy, Nursing,
               Pharmacy, and Paramedical Sciences for the 2026–27 session.

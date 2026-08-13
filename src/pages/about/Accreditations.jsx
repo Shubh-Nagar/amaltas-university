@@ -5,6 +5,8 @@ import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import { ACCREDITATIONS } from "../../data/content.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const WHY_ACC = [
   { title: "Degree Validity", desc: "Only programmes recognised by the relevant statutory council are legally valid for practice and further study in India." },
@@ -16,6 +18,13 @@ const WHY_ACC = [
 export default function Accreditations() {
   return (
     <>
+      <SEO
+        title="Approvals & Accreditations — NMC, NCISM, NCH, INC, PCI, UGC"
+        description="Amaltas University's programmes are approved by NMC, NCISM, NCH, Indian Nursing Council, Pharmacy Council of India, UGC, MPPURC, NABH and NABL — ensuring degrees are valid, valued and portable."
+        path="/about/accreditations"
+        keywords="Amaltas University NMC approval, Amaltas University UGC recognition, NCISM BAMS approval, PCI approved pharmacy college"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About Us", path: "/about/university" }, { name: "Accreditations", path: "/about/accreditations" }])}
+      />
       <PageHero
         crumb="About Us / Approvals & Accreditations"
         eyebrow="Approvals & Accreditations"

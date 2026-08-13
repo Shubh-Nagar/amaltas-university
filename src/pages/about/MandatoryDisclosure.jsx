@@ -5,6 +5,8 @@ import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import { DISCLOSURE_SECTIONS, CONTACT } from "../../data/content.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const DOWNLOADS = [
   { label: "AISHE Data Report",            desc: "All India Survey on Higher Education" },
@@ -18,6 +20,12 @@ const DOWNLOADS = [
 export default function MandatoryDisclosure() {
   return (
     <>
+      <SEO
+        title="Mandatory Disclosure — AISHE & UGC Compliance"
+        description="Amaltas University's mandatory disclosure as required by UGC and MP Private University regulations: university profile, academic programmes, infrastructure, admissions and contact details."
+        path="/about/disclosure"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About Us", path: "/about/university" }, { name: "Mandatory Disclosure", path: "/about/disclosure" }])}
+      />
       <PageHero
         crumb="About Us / Mandatory Disclosure"
         eyebrow="Transparency & Compliance"

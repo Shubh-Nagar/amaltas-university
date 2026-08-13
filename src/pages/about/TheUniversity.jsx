@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { Reveal } from "../../components/Primitives.jsx";
 import { VISION_MISSION, CHANCELLOR_MESSAGE } from "../../data/content.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 /* ─── Brand tokens (light-theme version of the page) ───────────────────────
    Primary   #10803B   deep Amaltas green
@@ -231,6 +233,12 @@ function BeyondCarousel() {
 export default function TheUniversity() {
   return (
     <>
+      <SEO
+        title="The University — Our Story, Vision & Mission"
+        description="Amaltas University, Dewas: founded 2013 by Mayank Welfare Society, gazette-notified as a Madhya Pradesh state private university in 2019. Read our history, vision, mission and values."
+        path="/about/university"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About Us", path: "/about/university" }, { name: "The University", path: "/about/university" }])}
+      />
       {/* ══ HERO — light gradient, campus photo fades in from right ══ */}
       <header
         className="page-hero"

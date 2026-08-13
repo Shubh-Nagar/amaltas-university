@@ -9,6 +9,8 @@ import { PageHero } from "../components/Layout.jsx";
 import { Reveal, StatNum } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { useInView } from "../hooks/useScroll.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 const SECTIONS = [
   {
@@ -58,6 +60,12 @@ export default function Alumni() {
 
   return (
     <>
+      <SEO
+        title="Alumni Network — Leadership, Engagement & Giving Back"
+        description="Connect with the Amaltas University alumni community — governance, mentorship, university visits, achiever spotlights and ways to give back, across all six health-science institutions."
+        path="/alumni"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Alumni", path: "/alumni" }])}
+      />
       {/* ── HERO ── */}
       <PageHero
         crumb="Alumni"

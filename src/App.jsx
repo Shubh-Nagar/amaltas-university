@@ -39,14 +39,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy2.jsx";
 import PublicSelfDisclosure from "./pages/PublicSelfDisclosure.jsx";
 import AntiRaggingCommittee from "./pages/AntiRaggingCommittee.jsx";
-import Login from "./pages/auth/Login.jsx";
-import Register from "./pages/auth/Register.jsx";
-import AdminLayout from "./pages/admin/AdminLayout.jsx";
-import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
-import AdminEvents from "./pages/admin/AdminEvents.jsx";
-import AdminNews from "./pages/admin/AdminNews.jsx";
-import ProtectedRoute from "./components/ProtectedRoute.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
 
 /* Real WhatsApp glyph (lucide-react ships no brand icons) */
 function WhatsAppIcon({ size = 24 }) {
@@ -90,9 +82,7 @@ function GlobalFabs() {
   );
 }
 
-function AppShell() {
-  const { pathname } = useLocation();
-  const isBareLayout = pathname.startsWith("/admin") || pathname === "/login" || pathname === "/register";
+export default function App() {
 
   return (
     <div className="amaltas">
@@ -133,33 +123,11 @@ function AppShell() {
           <Route path="/public-self-disclosure" element={<PublicSelfDisclosure />} />
           <Route path="/anti-ragging-committee" element={<AntiRaggingCommittee />} />
           <Route path="/test" element={<Mainpopup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<AdminDashboard />} />
-            <Route path="events" element={<AdminEvents />} />
-            <Route path="news" element={<AdminNews />} />
-          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      {!isBareLayout && <Footer />}
-      {!isBareLayout && <GlobalFabs />}
+      <Footer />
+      <GlobalFabs />
     </div>
-  );
-}
-
-export default function App() {
-  return (
-    <AuthProvider>
-      <AppShell />
-    </AuthProvider>
   );
 }

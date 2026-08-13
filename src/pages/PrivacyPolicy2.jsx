@@ -2,6 +2,7 @@ import React from "react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
+import SEO from "../components/SEO.jsx";
 
 /* Content mirrored verbatim from https://amaltasuniversity.in/privacy-policy-2/ */
 const SECTIONS = [
@@ -76,6 +77,11 @@ const SECTIONS = [
 export default function PrivacyPolicy2() {
   return (
     <>
+      <SEO
+        title="Privacy Policy — Educational App"
+        description="Privacy policy for Amaltas University's Educational App, developed and operated by Emperor Solutions."
+        path="/privacy-policy-2"
+      />
       <PageHero
         crumb="Privacy Policy 2"
         eyebrow="Legal"

@@ -4,6 +4,8 @@ import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { CONTACT } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 const CATEGORIES = [
   {
@@ -98,6 +100,12 @@ export default function Eligibility() {
 
   return (
     <>
+      <SEO
+        title="Eligibility Criteria 2026-27 — Programme-Wise Requirements"
+        description="Check programme-wise eligibility for Amaltas University, Dewas: MBBS, MD/MS, BAMS, BHMS, B.Sc Nursing, B.Pharm, BPT and paramedical courses, including NEET UG/PG/SS and 12th-standard requirements."
+        path="/admissions/eligibility"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Admissions", path: "/admissions" }, { name: "Eligibility Criteria", path: "/admissions/eligibility" }])}
+      />
       <PageHero
         crumb="Admissions / Eligibility Criteria"
         eyebrow="Eligibility Criteria 2026–27"

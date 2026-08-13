@@ -5,10 +5,18 @@ import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { IQAC_MESSAGE } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 export default function IQAC() {
   return (
     <>
+      <SEO
+        title="IQAC — Internal Quality Assurance Cell"
+        description="The Internal Quality Assurance Cell (IQAC) of Amaltas University, Dewas drives continuous quality improvement in academics, administration and institutional practice, aligned to UGC and NAAC standards."
+        path="/iqac"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "IQAC", path: "/iqac" }])}
+      />
       <PageHero
         crumb="IQAC"
         eyebrow="Internal Quality Assurance Cell"

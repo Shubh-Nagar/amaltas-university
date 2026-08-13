@@ -5,6 +5,8 @@ import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C, iconBtn } from "../theme.js";
 import { VOICES } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 export default function Voices() {
   const [voice, setVoice] = useState(0);
@@ -15,6 +17,12 @@ export default function Voices() {
 
   return (
     <>
+      <SEO
+        title="Student Voices — Real Stories from Amaltas University"
+        description="Hear directly from Amaltas University students and graduates in MBBS, B.Pharm, BAMS and B.Sc Nursing about clinical training, mentorship and campus life in Dewas."
+        path="/voices"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Voices", path: "/voices" }])}
+      />
       <PageHero
         crumb="Voices"
         eyebrow="Voices of Amaltas"

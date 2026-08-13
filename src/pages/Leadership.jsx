@@ -4,10 +4,18 @@ import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { LEADERS } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 export default function Leadership() {
   return (
     <>
+      <SEO
+        title="University Leadership — Chancellor, Vice Chancellor & Governing Council"
+        description="Meet the leadership of Amaltas University, Dewas — Chancellor Mrs. Aruna Bhadoria, Pro-Chancellor Dr. Salil Bhargava, Vice Chancellor Dr. R.K. Singh, Registrar Dr. Abhay Gupta, and the founding Bhadoria family."
+        path="/leadership"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Leadership", path: "/leadership" }])}
+      />
       <PageHero
         crumb="Leadership"
         eyebrow="The people behind the promise"

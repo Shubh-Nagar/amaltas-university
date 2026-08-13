@@ -6,6 +6,8 @@ import { Reveal, StatNum } from "../components/Primitives.jsx";
 import { useInView } from "../hooks/useScroll.js";
 import { C } from "../theme.js";
 import { WHY, STATS } from "../data/content.js";
+import SEO from "../components/SEO.jsx";
+import { breadcrumbSchema } from "../data/schema.js";
 
 function StatStrip() {
   const [ref, seen] = useInView({ threshold: 0.4 });
@@ -24,6 +26,12 @@ function StatStrip() {
 export default function Why() {
   return (
     <>
+      <SEO
+        title="Why Amaltas — Hospital-Embedded Learning & Mentorship"
+        description="Why students choose Amaltas University, Dewas: hospital-embedded clinical training from year one, mentor-faculty, nationally recognised accreditation, and merit & need-based scholarships."
+        path="/why"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Why Amaltas", path: "/why" }])}
+      />
       <PageHero
         crumb="Why Amaltas"
         eyebrow="The Amaltas difference"

@@ -1,6 +1,8 @@
 import React from "react";
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const GALLERY = [
   "/assets/images%20of%20university/photo-gallery/2U8A8516.jpg",
@@ -32,6 +34,12 @@ const GALLERY = [
 export default function PhotoGallery() {
   return (
     <>
+      <SEO
+        title="Photo Gallery — Campus Life in Pictures"
+        description="A visual tour of Amaltas University, Dewas — campus, hostels, labs, ceremonies and student life captured across the year."
+        path="/happenings/photo-gallery"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Happenings", path: "/happenings/events" }, { name: "Photo Gallery", path: "/happenings/photo-gallery" }])}
+      />
       <PageHero
         crumb="Happenings / Photo Gallery"
         eyebrow="Happenings"

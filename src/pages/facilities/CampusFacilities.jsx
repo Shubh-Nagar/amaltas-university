@@ -10,6 +10,8 @@ import { Reveal, StatNum } from "../../components/Primitives.jsx";
 import { useInView } from "../../hooks/useScroll.js";
 import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const FALLBACK = "/assets/images%20of%20university/campus%20life/435A1853.JPG";
 
@@ -398,6 +400,12 @@ export default function CampusFacilities() {
 
   return (
     <>
+      <SEO
+        title="Campus Facilities — Sports, Green Campus & Recreation"
+        description="Explore Amaltas University's campus facilities in Dewas: sports grounds, gym, yoga centre, cultural spaces, dining and a sustainability-focused green campus with 100% Wi-Fi coverage."
+        path="/facilities/campus"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Facilities", path: "/facilities/academic" }, { name: "Campus Facilities", path: "/facilities/campus" }])}
+      />
       <PageHero
         crumb="Facilities / Campus Facilities"
         eyebrow="Facilities"

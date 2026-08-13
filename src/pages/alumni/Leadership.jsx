@@ -4,6 +4,8 @@ import { ArrowRight, Crown, Briefcase, FileText, Users, Award, Star, Sparkles, H
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const VC_INFO = {
   role: "Vice Chancellor",
@@ -26,6 +28,12 @@ const EXEC_COUNCIL = [
 export default function AlumniLeadership() {
   return (
     <>
+      <SEO
+        title="Alumni Association Leadership"
+        description="Meet the governing council of the Amaltas University Alumni Association — Vice Chancellor patron, Executive Council and Office Bearers guiding alumni engagement."
+        path="/alumni/leadership"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Alumni", path: "/alumni" }, { name: "Leadership", path: "/alumni/leadership" }])}
+      />
       <PageHero
         crumb="Alumni / Leadership"
         eyebrow="Alumni Association Leadership"

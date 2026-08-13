@@ -10,6 +10,8 @@ import { Reveal, StatNum } from "../../components/Primitives.jsx";
 import { useInView } from "../../hooks/useScroll.js";
 import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const IMG = {
   hero:     "/assets/images%20of%20university/photo-gallery/DJI_0019.jpg",
@@ -213,6 +215,12 @@ export default function AcademicFacilities() {
 
   return (
     <>
+      <SEO
+        title="Academic Facilities — Labs, Library & Smart Classrooms"
+        description="Amaltas University's academic infrastructure: 300+ smart classrooms, 120+ teaching and research labs, a central library with 89,800+ volumes, and discipline-specific labs across medicine, Ayurveda, nursing and pharmacy."
+        path="/facilities/academic"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Facilities", path: "/facilities/academic" }, { name: "Academic Facilities", path: "/facilities/academic" }])}
+      />
       <PageHero
         crumb="Facilities / Academic Facilities"
         eyebrow="Facilities"

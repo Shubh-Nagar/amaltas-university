@@ -5,6 +5,8 @@ import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import { AWARDS } from "../../data/content.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const featured = AWARDS.find((a) => a.featured);
 const rest = AWARDS.filter((a) => !a.featured);
@@ -95,6 +97,12 @@ function HeroDecor() {
 export default function AwardsRankings() {
   return (
     <>
+      <SEO
+        title="Awards & Rankings"
+        description="Amaltas University's recognitions include a Ministry of AYUSH-backed mass yoga world record (35,000+ participants), Excellence in Medical Education (Govt. of MP), and Best Healthcare University — Central India."
+        path="/about/awards"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About Us", path: "/about/university" }, { name: "Awards & Rankings", path: "/about/awards" }])}
+      />
       <PageHero
         crumb="About Us / Awards & Rankings"
         eyebrow="Recognition & Excellence"

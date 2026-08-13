@@ -5,6 +5,8 @@ import { Reveal, StatNum } from "../../components/Primitives.jsx";
 import { useInView } from "../../hooks/useScroll.js";
 import { C } from "../../theme.js";
 import { CONTACT, VOICES } from "../../data/content.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const FALLBACK = "/assets/images%20of%20university/campus%20life/435A1853.JPG";
 
@@ -289,6 +291,12 @@ export default function CampusLife() {
 
   return (
     <>
+      <SEO
+        title="Campus Life — Sports, Culture, Hostels & Community"
+        description="Life at Amaltas University, Dewas: sports and athletics, cultural festivals, hostels and dining, library and labs, and community outreach — a vibrant campus beyond the classroom."
+        path="/student-life/campus-life"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Student Life", path: "/student-life/campus-life" }, { name: "Campus Life", path: "/student-life/campus-life" }])}
+      />
       <HeroCarousel />
 
       {/* ── STATS BAND ── */}

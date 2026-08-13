@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   ArrowRight, Menu, X, ChevronDown,
   Phone, Mail, Facebook, Instagram, Twitter, Youtube,
-  LogIn, LayoutDashboard, LogOut,
 } from "lucide-react";
 import { NAV } from "../data/content.js";
-import { useAuth } from "../context/AuthContext.jsx";
 
 function ChildLink({ to, label }) {
   if (to === "#" || to.startsWith("#")) {
@@ -45,8 +43,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [expandedMobile, setExpandedMobile] = useState(null);
   const loc = useLocation();
-  const navigate = useNavigate();
-  const { user, logout } = useAuth();
   const onHome = loc.pathname === "/";
 
   useEffect(() => {
@@ -166,29 +162,6 @@ export default function Navbar() {
           >
             Apply 2026–27 <ArrowRight size={16} />
           </a>
-          {user ? (
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <Link to="/admin" className="btn btn-ghost" style={{ padding: "11px 16px", fontSize: 14, color: solid ? "var(--ink)" : undefined, borderColor: solid ? "rgba(11,44,24,.2)" : undefined }}>
-                <LayoutDashboard size={15} /> Dashboard
-              </Link>
-              <button
-                onClick={() => { logout(); navigate("/"); }}
-                aria-label="Log out"
-                className="btn btn-ghost"
-                style={{ padding: "11px 12px", fontSize: 14, color: solid ? "var(--ink)" : undefined, borderColor: solid ? "rgba(11,44,24,.2)" : undefined }}
-              >
-                <LogOut size={15} />
-              </button>
-            </div>
-          ) : (
-            <Link
-              to="/login"
-              className="btn btn-ghost"
-              style={{ padding: "11px 18px", fontSize: 14, color: solid ? "var(--ink)" : undefined, borderColor: solid ? "rgba(11,44,24,.2)" : undefined }}
-            >
-              <LogIn size={15} /> Login
-            </Link>
-          )}
           <button
             className="burger"
             onClick={() => setOpen(!open)}
@@ -249,24 +222,10 @@ export default function Navbar() {
               </NavLink>
             )
           )}
-          <div className="mobile-menu-footer" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div className="mobile-menu-footer">
             <a href="https://admission.amaltasuniversity.in/" target="_blank" rel="noreferrer" className="btn btn-gold" style={{ width: "100%", justifyContent: "center" }}>
               Apply 2026–27 <ArrowRight size={16} />
             </a>
-            {user ? (
-              <div style={{ display: "flex", gap: 10 }}>
-                <Link to="/admin" className="btn btn-ghost" style={{ flex: 1, justifyContent: "center" }}>
-                  <LayoutDashboard size={15} /> Dashboard
-                </Link>
-                <button onClick={() => { logout(); navigate("/"); }} className="btn btn-ghost" style={{ flex: 1, justifyContent: "center" }}>
-                  <LogOut size={15} /> Log out
-                </button>
-              </div>
-            ) : (
-              <Link to="/login" className="btn btn-ghost" style={{ width: "100%", justifyContent: "center" }}>
-                <LogIn size={15} /> Login
-              </Link>
-            )}
           </div>
         </div>
       )}

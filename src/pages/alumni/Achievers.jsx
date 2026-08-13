@@ -4,6 +4,8 @@ import { ArrowRight, Sparkles, Trophy, Medal, Star } from "lucide-react";
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const CATEGORIES = [
   {
@@ -51,6 +53,12 @@ const CATEGORIES = [
 export default function AlumniAchievers() {
   return (
     <>
+      <SEO
+        title="Alumni Achievers — Success Stories"
+        description="Monthly spotlights and success stories of Amaltas University alumni making a difference in clinics, labs, communities and boardrooms across India and beyond."
+        path="/alumni/achievers"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Alumni", path: "/alumni" }, { name: "Achievers", path: "/alumni/achievers" }])}
+      />
       <PageHero
         crumb="Alumni / Alumni Achievers"
         eyebrow="Alumni Achievers"

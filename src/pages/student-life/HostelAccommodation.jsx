@@ -9,6 +9,8 @@ import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
+import SEO from "../../components/SEO.jsx";
+import { breadcrumbSchema } from "../../data/schema.js";
 
 const HOSTEL_STATS = [
   { v: "10+", l: "Hostel Blocks" },
@@ -166,6 +168,12 @@ function RulesAccordion() {
 export default function HostelAccommodation() {
   return (
     <>
+      <SEO
+        title="Hostel & Accommodation — Safe, Separate, Fully-Equipped"
+        description="Amaltas University's on-campus hostels for boys and girls offer 24/7 security, Wi-Fi, nutritious mess facilities and recreational amenities — a safe home for students in Dewas."
+        path="/student-life/hostel"
+        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Student Life", path: "/student-life/campus-life" }, { name: "Hostel & Accommodation", path: "/student-life/hostel" }])}
+      />
       <PageHero
         crumb="Student Life / Hostel & Accommodation"
         eyebrow="Student Life"

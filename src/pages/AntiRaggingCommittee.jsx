@@ -3,6 +3,7 @@ import { ShieldCheck, Phone } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
+import SEO from "../components/SEO.jsx";
 
 /* Content mirrored from https://amaltasuniversity.in/anti-ragging-committee/ */
 
@@ -91,6 +92,11 @@ function MemberTable({ rows }) {
 export default function AntiRaggingCommittee() {
   return (
     <>
+      <SEO
+        title="Anti-Ragging Committee"
+        description="Amaltas University maintains a zero-tolerance anti-ragging policy. Meet the Anti-Ragging Committee members and their contact details for reporting concerns."
+        path="/anti-ragging-committee"
+      />
       <PageHero
         crumb="Anti-Ragging Committee"
         eyebrow="Student Safety & Welfare"

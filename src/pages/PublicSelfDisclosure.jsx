@@ -3,6 +3,7 @@ import { ExternalLink, FileText, Mail, Phone, User } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
+import SEO from "../components/SEO.jsx";
 
 /* Content mirrored from https://amaltasuniversity.in/public-self-disclosure/
    The documents themselves are downloaded into /public/disclosure and served
@@ -226,6 +227,11 @@ function DocRow({ label, href }) {
 export default function PublicSelfDisclosure() {
   return (
     <>
+      <SEO
+        title="Public Self Disclosure"
+        description="Amaltas University's public self-disclosure documents — UGC recognition, statutory approvals, governance bodies, academic programmes and institutional reports."
+        path="/public-self-disclosure"
+      />
       <PageHero
         crumb="Public Self Disclosure"
         eyebrow="Transparency & Compliance"
