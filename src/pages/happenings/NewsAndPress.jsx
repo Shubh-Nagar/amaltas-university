@@ -5,10 +5,22 @@ import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
 
-/* Latest 20 news images, mirrored from https://amaltasuniversity.in/news-release/
+/* News images, mirrored from https://amaltasuniversity.in/news-release/
    and hosted locally in /public/assets/images of university/news-press. */
 const NP = "/assets/images%20of%20university/news-press";
 const GALLERY = [
+  // Most recently uploaded — shown first
+  `${NP}/agrohomeopathy%20program.jpg`, `${NP}/agrohomeopathy%20program-1.jpg`,
+  `${NP}/angdaan.jpg`,      `${NP}/angdaan-1.jpg`,      `${NP}/angdaan-2.jpg`,
+  `${NP}/breastfeeding.jpg`, `${NP}/breastfeeding-1.jpg`,
+  `${NP}/deh-dan.jpg`,      `${NP}/dehdaan.jpg`,        `${NP}/Dehdaan%20MS.jpg.jpeg`,
+  `${NP}/DRISHTI-CPS.jpg`,  `${NP}/DRISHTI-CPS-1.jpg`,
+  `${NP}/light-lampning-1.jpg`,
+  `${NP}/mayank-sir-news.jpg`, `${NP}/mayank-sir-news-14.jpg`, `${NP}/mayank-sir-news-15.jpg`,
+  `${NP}/value-added.jpg`,  `${NP}/value-added-1.jpg`,
+  `${NP}/Workshop.jpg`,     `${NP}/Workshop-1.jpg`,
+  `${NP}/yoga.jpg`,         `${NP}/yoga-1.jpg`,         `${NP}/yoga-2.jpg`,
+  // Older releases
   `${NP}/news-01.jpg`,  `${NP}/news-02.jpg`,  `${NP}/news-03.jpg`,  `${NP}/news-04.jpg`,
   `${NP}/news-05.jpeg`, `${NP}/news-06.jpeg`, `${NP}/news-07.jpg`,  `${NP}/news-08.jpg`,
   `${NP}/news-09.jpg`,  `${NP}/news-10.jpeg`, `${NP}/news-11.jpeg`, `${NP}/news-12.jpeg`,
