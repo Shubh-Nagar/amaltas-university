@@ -214,6 +214,8 @@ function StoryScroller() {
               alt={voice.n}
               style={{ width: 42, height: 42, borderRadius: "50%", objectFit: "cover", flexShrink: 0 }}
               onError={(e) => { e.target.src = FALLBACK; }}
+              loading="lazy"
+              decoding="async"
             />
             <div>
               <div style={{ fontSize: 13.5, fontWeight: 700, color: C.ink }}>{voice.n}</div>
@@ -231,7 +233,7 @@ function StoryScroller() {
             data-idx={i}
             className="cl-story-card"
           >
-            <img src={st.img} alt={st.title} onError={(e) => { e.target.src = FALLBACK; }} />
+            <img src={st.img} alt={st.title} onError={(e) => { e.target.src = FALLBACK; }} loading="lazy" decoding="async" />
             <div className="cl-story-num">0{i + 1}</div>
             <div className="cl-story-card-body">
               <span className="eyebrow" style={{ color: C.goldL }}>{st.tag}</span>
@@ -272,7 +274,7 @@ function MosaicLightbox({ items, index, onClose, onPrev, onNext }) {
         <ArrowLeft size={20} />
       </button>
       <div className="cl-lightbox-stage" onClick={(e) => e.stopPropagation()}>
-        <img src={m.img} alt={m.cap} onError={(e) => { e.target.src = FALLBACK; }} />
+        <img src={m.img} alt={m.cap} onError={(e) => { e.target.src = FALLBACK; }} loading="lazy" decoding="async" />
         <div className="cl-lightbox-cap">{m.cap}</div>
       </div>
       <button className="cl-lightbox-arrow right" aria-label="Next image" onClick={(e) => { e.stopPropagation(); onNext(); }}>
@@ -352,7 +354,7 @@ export default function CampusLife() {
                     onClick={() => setLightboxIndex(i)}
                     onKeyDown={(e) => { if (e.key === "Enter") setLightboxIndex(i); }}
                   >
-                    <img src={m.img} alt={m.cap} onError={(e) => { e.target.src = FALLBACK; }} />
+                    <img src={m.img} alt={m.cap} onError={(e) => { e.target.src = FALLBACK; }} loading="lazy" decoding="async" />
                     <div className="cl-mosaic-tile-label">{m.cap}</div>
                   </div>
                 ))}

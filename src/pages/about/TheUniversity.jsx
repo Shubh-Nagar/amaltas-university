@@ -327,6 +327,8 @@ export default function TheUniversity() {
                 src="/assets/images%20of%20university/our%20purpose/university.png"
                 alt="Amaltas University"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                loading="lazy"
+                decoding="async"
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 60%, rgba(16,128,59,.35) 100%)" }} />
               <div style={{ position: "absolute", bottom: 16, left: 16, fontSize: 12.5, fontWeight: 600, display: "flex", alignItems: "center", gap: 7, background: "rgba(255,255,255,.88)", backdropFilter: "blur(8px)", color: G.green, padding: "7px 14px", borderRadius: 100, border: `1px solid ${G.border}` }}>
@@ -445,7 +447,7 @@ export default function TheUniversity() {
             <div style={{ position: "relative", maxWidth: 360, margin: "0 auto", width: "100%" }}>
               <div style={{ position: "absolute", inset: -12, borderRadius: 30, background: `linear-gradient(135deg,${G.green}22,${G.gold}28)`, filter: "blur(20px)", zIndex: 0 }} />
               <div style={{ position: "relative", zIndex: 1, borderRadius: 24, overflow: "hidden", border: `3px solid ${G.gold}88`, aspectRatio: "3/3.5", boxShadow: `0 40px 80px -45px rgba(16,128,59,.3)` }}>
-                <img src={CHANCELLOR_MESSAGE.photo} alt={CHANCELLOR_MESSAGE.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src={CHANCELLOR_MESSAGE.photo} alt={CHANCELLOR_MESSAGE.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" decoding="async" />
               </div>
             </div>
           </Reveal>
@@ -490,7 +492,7 @@ export default function TheUniversity() {
             </Reveal>
             <Reveal variant="right">
               <div style={{ borderRadius: 24, overflow: "hidden", aspectRatio: "4/3", boxShadow: `0 40px 90px -45px rgba(16,128,59,.3)`, border: `3px solid ${G.greenBg}`, position: "relative" }}>
-                <img src="/assets/images%20of%20university/event%20and%20activites/nurse.jpeg" alt="Academic life at Amaltas" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src="/assets/images%20of%20university/event%20and%20activites/nurse.jpeg" alt="Academic life at Amaltas" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" decoding="async" />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(16,128,59,.3) 0%, transparent 55%)" }} />
               </div>
             </Reveal>
@@ -501,7 +503,7 @@ export default function TheUniversity() {
             {INSTITUTE_PHOTOS.map((inst, i) => (
               <Reveal key={i} delay={`d${(i % 4) + 1}`} variant="zoom">
                 <div style={{ position: "relative", borderRadius: 18, overflow: "hidden", aspectRatio: "3/2" }} className="card-lift">
-                  <img src={inst.photo} alt={inst.name} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform .5s ease" }} />
+                  <img src={inst.photo} alt={inst.name} style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform .5s ease" }} loading="lazy" decoding="async" />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(16,128,59,.75) 0%, rgba(16,128,59,.12) 55%, transparent 100%)" }} />
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "16px 16px 14px" }}>
                     <div style={{ color: "#fff", fontWeight: 700, fontSize: 14, lineHeight: 1.3 }}>{inst.name}</div>

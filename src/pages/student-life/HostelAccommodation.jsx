@@ -220,6 +220,8 @@ export default function HostelAccommodation() {
                 src="/assets/images%20of%20university/hostel/2U8A0028.jpg"
                 alt="Campus hostel life"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                loading="lazy"
+                decoding="async"
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top right,rgba(11,44,24,.45),transparent)" }} />
               <div style={{ position: "absolute", bottom: 20, left: 20, background: "rgba(255,255,255,.95)", borderRadius: 14, padding: "14px 20px", backdropFilter: "blur(10px)", boxShadow: "0 8px 28px -10px rgba(11,44,24,.22)" }}>
@@ -248,7 +250,7 @@ export default function HostelAccommodation() {
               <Reveal key={i} delay={`d${i + 1}`}>
                 <div className="hostel-type-card card-lift">
                   <div className="hostel-card-img">
-                    <img src={h.img} alt={h.gender} />
+                    <img src={h.img} alt={h.gender} loading="lazy" decoding="async" />
                     <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 35%, ${h.gradientEnd}d0 100%)` }} />
                     <div style={{ position: "absolute", top: 16, left: 16, background: "rgba(255,255,255,.15)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,.22)", borderRadius: 100, padding: "5px 14px", fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#fff" }}>
                       {h.tag}
@@ -335,6 +337,8 @@ export default function HostelAccommodation() {
                 alt="Mess and dining facility"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 onError={(e) => { e.target.src = "/assets/images%20of%20university/campus%20life/435A1853.JPG"; }}
+                loading="lazy"
+                decoding="async"
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,rgba(11,44,24,.35),transparent)" }} />
               <div style={{ position: "absolute", bottom: 20, right: 20, background: C.gold, color: C.navy, borderRadius: 12, padding: "12px 18px", fontWeight: 700, fontSize: 13 }}>
@@ -390,6 +394,8 @@ export default function HostelAccommodation() {
                 src={g.img}
                 alt={g.cap}
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 6s ease" }}
+                loading="lazy"
+                decoding="async"
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(11,44,24,.72) 0%,rgba(11,44,24,.08) 55%)" }} />
               <div style={{ position: "absolute", bottom: 18, left: 18, color: "#fff", fontFamily: "Fraunces,serif", fontSize: 15, lineHeight: 1.2 }}>{g.cap}</div>

@@ -41,7 +41,7 @@ export default function Voices() {
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <div style={{ width: 50, height: 50, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: `2px solid rgba(11,44,24,.1)` }}>
                   {VOICES[voice].photo
-                    ? <img src={VOICES[voice].photo} alt={VOICES[voice].n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                    ? <img src={VOICES[voice].photo} alt={VOICES[voice].n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} loading="lazy" decoding="async" />
                     : <div style={{ width: "100%", height: "100%", background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 18 }}>{VOICES[voice].n[0]}</div>}
                 </div>
                 <div>
@@ -52,12 +52,19 @@ export default function Voices() {
               <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
                 <div className="dotnav">
                   {VOICES.map((_, i) => (
-                    <button key={i} className={voice === i ? "on" : ""} onClick={() => setVoice(i)} />
+                    <button
+                      key={i}
+                      type="button"
+                      className={voice === i ? "on" : ""}
+                      onClick={() => setVoice(i)}
+                      aria-label={`Show testimonial ${i + 1} of ${VOICES.length}`}
+                      aria-current={voice === i ? "true" : undefined}
+                    />
                   ))}
                 </div>
                 <div style={{ display: "flex", gap: 8 }}>
-                  <button onClick={() => setVoice((voice - 1 + VOICES.length) % VOICES.length)} style={iconBtn}><ChevronLeft size={18} /></button>
-                  <button onClick={() => setVoice((voice + 1) % VOICES.length)} style={iconBtn}><ChevronRight size={18} /></button>
+                  <button type="button" aria-label="Previous testimonial" onClick={() => setVoice((voice - 1 + VOICES.length) % VOICES.length)} style={iconBtn}><ChevronLeft size={18} aria-hidden="true" /></button>
+                  <button type="button" aria-label="Next testimonial" onClick={() => setVoice((voice + 1) % VOICES.length)} style={iconBtn}><ChevronRight size={18} aria-hidden="true" /></button>
                 </div>
               </div>
             </div>
@@ -80,7 +87,7 @@ export default function Voices() {
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: "auto" }}>
                   <div style={{ width: 44, height: 44, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: `2px solid rgba(11,44,24,.1)` }}>
                     {v.photo
-                      ? <img src={v.photo} alt={v.n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                      ? <img src={v.photo} alt={v.n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} loading="lazy" decoding="async" />
                       : <div style={{ width: "100%", height: "100%", background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 16 }}>{v.n[0]}</div>}
                   </div>
                   <div>
@@ -98,8 +105,12 @@ export default function Voices() {
       <section className="sec wrap" style={{ paddingTop: 0 }}>
         <Reveal>
           <div style={{ background: `radial-gradient(120% 140% at 20% 20%,${C.emerald},${C.navy} 60%)`, borderRadius: 30, padding: "60px 48px", color: C.ivory, textAlign: "center", position: "relative", overflow: "hidden" }}>
-            <button style={{ width: 80, height: 80, borderRadius: "50%", border: "none", background: C.gold, color: C.navy, display: "grid", placeItems: "center", cursor: "pointer", margin: "0 auto 22px", boxShadow: "0 10px 40px -8px rgba(246,224,5,.7)" }}>
-              <Play size={30} fill={C.navy} />
+            <button
+              type="button"
+              aria-label="Play the Amaltas University virtual campus tour"
+              style={{ width: 80, height: 80, borderRadius: "50%", border: "none", background: C.gold, color: C.navy, display: "grid", placeItems: "center", cursor: "pointer", margin: "0 auto 22px", boxShadow: "0 10px 40px -8px rgba(246,224,5,.7)" }}
+            >
+              <Play size={30} fill={C.navy} aria-hidden="true" />
             </button>
             <h2 style={{ color: C.ivory }}>Take the virtual campus tour.</h2>
             <p style={{ color: "rgba(247,244,236,.74)", maxWidth: 520, margin: "14px auto 28px" }}>

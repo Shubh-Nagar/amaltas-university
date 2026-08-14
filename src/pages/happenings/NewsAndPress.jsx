@@ -142,6 +142,8 @@ export default function NewsAndPress() {
             src={GALLERY[lightbox]}
             alt={`Amaltas University news ${lightbox + 1}`}
             onClick={(e) => e.stopPropagation()}
+            loading="lazy"
+            decoding="async"
           />
           <button
             className="ev-lightbox-nav next"

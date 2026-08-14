@@ -65,7 +65,7 @@ export default function LeaderMessage() {
                 <div style={{ position: "absolute", inset: -10, borderRadius: 34, background: `linear-gradient(135deg, ${C.emerald}22, ${C.gold}18)`, filter: "blur(18px)", zIndex: 0 }} />
                 <div className="chancellor-photo" style={{ position: "relative", zIndex: 1, borderRadius: 28, border: `3px solid ${C.gold}55` }}>
                   {leader.photo
-                    ? <img src={leader.photo} alt={leader.nm} />
+                    ? <img src={leader.photo} alt={leader.nm} loading="lazy" decoding="async" />
                     : <div style={{ width: "100%", height: "100%", display: "grid", placeItems: "center", background: `linear-gradient(135deg,${C.navy},${C.emerald})`, color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 44 }}>{leader.nm.split(" ").filter(Boolean).pop()[0]}</div>}
                 </div>
               </div>

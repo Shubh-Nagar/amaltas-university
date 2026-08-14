@@ -382,7 +382,7 @@ export default function Events() {
               <ChevronLeft size={26} />
             </button>
           )}
-          <img className="ev-lightbox-img" src={open.gallery[lightbox]} alt={`${open.title} — photo ${lightbox + 1}`} onClick={(e) => e.stopPropagation()} />
+          <img className="ev-lightbox-img" src={open.gallery[lightbox]} alt={`${open.title} — photo ${lightbox + 1}`} onClick={(e) => e.stopPropagation()} loading="lazy" decoding="async" />
           {open.gallery.length > 1 && (
             <button
               className="ev-lightbox-nav next"

@@ -121,7 +121,7 @@ export default function AwardsRankings() {
               <Reveal>
                 <div className="award-cert">
                   <div className="award-cert-img">
-                    <img src={featured.certificate.img} alt={featured.certificate.title} />
+                    <img src={featured.certificate.img} alt={featured.certificate.title} loading="lazy" decoding="async" />
                   </div>
                   <div className="award-cert-body">
                     <span className="award-card-year">{featured.certificate.org} · {featured.certificate.year}</span>
@@ -136,7 +136,7 @@ export default function AwardsRankings() {
               <div className="award-featured">
                 {/* Background image layer */}
                 <div className="award-featured-img">
-                  <img src={featured.img} alt={featured.title} />
+                  <img src={featured.img} alt={featured.title} loading="lazy" decoding="async" />
                 </div>
                 {/* Content */}
                 <div style={{ position: "relative", zIndex: 1, maxWidth: 640 }}>

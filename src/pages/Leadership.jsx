@@ -32,7 +32,7 @@ export default function Leadership() {
                 <div className="leader-photo-card card-lift" style={{ height: "100%", cursor: "pointer" }}>
                   <div className="lpc-photo-area">
                     {l.photo
-                      ? <img src={l.photo} alt={l.nm} />
+                      ? <img src={l.photo} alt={l.nm} loading="lazy" decoding="async" />
                       : <div className="lpc-photo-initials">{l.nm.split(" ").filter(Boolean).pop()[0]}</div>}
                   </div>
                   <div className="lpc-info">

@@ -628,7 +628,10 @@ function WorldRecordStack() {
                   objectFit: "cover",
                   opacity: i === activeCard ? 1 : 0,
                   transition: "opacity 0.6s ease",
-                }} />
+                }}
+                loading="lazy"
+                decoding="async"
+              />
               )}
             </React.Fragment>
           ))}
@@ -654,6 +657,52 @@ function HeroForm() {
 /* ═══════════════════════════════════════════════════
    HOME PAGE
 ═══════════════════════════════════════════════════ */
+/**
+ * Hero background video, deferred.
+ *
+ * The source file is ~26 MB. Attaching it directly to <video autoPlay> made
+ * the browser start pulling it immediately, competing with the CSS and JS
+ * needed for first paint — the likely cause of the 2.84 s desktop load time
+ * in the 2026-08-14 audit. Now a lightweight poster paints instantly and the
+ * video is only attached once the page has finished loading, so it never
+ * blocks the critical path. Users who prefer reduced motion keep the poster.
+ */
+const HERO_POSTER = "/assets/images%20of%20university/our%20purpose/university.jpg";
+
+function HeroVideo() {
+  const [src, setSrc] = useState(null);
+
+  useEffect(() => {
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+
+    const start = () => {
+      const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 200));
+      idle(() => setSrc("/assets/images%20of%20university/hero%20section/hero-video.mp4"));
+    };
+
+    if (document.readyState === "complete") {
+      start();
+      return;
+    }
+    window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
+  }, []);
+
+  return (
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="none"
+      poster={HERO_POSTER}
+      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+    >
+      {src && <source src={src} type="video/mp4" />}
+    </video>
+  );
+}
+
 export default function Home() {
   const [voice, setVoice] = useState(0);
   const [tourNotice, setTourNotice] = useState(false);
@@ -679,9 +728,7 @@ export default function Home() {
         {/* video background */}
         <div className="hero-bg-photo" aria-hidden="true">
           
-          <video autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }}>
-            <source src="/assets/images%20of%20university/hero%20section/hero-video.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo />
         </div>
 
         <Blob color="rgba(18,134,63,.32)" size={420} blur={100} variant="a" delay={4}
@@ -819,7 +866,7 @@ export default function Home() {
             {[...ACCREDITATIONS, ...ACCREDITATIONS].map((a, i) => (
               <div className="mq-logo-card" key={i}>
                 {a.logo
-                  ? <img src={a.logo} alt={a.short} className="mq-logo-img" />
+                  ? <img src={a.logo} alt={a.short} className="mq-logo-img" loading="lazy" decoding="async" />
                   : <div className="mq-seal" style={{ background: a.color }}>
                       <span className="mq-seal-abbr">{a.short}</span>
                     </div>
@@ -875,6 +922,8 @@ export default function Home() {
             alt=""
             aria-hidden="true"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", opacity: 0.28, filter: "grayscale(15%)" }}
+            loading="lazy"
+            decoding="async"
           />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, #FBFAF3 0%, rgba(251,250,243,.6) 40%, rgba(251,250,243,.6) 60%, #FBFAF3 100%)" }} />
         </div>
@@ -902,7 +951,7 @@ export default function Home() {
                 <Reveal key={i} delay={`d${(i % 4) + 1}`} variant="zoom">
                   <div className="card-lift why-card">
                     {w.img
-                      ? <img src={w.img} alt={w.t} className="why-card-img" />
+                      ? <img src={w.img} alt={w.t} className="why-card-img" loading="lazy" decoding="async" />
                       : <div className="why-card-gradient" />
                     }
                     <div style={{ padding: "26px 26px 28px" }}>
@@ -1023,7 +1072,7 @@ export default function Home() {
                 <div className="leader-photo-card">
                   <div className="lpc-photo-area">
                     {l.photo
-                      ? <img src={l.photo} alt={l.nm} />
+                      ? <img src={l.photo} alt={l.nm} loading="lazy" decoding="async" />
                       : <div className="lpc-photo-initials">{l.nm.split(" ").filter(Boolean).map((w) => w[0]).join("").slice(0, 2)}</div>}
                   </div>
                   <div className="lpc-info">
@@ -1072,7 +1121,7 @@ export default function Home() {
                 <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 36 }}>
                   <div style={{ width: 110, height: 110, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: `3px solid ${C.gold}55`, boxShadow: `0 0 0 6px rgba(246,224,5,.1)` }}>
                     {VOICES[voice].photo
-                      ? <img src={VOICES[voice].photo} alt={VOICES[voice].n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                      ? <img src={VOICES[voice].photo} alt={VOICES[voice].n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} loading="lazy" decoding="async" />
                       : <div style={{ width: "100%", height: "100%", background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 36 }}>{VOICES[voice].n[0]}</div>}
                   </div>
                   <div>
@@ -1117,7 +1166,7 @@ export default function Home() {
                     <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
                       <div style={{ width: 38, height: 38, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: `2px solid ${voice === i ? `${C.gold}66` : "rgba(255,255,255,.15)"}` }}>
                         {v.photo
-                          ? <img src={v.photo} alt={v.n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                          ? <img src={v.photo} alt={v.n} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} loading="lazy" decoding="async" />
                           : <div style={{ width: "100%", height: "100%", background: `linear-gradient(135deg,${C.navy},${C.emerald})`, display: "grid", placeItems: "center", color: C.goldL, fontFamily: "Fraunces,serif", fontSize: 14 }}>{v.n[0]}</div>}
                       </div>
                       <div>

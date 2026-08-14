@@ -8,7 +8,7 @@ import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import { PROGRAMS, FILTERS, CONTACT, DEPARTMENT_HIGHLIGHTS } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
-import { breadcrumbSchema } from "../data/schema.js";
+import { breadcrumbSchema, COURSE_CATALOG_SCHEMA } from "../data/schema.js";
 
 /* category → icon + accent colours for the programme cards */
 const CAT_META = {
@@ -43,7 +43,10 @@ export default function Admissions() {
         description="Amaltas University admissions 2026-27: MBBS, MD/MS, BAMS, BHMS, B.Sc Nursing, B.Pharm, D.Pharm, BPT, BMLT and more — programme-wise eligibility, NEET requirements and the online application process for Dewas, Madhya Pradesh."
         path="/admissions"
         keywords="Amaltas University admission 2026, MBBS admission NEET, BAMS admission Madhya Pradesh, B.Sc Nursing admission, B.Pharm admission Dewas, PNST, NEET UG NEET PG"
-        jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Admissions", path: "/admissions" }])}
+        jsonLd={[
+          breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Admissions", path: "/admissions" }]),
+          COURSE_CATALOG_SCHEMA,
+        ]}
       />
       <PageHero
         crumb="Admissions"

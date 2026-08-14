@@ -185,6 +185,8 @@ function Explorer() {
             src={item.img}
             alt={item.title}
             onError={(ev) => { ev.target.src = IMG.fallback; }}
+            loading="lazy"
+            decoding="async"
           />
           <div className="acad-panel-badge">
             <Icon size={16} /> {item.tab}
@@ -270,6 +272,8 @@ export default function AcademicFacilities() {
                 alt="Amaltas academic campus"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 onError={(e) => { e.target.src = IMG.fallback; }}
+                loading="lazy"
+                decoding="async"
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top right,rgba(11,44,24,.45),transparent)" }} />
               <div style={{ position: "absolute", top: 20, right: 20, background: C.navy, color: C.goldL, borderRadius: 12, padding: "10px 16px", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase" }}>
@@ -322,6 +326,8 @@ export default function AcademicFacilities() {
                 alt="Central library reading hall"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 onError={(e) => { e.target.src = IMG.fallback; }}
+                loading="lazy"
+                decoding="async"
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,rgba(11,44,24,.35),transparent)" }} />
               <div style={{ position: "absolute", bottom: 20, right: 20, background: C.gold, color: C.navy, borderRadius: 12, padding: "12px 18px", fontWeight: 700, fontSize: 13, display: "inline-flex", alignItems: "center", gap: 7 }}>

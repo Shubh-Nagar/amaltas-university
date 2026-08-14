@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import EnquiryWidget from "./components/EnquiryWidget.jsx";
 import { ScrollToTop } from "./components/Layout.jsx";
+import SEO from "./components/SEO.jsx";
 import Home from "./pages/Home.jsx";
 import Institutions from "./pages/Institutions.jsx";
 import Admissions from "./pages/Admissions.jsx";
@@ -122,7 +123,17 @@ export default function App() {
           <Route path="/privacy-policy-2" element={<PrivacyPolicy2 />} />
           <Route path="/public-self-disclosure" element={<PublicSelfDisclosure />} />
           <Route path="/anti-ragging-committee" element={<AntiRaggingCommittee />} />
-          <Route path="/test" element={<Mainpopup />} />
+          {/* Internal scratch route. It has no real content, so keep it out of
+              the index — it was otherwise crawlable as a thin page. */}
+          <Route
+            path="/test"
+            element={
+              <>
+                <SEO title="Internal Preview" path="/test" noindex />
+                <Mainpopup />
+              </>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

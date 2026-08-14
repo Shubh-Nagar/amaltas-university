@@ -60,7 +60,7 @@ export default function AlumniLeadership() {
                 border: `3px solid ${C.gold}`, boxShadow: `0 0 0 7px rgba(246,224,5,.14)`,
               }}>
                 <img src={VC_INFO.photo} alt={VC_INFO.name}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} loading="lazy" decoding="async" />
               </div>
               <div>
                 <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: ".2em", textTransform: "uppercase", color: C.goldL, marginBottom: 8 }}>

@@ -1,0 +1,147 @@
+# ==========================================================================
+# Amaltas University — Apache / LiteSpeed configuration
+#
+# This file is served from the site root (Vite copies everything in public/
+# into dist/ verbatim at build time).
+#
+# THE CRITICAL RULE IS THE SPA FALLBACK IN SECTION 2.
+# Without it every route except "/" returns a hard HTTP 404, because this is
+# a client-rendered single-page app and no .html file exists on disk for
+# /admissions, /institutions, etc. A Ubersuggest crawl on 2026-08-14 found
+# 35 of 36 sitemap URLs returning 4XX for exactly this reason.
+# ==========================================================================
+
+
+# --------------------------------------------------------------------------
+# 1. Canonical host — force HTTPS and strip "www."
+#    Keeps link equity on one hostname and avoids duplicate-content splits.
+# --------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+
+# --------------------------------------------------------------------------
+# 2. SPA fallback — serve index.html for any path that is not a real file
+#
+#    Order matters: the two RewriteCond lines let genuine assets
+#    (/assets/*, /sitemap.xml, /robots.txt, /favicon.svg) resolve normally,
+#    and only virtual React Router paths fall through to index.html, which
+#    then returns 200 and lets the app render the right page.
+# --------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Never rewrite something that actually exists on disk.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Everything else is a client-side route: hand it index.html with a 200.
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+
+# --------------------------------------------------------------------------
+# 3. Compression — the single cheapest win on the 2.84 s desktop load time
+# --------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/ld+json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml
+  AddOutputFilterByType DEFLATE image/svg+xml application/x-font-ttf font/opentype
+</IfModule>
+
+# LiteSpeed-native brotli/gzip (ignored by stock Apache).
+<IfModule LiteSpeed>
+  SetOutputFilter COMPRESS
+</IfModule>
+
+
+# --------------------------------------------------------------------------
+# 4. Caching
+#
+#    Vite fingerprints its bundles (index-C7xZZfZF.js), so /assets/ is safe
+#    to cache for a year. index.html must never be cached or visitors get
+#    stranded on a stale build that points at deleted bundle filenames.
+# --------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  ExpiresByType image/jpeg              "access plus 1 year"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/webp              "access plus 1 year"
+  ExpiresByType image/avif              "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType font/woff2              "access plus 1 year"
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType application/javascript  "access plus 1 year"
+
+  ExpiresByType text/html               "access plus 0 seconds"
+  ExpiresByType application/ld+json     "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Immutable, fingerprinted build output.
+  <FilesMatch "\.(js|css|woff2|jpg|jpeg|png|webp|avif|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # The app shell — always revalidate.
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Crawler-facing files — short cache so edits propagate quickly.
+  <FilesMatch "^(sitemap\.xml|robots\.txt)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
+
+
+# --------------------------------------------------------------------------
+# 5. Security headers — these lift the PageSpeed "Best Practices" score,
+#    which the 2026-08-14 audit put at 73.
+# --------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # Remove server fingerprinting.
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
+</IfModule>
+
+
+# --------------------------------------------------------------------------
+# 6. Correct MIME types (some LiteSpeed hosts mis-serve these)
+# --------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType application/javascript  .js
+  AddType application/ld+json     .jsonld
+  AddType image/webp              .webp
+  AddType image/avif              .avif
+  AddType font/woff2              .woff2
+  AddType image/svg+xml           .svg
+</IfModule>
+
+
+# --------------------------------------------------------------------------
+# 7. Misc
+# --------------------------------------------------------------------------
+# Directory listings leak structure and waste crawl budget.
+Options -Indexes
+
+# UTF-8 by default.
+AddDefaultCharset UTF-8

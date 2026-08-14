@@ -294,7 +294,7 @@ function BentoTile({ f }) {
   const Icon = f.icon;
   return (
     <a href={`#${f.key}`} className={`cf-tile ${f.size === "lg" ? "lg" : f.size === "wide" ? "wide" : ""}`}>
-      <img src={f.img} alt={f.title} onError={(e) => { e.target.src = FALLBACK; }} />
+      <img src={f.img} alt={f.title} onError={(e) => { e.target.src = FALLBACK; }} loading="lazy" decoding="async" />
       <div className="cf-tile-badge"><Icon size={17} /></div>
       <div className="cf-tile-label">
         <span className="cf-tile-tag">{f.tag}</span>
@@ -312,12 +312,12 @@ function FacilityRow({ f, i }) {
       <Reveal variant={flip ? "right" : "left"} cls={flip ? "" : ""} delay="">
         <div style={{ order: flip ? 2 : 1 }}>
           <div className="cf-row-media">
-            <img src={f.img} alt={f.title} onError={(e) => { e.target.src = FALLBACK; }} />
+            <img src={f.img} alt={f.title} onError={(e) => { e.target.src = FALLBACK; }} loading="lazy" decoding="async" />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top right,rgba(11,44,24,.4),transparent 55%)" }} />
           </div>
           {f.img2 && (
             <div className="cf-row-media-2">
-              <img src={f.img2} alt={`${f.title} — detail`} onError={(e) => { e.target.src = FALLBACK; }} />
+              <img src={f.img2} alt={`${f.title} — detail`} onError={(e) => { e.target.src = FALLBACK; }} loading="lazy" decoding="async" />
             </div>
           )}
         </div>
@@ -360,12 +360,12 @@ function GreenRow({ g, i }) {
       <Reveal variant={flip ? "right" : "left"}>
         <div style={{ order: flip ? 2 : 1 }}>
           <div className="cf-row-media">
-            <img src={g.img} alt={g.title} onError={(e) => { e.target.src = FALLBACK; }} />
+            <img src={g.img} alt={g.title} onError={(e) => { e.target.src = FALLBACK; }} loading="lazy" decoding="async" />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top right,rgba(11,44,24,.4),transparent 55%)" }} />
           </div>
           {g.img2 && (
             <div className="cf-row-media-2">
-              <img src={g.img2} alt={`${g.title} — detail`} onError={(e) => { e.target.src = FALLBACK; }} />
+              <img src={g.img2} alt={`${g.title} — detail`} onError={(e) => { e.target.src = FALLBACK; }} loading="lazy" decoding="async" />
             </div>
           )}
         </div>
