@@ -14,6 +14,13 @@ const gal = (folder, files) => files.map((f) => `${EV_BASE}/${encodeURIComponent
 
 const EVENTS = [
   {
+    img: "/assets/images%20of%20university/events/Clinical%20Teaching%20Session%20Conducted/1.jpeg",
+    date: "13 August 2026",
+    title: "Clinical Teaching Session on Culturing and Staining Process",
+    desc: "Amaltas Institute of Medical Sciences (Paramedical Sciences) conducted a clinical teaching session for pathology students in the Department of Microbiology on 13 August 2026, led by Mr. Suraj Sharma on \"Culturing and Staining Process.\" Students learned the basic principles of microbial culture, culture media, aseptic techniques, and staining methods, with special emphasis on Gram staining and its clinical importance. The interactive session strengthened students' practical understanding of microbiological laboratory procedures, concluding successfully with active participation and valuable learning outcomes.",
+    gallery: gal("Clinical Teaching Session Conducted", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg"]),
+  },
+  {
     img: "/assets/images%20of%20university/events/antiragging%20campaign/1.jpeg",
     date: "12 August 2026",
     title: "Anti-Ragging Campaign — Kadam Badhao, Ragging Hatao",
