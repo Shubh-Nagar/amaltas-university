@@ -358,20 +358,28 @@ export const EVENTS = [
   },
 ];
 
+// Top 3 latest press items — mirrors the News & Press gallery (/happenings/news).
 export const NEWS = [
   {
-    date: "Jun 2026",
-    title: "Ph.D. Entrance Examination 2026 Announced",
-    desc: "Amaltas University announces entrance examinations for Ph.D. programs across Medical Sciences, Nursing, and Pharmacy.",
-    tag: "Admissions",
-    img: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",
+    date: "Aug 2026",
+    title: "Flag Hoisting & Cultural Programs Mark Independence Day at Amaltas University",
+    desc: "Amaltas University celebrated Independence Day with flag hoisting by Chairman Mr. Mayank Raj Singh Bhadoria, inspiring addresses by chief guests, and patriotic songs, dances and poetry that filled the campus with pride.",
+    tag: "Campus",
+    img: "/assets/images%20of%20university/news-press/independence.jpeg",
   },
   {
-    date: "May 2026",
-    title: "World Record in Mass Yoga Achieved",
-    desc: "The Amaltas group set a world record with over 35,000 participants in a single mass yoga gathering, celebrating wellness and community.",
-    tag: "Achievement",
-    img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",
+    date: "2026",
+    title: "Expert Lecture on Agro-Homeopathy Organized at Amaltas Institute of Homoeopathy",
+    desc: "The Amaltas Institute of Homoeopathy organised a special seminar on 'Agro-Homeopathy: Possibilities in Agriculture', exploring homeopathy's scientific and practical role in crop health, soil conservation and reducing reliance on chemical fertilisers.",
+    tag: "Homoeopathy",
+    img: "/assets/images%20of%20university/news-press/agrohomeopathy%20program.jpg",
+  },
+  {
+    date: "2026",
+    title: "Organ Donation Awareness Program Organized at Amaltas Ayurvedic College",
+    desc: "Amaltas Institute of Ayurveda held an organ donation awareness programme, with faculty and students pledging support and spreading the message that organ donation is the greatest gift of humanity.",
+    tag: "Awareness",
+    img: "/assets/images%20of%20university/news-press/angdaan.jpg",
   },
   // Hidden — news item about the Allied & Rehabilitation Sciences labs.
   // {
