@@ -14,6 +14,13 @@ const gal = (folder, files) => files.map((f) => `${EV_BASE}/${encodeURIComponent
 
 const EVENTS = [
   {
+    img: "/assets/images%20of%20university/events/Independence%20Day%20Celebration/1.jpeg",
+    date: "15 August 2026",
+    title: "Independence Day Celebration 2026",
+    desc: "The Independence Day Celebration on 15th August was celebrated at Amaltas University with great enthusiasm, patriotic spirit, and pride. The program commenced with the flag hoisting ceremony by Mr. Mayank Raj Singh Bhadoria, Chairman, Amaltas Group, who extended heartfelt Independence Day wishes to everyone. The Chief Guests, Mr. Rajesh Rathore, Executive Director, MPIDC, and Mr. Dileep Jat, Sarpanch of Village Bangar, addressed the gathering with inspiring words, encouraging students to contribute meaningfully to nation-building. The event was graced by senior university officials, principals, doctors, staff members, students, and members of the Amaltas family. Patriotic songs, dances, and poetry performances by the students filled the entire campus with a strong sense of patriotism and pride. The program concluded with the National Anthem, further strengthening the values of unity, respect, patriotism, and love for the nation among everyone present.",
+    gallery: gal("Independence Day Celebration", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg", "8.jpeg", "9.jpeg", "10.jpeg", "11.jpeg", "12.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg"]),
+  },
+  {
     img: "/assets/images%20of%20university/events/Clinical%20Teaching%20Session%20Conducted/1.jpeg",
     date: "13 August 2026",
     title: "Clinical Teaching Session on Culturing and Staining Process",

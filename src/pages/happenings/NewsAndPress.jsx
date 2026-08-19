@@ -12,6 +12,7 @@ import { breadcrumbSchema } from "../../data/schema.js";
 const NP = "/assets/images%20of%20university/news-press";
 const GALLERY = [
   // Most recently uploaded — shown first
+  `${NP}/independence.jpeg`, `${NP}/flag%20host.jpeg`,
   `${NP}/agrohomeopathy%20program.jpg`, `${NP}/agrohomeopathy%20program-1.jpg`,
   `${NP}/angdaan.jpg`,      `${NP}/angdaan-1.jpg`,      `${NP}/angdaan-2.jpg`,
   `${NP}/breastfeeding.jpg`, `${NP}/breastfeeding-1.jpg`,

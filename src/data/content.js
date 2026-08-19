@@ -81,6 +81,10 @@ export const INSTITUTIONS = [
 export const PROGRAMS = [
   { n: "M.B.B.S.", d: "Undergraduate Medicine · NEET UG", t: "Medical" },
   { n: "MD / MS", d: "Postgraduate Specialisation · NEET PG", t: "Medical" },
+  { n: "M.Sc. Medical Anatomy", d: "Postgraduate", t: "Medical" },
+  { n: "M.Sc. Medical Physiology", d: "Postgraduate", t: "Medical" },
+  { n: "M.Sc. Medical Biochemistry", d: "Postgraduate", t: "Medical" },
+  { n: "M.Sc. Medical Pharmacology", d: "Postgraduate", t: "Medical" },
   // { n: "DM / M.Ch.", d: "Super-Specialisation · NEET SS", t: "Medical" },
   { n: "B.A.M.S.", d: "Ayurvedic Medicine & Surgery · NEET UG", t: "Ayurveda" },
   { n: "B.H.M.S.", d: "Homoeopathic Medicine & Surgery · NEET UG", t: "Homoeopathy" },
@@ -100,13 +104,22 @@ export const PROGRAMS = [
   { n: "Certificate in OT Technician", d: "Allied Health Sciences", t: "Paramedical" },
   { n: "Certificate in X-Ray Technician", d: "Allied Health Sciences", t: "Paramedical" },
   { n: "Certificate in USG Technician", d: "Ultrasound Technician", t: "Paramedical" },
+  { n: "Doctor of Philosophy (PhD)", d: "Doctoral Research Programme", t: "PhD" },
   // Hidden — Allied & Rehabilitation Sciences programmes temporarily unlisted.
   // { n: "B.Sc. Clinical Psychology (Hons)", d: "Rehabilitation Sciences", t: "Allied" },
   // { n: "B.A.S.L.P.", d: "Audiology & Speech-Language Pathology", t: "Allied" },
   // { n: "ISITEP (HI/ID)", d: "Hearing / Intellectual Disability Programmes", t: "Allied" },
   // { n: "PDCP", d: "Professional Diploma in Clinical Psychology", t: "Allied" },
 ];
-export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", "Pharmacy", "Paramedical" /* , "Allied" */];
+export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", "Pharmacy", "Paramedical", "PhD" /* , "Allied" */];
+
+// Doctoral programme — has its own dedicated admission cell.
+export const PHD_ADMISSION = {
+  location: "Dewas (M.P.)",
+  website: "www.amaltasgroup.co.in",
+  phones: ["+91-9929698375", "+91-7389910730"],
+  email: "phdcell.admin@amaltasuniversity.in",
+};
 
 export const DEPARTMENT_HIGHLIGHTS = [
   {
@@ -304,44 +317,44 @@ export const QUICK_LINKS = [
 
 export const EVENTS = [
   {
-    date: "2026",
-    tag: "Global Congress",
-    tagColor: "#15843F",
-    title: "Early Detection Saves Lives: AI & Bronchoscopy in Focus at Bronchopulmonary World Congress 2026",
-    desc: "Amaltas University hosted the Bronchopulmonary World Congress 2026, convening pulmonologists, researchers and clinicians from across the globe — spotlighting the growing role of AI and advanced bronchoscopy in the early detection of respiratory disease.",
-    img: "/assets/images%20of%20university/events/u1.jpg",
-  },
-  {
-    date: "2026",
-    tag: "Environment",
-    tagColor: "#15843F",
-    title: "World Environment Day Celebration at Amaltas University",
-    desc: "Students, faculty and staff came together to mark World Environment Day with tree-plantation drives, awareness walks and sustainability pledges across the campus — reaffirming the Amaltas commitment to a greener, healthier future.",
-    img: "/assets/images%20of%20university/events/we1.jpg",
-  },
-  {
-    date: "Jun 21, 2026",
-    tag: "विश्व कीर्तिमान",
+    date: "Aug 15, 2026",
+    tag: "Independence Day",
     tagColor: "#F6A000",
-    title: "इंडेक्स और अमलतास समूह ने 35 हजार से अधिक प्रतिभागियों के सामूहिक योग से बनाया विश्व कीर्तिमान",
-    desc: "आयुष मंत्रालय के 'योग महोत्सव' कार्यक्रम में 51,000 रजिस्ट्रेशन के साथ 35,000+ प्रतिभागी शामिल हुए। पद्मश्री डॉ. एच.आर. नागेंद्र, कैबिनेट मंत्री कैलाश विजयवर्गीय एवं अन्य गणमान्य अतिथियों की उपस्थिति में ऐतिहासिक आयोजन संपन्न। प्रधानमंत्री नरेंद्र मोदी ने विशेष संदेश दिया।",
-    img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",
+    title: "Independence Day Celebration 2026",
+    desc: "Amaltas University celebrated Independence Day with great enthusiasm and patriotic spirit, beginning with the flag hoisting by Chairman Mr. Mayank Raj Singh Bhadoria. Chief Guests Mr. Rajesh Rathore (Executive Director, MPIDC) and Mr. Dileep Jat (Sarpanch, Village Bangar) inspired students towards nation-building, followed by patriotic songs, dances and poetry.",
+    img: "/assets/images%20of%20university/events/Independence%20Day%20Celebration/1.jpeg",
   },
   {
-    date: "May 12, 2026",
-    tag: "Nursing",
+    date: "Aug 13, 2026",
+    tag: "Academics",
     tagColor: "#15843F",
-    title: "समर्पण और संवेदनशीलता की मिसाल हैं हमारे नर्सिंग हीरोज — Nurses Day Celebration 💉🤍",
-    desc: "Nurses Day Celebration के इस खास अवसर पर सभी नर्सेस को दिल से सम्मान और धन्यवाद। आपकी मेहनत, देखभाल और मुस्कान हर मरीज के लिए उम्मीद बनती है।",
-    img: "/assets/images%20of%20university/event%20and%20activites/nurse.jpeg",
+    title: "Clinical Teaching Session on Culturing and Staining Process",
+    desc: "The Department of Microbiology conducted a clinical teaching session for pathology students, led by Mr. Suraj Sharma. Students learned microbial culture, aseptic techniques and staining methods, with special emphasis on Gram staining and its clinical importance.",
+    img: "/assets/images%20of%20university/events/Clinical%20Teaching%20Session%20Conducted/1.jpeg",
   },
   {
-    date: "Apr 28, 2026",
-    tag: "Wellness",
+    date: "Aug 12, 2026",
+    tag: "Campaign",
     tagColor: "#872822",
-    title: "Lamp Lighting & Oath Taking Ceremony",
-    desc: "A solemn and traditional ceremony marking new nursing students' entry into the healthcare profession, symbolising compassion and service.",
-    img: "/assets/images%20of%20university/event%20and%20activites/lamp.jpeg",
+    title: "Anti-Ragging Campaign — Kadam Badhao, Ragging Hatao",
+    desc: "\"A campus free of fear, a campus full of cheer.\" Amaltas University pledged for a ragging-free campus, calling on students to build camaraderie, not chaos, and join the 'Good Bye Ragging' movement.",
+    img: "/assets/images%20of%20university/events/antiragging%20campaign/1.jpeg",
+  },
+  {
+    date: "Aug 11, 2026",
+    tag: "देहदान",
+    tagColor: "#15843F",
+    title: "अंतिम विदाई में भी परोपकार — सेवाधाम आश्रम के कर्मयोगी का देहदान एवं नेत्रदान",
+    desc: "देवास के अमलतास मेडिकल कॉलेज में 65 वर्षीय विजय दीनानाथ बाथम का देहदान संकल्प पूरे राजकीय सम्मान के साथ पूर्ण हुआ। पुलिस विभाग द्वारा 'गार्ड ऑफ ऑनर' प्रदान कर इस महान आत्मा को अंतिम विदाई दी गई — मानवता की सेवा की एक प्रेरणादायक मिसाल।",
+    img: "/assets/images%20of%20university/events/अंतिम%20विदाई%20में%20भी%20परोपकार/1.jpeg",
+  },
+  {
+    date: "Aug 1, 2026",
+    tag: "Competition",
+    tagColor: "#F6A000",
+    title: "Pediatrics UG Quiz Competition 2026",
+    desc: "The Pediatrics UG Quiz Competition was successfully conducted at Amaltas Institute of Medical Sciences. MBBS students showcased their knowledge, teamwork and clinical skills with great enthusiasm — knowledge today, better care tomorrow.",
+    img: "/assets/images%20of%20university/events/Pediatrics%20UG%20Quiz%20Competition%202026/1.jpeg",
   },
 ];
 

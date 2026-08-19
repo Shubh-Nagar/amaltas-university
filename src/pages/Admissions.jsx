@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
-  ArrowRight, ArrowUpRight, Phone, Check,
-  Stethoscope, HeartPulse, Activity, GraduationCap, FlaskConical, Microscope,
+  ArrowRight, ArrowUpRight, Phone, Check, Mail, Globe,
+  Stethoscope, HeartPulse, Activity, GraduationCap, FlaskConical, Microscope, BookOpen,
 } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
-import { PROGRAMS, FILTERS, CONTACT, DEPARTMENT_HIGHLIGHTS } from "../data/content.js";
+import { PROGRAMS, FILTERS, CONTACT, DEPARTMENT_HIGHLIGHTS, PHD_ADMISSION } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema, COURSE_CATALOG_SCHEMA } from "../data/schema.js";
 
@@ -18,6 +18,7 @@ const CAT_META = {
   Nursing:     { icon: GraduationCap, pc: "#872822", pc2: "#B24A3E", soft: "rgba(135,40,34,.09)" },
   Pharmacy:    { icon: FlaskConical,  pc: "#9A6B04", pc2: "#C79215", soft: "rgba(154,107,4,.12)" },
   Paramedical: { icon: Microscope,    pc: "#0B2C18", pc2: "#1C5E35", soft: "rgba(11,44,24,.08)" },
+  PhD:         { icon: BookOpen,       pc: "#5A3E85", pc2: "#7A5AB0", soft: "rgba(90,62,133,.10)" },
   // Hidden — Allied & Rehabilitation programmes temporarily unlisted.
   // Allied:      { icon: Brain,         pc: "#A8392E", pc2: "#C85A4C", soft: "rgba(168,57,46,.10)" },
 };
@@ -118,6 +119,41 @@ export default function Admissions() {
                             <p style={{ color: C.slate, fontSize: 13, lineHeight: 1.5 }}>{h.d}</p>
                           </div>
                         ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {isOpen && p.t === "PhD" && (
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <div style={{ background: "#fff", borderRadius: 20, border: `1px solid ${m.pc}33`, padding: "28px 32px" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
+                        <div>
+                          <span className="eyebrow" style={{ color: m.pc }}>PhD Admission Cell</span>
+                          <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 21, fontWeight: 500, marginTop: 8 }}>
+                            Doctor of Philosophy (PhD) · {PHD_ADMISSION.location}
+                          </h3>
+                        </div>
+                        <button className="chip light" onClick={() => setOpenProgram(null)}>Close</button>
+                      </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 16, marginTop: 22 }}>
+                        <div style={{ background: m.soft, borderRadius: 14, padding: "18px 20px" }}>
+                          <Phone size={16} color={m.pc} style={{ marginBottom: 8 }} />
+                          <h4 style={{ fontSize: 14, marginBottom: 6 }}>Admission Helplines</h4>
+                          {PHD_ADMISSION.phones.map((ph) => (
+                            <a key={ph} href={`tel:${ph.replace(/[^+\d]/g, "")}`} style={{ display: "block", color: m.pc, fontSize: 13.5, fontWeight: 600, lineHeight: 1.7, textDecoration: "none" }}>{ph}</a>
+                          ))}
+                        </div>
+                        <div style={{ background: m.soft, borderRadius: 14, padding: "18px 20px" }}>
+                          <Mail size={16} color={m.pc} style={{ marginBottom: 8 }} />
+                          <h4 style={{ fontSize: 14, marginBottom: 6 }}>Email</h4>
+                          <a href={`mailto:${PHD_ADMISSION.email}`} style={{ color: m.pc, fontSize: 13.5, fontWeight: 600, lineHeight: 1.5, textDecoration: "none", wordBreak: "break-all" }}>{PHD_ADMISSION.email}</a>
+                        </div>
+                        <div style={{ background: m.soft, borderRadius: 14, padding: "18px 20px" }}>
+                          <Globe size={16} color={m.pc} style={{ marginBottom: 8 }} />
+                          <h4 style={{ fontSize: 14, marginBottom: 6 }}>Website</h4>
+                          <a href={`https://${PHD_ADMISSION.website}`} target="_blank" rel="noopener noreferrer" style={{ color: m.pc, fontSize: 13.5, fontWeight: 600, lineHeight: 1.5, textDecoration: "none", wordBreak: "break-all" }}>{PHD_ADMISSION.website}</a>
+                        </div>
                       </div>
                     </div>
                   </div>
