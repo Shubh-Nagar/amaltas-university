@@ -131,7 +131,7 @@ export default function Admissions() {
                         <div>
                           <span className="eyebrow nocaps" style={{ color: m.pc }}>Ph.D. ADMISSION CELL</span>
                           <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 21, fontWeight: 500, marginTop: 8 }}>
-                            Doctor of Philosophy (Ph.D.) · {PHD_ADMISSION.location}
+                            Doctor of Philosophy (Ph.D.) {PHD_ADMISSION.location}
                           </h3>
                         </div>
                         <button className="chip light" onClick={() => setOpenProgram(null)}>Close</button>

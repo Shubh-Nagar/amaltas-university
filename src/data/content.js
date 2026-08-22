@@ -115,8 +115,8 @@ export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", 
 
 // Doctoral programme — has its own dedicated admission cell.
 export const PHD_ADMISSION = {
-  location: "Dewas (M.P.)",
-  website: "www.amaltasgroup.co.in",
+  // location: "Dewas (M.P.)",
+  website: "www.amaltasuniversity.in",
   phones: ["+91-9929698375", "+91-7389910730"],
   email: "phdcell.admin@amaltasuniversity.in",
 };
