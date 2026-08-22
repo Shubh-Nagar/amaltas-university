@@ -18,7 +18,7 @@ const CAT_META = {
   Nursing:     { icon: GraduationCap, pc: "#872822", pc2: "#B24A3E", soft: "rgba(135,40,34,.09)" },
   Pharmacy:    { icon: FlaskConical,  pc: "#9A6B04", pc2: "#C79215", soft: "rgba(154,107,4,.12)" },
   Paramedical: { icon: Microscope,    pc: "#0B2C18", pc2: "#1C5E35", soft: "rgba(11,44,24,.08)" },
-  PhD:         { icon: BookOpen,       pc: "#5A3E85", pc2: "#7A5AB0", soft: "rgba(90,62,133,.10)" },
+  "Ph.D.":       { icon: BookOpen,       pc: "#5A3E85", pc2: "#7A5AB0", soft: "rgba(90,62,133,.10)" },
   // Hidden — Allied & Rehabilitation programmes temporarily unlisted.
   // Allied:      { icon: Brain,         pc: "#A8392E", pc2: "#C85A4C", soft: "rgba(168,57,46,.10)" },
 };
@@ -90,7 +90,7 @@ export default function Admissions() {
                   >
                     <div className="prog-card-top">
                       <div className="prog-ic"><Icon size={20} /></div>
-                      <span className="prog-cat">{p.t}</span>
+                      <span className={`prog-cat${p.t === "Ph.D." ? " nocaps" : ""}`}>{p.t}</span>
                     </div>
                     <h3 className="prog-name">{p.n}</h3>
                     <p className="prog-desc">{p.d}</p>
@@ -124,14 +124,14 @@ export default function Admissions() {
                   </div>
                 )}
 
-                {isOpen && p.t === "PhD" && (
+                {isOpen && p.t === "Ph.D." && (
                   <div style={{ gridColumn: "1 / -1" }}>
                     <div style={{ background: "#fff", borderRadius: 20, border: `1px solid ${m.pc}33`, padding: "28px 32px" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
                         <div>
-                          <span className="eyebrow" style={{ color: m.pc }}>PhD Admission Cell</span>
+                          <span className="eyebrow nocaps" style={{ color: m.pc }}>Ph.D. ADMISSION CELL</span>
                           <h3 style={{ fontFamily: "Fraunces,serif", fontSize: 21, fontWeight: 500, marginTop: 8 }}>
-                            Doctor of Philosophy (PhD) · {PHD_ADMISSION.location}
+                            Doctor of Philosophy (Ph.D.) · {PHD_ADMISSION.location}
                           </h3>
                         </div>
                         <button className="chip light" onClick={() => setOpenProgram(null)}>Close</button>

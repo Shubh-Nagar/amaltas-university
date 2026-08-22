@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Phone, CalendarDays, X, ChevronLeft, ChevronRight, Images } from "lucide-react";
 import { PageHero } from "../../components/Layout.jsx";
@@ -6,6 +6,7 @@ import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import { CONTACT } from "../../data/content.js";
 import SEO from "../../components/SEO.jsx";
+import UpcomingEvents from "../../components/UpcomingEvents.jsx";
 import { breadcrumbSchema } from "../../data/schema.js";
 
 /* builds encoded gallery paths from a folder name + file list */
@@ -242,6 +243,78 @@ const EVENTS = [
   },
 ];
 
+/**
+ * Card thumbnail that flips through the event's gallery while the pointer is
+ * over it, and settles back on the cover shot as soon as the pointer leaves.
+ *
+ * The extra frames are only mounted after the first hover (`armed`), so a page
+ * with 25 galleries still loads just 25 images up front. Auto-play is skipped
+ * for visitors who ask for reduced motion — they keep the static cover.
+ */
+function EventMedia({ ev, hasGallery }) {
+  // cover first, then the rest of the gallery minus any duplicate of the cover
+  const frames = React.useMemo(
+    () => (hasGallery ? [ev.img, ...ev.gallery.filter((g) => g !== ev.img)] : [ev.img]),
+    [ev, hasGallery]
+  );
+  const [idx, setIdx] = useState(0);
+  const [armed, setArmed] = useState(false);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearInterval(timer.current), []);
+
+  const start = () => {
+    if (frames.length < 2) return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    setArmed(true);
+    clearInterval(timer.current);
+    timer.current = setInterval(() => setIdx((i) => (i + 1) % frames.length), 900);
+  };
+
+  const stop = () => {
+    clearInterval(timer.current);
+    timer.current = null;
+    setIdx(0);
+  };
+
+  return (
+    <div className="ev-media" onMouseEnter={start} onMouseLeave={stop}>
+      {frames.map((src, i) => {
+        // frame 0 always renders; the rest wait for the first hover
+        if (i > 0 && !armed) return null;
+        return (
+          <img
+            key={src}
+            className="ev-frame"
+            src={src}
+            alt={i === 0 ? ev.title : ""}
+            aria-hidden={i === 0 ? undefined : true}
+            loading="lazy"
+            decoding="async"
+            /* the cover stays lit underneath, so a frame that hasn't finished
+               downloading yet reveals the cover rather than a white flash */
+            style={{ opacity: i === 0 || i === idx ? 1 : 0 }}
+          />
+        );
+      })}
+
+      {hasGallery && (
+        <span className="ev-photo-badge">
+          <Images size={13} /> {ev.gallery.length} photos
+        </span>
+      )}
+
+      {frames.length > 1 && (
+        <span className="ev-strip" aria-hidden="true">
+          {frames.map((src, i) => (
+            <i key={src} className={i === idx ? "on" : ""} />
+          ))}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export default function Events() {
   const [open, setOpen] = useState(null);        // event object shown in the modal
   const [lightbox, setLightbox] = useState(null); // index into open.gallery, or null
@@ -281,10 +354,15 @@ export default function Events() {
         title="Events."
         sub="A look at the conferences, ceremonies, workshops, and celebrations that fill the Amaltas campus calendar."
         bgImg="/assets/images%20of%20university/events/P1_yoga.jpg"
+        aside={<UpcomingEvents />}
       />
 
       {/* ── EVENTS GRID ── */}
       <section className="sec wrap">
+        <Reveal>
+          <span className="eyebrow">The archive</span>
+          <h2 style={{ marginTop: 14, marginBottom: 40 }}>Everything that's happened.</h2>
+        </Reveal>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 24 }}>
           {EVENTS.map((ev, i) => {
             const hasGallery = Array.isArray(ev.gallery) && ev.gallery.length > 0;
@@ -299,19 +377,7 @@ export default function Events() {
                   aria-label={hasGallery ? `${ev.title} — view photo gallery` : undefined}
                   style={{ background: "#fff", borderRadius: 18, overflow: "hidden", border: "1px solid rgba(11,44,24,.07)", height: "100%", display: "flex", flexDirection: "column", cursor: hasGallery ? "pointer" : "default" }}
                 >
-                  <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden" }}>
-                    <img
-                      src={ev.img}
-                      alt={ev.title}
-                      loading="lazy"
-                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                    />
-                    {hasGallery && (
-                      <span className="ev-photo-badge">
-                        <Images size={13} /> {ev.gallery.length} photos
-                      </span>
-                    )}
-                  </div>
+                  <EventMedia ev={ev} hasGallery={hasGallery} />
                   <div style={{ padding: "18px 20px 22px", display: "flex", flexDirection: "column", flex: 1 }}>
                     <div style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, color: C.slate, marginBottom: 9 }}>
                       <CalendarDays size={13} /> {ev.date}

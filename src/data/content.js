@@ -92,7 +92,7 @@ export const PROGRAMS = [
   { n: "Post Basic B.Sc. Nursing", d: "Nursing Sciences", t: "Nursing" },
   { n: "M.Sc. Nursing", d: "Postgraduate Nursing", t: "Nursing" },
   { n: "GNM", d: "General Nursing & Midwifery", t: "Nursing" },
-  { n: "PhD Nursing", d: "Doctoral Nursing", t: "Nursing" },
+  { n: "Ph.D. Nursing", d: "Doctoral Nursing", t: "Nursing" },
   { n: "B.Pharm", d: "Pharmacy · 12th with PCB/PCM", t: "Pharmacy" },
   { n: "D.Pharm", d: "Diploma in Pharmacy · 12th with PCB/PCM", t: "Pharmacy" },
   { n: "B.P.T.", d: "Bachelor of Physiotherapy", t: "Paramedical" },
@@ -104,14 +104,14 @@ export const PROGRAMS = [
   { n: "Certificate in OT Technician", d: "Allied Health Sciences", t: "Paramedical" },
   { n: "Certificate in X-Ray Technician", d: "Allied Health Sciences", t: "Paramedical" },
   { n: "Certificate in USG Technician", d: "Ultrasound Technician", t: "Paramedical" },
-  { n: "Doctor of Philosophy (PhD)", d: "Doctoral Research Programme", t: "PhD" },
+  { n: "Doctor of Philosophy (Ph.D.)", d: "Doctoral Research Programme", t: "Ph.D." },
   // Hidden — Allied & Rehabilitation Sciences programmes temporarily unlisted.
   // { n: "B.Sc. Clinical Psychology (Hons)", d: "Rehabilitation Sciences", t: "Allied" },
   // { n: "B.A.S.L.P.", d: "Audiology & Speech-Language Pathology", t: "Allied" },
   // { n: "ISITEP (HI/ID)", d: "Hearing / Intellectual Disability Programmes", t: "Allied" },
   // { n: "PDCP", d: "Professional Diploma in Clinical Psychology", t: "Allied" },
 ];
-export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", "Pharmacy", "Paramedical", "PhD" /* , "Allied" */];
+export const FILTERS = ["All", "Medical", "Ayurveda", "Homoeopathy", "Nursing", "Pharmacy", "Paramedical", "Ph.D." /* , "Allied" */];
 
 // Doctoral programme — has its own dedicated admission cell.
 export const PHD_ADMISSION = {

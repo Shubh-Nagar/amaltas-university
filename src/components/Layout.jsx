@@ -8,7 +8,7 @@ export function ScrollToTop() {
   return null;
 }
 
-export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg, children }) {
+export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg, aside, children }) {
   const floatRef = useRef(null);
 
   useEffect(() => {
@@ -63,10 +63,17 @@ export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg, chil
         />
       )}
       <div className="wrap" style={{ position: "relative", zIndex: 2 }}>
-        <div className="crumb"><Link to="/">Home</Link> &nbsp;/&nbsp; {crumb}</div>
-        {eyebrow && <span className="eyebrow" style={{ color: C.goldL }}>{eyebrow}</span>}
-        <h1 style={{ marginTop: 14 }}>{title}</h1>
-        {sub && <p>{sub}</p>}
+        {/* `aside` puts a companion panel beside the hero copy; without it the
+            copy block renders exactly as before, full width. */}
+        <div className={aside ? "hero-split" : undefined}>
+          <div>
+            <div className="crumb"><Link to="/">Home</Link> &nbsp;/&nbsp; {crumb}</div>
+            {eyebrow && <span className="eyebrow" style={{ color: C.goldL }}>{eyebrow}</span>}
+            <h1 style={{ marginTop: 14 }}>{title}</h1>
+            {sub && <p>{sub}</p>}
+          </div>
+          {aside && <div className="hero-aside">{aside}</div>}
+        </div>
       </div>
     </header>
   );
