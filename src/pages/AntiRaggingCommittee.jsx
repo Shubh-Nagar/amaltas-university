@@ -56,8 +56,8 @@ const td = { padding: "12px 14px", fontSize: 14, color: C.slate, verticalAlign: 
 
 function MemberTable({ rows }) {
   return (
-    <div style={{ overflowX: "auto", borderRadius: 14, border: "1px solid rgba(11,44,24,.1)", marginTop: 24 }}>
-      <table style={{ borderCollapse: "collapse", width: "100%", minWidth: 760, background: "#fff" }}>
+    <div className="member-table-wrap" style={{ overflowX: "auto", borderRadius: 14, border: "1px solid rgba(11,44,24,.1)", marginTop: 24 }}>
+      <table className="member-table" style={{ borderCollapse: "collapse", width: "100%", minWidth: 760, background: "#fff" }}>
         <thead>
           <tr>
             <th style={{ ...th, width: 60 }}>Sr. No.</th>
@@ -71,14 +71,14 @@ function MemberTable({ rows }) {
         <tbody>
           {rows.map((r, i) => (
             <tr key={r.n} style={{ borderTop: "1px solid rgba(11,44,24,.08)", background: i % 2 ? "rgba(16,128,59,.03)" : "#fff" }}>
-              <td style={{ ...td, fontWeight: 700, color: C.ink }}>{r.n}</td>
-              <td style={{ ...td, color: C.ink, fontWeight: 600, whiteSpace: "nowrap" }}>{r.name}</td>
-              <td style={td}>{r.designation}</td>
-              <td style={{ ...td, whiteSpace: "nowrap" }}>{r.post}</td>
-              <td style={{ ...td, whiteSpace: "nowrap" }}>
+              <td data-label="Sr. No." style={{ ...td, fontWeight: 700, color: C.ink }}>{r.n}</td>
+              <td data-label="Name" style={{ ...td, color: C.ink, fontWeight: 600, whiteSpace: "nowrap" }}>{r.name}</td>
+              <td data-label="Designation" style={td}>{r.designation}</td>
+              <td data-label="Post" style={{ ...td, whiteSpace: "nowrap" }}>{r.post}</td>
+              <td data-label="Mobile No." style={{ ...td, whiteSpace: "nowrap" }}>
                 <a href={`tel:${r.mobile}`} style={{ color: C.emerald, textDecoration: "none" }}>{r.mobile}</a>
               </td>
-              <td style={td}>
+              <td data-label="Email Id" style={td}>
                 <a href={`mailto:${r.email}`} style={{ color: C.emerald, textDecoration: "none", wordBreak: "break-all" }}>{r.email}</a>
               </td>
             </tr>

@@ -21,6 +21,7 @@ import MandatoryDisclosure from "./pages/about/MandatoryDisclosure.jsx";
 import FeeDetails from "./pages/FeeDetails.jsx";
 import Eligibility from "./pages/Eligibility.jsx";
 import AdmissionProcedure from "./pages/AdmissionProcedure.jsx";
+import RefundPolicy from "./pages/RefundPolicy.jsx";
 import HostelAccommodation from "./pages/student-life/HostelAccommodation.jsx";
 import CampusLife from "./pages/student-life/CampusLife.jsx";
 import AcademicFacilities from "./pages/facilities/AcademicFacilities.jsx";
@@ -106,6 +107,7 @@ export default function App() {
           <Route path="/admissions/fees" element={<FeeDetails />} />
           <Route path="/admissions/eligibility" element={<Eligibility />} />
           <Route path="/admissions/procedure" element={<AdmissionProcedure />} />
+          <Route path="/admissions/refund-policy" element={<RefundPolicy />} />
           <Route path="/student-life/hostel" element={<HostelAccommodation />} />
           <Route path="/student-life/campus-life" element={<CampusLife />} />
           <Route path="/facilities/academic" element={<AcademicFacilities />} />

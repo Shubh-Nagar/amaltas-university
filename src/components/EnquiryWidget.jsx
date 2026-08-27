@@ -24,6 +24,7 @@ const EnquiryWidget = ({ style, className }) => {
       */}
       <div
         onClick={() => setOpen(false)}
+        className="enq-backdrop"
         style={{
           position: "fixed", inset: 0, zIndex: 9999,
           background: "rgba(11,44,24,.72)",
@@ -37,6 +38,7 @@ const EnquiryWidget = ({ style, className }) => {
       >
         <div
           onClick={e => e.stopPropagation()}
+          className="enq-modal"
           style={{
             background: "#fff", borderRadius: 22,
             padding: "36px 32px 32px",

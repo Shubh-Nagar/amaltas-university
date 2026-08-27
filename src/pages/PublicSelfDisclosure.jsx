@@ -11,11 +11,15 @@ import SEO from "../components/SEO.jsx";
 
 const U = "https://amaltasuniversity.in/wp-content/uploads";
 
+/* Permission letters are bundled with the site under /public/assets/docs. */
+const PL = "/assets/docs/permission%20letters";
+
 /* Map a source PDF URL to the locally-hosted copy in /public/disclosure.
    Non-PDF links (event pages, gallery) are left as-is. The filename rule here
    must stay in sync with the download script that populated /public/disclosure. */
 function localDoc(href) {
   if (!href || !/\.pdf(\?|#|$)/i.test(href)) return href;
+  if (href.startsWith("/")) return href; // already a local path — serve as-is
   let base = href.substring(href.lastIndexOf("/") + 1);
   try { base = decodeURIComponent(base); } catch (e) { /* keep raw */ }
   base = base
@@ -187,6 +191,26 @@ const SECTIONS = [
     title: "Picture Gallery",
     docs: [
       { label: "Picture Gallery", href: "https://amaltasuniversity.in/photogallery/" },
+    ],
+  },
+  {
+    n: "10",
+    title: "Permission Letters",
+    docs: [
+      { label: "Letter of Permission (1st Appeal) — Amaltas Institute of Medical Sciences", href: `${PL}/LOP%20Ist%20appeal%20Amaltas%20Institute%20of%20Medical%20Sciences.pdf` },
+      { label: "Permission — MBBS, Year 2025-26", href: `${PL}/MBBS%20Permission%20Year%202025-26_0001.pdf` },
+      { label: "Permission — MD / MS, Year 2025-26", href: `${PL}/MD.MS%202025-26%20Permission_0001.pdf` },
+      { label: "Council Permission — Amaltas Institute of Nursing Sciences, Year 2025-26", href: `${PL}/Amaltas%20Institute%20of%20Nursing%20Sciences%20-%20Permission%20Council%20Year%202025-26_0001.pdf` },
+      { label: "Council Permission — Amaltas Institute of Pharmacy, Year 2025-26", href: `${PL}/Amaltas%20Institute%20Of%20Pharmacy%20Year%202025-26_0001.pdf` },
+      { label: "Council Permission — BAMS, Year 2025-26", href: `${PL}/BAMS%20COUNCIL%20%20Permission%202025-26.pdf` },
+      { label: "Council Permission — BHMS, Year 2025-26", href: `${PL}/BHMS%20Council%20Permission%20-%20Year%202025-26_0001.pdf` },
+      { label: "Council Permission — Paramedical, Year 2025-26", href: `${PL}/paramedical%20Council%202025-26_0001.pdf` },
+      { label: "Section 9(A) Permission — Medical & Nursing", href: `${PL}/9A%20%2CPermission%20%2C%20Medical%2C%20Nursing.pdf` },
+      { label: "Section 9(B) Permission — BAMS", href: `${PL}/9B%20Permission%2C%20BAMS.pdf` },
+      { label: "Section 9(B) Permission — Pharmacy", href: `${PL}/Pharmacy%209B%20Permission.pdf` },
+      { label: "Section 9(B) Permission Letter — Homoeopathy (60 Seats)", href: `${PL}/9(B)%2060%20seats%20permissionletter%20homoepathy_0001.pdf` },
+      { label: "Section 9(B) Permission — M.Sc. Medical, 06.08.2026", href: `${PL}/2604_9(B)_M.Sc.Medical_Amaltas%20U_06.08.26.pdf` },
+      { label: "Section 9(B) Order — Medical, Paramedical, Homoeopathy & Pharmacy", href: `${PL}/7Amaltas%20Uni._9(B)_Order%2C%20medical%20%2C%20Paramedical%20%2CHomeopathy%20%2CPharmacy-1-2.pdf` },
     ],
   },
 ];

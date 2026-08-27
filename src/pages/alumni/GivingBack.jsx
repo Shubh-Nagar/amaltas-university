@@ -44,7 +44,7 @@ export default function AlumniGivingBack() {
       {/* ── WHY IT MATTERS ── */}
       <section className="sec" style={{ background: "linear-gradient(135deg,#eef6f1 0%,var(--ivory) 60%,#fdfce8 100%)" }}>
         <div className="wrap">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
+          <div className="tri-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
             {[
               { icon: ShoppingBag, title: "Quality merchandise", desc: "Official Amaltas-branded products made to last, designed to be worn with pride by graduates and their families.", color: C.emerald },
               { icon: Heart,       title: "Fund scholarships",   desc: "100% of net proceeds from the merchandise store go into the Alumni Scholarship Fund for meritorious students in need.", color: C.burg },

@@ -52,6 +52,7 @@ export default function Footer() {
             <Link to="/leadership">Leadership</Link>
             <Link to="/admissions/fees">Fee Details</Link>
             <Link to="/admissions/eligibility">Eligibility Criteria</Link>
+            <Link to="/admissions/refund-policy">Refund Policy</Link>
             <Link to="/student-life/hostel">Hostel &amp; Accommodation</Link>
             <Link to="/happenings/news">News &amp; Press Releases</Link>
             <Link to="/happenings/photo-gallery">Photo Gallery</Link>

@@ -62,9 +62,24 @@ export default function Navbar() {
     setExpandedMobile(null);
   }, [loc.pathname]);
 
+  // The drawer covers the viewport on phones: freeze the page behind it and let
+  // the floating action buttons get out of its way. They live in App.jsx,
+  // outside this tree, so the flag rides on <body>.
+  useEffect(() => {
+    document.body.classList.toggle("nav-open", open);
+    return () => document.body.classList.remove("nav-open");
+  }, [open]);
+
   const solid = scrolled || !onHome;
 
   return (
+    <>
+      {/* Backdrop lives outside .nav on purpose: .nav.solid carries a
+          backdrop-filter, which makes it the containing block for fixed
+          descendants — a scrim nested inside would only cover the header. */}
+      {open && (
+        <div className="mobile-scrim" onClick={() => setOpen(false)} aria-hidden="true" />
+      )}
     <div className={`nav ${solid ? "solid" : ""}`}>
       {/* TOP INFO BAR — hidden when solid */}
       <div className="nav-topbar">
@@ -99,7 +114,8 @@ export default function Navbar() {
                 : "/assets/images%20of%20university/logo/white-logo.png"
             }
             alt="Amaltas University"
-            style={{ height: 68, width: "auto", objectFit: "contain" }}
+            className="logo-img"
+            style={{ width: "auto", objectFit: "contain" }}
           />
         </Link>
 
@@ -157,15 +173,17 @@ export default function Navbar() {
             href="https://admission.amaltasuniversity.in/"
             target="_blank"
             rel="noreferrer"
-            className="btn btn-gold"
-            style={{ padding: "11px 20px", fontSize: 14 }}
+            className="btn btn-gold nav-apply"
           >
-            Apply 2026–27 <ArrowRight size={16} />
+            <span className="nav-apply-full">Apply 2026–27</span>
+            <span className="nav-apply-short">Apply</span>
+            <ArrowRight size={16} />
           </a>
           <button
             className="burger"
             onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
           >
             {open ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -183,7 +201,7 @@ export default function Navbar() {
           </Link>
           {NAV.map((n, i) =>
             n.children ? (
-              <div key={i} className="mobile-group">
+              <div key={i} className={`mobile-group${expandedMobile === i ? " on" : ""}`}>
                 <button
                   className="mobile-group-btn"
                   onClick={() =>
@@ -230,5 +248,6 @@ export default function Navbar() {
         </div>
       )}
     </div>
+    </>
   );
 }

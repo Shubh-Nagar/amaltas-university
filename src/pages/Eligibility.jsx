@@ -180,7 +180,7 @@ export default function Eligibility() {
             }}
           >
             {/* Header */}
-            <div className="data-table-row" style={{
+            <div className="data-table-row data-table-head" style={{
               display: "grid",
               gridTemplateColumns: isAll ? "190px 220px 1fr" : "220px 1fr",
               background: cat.color,
@@ -214,7 +214,7 @@ export default function Eligibility() {
               >
                 {/* Category badge */}
                 {isAll && (
-                  <div>
+                  <div data-label="Category">
                     <span style={{
                       display: "inline-block",
                       background: `${row._cat.color}18`,
@@ -231,7 +231,7 @@ export default function Eligibility() {
                 )}
 
                 {/* Course */}
-                <div style={{
+                <div data-label="Course" style={{
                   fontFamily: "Fraunces,serif",
                   fontWeight: 600,
                   fontSize: 15.5,
@@ -242,7 +242,7 @@ export default function Eligibility() {
                 </div>
 
                 {/* Eligibility */}
-                <div style={{ fontSize: 14, color: C.slate, lineHeight: 1.55 }}>
+                <div data-label="Essential Qualification" style={{ fontSize: 14, color: C.slate, lineHeight: 1.55 }}>
                   <ChevronRight size={13} style={{ display: "inline", marginRight: 4, color: row._cat.color, verticalAlign: "middle" }} />
                   {row.eligibility}
                 </div>

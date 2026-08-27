@@ -47,6 +47,7 @@ export function PageHero({ eyebrow, title, sub, crumb, bg, bgImg, floatImg, asid
           src={floatImg}
           alt=""
           aria-hidden="true"
+          className="page-hero-float"
           style={{
             position: "absolute",
             right: 0,

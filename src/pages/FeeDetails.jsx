@@ -175,7 +175,7 @@ export default function FeeDetails() {
           >
             {/* Table header */}
             <div
-              className="data-table-row"
+              className="data-table-row data-table-head"
               style={{
                 display: "grid",
                 gridTemplateColumns: isAll ? "140px 1fr 2fr 160px" : "1fr 2fr 160px",
@@ -211,7 +211,7 @@ export default function FeeDetails() {
               >
                 {/* Category badge (All view only) */}
                 {isAll && (
-                  <div>
+                  <div data-label="Category">
                     <span
                       style={{
                         display: "inline-block",
@@ -232,6 +232,7 @@ export default function FeeDetails() {
 
                 {/* Course */}
                 <div
+                  data-label="Course"
                   style={{
                     fontFamily: "Fraunces,serif",
                     fontWeight: 600,
@@ -243,7 +244,7 @@ export default function FeeDetails() {
                 </div>
 
                 {/* Specialization */}
-                <div style={{ fontSize: 14, color: C.slate, lineHeight: 1.45 }}>
+                <div data-label="Specialization / Branch" style={{ fontSize: 14, color: C.slate, lineHeight: 1.45 }}>
                   {row.specialization || (
                     <span style={{ color: "rgba(86,104,91,.4)", fontStyle: "italic" }}>—</span>
                   )}
@@ -251,6 +252,7 @@ export default function FeeDetails() {
 
                 {/* Fee */}
                 <div
+                  data-label="Fee Per Year"
                   style={{
                     textAlign: "right",
                     fontFamily: "Fraunces,serif",

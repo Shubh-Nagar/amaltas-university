@@ -19,7 +19,7 @@ body{margin:0;}
   font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-0.01em;margin:0;
 }
 .amaltas p{margin:0;}
-.wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+.wrap{max-width:1240px;margin:0 auto;padding-left:28px;padding-right:28px;}
 /* default eyebrow sits on light sections → burgundy for strong, accessible contrast.
    Eyebrows on dark sections override inline with the bright-yellow goldL token. */
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
@@ -145,7 +145,13 @@ body{margin:0;}
 
 /* ── logo ── */
 .logo{font-family:'Fraunces',serif;font-weight:600;font-size:23px;color:var(--ivory);
-  letter-spacing:-.02em;display:flex;align-items:center;gap:10px;text-decoration:none;transition:.3s;}
+  letter-spacing:-.02em;display:flex;align-items:center;gap:10px;text-decoration:none;transition:.3s;
+  flex-shrink:1;min-width:0;}
+.logo-img{height:68px;transition:height .3s;}
+
+/* ── header CTA ── steps down with the viewport instead of wrapping ── */
+.nav-apply{padding:11px 20px;font-size:14px;white-space:nowrap;flex-shrink:0;}
+.nav-apply-short{display:none;}
 
 /* ── nav links ── */
 .navlinks{display:flex;gap:6px;align-items:center;}
@@ -159,30 +165,57 @@ body{margin:0;}
 
 /* ── burger ── */
 .burger{display:none;background:none;border:none;color:var(--ivory);cursor:pointer;
-  padding:6px;border-radius:8px;transition:.2s;}
+  padding:6px;border-radius:8px;transition:.2s;flex-shrink:0;}
 .burger:hover{background:rgba(255,255,255,.1);}
 
-/* ── mobile menu — slide-down drawer ── */
-.mobile-menu{position:absolute;top:100%;left:0;right:0;z-index:49;
+/* ── mobile menu — slide-down drawer ──
+   Sits under the fixed header and owns the rest of the viewport: the panel
+   scrolls internally (--nav-h is the header's measured height per breakpoint)
+   while the page behind it is frozen by body.nav-open. */
+.mobile-scrim{position:fixed;inset:0;z-index:48;background:rgba(11,44,24,.45);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  animation:scrimIn .22s ease both;}
+@keyframes scrimIn{from{opacity:0}to{opacity:1}}
+
+.mobile-menu{position:absolute;top:100%;left:0;right:0;z-index:55;
   background:#fff;border-top:1px solid rgba(11,44,24,.07);
   box-shadow:0 20px 60px -16px rgba(11,44,24,.2);
-  padding:12px 20px 20px;display:flex;flex-direction:column;gap:2px;
-  max-height:80vh;overflow-y:auto;
+  padding:10px 14px calc(18px + env(safe-area-inset-bottom,0px));
+  display:flex;flex-direction:column;gap:2px;
+  max-height:calc(100vh - var(--nav-h,88px));
+  max-height:calc(100dvh - var(--nav-h,88px));
+  overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
   animation:slideDown .22s cubic-bezier(.16,1,.3,1);}
 @keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
-.mobile-menu>a{color:var(--ink);font-size:15px;font-weight:600;text-decoration:none;
-  padding:11px 14px;border-radius:10px;transition:.18s;}
+.mobile-menu>a{color:var(--ink);font-size:15.5px;font-weight:600;text-decoration:none;
+  padding:13px 14px;border-radius:10px;transition:.18s;min-height:48px;display:flex;align-items:center;}
 .mobile-menu>a:hover{background:rgba(18,134,63,.07);color:var(--em);}
 .mobile-menu>a.active{color:var(--em);background:rgba(18,134,63,.09);}
 .mobile-group{display:flex;flex-direction:column;}
-.mobile-group-btn{width:100%;text-align:left;background:none;border:none;font-size:15px;font-weight:600;
-  color:var(--ink);padding:11px 14px;border-radius:10px;cursor:pointer;display:flex;
-  justify-content:space-between;align-items:center;transition:.18s;font-family:inherit;}
+.mobile-group-btn{width:100%;min-height:48px;text-align:left;background:none;border:none;
+  font-size:15.5px;font-weight:600;
+  color:var(--ink);padding:13px 14px;border-radius:10px;cursor:pointer;display:flex;
+  justify-content:space-between;align-items:center;gap:12px;transition:.18s;font-family:inherit;}
 .mobile-group-btn:hover{background:rgba(18,134,63,.07);color:var(--em);}
-.mobile-sub{padding-left:10px;display:flex;flex-direction:column;gap:1px;margin-bottom:4px;}
-.mobile-sub .dropdown-item{font-size:13.5px;color:var(--slate);padding:9px 14px;border-radius:8px;}
+.mobile-group-btn svg{flex-shrink:0;color:var(--em);opacity:.65;}
+/* open group reads as a unit: tinted header + a rule running down the children */
+.mobile-group.on>.mobile-group-btn{color:var(--em);background:rgba(18,134,63,.07);}
+.mobile-group.on>.mobile-group-btn svg{opacity:1;}
+.mobile-sub{padding-left:14px;margin:2px 0 6px 14px;display:flex;flex-direction:column;gap:1px;
+  border-left:2px solid rgba(18,134,63,.18);
+  animation:slideDown .2s cubic-bezier(.16,1,.3,1);}
+.mobile-sub .dropdown-item{font-size:14px;color:var(--slate);padding:11px 12px;border-radius:8px;
+  min-height:44px;display:flex;align-items:center;text-decoration:none;}
 .mobile-sub .dropdown-item:hover{background:rgba(18,134,63,.07);color:var(--em);}
-.mobile-menu-footer{border-top:1px solid rgba(11,44,24,.07);padding-top:14px;margin-top:8px;}
+.mobile-sub .dropdown-item.active{color:var(--em);font-weight:600;}
+.mobile-menu-footer{border-top:1px solid rgba(11,44,24,.07);padding-top:14px;margin-top:10px;}
+.mobile-menu-footer .btn{min-height:50px;}
+
+/* page behind the drawer holds still, and the FABs yield to it */
+@media(max-width:980px){
+  body.nav-open{overflow:hidden;}
+  body.nav-open .fab-stack{opacity:0;pointer-events:none;transform:translateY(8px);}
+}
 
 /* marquee */
 .marquee{display:flex;gap:64px;animation:scrollX 26s linear infinite;white-space:nowrap;width:max-content;}
@@ -240,7 +273,7 @@ body{margin:0;}
   color:var(--em);background:rgba(18,134,63,.09);padding:5px 11px;border-radius:100px;margin-bottom:14px;}
 
 /* section */
-.sec{padding:110px 0;position:relative;}
+.sec{padding-top:110px;padding-bottom:110px;position:relative;}
 .sec h2{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;font-weight:300;margin-top:14px;}
 .sec p.lead{color:var(--slate);font-size:18px;max-width:560px;margin-top:18px;}
 
@@ -416,12 +449,11 @@ body{margin:0;}
 .dropdown-menu .dropdown-item{display:block;padding:10px 14px;color:var(--ink);font-size:13.5px;text-decoration:none;border-radius:9px;transition:.18s;font-weight:500;}
 .dropdown-menu .dropdown-item:hover{background:rgba(18,134,63,.07);color:var(--em);}
 
-/* ── MOBILE MENU GROUPS ── */
-.mobile-group{display:flex;flex-direction:column;}
-.mobile-group-btn{background:none;border:none;color:var(--ivory);font-family:'Fraunces',serif;font-size:28px;text-decoration:none;padding:10px 0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;text-align:left;}
-.mobile-sub{display:flex;flex-direction:column;padding-left:20px;gap:2px;margin-bottom:6px;}
-.mobile-sub .dropdown-item{font-family:'Hanken Grotesk',sans-serif;font-size:15px;padding:8px 12px;color:rgba(247,244,236,.7);text-decoration:none;border-radius:8px;}
-.mobile-sub .dropdown-item:hover{color:var(--goldL);}
+/* ── MOBILE MENU GROUPS ──
+   The drawer's styling lives with the rest of the mobile menu near the top of
+   this file. A dark full-screen-menu variant used to be redeclared here and,
+   sitting later in the cascade, repainted the light drawer with 28px Fraunces
+   in ivory — near-invisible giant serif labels on a white panel. */
 
 /* ── ANNOUNCEMENT TICKER ── */
 .announcement-bar{background:linear-gradient(90deg,#0f7a38 0%,#12863F 50%,#0f7a38 100%);display:flex;align-items:stretch;overflow:hidden;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:91px;z-index:45;}
@@ -2094,7 +2126,7 @@ body{margin:0;}
 }
 
 /* ── data tables (Fee / Eligibility) → horizontal scroll, no clip ── */
-@media(max-width:720px){
+@media(min-width:721px) and (max-width:860px){
   .data-table{overflow-x:auto!important;-webkit-overflow-scrolling:touch;}
   .data-table-row{min-width:560px;}
 }
@@ -2116,8 +2148,8 @@ body{margin:0;}
 
 /* ── tighter gutters + rhythm on small phones ── */
 @media(max-width:480px){
-  .wrap{padding:0 18px;}
-  .sec{padding:64px 0;}
+  .wrap{padding-left:18px;padding-right:18px;}
+  .sec{padding-top:64px;padding-bottom:64px;}
   .page-hero{padding:130px 0 56px;}
 }
 
@@ -2228,3 +2260,377 @@ body{margin:0;}
 .up-btn:hover{background:rgba(247,244,236,.1);border-color:rgba(247,244,236,.48);transform:translateY(-1px);}
 .up-btn.primary{background:linear-gradient(105deg,var(--gold),var(--goldL));border-color:transparent;color:var(--ink);}
 .up-btn.primary:hover{box-shadow:0 12px 26px -12px rgba(246,224,5,.7);}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   MOBILE UI/UX LAYER
+   Appended last on purpose: the page-level rules above are written for
+   desktop, and many pages set grid tracks / padding through inline style —
+   so this layer needs both the cascade position and (where noted)
+   !important to win.
+   Breakpoints: 1024 tablet · 980 nav collapse · 768 large phone · 600 phone
+   · 400 small phone.
+══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────
+   1 · HEADER — height budget + CTA step-down
+   --nav-h is what the drawer subtracts to size itself; it tracks the real
+   header height (logo + vertical padding) at each breakpoint.
+───────────────────────────────────────── */
+@media(max-width:980px){
+  .nav{--nav-h:92px;}
+  .nav.solid{--nav-h:84px;}
+  .navbar{padding:12px 18px;gap:10px;}
+  .nav.solid .navbar{padding:9px 18px;}
+  .logo-img{height:56px;}
+  /* the heartbeat scales the CTA into the burger on a narrow bar */
+  .navbar .btn-gold{animation:none;}
+  .nav-apply{padding:10px 15px;font-size:13px;}
+}
+@media(max-width:600px){
+  .nav{--nav-h:78px;}
+  .nav.solid{--nav-h:72px;}
+  .navbar{padding:10px 14px;gap:8px;}
+  .nav.solid .navbar{padding:8px 14px;}
+  .logo-img{height:46px;}
+  .nav-apply{padding:9px 13px;font-size:12.5px;gap:6px;}
+  .nav-apply svg{width:14px;height:14px;}
+  .nav-prog{height:2px;}
+}
+@media(max-width:400px){
+  .nav{--nav-h:70px;}
+  .nav.solid{--nav-h:66px;}
+  .logo-img{height:40px;}
+}
+/* below this the full label can no longer share the bar with the burger */
+@media(max-width:360px){
+  .nav-apply-full{display:none;}
+  .nav-apply-short{display:inline;}
+  .nav-apply{padding:9px 12px;}
+}
+
+/* announcement ticker docks under the header, whatever height that is */
+@media(max-width:980px){
+  .announcement-bar{top:84px;}
+  .announcement-scroll{padding:10px 40px;gap:56px;}
+  .announcement-item{font-size:12px;}
+  .announcement-label{font-size:9.5px;padding:0 12px;letter-spacing:.14em;}
+}
+@media(max-width:600px){
+  .announcement-bar{top:72px;}
+  .announcement-label{display:none;}
+}
+
+/* ─────────────────────────────────────────
+   2 · PAGE FRAME — gutters, rhythm, overflow
+───────────────────────────────────────── */
+@media(max-width:768px){
+  .wrap{padding-left:22px;padding-right:22px;}
+  .sec{padding-top:76px;padding-bottom:76px;}
+  .page-hero{padding:140px 0 64px;}
+  /* Home sets the hero's vertical rhythm inline, so this has to shout */
+  .hero-inner{padding-top:118px!important;padding-bottom:56px!important;}
+  .hero{min-height:auto;}
+}
+@media(max-width:600px){
+  .sec{padding-top:60px;padding-bottom:60px;}
+  .page-hero{padding:118px 0 52px;}
+  .hero-inner{padding-top:104px!important;padding-bottom:48px!important;}
+}
+@media(max-width:400px){
+  .wrap{padding-left:16px;padding-right:16px;}
+  .sec{padding-top:52px;padding-bottom:52px;}
+  .page-hero{padding:104px 0 44px;}
+  .hero-inner{padding-top:94px!important;}
+}
+
+/* the decorative hero cut-out is scenery on desktop and an obstruction on a phone */
+@media(max-width:860px){
+  .page-hero-float{display:none;}
+  .page-hero .hero-glow{opacity:.55;}
+}
+
+/* ─────────────────────────────────────────
+   3 · TYPOGRAPHY — the clamp floors were tuned for desktop and still land
+   40px+ headlines on a 375px screen. Re-floor them for small viewports.
+───────────────────────────────────────── */
+@media(max-width:768px){
+  .page-hero h1{font-size:clamp(2rem,7.4vw,3.4rem);line-height:1.08;}
+  .page-hero p{font-size:16px;margin-top:14px;}
+  .page-hero .crumb{font-size:12px;}
+  .sec h2{font-size:clamp(1.75rem,6.4vw,2.9rem);line-height:1.14;}
+  .sec p.lead{font-size:16px;margin-top:14px;}
+  .hero h1{font-size:clamp(2.1rem,8.6vw,4rem);line-height:1.04;}
+  .eyebrow{font-size:11px;letter-spacing:.18em;}
+  .eyebrow::before{width:18px;}
+  .record .big{font-size:clamp(2.6rem,13vw,4.4rem);}
+  .stat .num{font-size:clamp(2rem,9vw,3rem);}
+  .quote-pull p{font-size:16.5px;}
+  .quote-pull{padding:22px 24px;margin:26px 0;}
+}
+@media(max-width:400px){
+  .page-hero h1{font-size:clamp(1.8rem,8vw,2.6rem);}
+  .sec h2{font-size:clamp(1.6rem,7.2vw,2.2rem);}
+}
+
+/* ─────────────────────────────────────────
+   4 · GRIDS — inline templates that do not collapse on their own.
+   auto-fit/auto-fill tracks already fold once the container is narrower
+   than the min track, so only fixed track lists are handled here.
+───────────────────────────────────────── */
+@media(max-width:680px){
+  .tri-grid{grid-template-columns:1fr 1fr!important;}
+}
+@media(max-width:520px){
+  .tri-grid{grid-template-columns:1fr!important;}
+  .statgrid{grid-template-columns:1fr 1fr;}
+  .stat{padding:24px 18px;}
+  .stat:nth-child(odd){border-right:1px solid rgba(0,0,0,.07);}
+  .stat:nth-child(even){border-right:none;}
+}
+
+/* auto-fill mins wider than the content box would still overflow a 320px phone */
+@media(max-width:400px){
+  [style*="minmax(340px"],[style*="minmax(330px"],[style*="minmax(320px"],
+  [style*="minmax(310px"],[style*="minmax(300px"],[style*="minmax(290px"]{
+    grid-template-columns:1fr!important;
+  }
+}
+
+/* grid and flex items default to min-width:auto, so a single child with a wide
+   min-content — a <select> sized by its longest option, an email address, a
+   nowrap pill — drags its whole track past the viewport and the panel bleeds off
+   the right edge. Nearly every grid item on this site is a <Reveal> (.rv), so
+   letting those shrink fixes the pattern rather than one instance of it. */
+@media(max-width:900px){
+  .rv{min-width:0;}
+  /* the codebase names its containers consistently, so match the convention
+     rather than enumerating every one; min-width:0 is inert outside a
+     grid/flex context, so this is safe on anything it also happens to hit */
+  .amaltas [class*="-grid"]>*,.amaltas [class*="-split"]>*,
+  .amaltas [class*="-layout"]>*,.amaltas [class*="-panel"]>*,
+  .amaltas [class*="-row"]>*{min-width:0;}
+  /* a select still reports its longest option as min-content; clip it instead */
+  .amaltas select,.amaltas input,.amaltas textarea{max-width:100%;min-width:0;}
+}
+
+/* Home · Our Purpose — the left column's padding is
+   calc((100vw - 1200px)/2 + 24px), which resolves negative (clamped to 0) on
+   anything under 1200px, so the copy sat flush against the screen edge. The
+   base rule is declared after the existing 1100px block, so it needs re-stating
+   here to win. The spinning wedge is left-margin decoration at desktop widths;
+   on a phone it lands directly on top of the paragraph text. */
+@media(max-width:1100px){
+  .purpose-split-left{padding:64px 28px;}
+  .purpose-split-left::before{display:none;}
+}
+@media(max-width:768px){
+  .purpose-split-left{padding:56px 22px;}
+}
+@media(max-width:400px){
+  .purpose-split-left{padding:48px 16px;}
+}
+
+/* breadcrumbs are a real navigation control, not decoration */
+@media(max-width:768px){
+  .page-hero .crumb{display:flex;flex-wrap:wrap;align-items:center;margin-bottom:10px;}
+  .page-hero .crumb a{padding:6px 2px;display:inline-block;}
+}
+
+/* ─────────────────────────────────────────
+   5 · CARDS & PANELS — generous desktop padding eats most of the
+   viewport width on a phone; pull it back to a readable ratio.
+───────────────────────────────────────── */
+@media(max-width:600px){
+  .inst-card{padding:26px 22px;border-radius:18px;}
+  .inst-card-img{margin:-26px -22px 18px;height:150px;}
+  .event-card,.award-card,.acc-card,.ranking-card,.leader-hcard{padding:22px 20px;border-radius:18px;}
+  .news-card-body{padding:18px 16px;}
+  .prog-card{padding:20px 18px;min-height:0;}
+  .hero-form-box,.inquiry-form-box{padding:24px 20px;border-radius:18px;}
+  .disc-section-box{border-radius:18px;}
+  .record{border-radius:24px;}
+  .record-body{padding:28px 20px;}
+  .outcomes-card{padding:36px 20px;border-radius:22px;}
+  .tcard{padding:30px 20px 26px;border-radius:20px;min-height:0;}
+  .up-panel{border-radius:16px;padding:14px 12px 12px;}
+}
+
+/* programme rows: the arrow column collapses, the name needs the space */
+@media(max-width:600px){
+  .acad-panel-body{padding:26px 20px;}
+  .prog{padding:18px 4px;gap:12px;}
+  .prog .pl{gap:12px;}
+  .prog .arrow{display:none;}
+  .prog:hover{padding-left:4px;}
+}
+
+/* ─────────────────────────────────────────
+   6 · TABLES & WIDE CONTENT — scroll inside the card, never the page
+───────────────────────────────────────── */
+@media(max-width:860px){
+  .disc-row{grid-template-columns:1fr;gap:4px;}
+}
+
+/* Fee / Eligibility tables: 560px of columns in a 358px viewport pushed the one
+   column people came for (the fee) off-screen behind a scroll nobody signals.
+   Below 720px each row becomes a stacked card and every cell carries its own
+   column heading, so the header row is redundant. */
+@media(max-width:720px){
+  .data-table{overflow-x:visible!important;}
+  .data-table-head{display:none!important;}
+  .data-table-row{
+    grid-template-columns:1fr!important;min-width:0!important;
+    gap:0!important;padding:8px 16px 14px!important;align-items:stretch!important;
+  }
+  /* each cell becomes a label/value pair — compact enough that a whole record
+     still fits on one screen, unlike a full-width stack */
+  .data-table-row>[data-label]{
+    display:grid;grid-template-columns:96px 1fr;gap:3px 12px;
+    align-items:baseline;justify-items:start;padding:9px 0;text-align:left!important;
+  }
+  /* cells hold a bare text node plus extras ("per annum", a chevron); the text
+     lands beside the label and everything else stacks under it in the same column */
+  .data-table-row>[data-label]>*{grid-column:2;}
+  .data-table-row>[data-label]+[data-label]{border-top:1px solid rgba(11,44,24,.06);}
+  .data-table-row>[data-label]::before{
+    content:attr(data-label);
+    font-family:'Hanken Grotesk',sans-serif;
+    font-size:9.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--slate);opacity:.62;line-height:1.5;
+  }
+  /* the coloured pill already names the category */
+  .data-table-row>[data-label="Category"]::before{content:"";}
+  .data-table-row>[data-label="Fee Per Year"] span{font-size:11px;}
+  /* inline-styled display on the chevron; it would otherwise take the first
+     grid cell and push the qualification text under the label */
+  .data-table-row>[data-label="Essential Qualification"] svg{display:none!important;}
+}
+
+/* Anti-ragging committee roster — same treatment. This is the table students
+   reach for in an emergency, and the mobile and email columns were the two
+   sitting furthest off the right edge. */
+@media(max-width:720px){
+  .member-table-wrap{overflow-x:visible!important;border:none!important;}
+  .member-table{min-width:0!important;display:block;background:none!important;}
+  .member-table thead{display:none;}
+  .member-table tbody{display:block;}
+  .member-table tr{
+    display:block;background:#fff!important;
+    border:1px solid rgba(11,44,24,.1)!important;border-radius:14px;
+    padding:6px 14px 10px;margin-bottom:12px;
+  }
+  .member-table td{
+    display:grid!important;grid-template-columns:88px 1fr;gap:3px 12px;
+    align-items:baseline;padding:9px 0!important;white-space:normal!important;
+  }
+  .member-table td+td{border-top:1px solid rgba(11,44,24,.06);}
+  .member-table td::before{
+    content:attr(data-label);
+    font-size:9.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--slate);opacity:.62;line-height:1.5;
+  }
+  /* phone and email are the point of this table — make them proper tap targets */
+  .member-table td a{display:inline-block;padding:3px 0;min-height:30px;}
+}
+@media(max-width:768px){
+  .quick-links-inner{padding-left:2px;padding-right:2px;}
+  .acad-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;}
+  .acad-tabs::-webkit-scrollbar{display:none;}
+  .acad-tab{flex-shrink:0;}
+}
+
+/* ─────────────────────────────────────────
+   7 · MARQUEES — desktop sizing makes each item nearly a screen wide
+───────────────────────────────────────── */
+@media(max-width:768px){
+  .marquee{gap:36px;}
+  .mq-item{font-size:16px;gap:9px;}
+  .mq-logo-card{width:38vw;gap:10px;}
+  .mq-logo-img{height:56px;max-width:100px;}
+  .mq-seal{width:64px;height:64px;}
+  .mq-logo-name{font-size:11.5px;}
+}
+@media(max-width:480px){
+  .mq-logo-card{width:52vw;}
+}
+
+/* ─────────────────────────────────────────
+   8 · BUTTONS & TAP TARGETS — 44px minimum, no overflow
+───────────────────────────────────────── */
+.btn{max-width:100%;}
+@media(max-width:600px){
+  .btn:not(.nav-apply){padding:14px 22px;font-size:14.5px;min-height:48px;justify-content:center;}
+  .chip{padding:10px 14px;font-size:12.5px;min-height:44px;}
+  .up-btn{min-height:40px;}
+  .dotnav button{width:11px;height:11px;}
+  .dotnav button.on{width:30px;}
+  .foot a{padding:9px 0;}
+}
+
+/* ─────────────────────────────────────────
+   9 · FLOATING ACTION BUTTONS — clear of the home indicator, smaller
+   footprint, and no hover-only affordances on touch.
+───────────────────────────────────────── */
+@media(max-width:768px){
+  .fab-stack{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));gap:10px;
+    transition:opacity .22s,transform .22s;}
+  .fab{width:48px;height:48px;}
+  .fab-top{width:44px;height:44px;}
+  .fab-tip{display:none;}
+  .fab-enquire{padding:10px 16px!important;font-size:12.5px!important;
+    border-radius:24px!important;animation:none;}
+}
+@media(max-width:400px){
+  .fab-stack{right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));}
+  .fab{width:44px;height:44px;}
+}
+
+/* ─────────────────────────────────────────
+   10 · MODALS & LIGHTBOX — fit the viewport, scroll internally
+───────────────────────────────────────── */
+@media(max-width:600px){
+  .ev-modal{padding:30px 18px 26px;border-radius:18px;max-height:calc(100dvh - 24px);}
+  .ev-modal-title{padding-right:30px;}
+  .ev-modal-desc{font-size:14px;margin:14px 0 20px;}
+  .ev-modal-backdrop,.ev-lightbox{padding:12px;}
+  .ev-lightbox-img{max-width:96vw;max-height:78vh;}
+}
+
+/* the enquiry modal wraps a fixed-height third-party form; on a short phone
+   (landscape, or a 640px-tall device) the card outgrew the viewport with
+   nothing to scroll, so the submit button was simply unreachable */
+@media(max-width:600px){
+  .enq-backdrop{padding:12px!important;}
+  .enq-modal{
+    padding:26px 18px 22px!important;border-radius:18px!important;
+    max-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain;
+  }
+}
+
+/* ─────────────────────────────────────────
+   11 · FOOTER — the link columns are the main site index for many visitors
+───────────────────────────────────────── */
+@media(max-width:600px){
+  .foot{padding:56px 0 26px;}
+  .foot h4{font-size:16px;margin-bottom:10px;}
+  .foot a{font-size:14px;}
+  .footer-grid .logo-img{height:56px;}
+}
+
+/* ─────────────────────────────────────────
+   12 · MOTION — long-running loops and hover lifts are jank and battery
+   cost on a phone, and hover never resolves on touch. Reveals stay.
+───────────────────────────────────────── */
+@media(max-width:768px){
+  .float-card{animation:none;}
+  .fab-wa{animation:none;}
+  .btn:hover{transform:none;}
+  .card-lift:hover{transform:none;box-shadow:none;}
+  /* a 48px entrance offset is ~15% of a 320px screen — content reads as flying
+     in from off-canvas. The .in state still resets to none (higher specificity). */
+  .rv{transform:translateY(22px);}
+  .rv-left{transform:translateX(-20px);}
+  .rv-right{transform:translateX(20px);}
+  .rv-up{transform:translateY(22px);}
+  .rv-zoom{transform:scale(.95);}
+}
