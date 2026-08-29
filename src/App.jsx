@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ArrowUp } from "lucide-react";
 import Navbar from "./components/Navbar.jsx";
@@ -41,6 +41,11 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy2.jsx";
 import PublicSelfDisclosure from "./pages/PublicSelfDisclosure.jsx";
 import AntiRaggingCommittee from "./pages/AntiRaggingCommittee.jsx";
+import Healthcare from "./pages/Healthcare.jsx";
+
+// Pulls in xlsx + pdf-lib (large libs) — code-split so only certificate-page
+// visitors pay for them.
+const CertificateDownload = lazy(() => import("./pages/CertificateDownload.jsx"));
 
 /* Real WhatsApp glyph (lucide-react ships no brand icons) */
 function WhatsAppIcon({ size = 24 }) {
@@ -125,6 +130,15 @@ export default function App() {
           <Route path="/privacy-policy-2" element={<PrivacyPolicy2 />} />
           <Route path="/public-self-disclosure" element={<PublicSelfDisclosure />} />
           <Route path="/anti-ragging-committee" element={<AntiRaggingCommittee />} />
+          <Route path="/healthcare" element={<Healthcare />} />
+          <Route
+            path="/certificates"
+            element={
+              <Suspense fallback={null}>
+                <CertificateDownload />
+              </Suspense>
+            }
+          />
           {/* Internal scratch route. It has no real content, so keep it out of
               the index — it was otherwise crawlable as a thin page. */}
           <Route

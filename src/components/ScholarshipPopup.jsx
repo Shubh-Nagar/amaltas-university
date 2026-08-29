@@ -179,9 +179,13 @@ export default function ScholarshipPopup() {
               <div className="apop-field">
                 <input
                   type="tel"
-                  placeholder="Phone number"
+                  inputMode="numeric"
+                  placeholder="10-digit mobile number"
                   value={form.phone}
-                  onChange={e => set("phone", e.target.value)}
+                  onChange={e => set("phone", e.target.value.replace(/\D/g, "").slice(0, 10))}
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  title="Enter a 10-digit mobile number"
                   required
                 />
               </div>

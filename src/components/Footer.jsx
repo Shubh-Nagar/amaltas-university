@@ -46,6 +46,7 @@ export default function Footer() {
             <Link to="/facilities/academic">Facilities</Link>
             <Link to="/happenings/events">Happenings</Link>
             <Link to="/alumni">Alumni</Link>
+            <Link to="/healthcare">Healthcare</Link>
           </div>
           <div>
             <h4>Quick Links</h4>
@@ -53,6 +54,7 @@ export default function Footer() {
             <Link to="/admissions/fees">Fee Details</Link>
             <Link to="/admissions/eligibility">Eligibility Criteria</Link>
             <Link to="/admissions/refund-policy">Refund Policy</Link>
+            <Link to="/certificates">Download Certificate</Link>
             <Link to="/student-life/hostel">Hostel &amp; Accommodation</Link>
             <Link to="/happenings/news">News &amp; Press Releases</Link>
             <Link to="/happenings/photo-gallery">Photo Gallery</Link>

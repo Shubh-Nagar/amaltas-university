@@ -7,7 +7,10 @@ export default function AlumniForm({ fields, submitLabel = "Submit", sendTo = CO
   const [form, setForm] = useState({});
   const [done, setDone] = useState(false);
 
-  const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
+    setForm(p => ({ ...p, [name]: type === "tel" ? value.replace(/\D/g, "").slice(0, 10) : value }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const subject = encodeURIComponent(submitLabel);
@@ -65,6 +68,7 @@ export default function AlumniForm({ fields, submitLabel = "Submit", sendTo = CO
                   type={f.type} name={f.name} placeholder={f.placeholder || ""}
                   value={form[f.name] || ""} onChange={handleChange}
                   required={!f.optional}
+                  {...(f.type === "tel" ? { inputMode: "numeric", pattern: "[0-9]{10}", maxLength: 10, title: "Enter a 10-digit mobile number" } : {})}
                 />
               )}
             </div>
