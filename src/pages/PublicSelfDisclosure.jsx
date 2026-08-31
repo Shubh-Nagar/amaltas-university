@@ -29,11 +29,14 @@ function localDoc(href) {
   return `/disclosure/${base}`;
 }
 
+/* Leadership profile PDFs bundled locally under /public/assets/docs. */
+const DOCS = "/assets/docs";
+
 const LEADERS = [
-  { role: "Chancellor",      name: "Mrs. Aruna Bhadoria",        email: "chancellor@amaltasuniversity.in",    phone: "07272-482580",   profile: `${U}/2025/06/Mrs.-Aruna-Bhadoria-Chancellor.pdf` },
-  { role: "Pro Chancellor",  name: "Dr. Salil Bhargava",         email: "prochancellor@amaltasuniversity.in", phone: "070890 40404",   profile: `${U}/2025/06/Dr.-Salil-Bhargava-Pro-Chancellor.pdf` },
-  { role: "Vice-Chancellor", name: "Dr. R.K. Singh", email: "vicechancellor@amaltasuniversity.in", phone: "098222 68026",  profile: `${U}/2025/06/Dr.-Sharadchandra-WankhedeVice-chancellor-1.pdf` },
-  { role: "Registrar",       name: "Dr. Abhay Gupta",        email: "registrar@amaltasuniversity.in",     phone: "07272-482580",   profile: `${U}/2025/06/Shri-Sanjay-Rambole-Registrar.pdf` },
+  { role: "Chancellor",      name: "Mrs. Aruna Bhadoria",        email: "chancellor@amaltasuniversity.in",    phone: "07272-482580",   profile: `${DOCS}/aruna%20bhadoria.pdf` },
+  { role: "Pro Chancellor",  name: "Dr. Salil Bhargava",         email: "prochancellor@amaltasuniversity.in", phone: "070890 40404",   profile: `${DOCS}/salil%20bhargava.pdf` },
+  { role: "Vice-Chancellor", name: "Dr. R.K. Singh", email: "vicechancellor@amaltasuniversity.in", phone: "098222 68026",  profile: `${DOCS}/rk%20singh.pdf` },
+  { role: "Registrar",       name: "Dr. Abhay Gupta",        email: "registrar@amaltasuniversity.in",     phone: "07272-482580",   profile: `${DOCS}/abhay%20gupta.pdf` },
   { role: "Ombudsperson",    name: "Dr. Satish Kumar S. Gupta",  email: "surajbhanji@gmail.com",              phone: "+91 94221-14037", profile: `${U}/2025/06/Dr.-Satish-Kumar-S.-Gupta-Ombudsperson.pdf` },
 ];
 
