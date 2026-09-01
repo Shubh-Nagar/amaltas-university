@@ -31,9 +31,9 @@ export async function findRegistrant(workshop, email, mobile) {
   );
 }
 
-// Loads the workshop's certificate template, masks the placeholder name and
-// stamps the matched registrant's name in its place, and returns the
-// resulting PDF as a Blob.
+// Loads the workshop's certificate template and stamps the matched
+// registrant's name onto its blank name line, returning the resulting PDF
+// as a Blob.
 export async function generateCertificate(workshop, fullName) {
   const res = await fetch(workshop.templatePath);
   const templateBytes = await res.arrayBuffer();
@@ -51,11 +51,7 @@ export async function generateCertificate(workshop, fullName) {
   const page = pdfDoc.getPage(0);
   const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-  const { x, y, width, height, textCenterX, baselineY, maxWidth, maxFontSize, minFontSize } = workshop.nameBox;
-
-  // Cover the template's placeholder name with a white patch — the template
-  // background there is solid white, so this leaves no visible seam.
-  page.drawRectangle({ x, y, width, height, color: rgb(1, 1, 1) });
+  const { textCenterX, baselineY, maxWidth, maxFontSize, minFontSize } = workshop.nameBox;
 
   let fontSize = maxFontSize;
   while (fontSize > minFontSize && font.widthOfTextAtSize(fullName, fontSize) > maxWidth) {
