@@ -7,6 +7,8 @@ import { CONTACT } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema } from "../data/schema.js";
 
+const ADMISSIONS_EMAIL = "admissions@amaltasuniversity.in";
+
 const AUTHORITIES = [
   { name: "UGC", full: "University Grants Commission", color: C.emerald },
   { name: "NMC", full: "National Medical Commission", color: C.burg },
@@ -129,8 +131,8 @@ export default function RefundPolicy() {
                 <a href={`tel:${CONTACT.tollFree.replace(/-/g, "")}`} className="btn btn-em">
                   <Phone size={16} /> Call — {CONTACT.tollFree}
                 </a>
-                <a href={`mailto:${CONTACT.email}`} className="btn btn-ghost">
-                  <Mail size={16} /> {CONTACT.email}
+                <a href={`mailto:${ADMISSIONS_EMAIL}`} className="btn btn-ghost">
+                  <Mail size={16} /> {ADMISSIONS_EMAIL}
                 </a>
               </div>
             </div>
