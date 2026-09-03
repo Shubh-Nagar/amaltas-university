@@ -252,7 +252,7 @@ export const NAV = [
       { to: "/admissions/procedure", label: "Procedure" },
       { to: "/admissions/fees", label: "Fee Details" },
       { to: "/admissions/eligibility", label: "Eligibility Criteria" },
-      // { to: "/admissions/refund-policy", label: "Refund Policy" },
+      { to: "/admissions/refund-policy", label: "Refund Policy" },
       // { to: "/admissions", label: "Scholarship" },
     ],
   },
