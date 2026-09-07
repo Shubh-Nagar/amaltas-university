@@ -30,7 +30,6 @@ function writeAttemptState(state) {
 export default function CertificateDownload() {
   const [workshopKey, setWorkshopKey] = useState("GCP");
   const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
   const [status, setStatus] = useState("idle"); // idle | checking | found | notfound | locked | error
   const [errorMsg, setErrorMsg] = useState("");
   const [certUrl, setCertUrl] = useState(null);
@@ -51,7 +50,7 @@ export default function CertificateDownload() {
     const workshop = WORKSHOPS[workshopKey];
 
     try {
-      const registrant = await findRegistrant(workshop, email, mobile);
+      const registrant = await findRegistrant(workshop, email);
 
       if (!registrant) {
         const count = attempts.count + 1;
@@ -92,7 +91,7 @@ export default function CertificateDownload() {
         crumb="Download Certificate"
         eyebrow="Certificate Portal"
         title="Get your certificate."
-        sub="Select your workshop and enter the email and mobile number you registered with to download your certificate."
+        sub="Select your workshop and enter the email you registered with to download your certificate."
       />
 
       <section className="sec wrap" style={{ paddingTop: 48, maxWidth: 560 }}>
@@ -118,21 +117,6 @@ export default function CertificateDownload() {
               />
             </div>
 
-            <div className="field" style={{ gridColumn: "1/-1" }}>
-              <label>Mobile Number<span style={{ color: "#c44", marginLeft: 3 }}>*</span></label>
-              <input
-                type="tel"
-                inputMode="numeric"
-                placeholder="10-digit mobile number"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value.replace(/\D/g, "").slice(0, 10))}
-                pattern="[0-9]{10}"
-                maxLength={10}
-                title="Enter a 10-digit mobile number"
-                required
-              />
-            </div>
-
             <div style={{ gridColumn: "1/-1", marginTop: 8 }}>
               <button type="submit" className="btn btn-em" disabled={status === "checking"}>
                 {status === "checking" ? <Loader2 size={16} className="spin" /> : <Download size={16} />}
@@ -147,7 +131,7 @@ export default function CertificateDownload() {
             {status === "notfound" && (
               <p style={{ color: C.slate, fontSize: 14.5, display: "flex", gap: 8, alignItems: "flex-start" }}>
                 <ShieldAlert size={16} style={{ flexShrink: 0, marginTop: 2 }} />
-                No registration found for these details. Double-check the workshop, email and mobile number.
+                No registration found for these details. Double-check the workshop and email address.
               </p>
             )}
             {status === "locked" && (

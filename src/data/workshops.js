@@ -12,7 +12,6 @@ export const WORKSHOPS = {
     templatePath: "/assets/certificate/GCP.pdf",
     nameKey: "Full Name",
     emailKey: "Email Address",
-    mobileKey: "Phone number",
     nameBox: {
       textCenterX: 470, // horizontal center of the blank line, for centering the name
       baselineY: 311,   // baseline the printed name sits on, above the underline
@@ -27,7 +26,6 @@ export const WORKSHOPS = {
     templatePath: "/assets/certificate/ICF.pdf",
     nameKey: "Name",
     emailKey: "Email Address",
-    mobileKey: "Phone number",
     nameBox: {
       textCenterX: 413,
       baselineY: 348, // above the underline

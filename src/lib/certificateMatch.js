@@ -5,13 +5,9 @@ function normalizeEmail(v) {
   return String(v || "").trim().toLowerCase();
 }
 
-function normalizeMobile(v) {
-  return String(v || "").replace(/\D/g, "").slice(-10);
-}
-
-// Looks up the registrant in the workshop's Excel sheet by email + mobile.
+// Looks up the registrant in the workshop's Excel sheet by email.
 // Returns the matching row, or null.
-export async function findRegistrant(workshop, email, mobile) {
+export async function findRegistrant(workshop, email) {
   const res = await fetch(workshop.excelPath);
   if (!res.ok) throw new Error("Could not load the registrant list");
   const buf = await res.arrayBuffer();
@@ -20,14 +16,9 @@ export async function findRegistrant(workshop, email, mobile) {
   const rows = XLSX.utils.sheet_to_json(sheet, { defval: "" });
 
   const targetEmail = normalizeEmail(email);
-  const targetMobile = normalizeMobile(mobile);
 
   return (
-    rows.find((row) => {
-      const rowEmail = normalizeEmail(row[workshop.emailKey]);
-      const rowMobile = normalizeMobile(row[workshop.mobileKey]);
-      return rowEmail === targetEmail && rowMobile === targetMobile;
-    }) || null
+    rows.find((row) => normalizeEmail(row[workshop.emailKey]) === targetEmail) || null
   );
 }
 
