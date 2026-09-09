@@ -98,6 +98,22 @@ body{margin:0;}
 .poster-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:0;transition:opacity .8s ease;}
 .poster-slide.on{opacity:1;}
 
+/* ── hero left-column auto-scrolling photo (single image at a time) ── */
+.hero-photo-scroller{position:relative;width:100%;max-width:340px;aspect-ratio:1080/1336;border-radius:20px;
+  overflow:hidden;border:1px solid rgba(246,224,5,.18);box-shadow:0 24px 60px -20px rgba(0,0,0,.55);
+  background:rgba(247,244,236,.96);}
+.hero-photo-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:0;transition:opacity 1s ease;}
+.hero-photo-slide.on{opacity:1;}
+.hero-photo-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  display:flex;gap:7px;z-index:2;}
+.hero-photo-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);
+  transition:all .3s;}
+.hero-photo-dots span.on{width:20px;border-radius:4px;background:var(--gold);}
+@media(max-width:640px){
+  .hero-photo-scroller{max-width:280px;}
+}
+
 /* ── hero enquiry form box ── */
 .hero-form-box{background:#fff;border:1px solid rgba(11,44,24,.1);border-radius:24px;padding:32px 28px;box-shadow:0 24px 60px -16px rgba(11,44,24,.22);}
 .hf-field{display:flex;flex-direction:column;}

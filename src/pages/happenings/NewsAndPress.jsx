@@ -12,6 +12,9 @@ import { breadcrumbSchema } from "../../data/schema.js";
 const NP = "/assets/images%20of%20university/news-press";
 const GALLERY = [
   // Most recently uploaded — shown first
+  `${NP}/ICF%20WORKSHOP.jpg`, `${NP}/ICF%20WORKSHOP-1.jpg`, `${NP}/ICF%20WORKSHOP-2.jpg`,
+  `${NP}/WhatsApp%20Image%202026-09-08%20at%2010.28.50%20AM.jpeg`,
+  `${NP}/WhatsApp%20Image%202026-09-08%20at%2010.33.58%20AM.jpeg`,
   `${NP}/KHELO%20INDIA.jpg`, `${NP}/KHELO%20INDIA-1.jpg`, `${NP}/KHELO%20INDIA-2.jpg`, `${NP}/KHELO%20INDIA-3.jpg`,
   `${NP}/independence.jpeg`, `${NP}/flag%20host.jpeg`,
   `${NP}/agrohomeopathy%20program.jpg`, `${NP}/agrohomeopathy%20program-1.jpg`,

@@ -359,8 +359,22 @@ export const EVENTS = [
   },
 ];
 
-// Top 3 latest press items — mirrors the News & Press gallery (/happenings/news).
+// Top latest press items — mirrors the News & Press gallery (/happenings/news).
 export const NEWS = [
+  {
+    date: "Sep 2026",
+    title: "National Workshop on Health Standardization Held at Amaltas Medical College",
+    desc: "Amaltas Institute of Medical Sciences & Research Centre hosted a two-day national workshop on international health standardization and best clinical practices, with experts training staff on patient assessment, medical negligence and ethical, quality-driven research.",
+    tag: "Medical",
+    img: "/assets/images%20of%20university/news-press/ICF%20WORKSHOP.jpg",
+  },
+  {
+    date: "Aug 2026",
+    title: "‘Khelo India Samvad’ Connects Amaltas Students with PM Modi on Sports & Fitness",
+    desc: "Amaltas University hosted the nationwide 'Khelo India Samvad' on National Sports Day, where Prime Minister Narendra Modi engaged virtually with youth across the country on sport, fitness and nation-building — held in the presence of MP Mahendra Singh Solanki, Chairman Mr. Mayank Raj Singh Bhadoria and Pro-Chancellor Dr. Sachil Bhargava.",
+    tag: "Sports",
+    img: "/assets/images%20of%20university/news-press/KHELO%20INDIA.jpg",
+  },
   {
     date: "Aug 2026",
     title: "Flag Hoisting & Cultural Programs Mark Independence Day at Amaltas University",
@@ -374,13 +388,6 @@ export const NEWS = [
     desc: "The Amaltas Institute of Homoeopathy organised a special seminar on 'Agro-Homeopathy: Possibilities in Agriculture', exploring homeopathy's scientific and practical role in crop health, soil conservation and reducing reliance on chemical fertilisers.",
     tag: "Homoeopathy",
     img: "/assets/images%20of%20university/news-press/agrohomeopathy%20program.jpg",
-  },
-  {
-    date: "2026",
-    title: "Organ Donation Awareness Program Organized at Amaltas Ayurvedic College",
-    desc: "Amaltas Institute of Ayurveda held an organ donation awareness programme, with faculty and students pledging support and spreading the message that organ donation is the greatest gift of humanity.",
-    tag: "Awareness",
-    img: "/assets/images%20of%20university/news-press/angdaan.jpg",
   },
   // Hidden — news item about the Allied & Rehabilitation Sciences labs.
   // {

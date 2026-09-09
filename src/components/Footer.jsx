@@ -76,6 +76,7 @@ export default function Footer() {
           <span style={{ display: "flex", gap: 18, alignItems: "center" }}>
             <Link to="/privacy-policy" style={{ color: "inherit" }}>Privacy Policy</Link>
             <Link to="/privacy-policy-2" style={{ color: "inherit" }}>Privacy Policy 2</Link>
+            <Link to="/terms-and-conditions" style={{ color: "inherit" }}>Terms and Conditions</Link>
             <span>Concept redesign · "Where healing grows."</span>
           </span>
         </div>

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Play, Sparkles, Trophy, HeartPulse,
   Award, Quote, ChevronLeft, ChevronRight, ChevronDown,
-  Calendar, Phone, CheckCircle, Newspaper, Users,
+  Calendar, CheckCircle, Newspaper, Users,
   Check,
 } from "lucide-react";
 import HelixCanvas from "../components/HelixCanvas.jsx";
@@ -28,6 +28,16 @@ const IMGS = {
   leaderBg:     "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=70",
   instBanner:   "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=80",
 };
+
+const HERO_GALLERY = [
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130301_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130315_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130325_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130337_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130355_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130449_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130505_Instagram.jpg.jpeg",
+];
 
 
 /* ─── tiny sub-components ─── */
@@ -642,6 +652,35 @@ function WorldRecordStack() {
   );
 }
 
+function HeroPhotoScroller() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setActive((n) => (n + 1) % HERO_GALLERY.length), 3000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="hero-photo-scroller">
+      {HERO_GALLERY.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt="Life at Amaltas University"
+          className={`hero-photo-slide ${i === active ? "on" : ""}`}
+          loading="lazy"
+          decoding="async"
+        />
+      ))}
+      <div className="hero-photo-dots">
+        {HERO_GALLERY.map((_, i) => (
+          <span key={i} className={i === active ? "on" : ""} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function HeroForm() {
   return (
     <div className="hero-form-box">
@@ -744,21 +783,15 @@ export default function Home() {
         <div className="hero-glow" style={{ width: 380, height: 380, background: "rgba(246,224,5,.18)", right: "8%", bottom: "6%" }} />
 
         {/* ── two-column layout: admissions pitch (left) + enquiry form (right) ── */}
-        <div className="wrap hero-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start", paddingTop: 170, paddingBottom: 80 }}>
+        <div className="wrap hero-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", paddingTop: 170, paddingBottom: 80 }}>
 
           {/* LEFT — admissions pitch */}
           <Reveal variant="left">
-            <span className="eyebrow" style={{ color: C.goldL }}>Admissions 2026–27</span>
-            <h1 style={{ color: C.ivory, marginTop: 14, fontSize: "clamp(2rem,4.5vw,3.2rem)" }}>
-              Your journey into<br />healthcare begins here.
+            <h1 style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)" }}>
+              Amaltas University — Admissions 2026–27
             </h1>
-            <p style={{ color: "rgba(247,244,236,.75)", marginTop: 16, fontSize: 17, maxWidth: 480 }}>
-              Applications are open across Medical Sciences, Ayurveda, Homoeopathy, Nursing,
-              Pharmacy, and Paramedical Sciences for the 2026–27 session.
-            </p>
-            <div style={{ display: "flex", gap: 14, marginTop: 30, flexWrap: "wrap" }}>
-              <a href="https://admission.amaltasuniversity.in/" target="_blank" rel="noreferrer" className="btn btn-gold">Apply Now <ArrowRight size={18} /></a>
-              <a href="tel:+919977544111" className="btn btn-ghost"><Phone size={15} /> Call Helpline</a>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <HeroPhotoScroller />
             </div>
 
             {/* quick admission pathways */}

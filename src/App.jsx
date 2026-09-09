@@ -39,6 +39,7 @@ import Mainpopup from "./components/Mainpopup.jsx";
 import IQAC from "./pages/IQAC.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import PrivacyPolicy2 from "./pages/PrivacyPolicy2.jsx";
+import TermsAndConditions from "./pages/TermsAndConditions.jsx";
 import PublicSelfDisclosure from "./pages/PublicSelfDisclosure.jsx";
 import AntiRaggingCommittee from "./pages/AntiRaggingCommittee.jsx";
 import Healthcare from "./pages/Healthcare.jsx";
@@ -128,6 +129,7 @@ export default function App() {
           <Route path="/alumni/giving-back" element={<AlumniGivingBack />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/privacy-policy-2" element={<PrivacyPolicy2 />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/public-self-disclosure" element={<PublicSelfDisclosure />} />
           <Route path="/anti-ragging-committee" element={<AntiRaggingCommittee />} />
           <Route path="/healthcare" element={<Healthcare />} />
