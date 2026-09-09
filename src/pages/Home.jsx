@@ -37,6 +37,7 @@ const HERO_GALLERY = [
   "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130355_Instagram.jpg.jpeg",
   "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130449_Instagram.jpg.jpeg",
   "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130505_Instagram.jpg.jpeg",
+  "/assets/images%20of%20university/hero%20section/AdobeExpressPhotos_feeb0abe7d45404f8288aed1252dc074_CopyEdited.png",
 ];
 
 
