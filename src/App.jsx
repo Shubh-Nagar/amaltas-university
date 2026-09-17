@@ -4,6 +4,7 @@ import { ArrowUp } from "lucide-react";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import EnquiryWidget from "./components/EnquiryWidget.jsx";
+import AmaltasAssistant from "./components/AmaltasAssistant.jsx";
 import { ScrollToTop } from "./components/Layout.jsx";
 import SEO from "./components/SEO.jsx";
 import Home from "./pages/Home.jsx";
@@ -70,6 +71,7 @@ function GlobalFabs() {
   }, []);
   return (
     <div className="fab-stack" aria-hidden="false">
+      <AmaltasAssistant />
       {!isHome && <EnquiryWidget className="fab fab-enquire" />}
       <a
         href="https://wa.me/919977544111?text=Hi%2C%20I%27d%20like%20to%20know%20about%20admissions%20at%20Amaltas%20University."

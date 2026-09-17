@@ -6,85 +6,9 @@ import { C } from "../theme.js";
 import { CONTACT } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema } from "../data/schema.js";
+import { ELIGIBILITY_CATEGORIES } from "../data/admissions.js";
 
-const CATEGORIES = [
-  {
-    id: "medical-sciences",
-    label: "Medical Sciences",
-    color: C.burg,
-    courses: [
-      { course: "MBBS",     eligibility: "12th passed with Physics, Chemistry & Biology — NEET UG required" },
-      { course: "MD / MS",  eligibility: "MBBS from an NMC-recognised institution — NEET PG required" },
-      { course: "DM / M.Ch", eligibility: "MD / MS / DNB in the relevant broad specialty from an NMC-recognised institution — NEET SS required" },
-    ],
-  },
-  {
-    id: "ayurveda",
-    label: "Ayurveda",
-    color: "#2f7d4f",
-    courses: [
-      { course: "BAMS", eligibility: "12th passed with Physics, Chemistry & Biology — NEET UG required" },
-    ],
-  },
-  {
-    id: "homoeopathy",
-    label: "Homoeopathy",
-    color: "#1a6fa6",
-    courses: [
-      { course: "BHMS", eligibility: "12th passed with Physics, Chemistry & Biology — NEET UG required" },
-    ],
-  },
-  {
-    id: "nursing",
-    label: "Nursing Sciences",
-    color: "#a0522d",
-    courses: [
-      { course: "B.Sc Nursing",            eligibility: "12th with PCB, subject to qualifying the Pre-Nursing Selection Test (PNST)" },
-      { course: "Post Basic B.Sc Nursing", eligibility: "As per UGC / Nursing Council guidelines" },
-      { course: "GNM",                     eligibility: "As per UGC / Nursing Council guidelines" },
-      { course: "M.Sc Nursing",            eligibility: "As per UGC / Nursing Council guidelines" },
-      { course: "PhD Nursing",             eligibility: "As per UGC / Nursing Council guidelines" },
-    ],
-  },
-  {
-    id: "pharmacy",
-    label: "Pharmacy",
-    color: "#1a7a6e",
-    courses: [
-      { course: "B.Pharm", eligibility: "12th passed with PCB / PCM" },
-      { course: "D.Pharm", eligibility: "12th passed with PCB / PCM" },
-    ],
-  },
-  {
-    id: "paramedical",
-    label: "Paramedical Sciences",
-    color: "#5a3e8a",
-    courses: [
-      { course: "BPT",                           eligibility: "12th with PCB" },
-      { course: "BMLT",                          eligibility: "12th with PCB" },
-      { course: "BXRT",                          eligibility: "12th with PCB" },
-      { course: "DMLT",                          eligibility: "12th with PCB" },
-      { course: "Diploma – Cath Lab Technology", eligibility: "12th with PCB" },
-      { course: "Diploma – Dialysis Technology", eligibility: "12th with PCB" },
-      { course: "Certificate – OT Technician",   eligibility: "12th with PCB" },
-      { course: "Certificate – X-Ray Technician", eligibility: "12th with PCB" },
-      { course: "Certificate – USG Technician",  eligibility: "12th with PCB" },
-    ],
-  },
-  // Hidden — Allied & Rehabilitation eligibility category temporarily unlisted.
-  // {
-  //   id: "allied-rehab",
-  //   label: "Allied & Rehabilitation",
-  //   color: "#7a5c1a",
-  //   courses: [
-  //     { course: "B.Sc (Hons.) Clinical Psychology",         eligibility: "12th with PCB / PCM" },
-  //     { course: "BASLP",                                     eligibility: "12th with PCB / PCM" },
-  //     { course: "ISITEP (HI)",                               eligibility: "12th with PCB / PCM" },
-  //     { course: "ISITEP (ID)",                               eligibility: "12th with PCB / PCM" },
-  //     { course: "Prof. Diploma – Clinical Psychology (PDCP)", eligibility: "12th with PCB / PCM" },
-  //   ],
-  // },
-];
+const CATEGORIES = ELIGIBILITY_CATEGORIES;
 
 const ALL_CAT = { id: "all", label: "All", color: C.navy };
 

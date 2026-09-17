@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone, CalendarDays, X, ChevronLeft, ChevronRight, Images } from "lucide-react";
+import { ArrowRight, Phone, CalendarDays, X, ChevronLeft, ChevronRight, Images, Search, SlidersHorizontal, Check } from "lucide-react";
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
@@ -15,6 +15,61 @@ const gal = (folder, files) => files.map((f) => `${EV_BASE}/${encodeURIComponent
 
 const EVENTS = [
   {
+    img: "/assets/images%20of%20university/events/Pharmacon%202026%20AI%20in%20Pharmacy/1.jpeg",
+    date: "11 September 2026",
+    title: "Role of AI in Modern Pharmacy: Opportunities & Challenges — Pharmacon 2026",
+    desc: "Our students attended the National Conference — Pharmacon 2026, themed \"Role of AI in Modern Pharmacy: Opportunities & Challenges,\" held at Ravindra Bhavan, Bhopal, organized by Arogya Bharati in collaboration with the Pharmacy Council of India (PCI) and the State Pharmacy Council. The conference brought together distinguished pharmacy leaders, experts and academicians, with the President of the Pharmacy Council addressing the growing role of Artificial Intelligence in pharmaceutical research, drug development and healthcare services. An engaging panel discussion explored the challenges and opportunities of AI in pharmacy and the skills future pharmacy professionals will need. Students actively participated in poster presentations and competitions, showcasing their creativity, research aptitude and innovative thinking.",
+    gallery: gal("Pharmacon 2026 AI in Pharmacy", Array.from({ length: 12 }, (_, i) => `${i + 1}.jpeg`)),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Industry%20Visit%20MCW%20Healthcare/1.jpeg",
+    date: "11 September 2026",
+    title: "Industry Visit to MCW Healthcare Pvt. Ltd., Indore",
+    desc: "Our students had the valuable opportunity to visit MCW Healthcare Pvt. Ltd., gaining firsthand exposure to the functioning of the healthcare industry and the practical application of classroom concepts. During the visit, students observed industry processes, workplace practices, quality standards, operational procedures and professional work culture, while interacting with industry professionals to understand the importance of knowledge, skills, teamwork, discipline and innovation. Such industry visits play a vital role in bridging the gap between academic learning and real-world experience, preparing students to become confident and industry-ready professionals. A special thanks to MCW Healthcare Pvt. Ltd. for welcoming our students and providing such a valuable learning experience.",
+    gallery: gal("Industry Visit MCW Healthcare", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Ganesh%20Chaturthi%20Celebration%20Pharmacy/1.jpeg",
+    date: "14 September 2026",
+    title: "Ganesh Chaturthi Celebration at Amaltas Institute of Pharmacy",
+    desc: "With devotion in our hearts and positivity all around, Amaltas Institute of Pharmacy celebrated the divine arrival of Lord Ganesha. May Ganpati Bappa bless our students, faculty and the entire Amaltas family with wisdom, happiness, success and good health. Ganpati Bappa Morya!",
+    gallery: gal("Ganesh Chaturthi Celebration Pharmacy", Array.from({ length: 11 }, (_, i) => `${i + 1}.jpeg`)),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Ganesh%20Chaturthi%20Celebration%20Homeopathy/1.jpeg",
+    date: "14 September 2026",
+    title: "Ganesh Chaturthi Celebration at Amaltas Institute of Homoeopathy",
+    desc: "With devotion in our hearts and positivity all around, Amaltas Institute of Homoeopathy celebrated the divine arrival of Lord Ganesha. May Ganpati Bappa bless our students, faculty and the entire Amaltas family with wisdom, happiness, success and good health. Ganpati Bappa Morya!",
+    gallery: gal("Ganesh Chaturthi Celebration Homeopathy", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Ayurveda%20Day%20Educational%20Visit/1.jpeg",
+    date: "10 September 2026",
+    title: "11वें आयुर्वेद दिवस के उपलक्ष्य में विशेष शैक्षणिक भ्रमण एवं जन-जागरूकता कार्यक्रम",
+    desc: "अमलतास इंस्टीट्यूट ऑफ आयुर्वेद, देवास के रचना शरीर विभाग द्वारा 11वें आयुर्वेद दिवस के सुअवसर पर एक विशेष शैक्षणिक एवं आध्यात्मिक/जन-जागरूकता भ्रमण का सफल आयोजन किया गया। इस यात्रा के दौरान विद्यार्थियों एवं संकाय सदस्यों ने शासकीय धन्वंतरि आयुर्वेद मेडिकल कॉलेज एवं अस्पताल, उज्जैन का शैक्षणिक भ्रमण किया तथा उज्जैन स्थित श्री मंगलनाथ मंदिर में दर्शन कर आयुर्वेद एवं स्वास्थ्य जागरूकता का संदेश दिया। यह भ्रमण अमलतास ग्रुप के माननीय फाउंडर चेयरमैन श्री सुरेश सिंह भदौरिया एवं चेयरमैन श्री मयंकराज सिंह भदौरिया के संरक्षण, डायरेक्टर डॉ. अभिजीत तायडे, श्री विकास मंडाड, महाप्रबंधक डॉ. मनीष शर्मा एवं प्राचार्या डॉ. अनिता घोडके के मार्गदर्शन तथा डॉ. ओ.पी. व्यास (प्राचार्य, शासकीय धन्वंतरि आयुर्वेद मेडिकल कॉलेज, उज्जैन) एवं डॉ. योगेश वाणे (विभागाध्यक्ष, रचना शरीर विभाग) के विशेष सहयोग से सफलतापूर्वक संपन्न हुआ।",
+    gallery: gal("Ayurveda Day Educational Visit", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Ayurveda%20Day%20Special%20Initiative/1.jpeg",
+    date: "10 September 2026",
+    title: "11वें आयुर्वेद दिवस पर अमलतास इंस्टीट्यूट ऑफ आयुर्वेद की विशेष पहल",
+    desc: "11वें आयुर्वेद दिवस के उपलक्ष्य में अमलतास इंस्टीट्यूट ऑफ आयुर्वेद, देवास द्वारा आयुर्वेद के प्रति जन-जागरूकता बढ़ाने हेतु एक विशेष पहल का आयोजन किया गया, जिसमें विद्यार्थियों एवं संकाय सदस्यों ने उत्साहपूर्वक सहभागिता की।",
+    gallery: gal("Ayurveda Day Special Initiative", ["1.jpeg", "2.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Nutritional%20Day%20Homeopathy/1.jpeg",
+    date: "11 September 2026",
+    title: "अमलतास इंस्टीट्यूट ऑफ होम्योपैथी में मनाया गया न्यूट्रिशनल डे",
+    desc: "देवास। अमलतास इंस्टीट्यूट ऑफ होम्योपैथी में न्यूट्रिशनल डे के अवसर पर पोषण एवं स्वस्थ जीवनशैली के प्रति जागरूकता बढ़ाने के उद्देश्य से विशेष कार्यक्रम का आयोजन किया गया। कार्यक्रम में विद्यार्थियों एवं स्टाफ ने उत्साहपूर्वक सहभागिता की। कार्यक्रम का आयोजन डॉ. शैला, डॉ. गीता एवं डॉ. शहाना द्वारा किया गया। इस अवसर पर विद्यार्थियों द्वारा 10 से अधिक फ्लेमलेस फूड स्टॉल लगाए गए, जिनमें विभिन्न प्रकार के पौष्टिक एवं स्वादिष्ट व्यंजन प्रस्तुत किए गए। विद्यार्थियों ने अपनी रचनात्मकता के माध्यम से स्वस्थ एवं संतुलित आहार का महत्व प्रदर्शित किया। इस अवसर पर अमलतास इंस्टीट्यूट ऑफ होम्योपैथी के प्राचार्य एवं मेडिकल सुपरिंटेंडेंट प्रो. डॉ. योगेंद्र सिंह भदौरिया ने कहा कि स्वस्थ शरीर एवं स्वस्थ मन के लिए संतुलित पोषण अत्यंत आवश्यक है। चेयरमैन श्री मयंक राज सिंह भदौरिया ने कार्यक्रम की सराहना करते हुए कहा कि विद्यार्थियों के सर्वांगीण विकास के साथ-साथ उन्हें स्वास्थ्य, पोषण एवं स्वस्थ जीवनशैली के प्रति जागरूक करना संस्थान की महत्वपूर्ण जिम्मेदारी है।",
+  },
+  {
+    img: "/assets/images%20of%20university/events/World%20Suicide%20Prevention%20Day%202026/1.jpeg",
+    date: "10 September 2026",
+    title: "World Suicide Prevention Day — Mental Health Awareness Program",
+    desc: "Amaltas University organized a Mental Health & Suicide Prevention Awareness Program in collaboration with the Institute of Nursing, Paramedical College, and Department of Allied & Rehabilitation Sciences. The program highlighted the importance of open conversations about mental health, active listening, emotional support, and timely professional help. Chief Guest Dr. Vijaya Sakpal encouraged everyone to stand by those facing stress, loneliness, hopelessness, or emotional distress. The event was chaired by Vice Chancellor Dr. R.K. Singh, with the presence of university officials, principals, faculty members, and students. Together, let's create a compassionate environment where seeking help is never a hesitation.",
+    gallery: gal("World Suicide Prevention Day 2026", Array.from({ length: 9 }, (_, i) => `${i + 1}.jpeg`)),
+  },
+  {
     img: "/assets/images%20of%20university/events/Guest%20Lecture%20on%20Suicide%20Prevention/1.jpeg",
     date: "10 September 2026",
     title: "11वें विश्व आयुर्वेद दिवस के उपलक्ष्य में आत्महत्या रोकथाम पर अतिथि व्याख्यान",
@@ -23,6 +78,13 @@ const EVENTS = [
       "1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg", "8.jpeg",
       "9.jpeg", "10.jpeg", "11.jpeg", "12.jpeg", "13.jpeg", "14.jpeg", "15.jpeg", "16.jpeg", "17.jpeg",
     ]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Teachers%20Day%20Celebration%20Nursing/1.jpeg",
+    date: "5 September 2026",
+    title: "Celebrating the Guiding Hands of Education!",
+    desc: "Amaltas Institute of Nursing Sciences celebrated Teachers' Day with joy, gratitude, and heartfelt appreciation for the incredible teachers who inspire, guide, and empower future healthcare professionals. Their dedication, wisdom, and constant encouragement continue to shape confident and compassionate nursing professionals. Happy Teachers' Day to all our inspiring educators!",
+    gallery: gal("Teachers Day Celebration Nursing", Array.from({ length: 9 }, (_, i) => `${i + 1}.jpeg`)),
   },
   {
     img: "/assets/images%20of%20university/events/Khelo%20India%20Samvad/6.jpeg",
@@ -65,6 +127,13 @@ const EVENTS = [
     title: "अंतिम विदाई में भी परोपकार: सेवाधाम आश्रम के कर्मयोगी का देहदान एवं नेत्र दान, समाज के लिए बने मिसाल",
     desc: "देवास: मानवता की सेवा और चिकित्सा शिक्षा के क्षेत्र में देवास का अमलतास मेडिकल कॉलेज एक ऐतिहासिक पल का साक्षी बना। सेवाधाम आश्रम (अंकितग्राम) में निवासरत 65 वर्षीय विजय दीनानाथ बाथम का देहदान संकल्प मंगलवार को पूरे राजकीय सम्मान के साथ पूर्ण हुआ। मध्यप्रदेश के मुख्यमंत्री डॉ. मोहन यादव की मंशानुसार, देहदानियों को सर्वोच्च सम्मान देने के लिए अमलतास मेडिकल कॉलेज परिसर में पुलिस विभाग की टुकड़ी द्वारा 'गार्ड ऑफ ऑनर' प्रदान किया गया। इस भावुक क्षण के दौरान वहां उपस्थित पुलिस बल, कॉलेज डीन डॉ. ए.के. पिठावा, एनाटॉमी विभाग के हेड डॉ. करखायले एम. एल, मेडिकल छात्र, डॉक्टर्स ने नम आंखों से इस महान आत्मा को अंतिम विदाई दी। यह पुनीत कार्य सेवाधाम आश्रम, ग्राम अम्बोदिया (उज्जैन) के संस्थापक श्री सुधीर भाई गोयल के विशेष प्रयासों से संपन्न हुआ। देहदान अधिकारी श्री गजानंद चौहान एवं मो. रेहानुद्दीन ने कॉर्निया एवं देहदान की प्रक्रिया की जानकारी दी और इसे संपन्न कराया। अमलतास वेलफेयर सोसायटी के चेयरमैन महोदय ने श्री सुधीर भाई गोयल जी के प्रति हृदय से आभार व्यक्त किया।",
     gallery: gal("अंतिम विदाई में भी परोपकार", ["1.jpeg", "2.jpeg", "3.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/World%20Breastfeeding%20Week%20Nursing/1.jpeg",
+    date: "7 August 2026",
+    title: "अमलतास इंस्टीट्यूट ऑफ नर्सिंग साइंसेस में मनाया गया 'विश्व स्तनपान सप्ताह'",
+    desc: "देवास- अमलतास इंस्टीट्यूट ऑफ नर्सिंग साइंसेस द्वारा अस्पताल परिसर में 'विश्व स्तनपान सप्ताह' का आयोजन उत्साहपूर्वक किया गया। इस वर्ष यह कार्यक्रम \"Prioritize Breastfeeding: Create Sustainable Support Systems\" की थीम पर केंद्रित रहा। आयोजन का मुख्य उद्देश्य नवजात शिशुओं के सर्वांगीण विकास के लिए माँ के दूध के महत्व और माँ-बच्चे दोनों के बेहतर स्वास्थ्य के प्रति जनजागरूकता फैलाना है। कार्यक्रम में मुख्य अतिथि के रूप में यू.एस. विदेशी सेवा (U.S. Foreign Service) के क्षेत्रीय चिकित्सा अधिकारी डॉ. राजेश व्यास विशेष रूप से उपस्थित रहे। अमलतास नर्सिंग कॉलेज की प्राचार्य डॉ. संगीता तिवारी ने कहा, \"स्तनपान नवजात शिशु के लिए पहला और सबसे महत्वपूर्ण सुरक्षा कवच है। माँ का दूध बच्चे को संपूर्ण पोषण के साथ-साथ गंभीर बीमारियों से लड़ने की प्रतिरोधक क्षमता देता है।\" संस्थान के चेयरमैन मयंकराज सिंह भदौरिया ने अपने संदेश में कहा, \"माँ का दूध नवजात शिशु के लिए प्रकृति का सबसे अनमोल उपहार है। एक स्वस्थ बच्चे से ही सशक्त और समृद्ध समाज का निर्माण होता है।\"",
+    gallery: gal("World Breastfeeding Week Nursing", Array.from({ length: 10 }, (_, i) => `${i + 1}.jpeg`)),
   },
   {
     img: "/assets/images%20of%20university/events/Pediatrics%20UG%20Quiz%20Competition%202026/1.jpeg",
@@ -277,6 +346,24 @@ const EVENTS = [
   },
 ];
 
+const yearOf = (ev) => (ev.date.match(/\b(20\d{2})\b/) || [, "2026"])[1];
+
+const ENRICHED_EVENTS = EVENTS.map((ev, i) => ({ ...ev, _idx: i, _year: yearOf(ev) }));
+const YEARS = [...new Set(ENRICHED_EVENTS.map((e) => e._year))].sort((a, b) => b - a);
+const SORT_OPTIONS = [
+  { value: "newest", label: "Newest first" },
+  { value: "oldest", label: "Oldest first" },
+  { value: "az", label: "Title A–Z" },
+];
+
+function toggleInSet(setter, value) {
+  setter((prev) => {
+    const next = new Set(prev);
+    next.has(value) ? next.delete(value) : next.add(value);
+    return next;
+  });
+}
+
 /**
  * Card thumbnail that flips through the event's gallery while the pointer is
  * over it, and settles back on the cover shot as soon as the pointer leaves.
@@ -352,6 +439,49 @@ function EventMedia({ ev, hasGallery }) {
 export default function Events() {
   const [open, setOpen] = useState(null);        // event object shown in the modal
   const [lightbox, setLightbox] = useState(null); // index into open.gallery, or null
+  const [query, setQuery] = useState("");
+
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [sortBy, setSortBy] = useState("newest");
+  const [yearFilter, setYearFilter] = useState(() => new Set());
+  const [photosOnly, setPhotosOnly] = useState(false);
+  const filterRef = useRef(null);
+
+  const activeFilterCount = yearFilter.size + (photosOnly ? 1 : 0);
+
+  const clearFilters = () => {
+    setYearFilter(new Set());
+    setPhotosOnly(false);
+    setSortBy("newest");
+  };
+
+  const filteredEvents = React.useMemo(() => {
+    const q = query.trim().toLowerCase();
+    let list = ENRICHED_EVENTS.filter((ev) => {
+      if (q && ![ev.title, ev.desc, ev.date].some((f) => f && f.toLowerCase().includes(q))) return false;
+      if (yearFilter.size && !yearFilter.has(ev._year)) return false;
+      if (photosOnly && !(Array.isArray(ev.gallery) && ev.gallery.length > 0)) return false;
+      return true;
+    });
+    if (sortBy === "oldest") list = [...list].reverse();
+    else if (sortBy === "az") list = [...list].sort((a, b) => a.title.localeCompare(b.title));
+    return list;
+  }, [query, yearFilter, photosOnly, sortBy]);
+
+  // close the filter panel on outside click or Escape
+  useEffect(() => {
+    if (!filtersOpen) return;
+    const onDown = (e) => {
+      if (filterRef.current && !filterRef.current.contains(e.target)) setFiltersOpen(false);
+    };
+    const onKey = (e) => { if (e.key === "Escape") setFiltersOpen(false); };
+    document.addEventListener("mousedown", onDown);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [filtersOpen]);
 
   // body-scroll lock + Escape / arrow-key handling while a modal is open
   useEffect(() => {
@@ -393,12 +523,113 @@ export default function Events() {
 
       {/* ── EVENTS GRID ── */}
       <section className="sec wrap">
-        <Reveal>
-          <span className="eyebrow">The archive</span>
-          <h2 style={{ marginTop: 14, marginBottom: 40 }}>Everything that's happened.</h2>
+        <Reveal cls="ev-toolbar-reveal">
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24, flexWrap: "wrap", marginBottom: 40 }}>
+            <div>
+              <span className="eyebrow">The archive</span>
+              <h2 style={{ marginTop: 14, marginBottom: 0 }}>Everything that's happened.</h2>
+            </div>
+            <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+              <div className="ev-filter" ref={filterRef}>
+                <button
+                  type="button"
+                  className="ev-filter-btn"
+                  onClick={() => setFiltersOpen((o) => !o)}
+                  aria-expanded={filtersOpen}
+                  aria-haspopup="true"
+                  data-open={filtersOpen || activeFilterCount > 0 || undefined}
+                >
+                  <SlidersHorizontal size={15} strokeWidth={2.25} />
+                  Filters
+                  {activeFilterCount > 0 && <span className="ev-filter-badge">{activeFilterCount}</span>}
+                </button>
+
+                {filtersOpen && (
+                  <div className="ev-filter-panel" role="dialog" aria-label="Filter and sort events">
+                    <div className="ev-filter-section">
+                      <div className="ev-filter-label">Sort by</div>
+                      <div className="ev-filter-chips">
+                        {SORT_OPTIONS.map((opt) => (
+                          <button
+                            key={opt.value}
+                            type="button"
+                            className={`ev-chip${sortBy === opt.value ? " on" : ""}`}
+                            onClick={() => setSortBy(opt.value)}
+                          >
+                            {sortBy === opt.value && <Check size={12} strokeWidth={3} />}
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+
+                    <div className="ev-filter-section">
+                      <div className="ev-filter-label">Year</div>
+                      <div className="ev-filter-chips">
+                        {YEARS.map((yr) => (
+                          <button
+                            key={yr}
+                            type="button"
+                            className={`ev-chip${yearFilter.has(yr) ? " on" : ""}`}
+                            onClick={() => toggleInSet(setYearFilter, yr)}
+                          >
+                            {yearFilter.has(yr) && <Check size={12} strokeWidth={3} />}
+                            {yr}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <label className="ev-filter-toggle">
+                      <input type="checkbox" checked={photosOnly} onChange={(e) => setPhotosOnly(e.target.checked)} />
+                      With photo gallery only
+                    </label>
+
+                    <div className="ev-filter-footer">
+                      <button type="button" className="ev-filter-clear" onClick={clearFilters} disabled={activeFilterCount === 0 && sortBy === "newest"}>
+                        Clear all
+                      </button>
+                      <button type="button" className="ev-filter-done" onClick={() => setFiltersOpen(false)}>
+                        Show {filteredEvents.length} events
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="ev-search">
+                <Search size={16} strokeWidth={2.25} className="ev-search-icon" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search events…"
+                  aria-label="Search events"
+                  className="ev-search-input"
+                />
+                {query && (
+                  <button
+                    type="button"
+                    className="ev-search-clear"
+                    onClick={() => setQuery("")}
+                    aria-label="Clear search"
+                  >
+                    <X size={13} strokeWidth={2.25} />
+                  </button>
+                )}
+                <span className="ev-search-underline" aria-hidden="true" />
+              </div>
+            </div>
+          </div>
         </Reveal>
+        {filteredEvents.length === 0 && (
+          <p style={{ color: C.slate, fontSize: 15, marginBottom: 40 }}>
+            No events match your filters{query ? ` for "${query}"` : ""}. Try clearing a filter or searching something else.
+          </p>
+        )}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 24 }}>
-          {EVENTS.map((ev, i) => {
+          {filteredEvents.map((ev, i) => {
             const hasGallery = Array.isArray(ev.gallery) && ev.gallery.length > 0;
             return (
               <Reveal key={ev.img} delay={`d${(i % 3) + 1}`}>

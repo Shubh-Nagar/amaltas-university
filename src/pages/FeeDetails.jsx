@@ -6,91 +6,9 @@ import { C } from "../theme.js";
 import { CONTACT } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema } from "../data/schema.js";
+import { FEE_CATEGORIES } from "../data/admissions.js";
 
-const CATEGORIES = [
-  {
-    id: "medical",
-    label: "Medical",
-    color: C.burg,
-    courses: [
-      { course: "MBBS", specialization: null, fee: 1698000, seats: 250 },
-      { course: "MD / MS", specialization: "Dermatology, Radio-Diagnosis", fee: 2184000, seats: null },
-      { course: "MD / MS", specialization: "General Medicine, OBS-Gynae", fee: 1950000, seats: null },
-      { course: "MD / MS", specialization: "Orthopaedic, Anaesthesia, Paediatric, Psychiatry, Respiratory, ENT, General Surgery, Ophthalmology, Emergency Medicine", fee: 1838000, seats: 134 },
-      { course: "MD", specialization: "Pathology", fee: 950000, seats: null },
-      { course: "DM", specialization: "Cardiology, Nephrology", fee: 1215000, seats: null },
-      { course: "M.Ch", specialization: "Neurosurgery, Urology", fee: 1805000, seats: null },
-      { course: "MD", specialization: "Anatomy, Biochemistry, Physiology, Forensic Medicine", fee: 10000, seats: null },
-      { course: "MD", specialization: "Pharmacology, Community Medicine, Microbiology", fee: 100000, seats: null },
-    ],
-  },
-  {
-    id: "ayurveda",
-    label: "Ayurveda",
-    color: "#2d7a4f",
-    courses: [
-      { course: "BAMS", specialization: "Bachelor of Ayurvedic Medicine & Surgery", fee: 310000, seats: 100 },
-    ],
-  },
-  {
-    id: "homoeopathy",
-    label: "Homoeopathy",
-    color: "#3f8f63",
-    courses: [
-      { course: "BHMS", specialization: "Bachelor of Homeopathic Medicine & Surgery", fee: 155000, seats: 100 },
-    ],
-  },
-  {
-    id: "nursing",
-    label: "Nursing",
-    color: "#a0522d",
-    courses: [
-      { course: "B.Sc Nursing", specialization: null, fee: 90000, seats: 100 },
-      { course: "B.Sc Post Basic Nursing", specialization: null, fee: 61000, seats: 40 },
-      { course: "M.Sc Nursing", specialization: null, fee: 135000, seats: 34 },
-      { course: "GNM", specialization: "General Nursing & Midwifery", fee: 51000, seats: 100 },
-      { course: "PhD Nursing", specialization: null, fee: 135000, seats: null },
-    ],
-  },
-  {
-    id: "pharmacy",
-    label: "Pharmacy",
-    color: "#1a7a6e",
-    courses: [
-      { course: "B.Pharm", specialization: "Bachelor of Pharmacy", fee: 69500, seats: 60 },
-      { course: "D.Pharm", specialization: "Diploma in Pharmacy", fee: 75000, seats: 60 },
-    ],
-  },
-  {
-    id: "allied",
-    label: "Paramedical",
-    color: "#5a3e8a",
-    courses: [
-      { course: "BPT", specialization: "Bachelor of Physiotherapy", fee: 75000, seats: 50 },
-      { course: "BMLT", specialization: "Bachelor of Medical Lab Technology", fee: 75000, seats: 50 },
-      { course: "BXRT", specialization: "Bachelor of X-Ray Technology", fee: 55000, seats: null },
-      { course: "DMLT", specialization: "Diploma in Medical Lab Technology", fee: 40000, seats: 50 },
-      { course: "Dialysis Technician", specialization: null, fee: 30000, seats: null },
-      { course: "Cath Lab Technician", specialization: null, fee: 30000, seats: null },
-      { course: "OT Technician", specialization: "Operation Theatre Technician", fee: 30000, seats: 50 },
-      { course: "X-Ray Technician", specialization: null, fee: 20000, seats: 50 },
-      { course: "USG Technician", specialization: "Ultrasonography Technician", fee: 20000, seats: 50 },
-    ],
-  },
-  // Hidden — Allied and Rehabilitation fee category temporarily unlisted.
-  // {
-  //   id: "psychology",
-  //   label: "Allied and Rehabilitation",
-  //   color: "#7a5c1a",
-  //   courses: [
-  //     { course: "B.Sc (Hons) Clinical Psychology", specialization: null, fee: 110000, seats: 20 },
-  //     { course: "BASLP", specialization: "Audiology & Speech Language Pathology", fee: 110000, seats: null },
-  //     { course: "ISITEP (HI)", specialization: "Hearing Impairment", fee: 110000, seats: null },
-  //     { course: "ISITEP (ID)", specialization: "Intellectual Disability", fee: 110000, seats: 20 },
-  //     { course: "Prof. Diploma", specialization: "Clinical Psychology", fee: 230000, seats: 12 },
-  //   ],
-  // },
-];
+const CATEGORIES = FEE_CATEGORIES;
 
 function fmt(n) {
   return "₹" + n.toLocaleString("en-IN");
