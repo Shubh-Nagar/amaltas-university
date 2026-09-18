@@ -29,6 +29,27 @@ const EVENTS = [
     gallery: gal("Industry Visit MCW Healthcare", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "7.jpeg"]),
   },
   {
+    img: "/assets/images%20of%20university/events/Ganesh%20Sthapana%20Nursing/1.jpeg",
+    date: "14 September 2026",
+    title: "श्री गणेश जी का शुभ आगमन — अमलतास इंस्टीट्यूट ऑफ नर्सिंग साइंसेज",
+    desc: "Amaltas Institute of Nursing Sciences में विघ्नहर्ता भगवान श्री गणेश जी की स्थापना कर सभी के सुख, समृद्धि, ज्ञान और सफलता की मंगलकामना की गई। गणपति बप्पा मोरया!",
+    gallery: gal("Ganesh Sthapana Nursing", ["1.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Ganesh%20Sthapana%20University/1.jpeg",
+    date: "14 September 2026",
+    title: "श्री गणेशाय नमः — अमलतास यूनिवर्सिटी परिसर में भगवान श्री गणेश जी का शुभ आगमन एवं स्थापना",
+    desc: "ज्ञान, बुद्धि और समृद्धि के प्रतीक भगवान श्री गणेश जी का अमलतास यूनिवर्सिटी परिसर में शुभ आगमन एवं स्थापना की गई। विघ्नहर्ता श्री गणेश जी की कृपा से विश्वविद्यालय परिवार में सुख, शांति, समृद्धि और सफलता का संचार हो। गणपति बप्पा मोरया!",
+    gallery: gal("Ganesh Sthapana University", ["1.jpeg", "2.jpeg", "3.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/Ganesh%20Sthapana%20Ayurveda/1.jpeg",
+    date: "14 September 2026",
+    title: "श्री गणेशाय नमः — अमलतास इंस्टीट्यूट ऑफ आयुर्वेद में भगवान श्री गणेश जी की मंगलमय स्थापना",
+    desc: "अमलतास इंस्टीट्यूट ऑफ आयुर्वेद एवं अमलतास आयुर्वेदिक हॉस्पिटल एंड रिसर्च सेंटर में विघ्नहर्ता भगवान श्री गणेश जी की मंगलमय स्थापना की गई। भगवान गणेश जी की कृपा से सभी के जीवन में सुख, शांति, समृद्धि एवं सफलता का आगमन हो। गणपति बप्पा मोरया!",
+    gallery: gal("Ganesh Sthapana Ayurveda", ["1.jpeg"]),
+  },
+  {
     img: "/assets/images%20of%20university/events/Ganesh%20Chaturthi%20Celebration%20Pharmacy/1.jpeg",
     date: "14 September 2026",
     title: "Ganesh Chaturthi Celebration at Amaltas Institute of Pharmacy",
