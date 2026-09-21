@@ -42,21 +42,24 @@ export async function generateCertificate(workshop, fullName) {
   const page = pdfDoc.getPage(0);
   const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-  const { textCenterX, baselineY, maxWidth, maxFontSize, minFontSize } = workshop.nameBox;
+  // A template may have more than one blank for the name (e.g. a pledge line).
+  const boxes = workshop.nameBoxes || [workshop.nameBox];
 
-  let fontSize = maxFontSize;
-  while (fontSize > minFontSize && font.widthOfTextAtSize(fullName, fontSize) > maxWidth) {
-    fontSize -= 1;
+  for (const { textCenterX, baselineY, maxWidth, maxFontSize, minFontSize } of boxes) {
+    let fontSize = maxFontSize;
+    while (fontSize > minFontSize && font.widthOfTextAtSize(fullName, fontSize) > maxWidth) {
+      fontSize -= 1;
+    }
+    const textWidth = font.widthOfTextAtSize(fullName, fontSize);
+
+    page.drawText(fullName, {
+      x: textCenterX - textWidth / 2,
+      y: baselineY,
+      size: fontSize,
+      font,
+      color: rgb(0.08, 0.08, 0.08),
+    });
   }
-  const textWidth = font.widthOfTextAtSize(fullName, fontSize);
-
-  page.drawText(fullName, {
-    x: textCenterX - textWidth / 2,
-    y: baselineY,
-    size: fontSize,
-    font,
-    color: rgb(0.08, 0.08, 0.08),
-  });
 
   const bytes = await pdfDoc.save();
   return new Blob([bytes], { type: "application/pdf" });

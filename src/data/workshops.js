@@ -34,4 +34,29 @@ export const WORKSHOPS = {
       minFontSize: 10,
     },
   },
+  NPW: {
+    label: "National Pharmacovigilance Week",
+    excelPath: "/assets/National%20Pharmacovigilance%20Week.xlsx",
+    templatePath: "/assets/certificate/National%20Pharmacovigilance%20Week.pdf",
+    nameKey: "Full Name",
+    emailKey: "Email",
+    // This template's MediaBox starts at y=8.58, so PDF y = 604.08 − the y a
+    // viewer/PyMuPDF reports from the top.
+    nameBoxes: [
+      {
+        textCenterX: 468, // the "Dr./Mr./Ms. ____" line runs x 288–648
+        baselineY: 375,   // clears the underline, descenders included
+        maxWidth: 340,
+        maxFontSize: 20,
+        minFontSize: 10,
+      },
+      {
+        textCenterX: 377, // pledge line: "I, Dr./Mr./Ms.……," dots run x 171–583
+        baselineY: 226,   // clears the dots (their baseline is ≈221), descenders included
+        maxWidth: 380,
+        maxFontSize: 16,  // matches the surrounding 16pt pledge text
+        minFontSize: 9,
+      },
+    ],
+  },
 };

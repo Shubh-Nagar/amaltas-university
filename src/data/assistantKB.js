@@ -94,6 +94,27 @@ const REWRITES = {
   baat: "talk", baate: "talk",
   seat: "seats", sit: "seats", seaten: "seats",
   manyata: "approved",
+
+  /* ── misspellings seen in real chat logs ── */
+  heloo: "hello", hellow: "hello", helloo: "hello", hlo: "hello",
+  chiaye: "chahiye", chahye: "chahiye", chaye: "chahiye",
+  kb: "kab", kha: "where",
+  scoller: "scholarship", scolar: "scholarship", scholer: "scholarship", schollar: "scholarship", scholar: "scholarship",
+  scholorship: "scholarship", scolership: "scholarship", scollership: "scholarship", scholarshiip: "scholarship",
+  paramadicle: "paramedical", paramedicle: "paramedical", paramdical: "paramedical", parmedical: "paramedical",
+  peramedical: "paramedical", paramadical: "paramedical", paramedic: "paramedical", paramedics: "paramedical",
+  dylasis: "dialysis", dialisis: "dialysis", dialysys: "dialysis", dilaysis: "dialysis", dailysis: "dialysis", dialsis: "dialysis",
+  cources: "courses", cource: "course", corse: "course", corses: "courses",
+  pscology: "psychology", psycology: "psychology", psychologi: "psychology", phychology: "psychology",
+  sycology: "psychology", psycholgy: "psychology", pyschology: "psychology", psychlogy: "psychology", saikology: "psychology",
+  discpline: "discipline", dispipline: "discipline", disipline: "discipline", desipline: "discipline",
+  discplines: "disciplines", dispiplines: "disciplines", disiplines: "disciplines", desiplines: "disciplines",
+  clases: "classes", clas: "class", classs: "class",
+  avilable: "available", availble: "available", avalable: "available", avaliable: "available",
+  progrqmme: "programme", programe: "programme", progam: "program",
+  genral: "general", genreal: "general",
+  hidnie: "hindi", hindee: "hindi", hinid: "hindi", hindii: "hindi",
+  mpharma: "mpharm", mpharmacy: "mpharm",
 };
 
 const rewriteToks = (toks) => toks.map((t) => REWRITES[t] || t);
@@ -185,7 +206,9 @@ function scoreItem(q, item) {
   let exact = false;
   const hits = [];
   for (const k of item._kw) {
-    const s = matchKw(q, k, item._own);
+    let s = matchKw(q, k, item._own);
+    // weak keywords ("kitna" = "how much/how many") only tip a tie
+    if (s > 0 && item._weak?.has(k)) s = Math.min(s, 0.5);
     if (s > 0) {
       score += s;
       if (s >= 1) { exact = true; hits.push(k); }
@@ -200,7 +223,7 @@ const compile = (list) =>
     // deduped: folding ("rupees" → "paisa") can collapse two keywords into one,
     // and a keyword counted twice would out-score a better phrase match.
     const _kw = [...new Set(x.keywords.map(kwNorm))];
-    return { ...x, _kw, _own: new Set(_kw) };
+    return { ...x, _kw, _own: new Set(_kw), _weak: x.weak && new Set(x.weak.map(kwNorm)) };
   });
 
 /* ───────────────────────── facts ───────────────────────── */
@@ -219,6 +242,9 @@ const L = {
   eligibility: { to: "/admissions/eligibility", label: "Eligibility Criteria" },
   procedure: { to: "/admissions/procedure", label: "Admission Procedure" },
   programs: { to: "/admissions", label: "Courses & Programs" },
+  enquiry: { to: "/admissions", label: "Admission enquiry form" },
+  phdCall: { href: `tel:${PHD_ADMISSION.phones[0].replace(/[^\d+]/g, "")}`, label: "Call the Ph.D. cell" },
+  phdEmail: { href: `mailto:${PHD_ADMISSION.email}`, label: "Email the Ph.D. cell" },
   institutions: { to: "/institutions", label: "Institutions" },
   hostel: { to: "/student-life/hostel", label: "Hostel & Accommodation" },
   campusLife: { to: "/student-life/campus-life", label: "Campus Life" },
@@ -279,7 +305,7 @@ const INSTITUTES = compile([
     id: "pharmacy", inst: findInst("pharmacy"), feeCat: "pharmacy", eligCat: "pharmacy",
     approval: "PCI (Pharmacy Council of India)",
     extra: "Formulation, pharmacology and analysis labs aligned to PCI standards.",
-    keywords: ["pharmacy", "pharmacist", "pharma", "pharmaceutical", "फार्मेसी"],
+    keywords: ["pharmacy", "pharmacist", "pharma", "pharmaceutical", "mpharm", "m pharm", "फार्मेसी"],
   },
   {
     id: "paramedical", inst: findInst("paramedical"), feeCat: "allied", eligCat: "paramedical",
@@ -290,6 +316,17 @@ const INSTITUTES = compile([
 ].filter((x) => x.inst));
 
 const instById = (id) => INSTITUTES.find((i) => i.id === id);
+
+// "Six disciplines" is how the site describes the university (and the Ph.D. scope).
+const DISCIPLINES = [
+  ["Medical Sciences", "Modern medicine"],
+  ["Ayurveda", "Ayurveda"],
+  ["Homoeopathy", "Homoeopathy"],
+  ["Nursing", "Nursing"],
+  ["Pharmacy", "Pharmacy"],
+  ["Paramedical Sciences", "Paramedical"],
+];
+const disciplineList = () => DISCIPLINES.map(([d]) => d).join(", ");
 
 const SPEC_ALIASES = {
   gynae: "obs gynae", gynaecology: "obs gynae", gynecology: "obs gynae", obstetrics: "obs gynae",
@@ -370,14 +407,20 @@ const PROGRAMS = compile([
     keywords: ["gnm", "general nursing", "general nursing and midwifery", "midwifery", "जीएनएम"],
   },
   {
-    id: "phdn", label: "Ph.D. Nursing", instId: "nursing", elig: eligOf("PhD Nursing"),
+    id: "phdn", label: "Ph.D. Nursing", instId: "nursing", elig: eligOf("PhD Nursing"), phd: true,
+    duration: "minimum 3 years",
     rows: () => feeRowsWhere("nursing", (r) => r.course === "PhD Nursing"),
+    note: `Ph.D. admission cell: ${PHD_ADMISSION.phones.join(" / ")} · ${PHD_ADMISSION.email}`,
     keywords: ["phd nursing", "phd in nursing", "nursing phd", "doctorate in nursing"],
   },
   {
-    id: "phd", label: "Ph.D. (all disciplines)", instId: null,
-    rows: () => feeRowsWhere("nursing", (r) => r.course === "PhD Nursing"),
-    note: `Ph.D. programmes run across all six health-science disciplines, with a dedicated admission cell: ${PHD_ADMISSION.phones.join(" / ")} · ${PHD_ADMISSION.email}. Only the Ph.D. Nursing fee is published online.`,
+    id: "phd", label: "Ph.D.", instId: null, phd: true,
+    elig: "as per UGC Ph.D. regulations — generally a relevant master's / postgraduate degree",
+    duration: "minimum 3 years",
+    // Only the Ph.D. Nursing fee is published, so no fee row is claimed for the rest.
+    rows: () => [],
+    note: `Ph.D. is offered across the six health-science disciplines: ${disciplineList()}. Ph.D. admission cell: ${PHD_ADMISSION.phones.join(" / ")} · ${PHD_ADMISSION.email}`,
+    noteHi: `Ph.D. in chhe health-science disciplines mein hoti hai: ${disciplineList()}. Ph.D. admission cell: ${PHD_ADMISSION.phones.join(" / ")} · ${PHD_ADMISSION.email}`,
     keywords: ["phd", "ph d", "doctorate", "doctoral", "research degree", "पीएचडी"],
   },
   {
@@ -453,7 +496,57 @@ function detectPrograms(q) {
   const kept = exact.filter((s) =>
     !s.hits.every((h) => exact.some((o) => o !== s && o.hits.some((oh) => within(h, oh))))
   );
+  // "PhD in radiology / physiotherapy / anatomy" is a Ph.D. question — the
+  // subject word must not drag in MD Radio-Diagnosis, BPT or MD Anatomy.
+  const phd = kept.find((s) => s.item.id === "phdn") || kept.find((s) => s.item.phd);
+  if (phd) return [phd.item];
   return kept.sort((a, b) => b.score - a.score).slice(0, 4).map((s) => s.item);
+}
+
+// Subjects Amaltas doesn't list. Answering "not offered" beats a wrong fee table.
+const NOT_OFFERED = compile([
+  { id: "psychology", label: "Clinical Psychology / PDCP", unlisted: true, keywords: ["psychology", "clinical psychology", "pdcp", "professional diploma in clinical psychology", "psychologist", "counselling psychology", "baslp", "speech therapy", "audiology", "rehabilitation", "isitep"] },
+  { id: "sociology", label: "Sociology", keywords: ["sociology", "social work", "msw", "bsw"] },
+  { id: "cosmetology", label: "Aesthetic Cosmetology", keywords: ["cosmetology", "aesthetic", "aesthetics", "beauty", "cosmetic"] },
+  { id: "management", label: "MBA / BBA / management", keywords: ["mba", "bba", "management course", "hospital management", "hospital administration", "hotel management"] },
+  { id: "dental", label: "BDS / dental", keywords: ["bds", "mds", "dental", "dentist", "dentistry"] },
+  { id: "engineering", label: "Engineering / computers", keywords: ["engineering", "btech", "b tech", "mtech", "bca", "mca", "computer science", "it course"] },
+  { id: "other", label: "that subject", keywords: ["llb", "law", "bcom", "mcom", "b com", "commerce degree", "agriculture", "veterinary", "bvsc", "journalism", "fashion", "biotechnology", "biotech", "bed course", "b ed", "english literature"] },
+]);
+
+function detectNotOffered(q) {
+  const best = NOT_OFFERED.map((s) => scoreItem(q, s)).filter((s) => s.exact).sort((a, b) => b.score - a.score)[0];
+  return best ? best.item : null;
+}
+
+function notOfferedAnswer(subject, q, lang) {
+  const phd = has(q, ["phd", "ph d", "doctorate"]);
+  const list = bullet(DISCIPLINES.map(([d]) => d));
+  if (phd) {
+    return {
+      text: t(lang,
+        `Ph.D. at Amaltas is offered in the **six health-science disciplines**:\n${list}\n**${subject.label}** isn't in that published list. The Ph.D. admission cell can confirm whether a related research area is available: ${PHD_ADMISSION.phones.join(" / ")}.`,
+        `Amaltas mein Ph.D. **chhe health-science disciplines** mein hoti hai:\n${list}\n**${subject.label}** is published list mein nahi hai. Koi milta-julta research area uplabdh hai ya nahi, yeh Ph.D. admission cell bata dega: ${PHD_ADMISSION.phones.join(" / ")}.`),
+      links: [L.phdCall, L.phdEmail],
+      chips: ["Ph.D.", "Courses", "Contact"],
+    };
+  }
+  if (subject.unlisted) {
+    return {
+      text: t(lang,
+        `**${subject.label}** programmes aren't in the currently published course list, so I can't share fees or eligibility for them. Please check with the admissions team whether they're running for the **2026–27** session.`,
+        `**${subject.label}** ke programmes abhi published course list mein nahi hain, isliye main unki fees ya eligibility nahi bata sakti. **2026–27** session mein yeh chal rahe hain ya nahi, admission team se confirm kar lijiye.`),
+      links: [L.call, L.whatsapp, L.programs],
+      chips: ["Courses", "Courses without NEET", "Contact"],
+    };
+  }
+  return {
+    text: t(lang,
+      `Amaltas is a health-sciences university, and **${subject.label}** isn't among its programmes. What we offer spans six disciplines:\n${list}\nIf you studied Science in 12th, try "Which course suits me?" to find a fit.`,
+      `Amaltas ek health-sciences university hai, aur **${subject.label}** yahan ke courses mein nahi hai. Hamare courses in chhe disciplines mein hain:\n${list}\n12th mein Science thi to "Mera liye kaun sa course sahi hai?" puchh kar dekhiye.`),
+    links: [L.programs, L.institutions],
+    chips: ["Which course suits me?", "Courses", "Contact"],
+  };
 }
 
 function detectInstitute(q) {
@@ -476,8 +569,17 @@ function feeRange(rows) {
   return lo === hi ? inr(lo) : `${inr(lo)} – ${inr(hi)}`;
 }
 
+const noteOf = (p, lang) => (lang === "hi" && p.noteHi) || p.note;
+
 function programFeeLines(p, q, lang) {
   const rows = p.rows(q);
+  if (p.id === "phd") {
+    const n = feeRowsWhere("nursing", (r) => r.course === "PhD Nursing")[0];
+    return [
+      `${n.course} — **${inr(n.fee)}**/${t(lang, "year", "saal")}`,
+      t(lang, "Other Ph.D. subjects — fee not published; the Ph.D. admission cell confirms it", "Baaki Ph.D. vishay — fees publish nahi hai; Ph.D. admission cell confirm karega"),
+    ];
+  }
   if (!rows.length) {
     return [t(lang,
       `${p.label} — fee not published online; our admissions team can share it`,
@@ -507,8 +609,15 @@ function aboutProgram(p, q, lang = "en") {
   }
   if (p.elig) lines.push(`${t(lang, "Eligibility", "Yogyata")}: ${p.elig}`);
   if (inst) lines.push(`${t(lang, "Approved by", "Manyata")}: ${inst.approval}`);
+  if (p.id === "phd") {
+    lines.unshift(...programFeeLines(p, q, lang).map((l) => `${t(lang, "Fee", "Fees")}: ${l}`));
+    const area = detectInstitute(q);
+    if (area) lines.unshift(t(lang,
+      `**Yes** — your subject falls under **${area.inst.name.replace("Amaltas ", "")}**, one of the six Ph.D. disciplines. The Ph.D. cell confirms seats and supervisors for it each session.`,
+      `**Haan** — aapka vishay **${area.inst.name.replace("Amaltas ", "")}** ke antargat aata hai, jo chhe Ph.D. disciplines mein se ek hai. Iski seats aur supervisor har session Ph.D. cell confirm karta hai.`));
+  }
   let text = `**${p.label}**${inst ? ` · ${inst.inst.name}` : ""}\n${bullet(lines)}`;
-  if (p.note) text += `\n${p.note}`;
+  if (p.note) text += `\n${noteOf(p, lang)}`;
   if (rows.length > 1) text += `\n\n${bullet(rows.map((r) => feeLine(r, lang)))}`;
   return text;
 }
@@ -539,6 +648,69 @@ const INTENTS = compile([
     id: "restart", social: true,
     keywords: ["start over", "restart", "reset", "new chat", "clear chat", "nayi chat", "phir se shuru"],
     run: (ctx) => ({ text: t(ctx.lang, WELCOME, WELCOME_HI), chips: STARTER_CHIPS, reset: true }),
+  },
+  {
+    // "hindi me batao" is a request to switch language, not a question about the medium of teaching.
+    id: "language", boost: 4, entity: false,
+    keywords: ["hindi me batao", "hindi mein batao", "hindi me talk", "hindi mein talk", "hindi me bolo", "hindi mein bolo", "hindi me samjhao", "hindi mein samjhao", "hindi me likho", "hindi me jawab", "hindi me reply", "in hindi", "hindi please", "hindi plz", "speak hindi", "speak in hindi", "reply in hindi", "hindi me hi", "english me batao", "english mein batao", "english me bolo", "english me talk", "in english", "english please", "speak english", "speak in english", "reply in english"],
+    run: (ctx) => {
+      const lang = has(ctx.q, ["english"]) ? "en" : "hi";
+      return {
+        text: t(lang,
+          "Sure — I'll reply in English from now on. What would you like to know?",
+          "Zaroor! Ab main Hinglish (Roman Hindi) mein jawab dungi. Puchhiye — fees, course, eligibility, admission ya hostel, kuch bhi."),
+        chips: STARTER_CHIPS,
+        setLang: lang,
+      };
+    },
+  },
+  {
+    id: "fee-quote", boost: 2, entity: true,
+    // "but the college told me 1.60 lakh" — only when a number is in the message
+    when: (q) => /\d/.test(q.norm),
+    keywords: ["told", "bataya", "quoted", "bola", "bol rahe", "keh rahe", "different fees", "fees alag", "zyada bataya"],
+    run: (ctx) => {
+      const p = ctx.progs[0];
+      const rows = p ? p.rows(ctx.q) : [];
+      const pub = rows.length === 1 ? `**${inr(rows[0].fee)}/${t(ctx.lang, "year", "saal")}**` : null;
+      return {
+        text: t(ctx.lang,
+          `${pub ? `The published tuition fee for **${p.label}** is ${pub}. ` : ""}A different figure from the college usually includes charges that are billed separately from tuition — registration, exam, enrolment, hostel or transport. Please ask the admissions office for a written, head-wise fee breakup so you know exactly what you're paying for.`,
+          `${pub ? `**${p.label}** ki published tuition fees ${pub} hai. ` : ""}College ne jo alag amount bataya hai, usme aksar tuition ke alawa doosre charges jude hote hain — registration, exam, enrolment, hostel ya transport. Admission office se likhit mein head-wise fees breakup maang lijiye, taaki saaf rahe ki kis cheez ka kitna lag raha hai.`),
+        links: [L.fees, L.call],
+      };
+    },
+  },
+  {
+    id: "stipend", boost: 2, entity: true,
+    keywords: ["stipend", "internship stipend", "internship salary", "internship pay", "paid internship", "internship me kitna", "internship mein kitna", "internship ka paisa", "internship me paisa", "internship me milega"],
+    run: (ctx) => ({
+      text: t(ctx.lang,
+        `Internship stipend amounts aren't published on the website. For MBBS, BAMS and BHMS, the stipend during the compulsory internship is paid as per the regulator's and state government's norms — the admissions team can tell you the current amount${ctx.progs.length ? ` for **${entityName(ctx)}**` : ""}.`,
+        `Internship stipend ki rakam website par publish nahi ki gayi hai. MBBS, BAMS aur BHMS mein compulsory internship ke dauran stipend regulator aur rajya sarkar ke niyamon ke hisaab se milta hai — ${ctx.progs.length ? `**${entityName(ctx)}** ke liye ` : ""}current amount admission team bata degi.`),
+      links: [L.call, L.whatsapp],
+    }),
+  },
+  {
+    id: "disciplines", boost: 1, entity: false,
+    keywords: ["six disciplines", "6 disciplines", "disciplines", "discipline", "six health", "6 health", "health disciplines", "all six", "six institutes", "6 institutes", "chhe discipline", "vishay"],
+    run: (ctx) => ({
+      text: t(ctx.lang,
+        `The **six health-science disciplines** at Amaltas (each with its own institute):\n${bullet(INSTITUTES.map((i) => `**${i.inst.name.replace("Amaltas ", "")}** — ${i.inst.programs.join(", ")}`))}\nPh.D. is offered across all six.`,
+        `Amaltas ke **chhe health-science disciplines** (har ek ka apna institute):\n${bullet(INSTITUTES.map((i) => `**${i.inst.name.replace("Amaltas ", "")}** — ${i.inst.programs.join(", ")}`))}\nPh.D. in chhe mein hoti hai.`),
+      links: [L.institutions, L.programs],
+      chips: ["Ph.D.", "Which course suits me?", "Fees"],
+    }),
+  },
+  {
+    id: "dress", boost: 1, entity: false,
+    keywords: ["dress", "dress code", "uniform", "uniforms", "apron", "white coat", "college dress", "specific dress", "kapde", "dress kya"],
+    run: (ctx) => ({
+      text: t(ctx.lang,
+        "The dress code isn't published online. Health-science programmes generally require a uniform or white coat/apron for classes, labs and hospital postings — your institute shares the exact dress code at admission and orientation.",
+        "Dress code website par publish nahi kiya gaya hai. Health-science courses mein aam taur par class, lab aur hospital posting ke liye uniform ya white coat/apron pehna jata hai — exact dress code aapka institute admission aur orientation ke samay bata deta hai."),
+      links: [L.call],
+    }),
   },
   {
     id: "stream", boost: 3, entity: false,
@@ -582,6 +754,7 @@ const INTENTS = compile([
   },
   {
     id: "fees", entity: true,
+    weak: ["kitna", "kitni"],
     keywords: ["fees", "cost", "costs", "tuition", "price", "expensive", "afford", "affordable", "cheap", "cheapest", "charges", "fee structure", "total fees", "how much", "kitni", "kitna", "paisa", "rupees", "per year", "per annum", "budget", "फीस", "शुल्क", "fees kitna", "kitna fees", "fees batao", "fees kya", "kitna paisa", "paisa kitna", "fees ki jankari", "total kharcha", "sasta", "mehnga", "kam fees", "saal ka kitna", "fees lagti", "fees lagegi"],
     run: feesAnswer,
   },
@@ -597,7 +770,7 @@ const INTENTS = compile([
   },
   {
     id: "duration", entity: true,
-    keywords: ["duration", "how many years", "how long", "years course", "course length", "kitne saal", "kitne sal", "time period", "course period", "kitna saal", "saal ka course", "kitna samay", "kitna time", "kab tak chalega", "course kitna lamba"],
+    keywords: ["duration", "how many years", "how long", "years course", "course length", "kitne saal", "kitne sal", "time period", "course period", "kitna saal", "saal ka course", "kitna samay", "kitna time", "kab tak chalega", "course kitna lamba", "complete", "completed", "completion", "kab complete", "kab khatam", "course khatam", "months", "kitne mahine", "part time"],
     run: durationAnswer,
   },
   {
@@ -654,7 +827,7 @@ const INTENTS = compile([
   },
   {
     id: "accreditation", entity: true,
-    keywords: ["approved", "approval", "approvals", "recognised", "recognized", "recognition", "accredited", "accreditation", "affiliated", "affiliation", "nmc", "ncism", "nch", "inc", "pci", "ugc", "naac", "nabh", "nabl", "mppurc", "valid degree", "genuine", "fake", "government approved", "govt approved", "private or government", "government or private", "private university", "government college", "sarkari", "sarkari hai", "private hai", "degree valid", "degree sahi", "degree chalegi", "asli", "farzi", "manyata prapt", "maan"],
+    keywords: ["approved", "approval", "approvals", "recognised", "recognized", "recognition", "accredited", "accreditation", "affiliated", "affiliation", "nmc", "ncism", "nch", "inc", "pci", "ugc", "naac", "nabh", "nabl", "mppurc", "valid degree", "own university", "state university", "deemed", "deemed university", "genuine", "fake", "government approved", "govt approved", "private or government", "government or private", "private university", "government college", "sarkari", "sarkari hai", "private hai", "degree valid", "degree sahi", "degree chalegi", "asli", "farzi", "manyata prapt", "maan"],
     run: (ctx) => {
       const inst = ctx.inst || (ctx.progs[0]?.instId && instById(ctx.progs[0].instId));
       const hi = ctx.lang === "hi";
@@ -872,14 +1045,28 @@ const INTENTS = compile([
     }),
   },
   {
-    id: "calendar", entity: false,
-    keywords: ["academic calendar", "session", "session start", "classes start", "class start", "when does college start", "semester", "annual system", "academic year", "exam pattern", "exams", "class kab", "session kab", "kab shuru hoga", "exam kab", "padhai kab shuru"],
-    run: (ctx) => ({
-      text: t(ctx.lang,
-        "The academic calendar runs **August to June** on an annual system. Admissions for the **2026–27** session are open now — call admissions for exact reporting and class-start dates for your programme.",
-        "Academic session **August se June** tak chalta hai (annual system). **2026–27** ke admission abhi khule hain — reporting aur class shuru hone ki exact tareekh ke liye admission office par call kijiye."),
-      links: [L.procedure, L.call],
-    }),
+    // "When do 1st-year classes start?" was one of the most-missed questions in the chat logs.
+    id: "calendar", entity: true, boost: 1,
+    keywords: ["academic calendar", "session", "session start", "classes start", "class start", "classes begin", "class begin", "when does college start", "when will classes", "when do classes", "semester", "annual system", "academic year", "exam pattern", "exams", "class kab", "classes kab", "college kab", "session kab", "kab shuru hoga", "kab shuru", "kab start", "kab se start", "start hogi", "start hoga", "start hongi", "shuru hogi", "shuru hongi", "exam kab", "padhai kab shuru", "joining date", "reporting date", "orientation", "first year class", "1st year class"],
+    run: (ctx) => {
+      const lang = ctx.lang;
+      const progs = ctx.progs.filter((p) => !p.phd);
+      const neet = progs.filter((p) => p.neet).map((p) => p.label);
+      const other = progs.filter((p) => !p.neet).map((p) => p.label);
+      const lines = [];
+      if (neet.length) lines.push(t(lang,
+        `**${neet.join(", ")}** — first-year classes begin after the NEET UG counselling rounds finish, as per the regulator's academic calendar; the exact date is announced once counselling closes.`,
+        `**${neet.join(", ")}** — pehle saal ki classes NEET UG counselling ke round poore hone ke baad, regulator ke academic calendar ke hisaab se shuru hoti hain; exact tareekh counselling khatam hone par batayi jaati hai.`));
+      if (other.length) lines.push(t(lang,
+        `**${other.join(", ")}** — reporting and class-start dates are announced by the institute once admissions for the session close.`,
+        `**${other.join(", ")}** — reporting aur class shuru hone ki tareekh session ke admission band hone ke baad institute batata hai.`));
+      return {
+        text: t(lang,
+          `The academic session runs **August to June** on an annual system, and admissions for **2026–27** are open now.${lines.length ? `\n${bullet(lines)}` : ""}\nCall admissions for the confirmed reporting date for your programme.`,
+          `Academic session **August se June** tak chalta hai (annual system), aur **2026–27** ke admission abhi khule hain.${lines.length ? `\n${bullet(lines)}` : ""}\nApne course ki confirm reporting date ke liye admission office par call kijiye.`),
+        links: [L.procedure, L.call],
+      };
+    },
   },
   {
     id: "quota", entity: false,
@@ -949,13 +1136,16 @@ const INTENTS = compile([
   },
   {
     id: "location", entity: false,
-    keywords: ["location", "address", "where", "where is", "located", "reach", "how to reach", "directions", "direction", "map", "distance", "nearest", "railway", "railway station", "bus stand", "airport", "पता", "कहाँ", "कहां", "kitna dur", "kaise pahuche", "kaise jana", "rasta", "pata kya", "station se"],
-    run: (ctx) => ({
-      text: t(ctx.lang,
-        `Amaltas University is at **${CONTACT.address}**.${has(ctx.q, ["distance", "railway", "railway station", "bus stand", "airport", "nearest", "dur"]) ? "\nTravel distances aren't listed on the website — call us and we'll help with directions." : ""}`,
-        `Amaltas University ka pata hai: **${CONTACT.address}**.${has(ctx.q, ["distance", "railway", "railway station", "bus stand", "airport", "nearest", "dur"]) ? "\nDoori (distance) website par nahi di gayi hai — call kijiye, hum raasta samjha denge." : ""}`),
-      links: [L.maps, L.call],
-    }),
+    keywords: ["location", "address", "where", "where is", "located", "reach", "how to reach", "directions", "direction", "map", "distance", "nearest", "railway", "railway station", "bus stand", "airport", "पता", "कहाँ", "कहां", "kitna dur", "kaise pahuche", "kaise jana", "rasta", "pata kya", "station se", "far", "how far", "km", "kilometre", "kilometer", "indore", "ujjain", "bhopal", "indore se", "ujjain se", "campus where"],
+    run: (ctx) => {
+      const travel = has(ctx.q, ["distance", "railway", "railway station", "bus stand", "airport", "nearest", "dur", "far", "km", "indore", "ujjain", "bhopal"]);
+      return {
+        text: t(ctx.lang,
+          `Amaltas University is at **${CONTACT.address}**.${travel ? "\nExact travel distances aren't listed on the website; open the map for live directions from your city, or call us and we'll guide you." : ""}`,
+          `Amaltas University ka pata hai: **${CONTACT.address}**.${travel ? "\nExact doori website par nahi di gayi hai; apne shehar se raasta dekhne ke liye map kholiye, ya call kijiye, hum raasta samjha denge." : ""}`),
+        links: [L.maps, L.call],
+      };
+    },
   },
   {
     id: "contact", entity: false,
@@ -973,7 +1163,7 @@ const INTENTS = compile([
   },
   {
     id: "identity", social: true,
-    keywords: ["who are you", "priya", "who is priya", "are you human", "human", "real person", "are you a person", "are you a real person", "robot", "chatbot", "are you a girl", "are you a bot", "are you real", "your name", "what can you do", "what do you do", "help", "menu", "options", "tum kaun", "aap kaun", "tumhara naam", "aapka naam", "kya kar sakta", "madad", "tum robot", "insaan ho"],
+    keywords: ["who are you", "who is priya", "priya kaun", "priya who", "are you human", "human", "real person", "are you a person", "are you a real person", "robot", "chatbot", "are you a girl", "are you a bot", "are you real", "your name", "what can you do", "what do you do", "help", "menu", "options", "tum kaun", "aap kaun", "tumhara naam", "aapka naam", "kya kar sakta", "madad", "tum robot", "insaan ho"],
     run: (ctx) => ({
       text: t(ctx.lang,
         `I'm Priya, Amaltas University's virtual assistant — an automated helper, not a real person. My answers come from the university's published information. To talk to a counsellor, call **${CONTACT.tollFree}**.\n\nAsk me about:\n• Courses, fees, seats and eligibility\n• Admissions and documents\n• Hostel, facilities and safety\n• Approvals, leadership, events and contact details`,
@@ -983,11 +1173,19 @@ const INTENTS = compile([
   },
   {
     id: "greeting", social: true,
-    keywords: ["hi", "hii", "hiii", "hello", "helo", "hey", "namaste", "namaskar", "good morning", "good afternoon", "good evening", "नमस्ते", "नमस्कार", "ram ram", "salaam", "jai hind", "kaise ho", "kaisi ho"],
+    keywords: ["hi", "hii", "hiii", "hello", "priya", "hello priya", "hi priya", "helo", "hey", "namaste", "namaskar", "good morning", "good afternoon", "good evening", "नमस्ते", "नमस्कार", "ram ram", "salaam", "jai hind", "kaise ho", "kaisi ho"],
     run: (ctx) => ({
       text: t(ctx.lang,
         "Hello! How can I help you today? Ask about any course, fees, eligibility or admissions.",
         "Namaste! Main aapki kya madad kar sakti hoon? Kisi bhi course, fees, eligibility ya admission ke baare mein puchhiye."),
+      chips: STARTER_CHIPS,
+    }),
+  },
+  {
+    id: "ack", social: true,
+    keywords: ["sure", "yes", "yeah", "yep", "yup", "haan", "ha", "han", "ji", "ji haan", "hmm", "hmmm", "alright", "ok sure", "sure thing"],
+    run: (ctx) => ({
+      text: t(ctx.lang, "Great — what would you like to know? Pick a topic below or type your question.", "Theek hai — aap kya jaanna chahenge? Neeche se topic chuniye ya apna sawaal likhiye."),
       chips: STARTER_CHIPS,
     }),
   },
@@ -1016,8 +1214,8 @@ function feesAnswer(ctx) {
   const { q, progs, inst, lang } = ctx;
   if (progs.length) {
     return {
-      text: `**${t(lang, "Fees", "Fees")}${progs.length === 1 ? ` — ${progs[0].label}` : ""}**\n${bullet(progs.flatMap((p) => programFeeLines(p, q, lang)))}${progs.some((p) => p.note) ? `\n${progs.find((p) => p.note).note}` : ""}\n\n${feeNote(lang)}`,
-      links: [L.fees, L.call],
+      text: `**${t(lang, "Fees", "Fees")}${progs.length === 1 ? ` — ${progs[0].label}` : ""}**\n${bullet(progs.flatMap((p) => programFeeLines(p, q, lang)))}${progs.some((p) => p.note) ? `\n${noteOf(progs.find((p) => p.note), lang)}` : ""}\n\n${feeNote(lang)}`,
+      links: progs.some((p) => p.phd) ? [L.phdCall, L.fees] : [L.fees, L.call],
     };
   }
   if (inst) {
@@ -1140,7 +1338,7 @@ function applyAnswer(ctx) {
   let head = "";
   if (progs.length || inst) {
     const elig = progs.filter((p) => p.elig).map((p) => `${p.label}: ${p.elig}`);
-    const notes = progs.filter((p) => p.note).map((p) => `${p.note}\n`).join("");
+    const notes = progs.filter((p) => p.note).map((p) => `${noteOf(p, lang)}\n`).join("");
     head = `**${t(lang, `Admission to ${entityName(ctx)}`, `${entityName(ctx)} mein admission`)}**\n${elig.length ? `${bullet(elig)}\n` : ""}${notes}${neet ? t(lang, "Seats are allotted on NEET merit.\n", "Seat NEET merit ke aadhar par milti hai.\n") : ""}\n`;
   }
   const dates = has(q, ["last date", "deadline", "aakhri tarikh"])
@@ -1148,11 +1346,26 @@ function applyAnswer(ctx) {
       "\n\nExact deadlines aren't published online — admissions for 2026–27 are open now, so call to confirm the last date for your programme.",
       "\n\nExact last date online nahi di gayi hai — 2026–27 ke admission abhi khule hain, isliye apne course ki aakhri tarikh call karke confirm kar lijiye.")
     : "";
+  // Answer the actual question first: "is admission open?" / "where is the form?"
+  const askedOpen = has(q, ["open", "khula", "khule", "chalu", "abhi admission", "start ho gaye", "available"]);
+  if (askedOpen) {
+    head = t(lang, "**Yes — admissions for 2026–27 are open.**\n\n", "**Haan — 2026–27 ke admission abhi khule hain.**\n\n") + head;
+  }
+  if (has(q, ["form", "online form", "registration form", "application form", "website", "site", "online"])) {
+    head = t(lang,
+      "To start online, fill in the **admission enquiry form** on the Courses & Programs page — a counsellor contacts you within one working day with the registration form and next steps. You can also call the admissions cell.\n\n",
+      "Online shuru karne ke liye Courses & Programs page par **admission enquiry form** bhariye — ek counsellor ek working day mein registration form aur aage ke steps ke saath aapse sampark karega. Aap admission cell ko call bhi kar sakte hain.\n\n") + head;
+    return {
+      text: head.trim(),
+      links: [L.enquiry, L.call, L.whatsapp],
+      chips: ["Documents required", "Fees", "Eligibility"],
+    };
+  }
   return {
     text: t(lang,
-      `${head}**How admission works**\n1. Check the programme, eligibility and fees\n2. Fill in the online registration form\n3. Pay the registration fee at the Admissions Office (DD, cash or bank transfer)\n4. Take the entrance/qualifying test that applies to your programme\n5. Merit list is published (NEET / academic scores)\n6. Document verification with originals\n7. Seat allotment\n\nAdmissions for **2026–27** are open.${dates}`,
-      `${head}**Admission kaise hota hai**\n1. Course, eligibility aur fees dekh lijiye\n2. Online registration form bhariye\n3. Admission Office mein registration fees jama kijiye (DD, cash ya bank transfer)\n4. Apne course ka entrance/qualifying test dijiye\n5. Merit list nikalti hai (NEET / academic score se)\n6. Original documents ka verification hota hai\n7. Seat allotment\n\n**2026–27** ke admission abhi khule hain.${dates}`),
-    links: [L.procedure, L.eligibility, L.call],
+      `${head}**How admission works**\n1. Check the programme, eligibility and fees\n2. Fill in the online registration form\n3. Pay the registration fee at the Admissions Office (DD, cash or bank transfer)\n4. Take the entrance/qualifying test that applies to your programme\n5. Merit list is published (NEET / academic scores)\n6. Document verification with originals\n7. Seat allotment${askedOpen ? "" : "\n\nAdmissions for **2026–27** are open."}${dates}`,
+      `${head}**Admission kaise hota hai**\n1. Course, eligibility aur fees dekh lijiye\n2. Online registration form bhariye\n3. Admission Office mein registration fees jama kijiye (DD, cash ya bank transfer)\n4. Apne course ka entrance/qualifying test dijiye\n5. Merit list nikalti hai (NEET / academic score se)\n6. Original documents ka verification hota hai\n7. Seat allotment${askedOpen ? "" : "\n\n**2026–27** ke admission abhi khule hain."}${dates}`),
+    links: [L.enquiry, L.procedure, L.eligibility, L.call],
     chips: ["Documents required", "Fees", "Contact"],
   };
 }
@@ -1258,12 +1471,12 @@ export const STARTER_CHIPS = ["Which course suits me?", "Fees", "Eligibility", "
 export const WELCOME = "Hi! I'm Priya, Amaltas University's virtual assistant. Ask me about courses, fees, eligibility, admissions or hostel — or tap an option below.\nHindi ya Hinglish mein bhi puchh sakte hain — jaise \"BAMS ki fees kitni hai?\"";
 export const WELCOME_HI = "Namaste! Main Priya hoon, Amaltas University ki virtual assistant. Courses, fees, eligibility, admission ya hostel — kuch bhi puchhiye, ya neeche diye gaye option par tap kijiye.";
 
-export const createState = () => ({ quiz: null, stream: null, lastProgIds: [], lastInstId: null, lastIntentId: null, misses: 0, lang: "en" });
+export const createState = () => ({ quiz: null, stream: null, lastProgIds: [], lastInstId: null, lastIntentId: null, misses: 0, lang: "en", langPref: null });
 
 const QUIZ_TRIGGER = ["which course", "suits me", "suit me", "suggest", "recommend", "confused", "help me choose", "not sure what to study", "best course", "career guidance", "guide me", "what should i study", "which course is best", "konsa course", "kaunsa course", "course finder", "kaun sa course sahi", "mera liye kaun", "kya karna chahiye", "samajh nahi aa raha", "kaun sa course karna", "sabse accha course", "salah", "sujhav"];
 const FOLLOW_UP_CUES = ["and", "what about", "how about", "aur", "for", "also", "same for", "aur iska", "iska kya"];
 const GENERAL_CUES = ["all", "every", "overall", "list", "total", "cheapest", "lowest", "highest", "courses", "at a glance", "sabhi", "sab", "poori list", "sasta", "mehnga", "sabse kam", "sabse zyada", "kam fees"];
-const ABOUT_CUES = ["tell me", "about the", "about this", "details", "detail", "info", "information", "explain", "overview", "jankari", "batao", "ke baare mein", "vistaar"];
+const ABOUT_CUES = ["tell me", "about the", "about this", "details", "detail", "info", "information", "explain", "overview", "jankari", "batao", "ke baare mein", "vistaar", "what is", "what are", "kya hai", "kya hota", "means", "meaning", "matlab", "available", "is there"];
 
 // Chips are sent back as questions, so each Hindi chip is worded to match the
 // same intent as its English twin.
@@ -1295,7 +1508,10 @@ const localizeChips = (chips, lang) => (lang === "hi" ? chips.map((c) => CHIPS_H
 function analyse(q) {
   const progs = detectPrograms(q);
   const inst = progs.length ? null : detectInstitute(q);
-  const scored = INTENTS.map((it, order) => ({ ...scoreItem(q, it), order })).filter((s) => s.score > 0);
+  const scored = INTENTS
+    .filter((it) => !it.when || it.when(q))
+    .map((it, order) => ({ ...scoreItem(q, it), order }))
+    .filter((s) => s.score > 0);
   const real = scored.filter((s) => !s.item.social);
   const rank = (a, b) => (b.score + (b.item.boost || 0)) - (a.score + (a.item.boost || 0)) || a.order - b.order;
   // Exact matches outrank typo matches, whatever their raw score.
@@ -1307,6 +1523,7 @@ function analyse(q) {
 
 function finish(state, out, extra = {}) {
   const next = { ...state, ...extra };
+  if (out.setLang) next.lang = next.langPref = out.setLang;
   if (out.remember) {
     next.lastProgIds = out.remember;
     next.lastInstId = null;
@@ -1315,7 +1532,7 @@ function finish(state, out, extra = {}) {
   const chips = localizeChips(out.chips || STARTER_CHIPS, lang);
   const topic = out.topic || (next.quiz || state.quiz ? "course-finder" : "other");
   return {
-    state: out.reset ? { ...createState(), lang } : next,
+    state: out.reset ? { ...createState(), lang, langPref: next.langPref } : next,
     replies: [{ text: out.text, links: out.links || [], chips }],
     reset: !!out.reset,
     meta: { topic, answered: topic !== "unanswered", courses: out.courses || "", lang },
@@ -1343,7 +1560,8 @@ export function reply(state, rawInput) {
   const raw = String(rawInput).slice(0, 300);
   const q = makeQuery(raw);
   // Roman Hindi in, Roman Hindi out — and it sticks for short follow-ups.
-  const lang = detectLang(q, state.lang || "en");
+  // ...unless they explicitly asked for a language ("hindi me batao"), which sticks.
+  const lang = state.langPref && !/[ऀ-ॿ]/.test(q.raw) ? state.langPref : detectLang(q, state.lang || "en");
   state = { ...state, lang };
   if (!q.norm) return fallback(state);
 
@@ -1399,10 +1617,19 @@ export function reply(state, rawInput) {
   }
 
   let { progs, inst, intents } = a;
+
+  // "PDCP fees", "PhD sociology", "MBA" — say plainly it isn't offered rather
+  // than answering with an unrelated fee table.
+  const missing = (!progs.length || progs[0].phd) && !intents.some((i) => i.id === "language") && detectNotOffered(q);
+  if (missing) {
+    return finish(state, { ...notOfferedAnswer(missing, q, lang), topic: "not-offered", courses: missing.label }, { misses: 0, lastProgIds: [], lastInstId: null });
+  }
+
   const short = q.toks.length <= 5;
 
   // Follow-ups: "fees" after talking about BAMS, or "and nursing?" after a fees question.
-  if (!progs.length && !inst && intents.some((i) => i.entity) && short && !has(q, GENERAL_CUES)) {
+  const quoteFollowUp = intents[0]?.id === "fee-quote"; // always about the course just discussed
+  if (!progs.length && !inst && intents.some((i) => i.entity) && (short || quoteFollowUp) && !has(q, GENERAL_CUES)) {
     progs = state.lastProgIds.map(progById).filter(Boolean);
     inst = progs.length ? null : state.lastInstId ? instById(state.lastInstId) : null;
   }
@@ -1444,7 +1671,7 @@ export function reply(state, rawInput) {
       : aboutProgram(progs[0], q, lang);
     return finish(state, {
       text,
-      links: dedupeLinks([L.fees, L.eligibility, progs[0].instId ? L.institutions : L.call]),
+      links: dedupeLinks(progs[0].phd ? [L.phdCall, L.phdEmail, L.fees] : [L.fees, L.eligibility, progs[0].instId ? L.institutions : L.call]),
       chips: ["Seats", "How to apply", "Hostel"],
       topic: "course-info",
       courses,

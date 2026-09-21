@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "chat:replay": "node scripts/replay-chat-log.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",
