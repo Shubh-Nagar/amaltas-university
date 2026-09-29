@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Play, Sparkles, Trophy, HeartPulse,
@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import HelixCanvas from "../components/HelixCanvas.jsx";
 import NPFWidget from "../components/NPFWidget.jsx";
+import BrochureModal from "../components/BrochureDownload.jsx";
 import Blob from "../components/Blob.jsx";
 import MagicBento from "../components/MagicBento.jsx";
 import { Reveal, Tilt, StatNum } from "../components/Primitives.jsx";
@@ -746,6 +747,23 @@ function HeroVideo() {
 export default function Home() {
   const [voice, setVoice] = useState(0);
   const [tourNotice, setTourNotice] = useState(false);
+  // null when closed, otherwise the entry point that opened it ("hero button" / "scroll popup")
+  const [brochure, setBrochure] = useState(null);
+  const closeBrochure = useCallback(() => setBrochure(null), []);
+
+  // Offer the brochure every time the visitor lands on the homepage and scrolls
+  // halfway down — even if they downloaded it before (unless the form is already open).
+  useEffect(() => {
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const progress = (window.scrollY + window.innerHeight) / doc.scrollHeight;
+      if (progress < 0.5) return;
+      window.removeEventListener("scroll", onScroll);
+      setBrochure((b) => b || "scroll popup");
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const id = setInterval(() => setVoice((v) => (v + 1) % VOICES.length), 6000);
@@ -799,15 +817,20 @@ export default function Home() {
             <div className="admit-paths">
               {ADMISSION_PATHS.map((p, i) => {
                 const Icon = p.icon;
-                return (
-                  <Link key={i} to={p.to} className="admit-path">
+                const inner = (
+                  <>
                     <span className="admit-path-icon"><Icon size={18} /></span>
                     <span className="admit-path-text">
                       <span className="admit-path-label">{p.label}</span>
                       <span className="admit-path-desc">{p.desc}</span>
                     </span>
                     <ArrowUpRight size={16} className="admit-path-arrow" />
-                  </Link>
+                  </>
+                );
+                return p.action === "brochure" ? (
+                  <button key={i} type="button" className="admit-path admit-path-pulse" onClick={() => setBrochure("hero button")}>{inner}</button>
+                ) : (
+                  <Link key={i} to={p.to} className="admit-path">{inner}</Link>
                 );
               })}
             </div>
@@ -819,6 +842,7 @@ export default function Home() {
 
         <div className="scrollcue">SCROLL<span className="dot" /></div>
       </header>
+      {brochure && <BrochureModal trigger={brochure} onClose={closeBrochure} />}
 
       {/* ── STATS ── */}
       <StatsBand />

@@ -454,7 +454,7 @@ export const AUDIENCES = {
 /* Admission quick-pathway tiles — Medicaps "How to Apply / Eligibility / Scholarships / Calendar" */
 export const ADMISSION_PATHS = [
   { icon: FileText, label: "How to Apply", desc: "Step-by-step online application", to: "/admissions" },
-  { icon: ClipboardCheck, label: "Eligibility Criteria", desc: "Programme-wise requirements", to: "/admissions" },
+  { icon: Download, label: "Download Brochure", desc: "Courses, eligibility & more", action: "brochure" },
 ];
 
 /* Life at Amaltas — clickable campus-life grid (Medicaps "Life@MU" pattern) */
