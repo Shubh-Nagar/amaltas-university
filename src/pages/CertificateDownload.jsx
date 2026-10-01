@@ -5,7 +5,7 @@ import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
 import SEO from "../components/SEO.jsx";
 import { WORKSHOPS } from "../data/workshops.js";
-import { findRegistrant, generateCertificate } from "../lib/certificateMatch.js";
+import { findRegistrants, generateCertificate } from "../lib/certificateMatch.js";
 
 const MAX_ATTEMPTS = 5;
 const LOCKOUT_MS = 5 * 60 * 1000;
@@ -28,12 +28,11 @@ function writeAttemptState(state) {
 }
 
 export default function CertificateDownload() {
-  const [workshopKey, setWorkshopKey] = useState("GCP");
+  const [workshopKey, setWorkshopKey] = useState(Object.keys(WORKSHOPS)[0]);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | checking | found | notfound | locked | error
   const [errorMsg, setErrorMsg] = useState("");
-  const [certUrl, setCertUrl] = useState(null);
-  const [certName, setCertName] = useState(null);
+  const [certs, setCerts] = useState([]); // [{ name, url }]
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -45,14 +44,14 @@ export default function CertificateDownload() {
     }
 
     setStatus("checking");
-    setCertUrl(null);
+    setCerts([]);
 
     const workshop = WORKSHOPS[workshopKey];
 
     try {
-      const registrant = await findRegistrant(workshop, email);
+      const registrants = await findRegistrants(workshop, email);
 
-      if (!registrant) {
+      if (registrants.length === 0) {
         const count = attempts.count + 1;
         const lockedUntil = count >= MAX_ATTEMPTS ? Date.now() + LOCKOUT_MS : 0;
         writeAttemptState({ count, lockedUntil });
@@ -60,12 +59,14 @@ export default function CertificateDownload() {
         return;
       }
 
-      const fullName = registrant[workshop.nameKey];
-      const blob = await generateCertificate(workshop, fullName);
-      const url = URL.createObjectURL(blob);
+      const generated = [];
+      for (const row of registrants) {
+        const name = String(row[workshop.nameKey]).trim();
+        const blob = await generateCertificate(workshop, name);
+        generated.push({ name, url: URL.createObjectURL(blob) });
+      }
 
-      setCertUrl(url);
-      setCertName(fullName);
+      setCerts(generated);
       setStatus("found");
       writeAttemptState({ count: 0, lockedUntil: 0 });
     } catch (err) {
@@ -75,9 +76,8 @@ export default function CertificateDownload() {
     }
   }
 
-  const downloadFileName = certName
-    ? `${certName.trim().replace(/\s+/g, "_")}_${workshopKey}_Certificate.pdf`
-    : "certificate.pdf";
+  const downloadFileName = (name) =>
+    `${name.replace(/\s+/g, "_")}_${workshopKey}_Certificate.pdf`;
 
   return (
     <>
@@ -145,10 +145,14 @@ export default function CertificateDownload() {
                 {errorMsg || "Something went wrong. Please try again shortly."}
               </p>
             )}
-            {status === "found" && certUrl && (
-              <a href={certUrl} download={downloadFileName} className="btn btn-em">
-                <Download size={16} /> Download Certificate
-              </a>
+            {status === "found" && (
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 12 }}>
+                {certs.map(({ name, url }) => (
+                  <a key={url} href={url} download={downloadFileName(name)} className="btn btn-em">
+                    <Download size={16} /> {certs.length > 1 ? `Download – ${name}` : "Download Certificate"}
+                  </a>
+                ))}
+              </div>
             )}
           </div>
         </Reveal>

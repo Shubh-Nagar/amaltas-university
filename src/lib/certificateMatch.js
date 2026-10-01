@@ -5,9 +5,10 @@ function normalizeEmail(v) {
   return String(v || "").trim().toLowerCase();
 }
 
-// Looks up the registrant in the workshop's Excel sheet by email.
-// Returns the matching row, or null.
-export async function findRegistrant(workshop, email) {
+// Looks up registrants in the workshop's Excel sheet by email. Several people
+// sometimes registered under one shared email, so every matching row is
+// returned (empty array if none).
+export async function findRegistrants(workshop, email) {
   const res = await fetch(workshop.excelPath);
   if (!res.ok) throw new Error("Could not load the registrant list");
   const buf = await res.arrayBuffer();
@@ -17,9 +18,7 @@ export async function findRegistrant(workshop, email) {
 
   const targetEmail = normalizeEmail(email);
 
-  return (
-    rows.find((row) => normalizeEmail(row[workshop.emailKey]) === targetEmail) || null
-  );
+  return rows.filter((row) => normalizeEmail(row[workshop.emailKey]) === targetEmail);
 }
 
 // Loads the workshop's certificate template and stamps the matched

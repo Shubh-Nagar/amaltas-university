@@ -17,7 +17,7 @@ const SLIDES = [
     t1: "LIVING &",
     t2: "LEARNING",
     sub: "Beyond the classroom, campus life at Amaltas is festivals, friendships, sport, and quiet mornings — all in one place.",
-    img: "/assets/images%20of%20university/photo-gallery/medical.png",
+    img: "/assets/images%20of%20university/photo-gallery/green.png",
   },
   {
     tag: "Culture & Festivals",

@@ -6,6 +6,22 @@
 // differ, so they are NOT interchangeable. Recalibrate if a template is
 // replaced with a different layout.
 export const WORKSHOPS = {
+  ICAAICON_TC: {
+    label: "ICAAICON 2026 – Tobacco Cessation Workshop",
+    excelPath: "/assets/ICAAICON%20Tobacco%20Cessation.xlsx",
+    templatePath: "/assets/certificate/ICAAICON%20Tobacco%20Cessation.pdf",
+    nameKey: "Full Name",
+    emailKey: "Email ID",
+    // 960×720 pt page built from a 1280×960 px image (1 px = 0.75 pt); the
+    // blank line spans x 160–799 at y ≈ 262.
+    nameBox: {
+      textCenterX: 480,
+      baselineY: 270,
+      maxWidth: 600,
+      maxFontSize: 26,
+      minFontSize: 12,
+    },
+  },
   GCP: {
     label: "GCP Workshop",
     excelPath: "/assets/GCP%20Workshop.xlsx",

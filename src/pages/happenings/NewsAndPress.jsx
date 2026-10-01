@@ -12,6 +12,9 @@ import { breadcrumbSchema } from "../../data/schema.js";
 const NP = "/assets/images%20of%20university/news-press";
 const GALLERY = [
   // Most recently uploaded — shown first
+  `${NP}/pharmacy%20day.jpg`, `${NP}/pharmacy%20day-1.jpg`,
+  `${NP}/ICAAICON.jpg`, `${NP}/ICAAICON-1.jpg`, `${NP}/ICAAICON-2.jpg`, `${NP}/ICAAICON-3.jpg`,
+  `${NP}/BHMS%20admision%20homeopathy%20news.jpg.jpeg`,
   `${NP}/nutrition%20day.jpg`, `${NP}/nutrition%20day-1.jpg`,
   `${NP}/suicide%20day.jpg`, `${NP}/suicide%20day-1.jpg`,
   `${NP}/educatin%20survey%20ayurveda%20news%201.jpg.jpeg`,
