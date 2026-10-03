@@ -22,6 +22,24 @@ export const WORKSHOPS = {
       minFontSize: 12,
     },
   },
+  ICAAICON_PR: {
+    label: "ICAAICON 2026 – Pulmonary Rehabilitation Workshop",
+    excelPath: "/assets/ICAAICAON%20Pulmonary%20Rehabilitation.xlsx",
+    templatePath: "/assets/certificate/ICAAICON%20Pulmonary%20Rehabilitation.pdf",
+    nameKey: "Full Name",
+    // The sheet also has a mostly-empty "Email Address" column; "Email" is
+    // the one filled in for every registrant.
+    emailKey: "Email",
+    // Same 960×720 pt layout as the Tobacco Cessation template; the blank
+    // line spans x 160–799 at y ≈ 262.
+    nameBox: {
+      textCenterX: 480,
+      baselineY: 270,
+      maxWidth: 600,
+      maxFontSize: 26,
+      minFontSize: 12,
+    },
+  },
   GCP: {
     label: "GCP Workshop",
     excelPath: "/assets/GCP%20Workshop.xlsx",

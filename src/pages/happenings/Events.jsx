@@ -15,6 +15,13 @@ const gal = (folder, files) => files.map((f) => `${EV_BASE}/${encodeURIComponent
 
 const EVENTS = [
   {
+    img: "/assets/images%20of%20university/events/World%20Heart%20Day%202026/1.jpeg",
+    date: "29 September 2026",
+    title: "Celebrating World Heart Day!",
+    desc: "Let’s put our hearts first and make healthy choices every day. From staying active and eating well to managing stress and spreading awareness, every small step can make a big difference.",
+    gallery: gal("World Heart Day 2026", Array.from({ length: 10 }, (_, i) => `${i + 1}.jpeg`)),
+  },
+  {
     img: "/assets/images%20of%20university/events/ICAAICON%202026/1.jpg",
     date: "24–27 September 2026",
     title: "प्रदूषण केवल फेफड़ों ही नहीं, शरीर के अन्य अंगों को भी करता है प्रभावित : विशेषज्ञ — ICAAICON 2026 का समापन",
@@ -45,9 +52,9 @@ const EVENTS = [
   {
     img: "/assets/images%20of%20university/events/Model%20Exhibition%20Ayurveda%20Day/1.jpeg",
     date: "18 September 2026",
-    title: "अमलतास इंस्टीट्यूट ऑफ आयुर्वेद में 11वें आयुर्वेद दिवस पर मॉडल एग्जीबिशन का आयोजन",
+    title: "Our Heritage, Our Health, Our Future थीम पर मॉडल एग्जीबिशन आयोजित",
     desc: "माननीय फाउंडर चेयरमैन (अमलतास ग्रुप देवास) श्री सुरेश सिंह भदौरिया एवं माननीय चेयरमैन श्री मयंकराज सिंह भदौरिया के शुभाशीष एवं मार्गदर्शन में तथा अमलतास ग्रुप के डायरेक्टर डॉ. अभिजीत तायडे सर, महाप्रबंधक डॉ. मनीष शर्मा सर एवं प्राचार्या डॉ. अनिता घोडके के विशेष मार्गदर्शन में दिनांक 18/09/2026 को 11वें आयुर्वेद दिवस के पावन अवसर पर अमलतास इंस्टीट्यूट ऑफ आयुर्वेद के क्रिया शरीर विभाग (Kriya Sharir Department) में एक भव्य कार्यक्रम का आयोजन किया गया। इस अवसर पर \"Ayurveda: Our Heritage, Our Health, Our Future\" विषय पर आधारित मॉडल एग्जीबिशन (Model Exhibition) का आयोजन प्रोफेसर डॉ. सी. पी. शर्मा (Prof. Dr. C. P. Sharma) एवं डॉ. प्रतिभा तोमर (असिस्टेंट प्रोफेसर) Dr. Pratibha Tomar (Assistant Professor) के मार्गदर्शन में किया गया। इस मॉडल एग्जीबिशन में डॉ. महानतेश हिरेमठ सर (Dr. Mahantesh Hiremath) एवं डॉ. मीना सावते (Dr. Meena Sawate) ने निर्णायक (Judge) की भूमिका निभाई। उन्होंने सभी संभागियों द्वारा प्रस्तुत मॉडलों का बेहद बारीकी से परीक्षण व मूल्यांकन किया और विजेताओं (Winners & Runners-up) के नामों की घोषणा की। कार्यक्रम के दौरान संस्थान के सभी विभागों की फैकल्टीज़ (Faculties) की गरिमामयी उपस्थिति रही, जिन्होंने विद्यार्थियों के प्रयासों की सराहना की। विद्यार्थियों ने आयुर्वेद के सिद्धांतों एवं उनके आधुनिक महत्व पर आधारित सुंदर एवं ज्ञानवर्धक मॉडल प्रस्तुत किए। अंत में डॉ. अश्विन पंड्या ने कार्यक्रम के सफल आयोजन के लिए सभी अतिथियों, आयोजन समिति के सदस्यों एवं सहभागियों के प्रति आभार व्यक्त किया गया।",
-    gallery: gal("Model Exhibition Ayurveda Day", ["1.jpeg", "2.jpeg", "3.jpeg"]),
+    gallery: gal("Model Exhibition Ayurveda Day", Array.from({ length: 18 }, (_, i) => `${i + 1}.jpeg`)),
   },
   {
     img: "/assets/images%20of%20university/events/Vridhashram%20Yoga%20Ayurveda%20Day/1.jpeg",
