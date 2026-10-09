@@ -28,7 +28,7 @@ export default function Voices() {
         eyebrow="Voices of Amaltas"
         title="Stories that don't read like brochures."
         sub="The real measure of a university is what its students say when no one's selling them anything. Here are theirs."
-        bgImg="/assets/images%20of%20university/photo-gallery/2U8A9378.jpg"
+        bgImg="/assets/images%20of%20university/photo-gallery/2U8A9378.webp"
       />
 
       {/* FEATURED CAROUSEL */}

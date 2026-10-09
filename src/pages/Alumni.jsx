@@ -72,7 +72,7 @@ export default function Alumni() {
         eyebrow="Amaltas University Alumni Association"
         title="Once an Amaltas student. Always part of the family."
         sub="A growing network of healthcare professionals united by shared roots, shared values, and a commitment to healing the world."
-        bgImg="/assets/images%20of%20university/campus%20life/degree.JPG"
+        bgImg="/assets/images%20of%20university/campus%20life/degree.webp"
       />
 
       {/* ── STATS STRIP ── */}

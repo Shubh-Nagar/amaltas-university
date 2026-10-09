@@ -102,7 +102,7 @@ export default function AntiRaggingCommittee() {
         eyebrow="Student Safety & Welfare"
         title="Anti-Ragging Committee."
         sub="Amaltas University maintains a zero-tolerance policy on ragging. The committee and squad below are constituted to prevent, monitor and act on any incident."
-        bgImg="/assets/images%20of%20university/campus%20life/2U8A2387.JPG"
+        bgImg="/assets/images%20of%20university/campus%20life/2U8A2387.webp"
       />
 
       {/* National anti-ragging helpline */}

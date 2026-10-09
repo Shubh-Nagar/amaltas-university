@@ -14,10 +14,10 @@ import SEO from "../../components/SEO.jsx";
 import { breadcrumbSchema } from "../../data/schema.js";
 
 const IMG = {
-  hero:     "/assets/images%20of%20university/photo-gallery/DJI_0019.jpg",
-  overview: "/assets/images%20of%20university/campus%20life/IMG_9478.JPG.jpeg",
-  library:  "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",
-  fallback: "/assets/images%20of%20university/campus%20life/435A1853.JPG",
+  hero:     "/assets/images%20of%20university/photo-gallery/DJI_0019.webp",
+  overview: "/assets/images%20of%20university/campus%20life/IMG_9478.JPG.webp",
+  library:  "/assets/images%20of%20university/campus%20life/2U8A2387.webp",
+  fallback: "/assets/images%20of%20university/campus%20life/435A1853.webp",
 };
 
 /* ── count-up stat band ── */
@@ -44,7 +44,7 @@ const EXPLORER = [
       "Recorded-lecture & e-learning ready",
       "Climate-controlled environments",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A8968.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A8968.webp",
   },
   {
     key: "teaching-labs",
@@ -60,7 +60,7 @@ const EXPLORER = [
       "Strict bio-safety & hygiene protocols",
       "Faculty-supervised practical sessions",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A1433.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A1433.webp",
   },
   {
     key: "research-labs",
@@ -76,7 +76,7 @@ const EXPLORER = [
       "Ethics & bio-safety committee oversight",
       "Access to digital research databases",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A0849.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A0849.webp",
   },
   {
     key: "library",
@@ -108,7 +108,7 @@ const EXPLORER = [
       "Ideal for CME & conferences",
       "Multiple breakout seminar rooms",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A1075.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A1075.webp",
   },
   {
     key: "digital",
@@ -124,7 +124,7 @@ const EXPLORER = [
       "Digital library & database portals",
       "Dedicated IT support desk",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A2411.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A2411.webp",
   },
 ];
 

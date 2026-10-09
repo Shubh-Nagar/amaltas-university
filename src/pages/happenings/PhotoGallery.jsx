@@ -5,30 +5,30 @@ import SEO from "../../components/SEO.jsx";
 import { breadcrumbSchema } from "../../data/schema.js";
 
 const GALLERY = [
-  "/assets/images%20of%20university/photo-gallery/2U8A8516.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A8702.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A8968.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A9059.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A9276.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A9378.jpg",
-  "/assets/images%20of%20university/photo-gallery/DJI_0019.jpg",
-  "/assets/images%20of%20university/photo-gallery/DJI_0034.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A0028.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A0147.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A0233.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A0439.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A0526.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A0665.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A0731.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A0849.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A1075.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A1253.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A1433.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A1767.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A2375.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A2411.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A2472.jpg",
-  "/assets/images%20of%20university/photo-gallery/2U8A8363.jpg",
+  "/assets/images%20of%20university/photo-gallery/2U8A8516.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A8702.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A8968.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A9059.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A9276.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A9378.webp",
+  "/assets/images%20of%20university/photo-gallery/DJI_0019.webp",
+  "/assets/images%20of%20university/photo-gallery/DJI_0034.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A0028.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A0147.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A0233.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A0439.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A0526.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A0665.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A0731.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A0849.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A1075.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A1253.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A1433.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A1767.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A2375.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A2411.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A2472.webp",
+  "/assets/images%20of%20university/photo-gallery/2U8A8363.webp",
 ];
 
 export default function PhotoGallery() {
@@ -45,7 +45,7 @@ export default function PhotoGallery() {
         eyebrow="Happenings"
         title="Photo Gallery."
         sub="A visual walk through the Amaltas University campus — its people, ceremonies, and everyday moments."
-        bgImg="/assets/images%20of%20university/photo-gallery/2U8A9276.jpg"
+        bgImg="/assets/images%20of%20university/photo-gallery/2U8A9276.webp"
       />
 
       {/* ── MASONRY GALLERY ── */}

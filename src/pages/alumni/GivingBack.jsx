@@ -38,7 +38,7 @@ export default function AlumniGivingBack() {
         eyebrow="Giving Back"
         title="Wear your Amaltas pride."
         sub="Every purchase from the Amaltas alumni merchandise store contributes directly to the Alumni Scholarship Fund — helping the next generation of healers afford a world-class health-sciences education."
-        bgImg="/assets/images%20of%20university/campus%20life/sport.JPG"
+        bgImg="/assets/images%20of%20university/campus%20life/sport.webp"
       />
 
       {/* ── WHY IT MATTERS ── */}

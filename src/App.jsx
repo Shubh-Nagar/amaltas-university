@@ -8,45 +8,46 @@ import AmaltasAssistant from "./components/AmaltasAssistant.jsx";
 import { ScrollToTop } from "./components/Layout.jsx";
 import SEO from "./components/SEO.jsx";
 import Home from "./pages/Home.jsx";
-import Institutions from "./pages/Institutions.jsx";
-import Admissions from "./pages/Admissions.jsx";
-import Why from "./pages/Why.jsx";
-import Leadership from "./pages/Leadership.jsx";
-import LeaderMessage from "./pages/LeaderMessage.jsx";
-import Voices from "./pages/Voices.jsx";
-import NotFound from "./pages/NotFound.jsx";
-import TheUniversity from "./pages/about/TheUniversity.jsx";
-import AwardsRankings from "./pages/about/AwardsRankings.jsx";
-import Accreditations from "./pages/about/Accreditations.jsx";
-import MandatoryDisclosure from "./pages/about/MandatoryDisclosure.jsx";
-import FeeDetails from "./pages/FeeDetails.jsx";
-import Eligibility from "./pages/Eligibility.jsx";
-import AdmissionProcedure from "./pages/AdmissionProcedure.jsx";
-import RefundPolicy from "./pages/RefundPolicy.jsx";
-import HostelAccommodation from "./pages/student-life/HostelAccommodation.jsx";
-import CampusLife from "./pages/student-life/CampusLife.jsx";
-import AcademicFacilities from "./pages/facilities/AcademicFacilities.jsx";
-import CampusFacilities from "./pages/facilities/CampusFacilities.jsx";
-import NewsAndPress from "./pages/happenings/NewsAndPress.jsx";
-import Events from "./pages/happenings/Events.jsx";
-import PhotoGallery from "./pages/happenings/PhotoGallery.jsx";
-import Alumni from "./pages/Alumni.jsx";
-import AlumniLeadership from "./pages/alumni/Leadership.jsx";
-import AlumniEngage from "./pages/alumni/Engage.jsx";
-import AlumniAssist from "./pages/alumni/Assist.jsx";
-import AlumniAchievers from "./pages/alumni/Achievers.jsx";
-import AlumniGivingBack from "./pages/alumni/GivingBack.jsx";
-import Mainpopup from "./components/Mainpopup.jsx";
-import IQAC from "./pages/IQAC.jsx";
-import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
-import PrivacyPolicy2 from "./pages/PrivacyPolicy2.jsx";
-import TermsAndConditions from "./pages/TermsAndConditions.jsx";
-import PublicSelfDisclosure from "./pages/PublicSelfDisclosure.jsx";
-import AntiRaggingCommittee from "./pages/AntiRaggingCommittee.jsx";
-import Healthcare from "./pages/Healthcare.jsx";
+const Institutions = lazy(() => import("./pages/Institutions.jsx"));
+const Admissions = lazy(() => import("./pages/Admissions.jsx"));
+const Why = lazy(() => import("./pages/Why.jsx"));
+const Leadership = lazy(() => import("./pages/Leadership.jsx"));
+const LeaderMessage = lazy(() => import("./pages/LeaderMessage.jsx"));
+const Voices = lazy(() => import("./pages/Voices.jsx"));
+const NotFound = lazy(() => import("./pages/NotFound.jsx"));
+const TheUniversity = lazy(() => import("./pages/about/TheUniversity.jsx"));
+const AwardsRankings = lazy(() => import("./pages/about/AwardsRankings.jsx"));
+const Accreditations = lazy(() => import("./pages/about/Accreditations.jsx"));
+const MandatoryDisclosure = lazy(() => import("./pages/about/MandatoryDisclosure.jsx"));
+const FeeDetails = lazy(() => import("./pages/FeeDetails.jsx"));
+const Eligibility = lazy(() => import("./pages/Eligibility.jsx"));
+const AdmissionProcedure = lazy(() => import("./pages/AdmissionProcedure.jsx"));
+const RefundPolicy = lazy(() => import("./pages/RefundPolicy.jsx"));
+const HostelAccommodation = lazy(() => import("./pages/student-life/HostelAccommodation.jsx"));
+const CampusLife = lazy(() => import("./pages/student-life/CampusLife.jsx"));
+const AcademicFacilities = lazy(() => import("./pages/facilities/AcademicFacilities.jsx"));
+const CampusFacilities = lazy(() => import("./pages/facilities/CampusFacilities.jsx"));
+const NewsAndPress = lazy(() => import("./pages/happenings/NewsAndPress.jsx"));
+const Events = lazy(() => import("./pages/happenings/Events.jsx"));
+const PhotoGallery = lazy(() => import("./pages/happenings/PhotoGallery.jsx"));
+const Alumni = lazy(() => import("./pages/Alumni.jsx"));
+const AlumniLeadership = lazy(() => import("./pages/alumni/Leadership.jsx"));
+const AlumniEngage = lazy(() => import("./pages/alumni/Engage.jsx"));
+const AlumniAssist = lazy(() => import("./pages/alumni/Assist.jsx"));
+const AlumniAchievers = lazy(() => import("./pages/alumni/Achievers.jsx"));
+const AlumniGivingBack = lazy(() => import("./pages/alumni/GivingBack.jsx"));
+const Mainpopup = lazy(() => import("./components/Mainpopup.jsx"));
+const IQAC = lazy(() => import("./pages/IQAC.jsx"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
+const PrivacyPolicy2 = lazy(() => import("./pages/PrivacyPolicy2.jsx"));
+const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions.jsx"));
+const PublicSelfDisclosure = lazy(() => import("./pages/PublicSelfDisclosure.jsx"));
+const AntiRaggingCommittee = lazy(() => import("./pages/AntiRaggingCommittee.jsx"));
+const Healthcare = lazy(() => import("./pages/Healthcare.jsx"));
 
-// Pulls in xlsx + pdf-lib (large libs) — code-split so only certificate-page
-// visitors pay for them.
+// Every page except the homepage is code-split: visitors download a page's
+// code only when they navigate to it, which keeps the first-load bundle small.
+// CertificateDownload in particular pulls in xlsx + pdf-lib.
 const CertificateDownload = lazy(() => import("./pages/CertificateDownload.jsx"));
 
 /* Real WhatsApp glyph (lucide-react ships no brand icons) */
@@ -99,6 +100,7 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
       <main>
+        <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/institutions" element={<Institutions />} />
@@ -135,14 +137,7 @@ export default function App() {
           <Route path="/public-self-disclosure" element={<PublicSelfDisclosure />} />
           <Route path="/anti-ragging-committee" element={<AntiRaggingCommittee />} />
           <Route path="/healthcare" element={<Healthcare />} />
-          <Route
-            path="/certificates"
-            element={
-              <Suspense fallback={null}>
-                <CertificateDownload />
-              </Suspense>
-            }
-          />
+          <Route path="/certificates" element={<CertificateDownload />} />
           {/* Internal scratch route. It has no real content, so keep it out of
               the index — it was otherwise crawlable as a thin page. */}
           <Route
@@ -156,6 +151,7 @@ export default function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </main>
       <Footer />
       <GlobalFabs />

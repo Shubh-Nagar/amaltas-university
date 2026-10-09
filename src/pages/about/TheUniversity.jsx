@@ -35,14 +35,14 @@ const G = {
 };
 
 const INSTITUTE_PHOTOS = [
-  { name: "Amaltas Medical Sciences",         short: "MBBS · MD · MS",            photo: "/assets/images%20of%20university/all%20institutes/medical.png" },
-  { name: "Amaltas Ayurvedic College",        short: "BAMS · AYUSH",              photo: "/assets/images%20of%20university/all%20institutes/ayurveda.png" },
-  { name: "Amaltas Institute of Homoeopathy", short: "BHMS",                      photo: "/assets/images%20of%20university/all%20institutes/homoepathy.png" },
-  { name: "Amaltas Nursing Sciences",         short: "B.Sc. · P.B.B.Sc. · M.Sc.",photo: "/assets/images%20of%20university/all%20institutes/nursing.jpeg" },
-  { name: "Amaltas Institute of Pharmacy",    short: "B.Pharm · M.Pharm",         photo: "/assets/images%20of%20university/all%20institutes/pharmacy.png" },
-  { name: "Amaltas Paramedical Sciences",     short: "BMLT · DMLT · Imaging",     photo: "/assets/images%20of%20university/all%20institutes/paramedical.jpg" },
+  { name: "Amaltas Medical Sciences",         short: "MBBS · MD · MS",            photo: "/assets/images%20of%20university/all%20institutes/medical.webp" },
+  { name: "Amaltas Ayurvedic College",        short: "BAMS · AYUSH",              photo: "/assets/images%20of%20university/all%20institutes/ayurveda-png.webp" },
+  { name: "Amaltas Institute of Homoeopathy", short: "BHMS",                      photo: "/assets/images%20of%20university/all%20institutes/homoepathy.webp" },
+  { name: "Amaltas Nursing Sciences",         short: "B.Sc. · P.B.B.Sc. · M.Sc.",photo: "/assets/images%20of%20university/all%20institutes/nursing.webp" },
+  { name: "Amaltas Institute of Pharmacy",    short: "B.Pharm · M.Pharm",         photo: "/assets/images%20of%20university/all%20institutes/pharmacy.webp" },
+  { name: "Amaltas Paramedical Sciences",     short: "BMLT · DMLT · Imaging",     photo: "/assets/images%20of%20university/all%20institutes/paramedical-jpg.webp" },
   // Hidden — Allied & Rehabilitation institute photo temporarily unlisted.
-  // { name: "Amaltas Allied & Rehabilitation",  short: "Physiotherapy · Psychology", photo: "/assets/images%20of%20university/all%20institutes/alied.jpg" },
+  // { name: "Amaltas Allied & Rehabilitation",  short: "Physiotherapy · Psychology", photo: "/assets/images%20of%20university/all%20institutes/alied.webp" },
 ];
 
 const ADVANTAGES = [
@@ -55,25 +55,25 @@ const ADVANTAGES = [
 ];
 
 const BEYOND = [
-  { icon: FlaskConical, t: "Research & Innovation",     d: "Active labs, peer-reviewed publications and Ph.D. programmes across all six health disciplines.", img: "/assets/images%20of%20university/event%20and%20activites/nurse.jpeg" },
-  { icon: HandHeart,    t: "Community Health Outreach", d: "Rural health missions, free wellness camps and outreach clinics woven into the academic calendar.",  img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg" },
-  { icon: Stethoscope,  t: "Skill & Simulation Labs",   d: "State-of-the-art simulation centres where students rehearse clinical skills before the ward.",       img: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG" },
-  { icon: Dumbbell,     t: "Sports & Wellness",         d: "Courts, grounds and a culture that treats physical wellbeing as part of a healer's training.",        img: "/assets/images%20of%20university/campus%20life/sport.JPG" },
-  { icon: Music,        t: "Cultural Life & Clubs",     d: "From the lamp-lighting ceremony to festivals and clubs — a campus alive beyond the classroom.",        img: "/assets/images%20of%20university/event%20and%20activites/lamp.jpeg" },
-  { icon: HomeIcon,     t: "Hostels & Campus Living",   d: "Safe, supportive residential communities where every student is known by name.",                      img: "/assets/images%20of%20university/campus%20life/degree.JPG" },
+  { icon: FlaskConical, t: "Research & Innovation",     d: "Active labs, peer-reviewed publications and Ph.D. programmes across all six health disciplines.", img: "/assets/images%20of%20university/event%20and%20activites/nurse.webp" },
+  { icon: HandHeart,    t: "Community Health Outreach", d: "Rural health missions, free wellness camps and outreach clinics woven into the academic calendar.",  img: "/assets/images%20of%20university/event%20and%20activites/yoga.webp" },
+  { icon: Stethoscope,  t: "Skill & Simulation Labs",   d: "State-of-the-art simulation centres where students rehearse clinical skills before the ward.",       img: "/assets/images%20of%20university/campus%20life/2U8A2387.webp" },
+  { icon: Dumbbell,     t: "Sports & Wellness",         d: "Courts, grounds and a culture that treats physical wellbeing as part of a healer's training.",        img: "/assets/images%20of%20university/campus%20life/sport.webp" },
+  { icon: Music,        t: "Cultural Life & Clubs",     d: "From the lamp-lighting ceremony to festivals and clubs — a campus alive beyond the classroom.",        img: "/assets/images%20of%20university/event%20and%20activites/lamp.webp" },
+  { icon: HomeIcon,     t: "Hostels & Campus Living",   d: "Safe, supportive residential communities where every student is known by name.",                      img: "/assets/images%20of%20university/campus%20life/degree.webp" },
 ];
 
 const APPROVALS = [
-  { src: "/assets/images%20of%20university/recognisation/nmc.jpg",      label: "National Medical Commission" },
-  { src: "/assets/images%20of%20university/recognisation/ugc.png",      label: "University Grants Commission" },
-  { src: "/assets/images%20of%20university/recognisation/ncism.jpg",     label: "Central Council of Indian Medicine" },
-  { src: "/assets/images%20of%20university/recognisation/nch.png",     label: "National Commission for Homoeopathy" },
-  { src: "/assets/images%20of%20university/recognisation/inc-logo.png", label: "Indian Nursing Council" },
-  { src: "/assets/images%20of%20university/recognisation/pci-logo.png", label: "Pharmacy Council of India" },
+  { src: "/assets/images%20of%20university/recognisation/nmc.webp",      label: "National Medical Commission" },
+  { src: "/assets/images%20of%20university/recognisation/ugc.webp",      label: "University Grants Commission" },
+  { src: "/assets/images%20of%20university/recognisation/ncism.webp",     label: "Central Council of Indian Medicine" },
+  { src: "/assets/images%20of%20university/recognisation/nch.webp",     label: "National Commission for Homoeopathy" },
+  { src: "/assets/images%20of%20university/recognisation/inc-logo.webp", label: "Indian Nursing Council" },
+  { src: "/assets/images%20of%20university/recognisation/pci-logo.webp", label: "Pharmacy Council of India" },
   // Hidden — RCI approval tied to the Allied & Rehabilitation Sciences institute.
-  // { src: "/assets/images%20of%20university/recognisation/rci.png",      label: "Rehabilitation Council of India" },
-  { src: "/assets/images%20of%20university/recognisation/nabh-logo.png",label: "NABH" },
-  { src: "/assets/images%20of%20university/recognisation/NABL.png",     label: "NABL" },
+  // { src: "/assets/images%20of%20university/recognisation/rci.webp",      label: "Rehabilitation Council of India" },
+  { src: "/assets/images%20of%20university/recognisation/nabh-logo.webp",label: "NABH" },
+  { src: "/assets/images%20of%20university/recognisation/NABL.webp",     label: "NABL" },
 ];
 
 const HERO_CHIPS = [
@@ -243,7 +243,7 @@ export default function TheUniversity() {
       <header
         className="page-hero"
         style={{
-          background: `linear-gradient(105deg, rgba(237,247,241,.98) 0%, rgba(245,252,248,.95) 40%, rgba(253,252,232,.55) 70%, rgba(253,252,232,0) 100%), url('/assets/images%20of%20university/campus%20life/435A1853.JPG')`,
+          background: `linear-gradient(105deg, rgba(237,247,241,.98) 0%, rgba(245,252,248,.95) 40%, rgba(253,252,232,.55) 70%, rgba(253,252,232,0) 100%), url('/assets/images%20of%20university/campus%20life/435A1853.webp')`,
           backgroundSize: "cover",
           backgroundPosition: "center 40%",
           paddingTop: 120,
@@ -324,7 +324,7 @@ export default function TheUniversity() {
           <Reveal variant="img">
             <div style={{ position: "relative", borderRadius: 26, overflow: "hidden", aspectRatio: "4/3", boxShadow: `0 40px 80px -40px rgba(16,128,59,.25)`, border: `3px solid ${G.greenBg}` }}>
               <img
-                src="/assets/images%20of%20university/our%20purpose/university.png"
+                src="/assets/images%20of%20university/our%20purpose/university-png.webp"
                 alt="Amaltas University"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 loading="lazy"
@@ -492,7 +492,7 @@ export default function TheUniversity() {
             </Reveal>
             <Reveal variant="right">
               <div style={{ borderRadius: 24, overflow: "hidden", aspectRatio: "4/3", boxShadow: `0 40px 90px -45px rgba(16,128,59,.3)`, border: `3px solid ${G.greenBg}`, position: "relative" }}>
-                <img src="/assets/images%20of%20university/event%20and%20activites/nurse.jpeg" alt="Academic life at Amaltas" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" decoding="async" />
+                <img src="/assets/images%20of%20university/event%20and%20activites/nurse.webp" alt="Academic life at Amaltas" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" decoding="async" />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(16,128,59,.3) 0%, transparent 55%)" }} />
               </div>
             </Reveal>

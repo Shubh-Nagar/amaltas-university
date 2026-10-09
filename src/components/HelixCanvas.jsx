@@ -25,7 +25,16 @@ export default function HelixCanvas() {
     };
     resize(); init();
 
-    let helixT = 0, raf;
+    let helixT = 0, raf = 0, visible = false, loaded = document.readyState === "complete";
+    // Only animate while on screen, the tab is visible, and the page has
+    // finished loading — the O(N²) particle loop otherwise ran every frame from
+    // first paint (and for both homepage instances), which dominated Total
+    // Blocking Time in PageSpeed.
+    const shouldRun = () => visible && loaded && !document.hidden;
+    const sync = () => {
+      if (shouldRun() && !raf) raf = requestAnimationFrame(draw);
+      else if (!shouldRun() && raf) { cancelAnimationFrame(raf); raf = 0; }
+    };
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
       helixT += 0.006;
@@ -71,7 +80,12 @@ export default function HelixCanvas() {
       }
       raf = requestAnimationFrame(draw);
     };
-    draw();
+
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; sync(); });
+    io.observe(cv);
+    const onLoad = () => { loaded = true; sync(); };
+    if (!loaded) window.addEventListener("load", onLoad, { once: true });
+    document.addEventListener("visibilitychange", sync);
 
     const move = (e) => {
       const r = cv.getBoundingClientRect();
@@ -84,6 +98,9 @@ export default function HelixCanvas() {
     window.addEventListener("resize", onResize);
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
+      window.removeEventListener("load", onLoad);
+      document.removeEventListener("visibilitychange", sync);
       cv.removeEventListener("mousemove", move);
       cv.removeEventListener("mouseleave", leave);
       window.removeEventListener("resize", onResize);

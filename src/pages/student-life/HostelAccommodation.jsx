@@ -36,7 +36,7 @@ const HOSTEL_TYPES = [
       "Power backup & CCTV",
       "Laundry service on campus",
     ],
-    img: "/assets/images%20of%20university/hostel/boys-hostel.jpeg",
+    img: "/assets/images%20of%20university/hostel/boys-hostel.webp",
     gradientEnd: "#0B2C18",
   },
   {
@@ -55,7 +55,7 @@ const HOSTEL_TYPES = [
       "Power backup & CCTV",
       "Laundry & ironing facility",
     ],
-    img: "/assets/images%20of%20university/hostel/girls-hostel.jpeg",
+    img: "/assets/images%20of%20university/hostel/girls-hostel.webp",
     gradientEnd: "#103A22",
   },
 ];
@@ -131,11 +131,11 @@ const RULES = [
 ];
 
 const GALLERY = [
-  { img: "/assets/images%20of%20university/campus%20life/435A1853.JPG",          cap: "Hostel & Dining" },
-  { img: "/assets/images%20of%20university/campus%20life/sport.JPG",              cap: "Sports Grounds" },
-  { img: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",          cap: "Study Spaces" },
-  { img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",    cap: "Yoga & Wellness" },
-  { img: "/assets/images%20of%20university/event%20and%20activites/lamp.jpeg",   cap: "Cultural Life" },
+  { img: "/assets/images%20of%20university/campus%20life/435A1853.webp",          cap: "Hostel & Dining" },
+  { img: "/assets/images%20of%20university/campus%20life/sport.webp",              cap: "Sports Grounds" },
+  { img: "/assets/images%20of%20university/campus%20life/2U8A2387.webp",          cap: "Study Spaces" },
+  { img: "/assets/images%20of%20university/event%20and%20activites/yoga.webp",    cap: "Yoga & Wellness" },
+  { img: "/assets/images%20of%20university/event%20and%20activites/lamp.webp",   cap: "Cultural Life" },
 ];
 
 function RulesAccordion() {
@@ -179,7 +179,7 @@ export default function HostelAccommodation() {
         eyebrow="Student Life"
         title="A home away from home."
         sub="Safe, comfortable, and fully-equipped hostels for male and female students — where campus life begins and lifelong friendships are formed."
-        bgImg="/assets/images%20of%20university/campus%20life/435A1853.JPG"
+        bgImg="/assets/images%20of%20university/campus%20life/435A1853.webp"
       />
 
       {/* ── STATS BAND ── */}
@@ -217,7 +217,7 @@ export default function HostelAccommodation() {
           <Reveal variant="right" delay="d2">
             <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", aspectRatio: "4/3" }}>
               <img
-                src="/assets/images%20of%20university/hostel/2U8A0028.jpg"
+                src="/assets/images%20of%20university/hostel/2U8A0028.webp"
                 alt="Campus hostel life"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 loading="lazy"
@@ -333,10 +333,10 @@ export default function HostelAccommodation() {
           <Reveal variant="right" delay="d2">
             <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", aspectRatio: "4/3" }}>
               <img
-                src="/assets/images%20of%20university/campus%20life/IMG_9478.JPG.jpeg"
+                src="/assets/images%20of%20university/campus%20life/IMG_9478.JPG.webp"
                 alt="Mess and dining facility"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                onError={(e) => { e.target.src = "/assets/images%20of%20university/campus%20life/435A1853.JPG"; }}
+                onError={(e) => { e.target.src = "/assets/images%20of%20university/campus%20life/435A1853.webp"; }}
                 loading="lazy"
                 decoding="async"
               />

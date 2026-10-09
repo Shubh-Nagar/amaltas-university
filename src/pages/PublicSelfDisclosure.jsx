@@ -264,7 +264,7 @@ export default function PublicSelfDisclosure() {
         eyebrow="Transparency & Compliance"
         title="Public Self Disclosure."
         sub="Institutional information published for all stakeholders, as mandated by regulatory disclosure requirements."
-        bgImg="/assets/images%20of%20university/all%20institutes/medical%20science.jpeg"
+        bgImg="/assets/images%20of%20university/all%20institutes/medical%20science.webp"
       />
 
       {/* Leadership contacts */}

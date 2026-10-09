@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, Suspense, lazy } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight, ArrowUpRight, Play, Sparkles, Trophy, HeartPulse,
@@ -10,7 +10,8 @@ import HelixCanvas from "../components/HelixCanvas.jsx";
 import NPFWidget from "../components/NPFWidget.jsx";
 import BrochureModal from "../components/BrochureDownload.jsx";
 import Blob from "../components/Blob.jsx";
-import MagicBento from "../components/MagicBento.jsx";
+// MagicBento pulls in GSAP (~70 KB) and sits well below the fold — load it on demand.
+const MagicBento = lazy(() => import("../components/MagicBento.jsx"));
 import { Reveal, Tilt, StatNum } from "../components/Primitives.jsx";
 import { useInView } from "../hooks/useScroll.js";
 import { C, iconBtn } from "../theme.js";
@@ -24,21 +25,21 @@ import {
 } from "../data/content.js";
 
 const IMGS = {
-  purposeMain:  "/assets/images%20of%20university/our%20purpose/university.png",
+  purposeMain:  "/assets/images%20of%20university/our%20purpose/university-png.webp",
   campusBanner: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=80",
   leaderBg:     "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=70",
   instBanner:   "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1800&q=80",
 };
 
 const HERO_GALLERY = [
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130301_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130315_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130325_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130337_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130355_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130449_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130505_Instagram.jpg.jpeg",
-  "/assets/images%20of%20university/hero%20section/AdobeExpressPhotos_feeb0abe7d45404f8288aed1252dc074_CopyEdited.png",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130301_Instagram.jpg.webp",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130315_Instagram.jpg.webp",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130325_Instagram.jpg.webp",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130337_Instagram.jpg.webp",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130355_Instagram.jpg.webp",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130449_Instagram.jpg.webp",
+  "/assets/images%20of%20university/hero%20section/Screenshot_20260619-130505_Instagram.jpg.webp",
+  "/assets/images%20of%20university/hero%20section/AdobeExpressPhotos_feeb0abe7d45404f8288aed1252dc074_CopyEdited.webp",
 ];
 
 
@@ -133,7 +134,12 @@ function LifeGrid() {
     const NORMAL = 0.45;   // px per frame at ~60 fps
     const BURST  = 6.0;
     const DECEL  = 2200;   // ms to decelerate
-    let p = 0, speed = NORMAL, raf;
+    let p = 0, speed = NORMAL, raf = 0, w = t1.scrollWidth / 3;
+    // Reading scrollWidth right after writing transform forced a synchronous
+    // layout every frame; measure once and on resize instead.
+    const measure = () => { w = t1.scrollWidth / 3; };
+    const ro = new ResizeObserver(measure);
+    ro.observe(t1);
 
     const tick = (ts) => {
       if (burstRef.current) {
@@ -148,15 +154,19 @@ function LifeGrid() {
           burstRef.current = false;
         }
       }
-      const w = t1.scrollWidth / 3;
-      p = (p + speed) % w;
+      if (w > 0) p = (p + speed) % w;
       t1.style.transform = `translateX(${p - w}px)`;
       t2.style.transform = `translateX(${-p}px)`;
       raf = requestAnimationFrame(tick);
     };
 
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    // Only animate while the section is on screen.
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !raf) raf = requestAnimationFrame(tick);
+      else if (!e.isIntersecting && raf) { cancelAnimationFrame(raf); raf = 0; }
+    });
+    io.observe(sectionRef.current);
+    return () => { cancelAnimationFrame(raf); io.disconnect(); ro.disconnect(); };
   }, []);
 
   return (
@@ -232,6 +242,7 @@ function SevenWorldsPanel() {
       </div>
 
       <div style={{ position: "relative", zIndex: 1, padding: "0 28px" }}>
+        <Suspense fallback={<div style={{ minHeight: 560 }} />}>
         <MagicBento
           items={INSTITUTIONS}
           onCardClick={() => window.open("https://admission.amaltasuniversity.in/", "_blank", "noopener,noreferrer")}
@@ -246,6 +257,7 @@ function SevenWorldsPanel() {
           particleCount={10}
           glowColor="246, 197, 30"
         />
+        </Suspense>
       </div>
 
       <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
@@ -476,7 +488,7 @@ function EventsSection() {
 const WR_CARDS = [
   {
     bg: "linear-gradient(135deg,#0B2C18 0%,#1a5c35 100%)",
-    img: "/assets/images%20of%20university/yoga-hall-1.jpeg",
+    img: "/assets/images%20of%20university/yoga-hall-1.webp",
     eyebrow: "Dewas · Madhya Pradesh · Est. 2016",
     stat: "6",
     statLabel: "Health-Science Institutions",
@@ -484,7 +496,7 @@ const WR_CARDS = [
   },
   {
     bg: "linear-gradient(135deg,#103A22 0%,#0B2C18 100%)",
-    img: "/assets/images%20of%20university/The%20Amaltas%20difference/hospital.jpg",
+    img: "/assets/images%20of%20university/The%20Amaltas%20difference/hospital.webp",
     eyebrow: "Teaching Hospital · On Campus",
     stat: "1,500+",
     statLabel: "Hospital Beds",
@@ -492,7 +504,7 @@ const WR_CARDS = [
   },
   {
     bg: "linear-gradient(135deg,#1e3a1a 0%,#0B2C18 100%)",
-    img: "/assets/images%20of%20university/event%20and%20activites/yoga.jpg",
+    img: "/assets/images%20of%20university/event%20and%20activites/yoga.webp",
     eyebrow: "विश्व कीर्तिमान · 2024",
     stat: "35,000+",
     statLabel: "Participants · Mass Yoga",
@@ -500,7 +512,7 @@ const WR_CARDS = [
   },
   {
     bg: "linear-gradient(135deg,#3a1208 0%,#872822 100%)",
-    img: "/assets/images%20of%20university/yoga-hall.jpeg",
+    img: "/assets/images%20of%20university/yoga-hall-jpeg.webp",
     eyebrow: "A world record, in one breath.",
     stat: null,
     statLabel: "Where healing grows.",
@@ -670,7 +682,10 @@ function HeroPhotoScroller() {
           src={src}
           alt="Life at Amaltas University"
           className={`hero-photo-slide ${i === active ? "on" : ""}`}
-          loading="lazy"
+          width={1080}
+          height={1336}
+          loading={i === 0 ? "eager" : "lazy"}
+          fetchpriority={i === 0 ? "high" : "low"}
           decoding="async"
         />
       ))}
@@ -701,14 +716,15 @@ function HeroForm() {
 /**
  * Hero background video, deferred.
  *
- * The source file is ~26 MB. Attaching it directly to <video autoPlay> made
+ * The original file was ~26 MB (now re-encoded to ~2 MB at 720p/30fps as
+ * hero-video-web.mp4). Attaching it directly to <video autoPlay> made
  * the browser start pulling it immediately, competing with the CSS and JS
  * needed for first paint — the likely cause of the 2.84 s desktop load time
  * in the 2026-08-14 audit. Now a lightweight poster paints instantly and the
  * video is only attached once the page has finished loading, so it never
  * blocks the critical path. Users who prefer reduced motion keep the poster.
  */
-const HERO_POSTER = "/assets/images%20of%20university/our%20purpose/university.jpg";
+const HERO_POSTER = "/assets/images%20of%20university/our%20purpose/university-jpg.webp";
 
 function HeroVideo() {
   const [src, setSrc] = useState(null);
@@ -718,7 +734,7 @@ function HeroVideo() {
 
     const start = () => {
       const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 200));
-      idle(() => setSrc("/assets/images%20of%20university/hero%20section/hero-video.mp4"));
+      idle(() => setSrc("/assets/images%20of%20university/hero%20section/hero-video-web.mp4"));
     };
 
     if (document.readyState === "complete") {
@@ -804,8 +820,9 @@ export default function Home() {
         {/* ── two-column layout: admissions pitch (left) + enquiry form (right) ── */}
         <div className="wrap hero-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", paddingTop: 170, paddingBottom: 80 }}>
 
-          {/* LEFT — admissions pitch */}
-          <Reveal variant="left">
+          {/* LEFT — admissions pitch. Not wrapped in <Reveal>: it is above the
+              fold, and starting it at opacity:0 until JS ran delayed LCP. */}
+          <div>
             <h1 style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)" }}>
               Amaltas University — Admissions 2026–27
             </h1>
@@ -834,7 +851,7 @@ export default function Home() {
                 );
               })}
             </div>
-          </Reveal>
+          </div>
 
           {/* RIGHT — static enquiry form */}
           <HeroForm />
@@ -976,7 +993,7 @@ export default function Home() {
         {/* degree.JPG background */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <img
-            src="/assets/images%20of%20university/campus%20life/degree.JPG"
+            src="/assets/images%20of%20university/campus%20life/degree.webp"
             alt=""
             aria-hidden="true"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", opacity: 0.28, filter: "grayscale(15%)" }}

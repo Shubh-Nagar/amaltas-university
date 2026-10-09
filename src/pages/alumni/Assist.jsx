@@ -113,7 +113,7 @@ export default function AlumniAssist() {
         eyebrow="Alumni Assist"
         title="We're here to help — long after graduation."
         sub="From revisiting your alma mater to obtaining official academic records — the Amaltas Alumni Association is your partner at every stage of your career."
-        bgImg="/assets/images%20of%20university/campus%20life/435A1853.JPG"
+        bgImg="/assets/images%20of%20university/campus%20life/435A1853.webp"
       />
 
       {/* ── SERVICE CARDS ── */}

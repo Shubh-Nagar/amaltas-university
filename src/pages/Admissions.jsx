@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
-import { C } from "../theme.js";
+import { C, admissionsCardBg } from "../theme.js";
 import { PROGRAMS, FILTERS, CONTACT, DEPARTMENT_HIGHLIGHTS, PHD_ADMISSION } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema, COURSE_CATALOG_SCHEMA } from "../data/schema.js";
@@ -54,7 +54,7 @@ export default function Admissions() {
         eyebrow="Admissions 2026–27 are open"
         title="Your first step toward a life in healthcare."
         sub="Applications for MBBS, BAMS, BHMS, Nursing and Pharmacy are live. Begin now — the intake window closes soon."
-        bgImg="/assets/images%20of%20university/campus%20life/degree.JPG"
+        bgImg="/assets/images%20of%20university/campus%20life/degree.webp"
       />
 
       {/* PROGRAMS EXPLORER */}
@@ -198,7 +198,7 @@ export default function Admissions() {
         </Reveal>
 
         <Reveal delay="d2">
-          <div style={{ background: `linear-gradient(135deg,${C.navy},${C.ink})`, borderRadius: 24, padding: 40, color: C.ivory }}>
+          <div style={{ ...admissionsCardBg(), borderRadius: 24, padding: 40, color: C.ivory }}>
             <h3 style={{ fontSize: 24, color: C.ivory }}>Fees &amp; Scholarships</h3>
             <p style={{ color: "rgba(247,244,236,.72)", marginTop: 12 }}>
               We believe talent — not tuition — should decide who heals tomorrow. Merit and

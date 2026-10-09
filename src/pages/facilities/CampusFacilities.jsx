@@ -13,7 +13,7 @@ import { CONTACT } from "../../data/content.js";
 import SEO from "../../components/SEO.jsx";
 import { breadcrumbSchema } from "../../data/schema.js";
 
-const FALLBACK = "/assets/images%20of%20university/campus%20life/435A1853.JPG";
+const FALLBACK = "/assets/images%20of%20university/campus%20life/435A1853.webp";
 
 const STATS = [
   { v: 7,   suf: "",  l: "Dedicated Facility Zones" },
@@ -38,8 +38,8 @@ const FACILITIES = [
       "High-speed Wi-Fi in every classroom",
       "Recorded-lecture & hybrid-learning ready",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A8968.jpg",
-    img2: "/assets/images%20of%20university/photo-gallery/2U8A9059.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A8968.webp",
+    img2: "/assets/images%20of%20university/photo-gallery/2U8A9059.webp",
   },
   {
     key: "library",
@@ -56,7 +56,7 @@ const FACILITIES = [
       "Plagiarism & citation-support tools",
       "Extended hours during examinations",
     ],
-    img: "/assets/images%20of%20university/campus%20life/2U8A2387.JPG",
+    img: "/assets/images%20of%20university/campus%20life/2U8A2387.webp",
   },
   {
     key: "computer-labs",
@@ -73,7 +73,7 @@ const FACILITIES = [
       "24/7 access to e-resources",
       "Dedicated IT support desk",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A2411.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A2411.webp",
   },
   {
     key: "labs",
@@ -90,8 +90,8 @@ const FACILITIES = [
       "Strict bio-safety & hygiene protocols",
       "Faculty-supervised practical sessions",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A0731.jpg",
-    img2: "/assets/images%20of%20university/photo-gallery/2U8A1253.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A0731.webp",
+    img2: "/assets/images%20of%20university/photo-gallery/2U8A1253.webp",
   },
   {
     key: "research",
@@ -108,8 +108,8 @@ const FACILITIES = [
       "Support for funded research projects",
       "Access to national research databases",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A1767.jpg",
-    img2: "/assets/images%20of%20university/photo-gallery/2U8A0849.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A1767.webp",
+    img2: "/assets/images%20of%20university/photo-gallery/2U8A0849.webp",
   },
   {
     key: "sports",
@@ -126,8 +126,8 @@ const FACILITIES = [
       "Inter-institute sports tournaments",
       "Qualified fitness supervision",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A0526.jpg",
-    img2: "/assets/images%20of%20university/photo-gallery/2U8A0439.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A0526.webp",
+    img2: "/assets/images%20of%20university/photo-gallery/2U8A0439.webp",
   },
   {
     key: "auditorium",
@@ -144,8 +144,8 @@ const FACILITIES = [
       "Ideal for CME, conferences & convocations",
       "LED screens & live-streaming ready",
     ],
-    img: "/assets/images%20of%20university/photo-gallery/2U8A1075.jpg",
-    img2: "/assets/images%20of%20university/event%20and%20activites/lamp.jpeg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A1075.webp",
+    img2: "/assets/images%20of%20university/event%20and%20activites/lamp.webp",
   },
   // Hidden — Cafeterias and Dining Halls temporarily unlisted.
   // {
@@ -201,8 +201,8 @@ const GREEN_INITIATIVES = [
       "Sustainability woven into student orientation",
       "Regular campus-wide clean-up drives",
     ],
-    img: "/assets/images%20of%20university/campus%20life/DJI_0034.jpg",
-    img2: "/assets/images%20of%20university/events/World%20Environment%20Day/3554367168.jpg",
+    img: "/assets/images%20of%20university/campus%20life/DJI_0034.webp",
+    img2: "/assets/images%20of%20university/events/World%20Environment%20Day/3554367168.webp",
   },
   {
     key: "solar",
@@ -218,7 +218,7 @@ const GREEN_INITIATIVES = [
       "Solar-assisted hostel water heating",
       "Ongoing metering to track energy savings",
     ],
-    img: "/assets/images%20of%20university/campus%20life/solar.png",
+    img: "/assets/images%20of%20university/campus%20life/solar.webp",
   },
   {
     key: "plantation",
@@ -234,8 +234,8 @@ const GREEN_INITIATIVES = [
       "Tree-adoption programme for hostellers",
       "Community plantation outreach events",
     ],
-    img: "/assets/images%20of%20university/campus%20life/plantation1.jpg",
-    img2: "/assets/images%20of%20university/campus%20life/plantation3.jpg",
+    img: "/assets/images%20of%20university/campus%20life/plantation1.webp",
+    img2: "/assets/images%20of%20university/campus%20life/plantation3.webp",
   },
   {
     key: "recognition",
@@ -251,7 +251,7 @@ const GREEN_INITIATIVES = [
       "Aligned with national green-education goals",
       "A standard maintained, not a one-time award",
     ],
-    img: "/assets/images%20of%20university/campus%20life/plantation2.jpg",
+    img: "/assets/images%20of%20university/campus%20life/plantation2.webp",
   },
 ];
 
@@ -411,7 +411,7 @@ export default function CampusFacilities() {
         eyebrow="Facilities"
         title="Seven spaces. One extraordinary campus life."
         sub="From tiered lecture halls to open sports grounds, every corner of the Amaltas campus is designed for students to learn, research, recover, and belong — all in one place."
-        bgImg="/assets/images%20of%20university/photo-gallery/DJI_0019.jpg"
+        bgImg="/assets/images%20of%20university/photo-gallery/DJI_0019.webp"
       />
 
       {/* ── STATS BAND ── */}

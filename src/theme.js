@@ -19,6 +19,12 @@ export const C = {
   slate: "#56685B",
 };
 
+// Background for "talk to admissions" CTA cards — admissions-desk photo under a
+// dark green overlay so ivory text stays readable.
+export const admissionsCardBg = (angle = 135) => ({
+  background: `linear-gradient(${angle}deg,rgba(11,44,24,.92) 0%,rgba(14,36,23,.82) 50%,rgba(14,36,23,.6) 100%), url("/assets/images of university/admissions-team.webp") center / cover no-repeat`,
+});
+
 export const iconBtn = {
   width: 40, height: 40, borderRadius: "50%", border: "1px solid rgba(11,44,24,.14)",
   background: "#fff", cursor: "pointer", display: "grid", placeItems: "center", color: C.ink,

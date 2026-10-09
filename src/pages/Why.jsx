@@ -37,7 +37,7 @@ export default function Why() {
         eyebrow="The Amaltas difference"
         title="Reasons families trust us with their dreams."
         sub="A medical education shouldn't feel like a factory. Here is what makes Amaltas different — and why our students stay close long after graduation."
-        bgImg="/assets/images%20of%20university/The%20Amaltas%20difference/hospital.jpg"
+        bgImg="/assets/images%20of%20university/The%20Amaltas%20difference/hospital.webp"
       />
 
       <section className="wrap" style={{ marginTop: -50, position: "relative", zIndex: 5 }}>

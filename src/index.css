@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap');
+/* Fonts are loaded from index.html (<link> + preconnect) — an @import here
+   chained a render-blocking request behind this stylesheet. */
 
 :root{
   /* Amaltas official brand palette — Primary #12863F · Accent #F6E005 · Secondary #872822 */
@@ -388,7 +389,7 @@ body{margin:0;}
 .field input:focus,.field select:focus{outline:none;border-color:var(--em);box-shadow:0 0 0 3px rgba(18,134,63,.18);}
 
 /* footer */
-.foot{background:linear-gradient(160deg,rgba(11,44,24,.82) 0%,rgba(11,44,24,.88) 100%),url('/assets/images%20of%20university/footer/amaltas-night.jpeg') center/cover no-repeat;color:rgba(247,244,236,.7);padding:80px 0 30px;}
+.foot{background:linear-gradient(160deg,rgba(11,44,24,.82) 0%,rgba(11,44,24,.88) 100%),url('/assets/images%20of%20university/footer/amaltas-night.webp') center/cover no-repeat;color:rgba(247,244,236,.7);padding:80px 0 30px;}
 .foot a{color:rgba(247,244,236,.7);text-decoration:none;font-size:14.5px;display:block;padding:6px 0;transition:.25s;}
 .foot a:hover{color:var(--gold);transform:translateX(4px);}
 .foot h4{color:var(--ivory);font-family:'Fraunces',serif;font-size:17px;margin:0 0 14px;}
@@ -901,39 +902,22 @@ body{margin:0;}
 .morphblob{
   position:absolute;
   pointer-events:none;
-  will-change:transform,border-radius;
+  /* Only transform animates: it runs on the compositor, so the heavily blurred
+     layer is rasterised once. Animating border-radius under blur() forced a
+     full repaint + re-blur of every blob on every frame (PageSpeed flagged it
+     as non-composited animation / main-thread work). */
+  border-radius:50%;
+  will-change:transform;
   animation-timing-function:ease-in-out;
   animation-iteration-count:infinite;
   z-index:0;
 }
 
-/* variant → morph + drift animation names */
-.morphblob-a{animation-name:mbMorphA,mbDriftA;animation-duration:22s,30s;}
-.morphblob-b{animation-name:mbMorphB,mbDriftB;animation-duration:28s,38s;}
-.morphblob-c{animation-name:mbMorphC,mbDriftC;animation-duration:18s,24s;}
-.morphblob-d{animation-name:mbMorphD,mbDriftD;animation-duration:34s,46s;}
-
-/* ── morph keyframes ── */
-@keyframes mbMorphA{
-  0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;}
-  25%    {border-radius:30% 60% 70% 40%/50% 60% 30% 60%;}
-  50%    {border-radius:50% 40% 60% 30%/40% 50% 70% 50%;}
-  75%    {border-radius:40% 60% 40% 60%/60% 30% 60% 40%;}
-}
-@keyframes mbMorphB{
-  0%,100%{border-radius:40% 60% 60% 40%/60% 30% 70% 40%;}
-  33%    {border-radius:70% 30% 40% 60%/40% 60% 30% 70%;}
-  66%    {border-radius:30% 70% 50% 50%/50% 40% 60% 50%;}
-}
-@keyframes mbMorphC{
-  0%,100%{border-radius:70% 30% 50% 50%/50% 50% 30% 70%;}
-  40%    {border-radius:30% 70% 40% 60%/60% 40% 70% 30%;}
-  70%    {border-radius:55% 45% 65% 35%/35% 65% 45% 55%;}
-}
-@keyframes mbMorphD{
-  0%,100%{border-radius:40% 60% 30% 70%/70% 30% 60% 40%;}
-  50%    {border-radius:60% 40% 70% 30%/30% 70% 40% 60%;}
-}
+/* variant → drift animation */
+.morphblob-a{animation-name:mbDriftA;animation-duration:30s;border-radius:60% 40% 30% 70%/60% 30% 70% 40%;}
+.morphblob-b{animation-name:mbDriftB;animation-duration:38s;border-radius:40% 60% 60% 40%/60% 30% 70% 40%;}
+.morphblob-c{animation-name:mbDriftC;animation-duration:24s;border-radius:70% 30% 50% 50%/50% 50% 30% 70%;}
+.morphblob-d{animation-name:mbDriftD;animation-duration:46s;border-radius:40% 60% 30% 70%/70% 30% 60% 40%;}
 
 /* ── drift keyframes ── */
 @keyframes mbDriftA{

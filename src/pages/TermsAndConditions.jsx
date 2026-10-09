@@ -39,7 +39,7 @@ export default function TermsAndConditions() {
         eyebrow="Legal"
         title="Terms and Conditions."
         sub="These Terms and Conditions govern the use of the online service for payment of Registration Fee, Application Fee and Provisional Admission Fee at Amaltas University."
-        bgImg="/assets/images%20of%20university/photo-gallery/2U8A8968.jpg"
+        bgImg="/assets/images%20of%20university/photo-gallery/2U8A8968.webp"
       />
 
       {/* INTRO STATEMENT */}

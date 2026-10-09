@@ -108,7 +108,7 @@ export default function AwardsRankings() {
         eyebrow="Recognition & Excellence"
         title="When the world took note."
         sub="From a landmark World Record to state and national recognitions — each award reflects the dedication of our students, faculty, and the community we serve."
-        bgImg="/assets/images%20of%20university/event%20and%20activites/yoga.jpg"
+        bgImg="/assets/images%20of%20university/event%20and%20activites/yoga.webp"
       >
         <HeroDecor />
       </PageHero>

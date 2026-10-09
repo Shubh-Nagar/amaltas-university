@@ -92,7 +92,7 @@ export default function AlumniEngage() {
         eyebrow="Engage"
         title="Stay connected. Give back."
         sub="Whether you want to mentor, share opportunities, celebrate milestones, or grow the Amaltas network — connect through these channels."
-        bgImg="/assets/images%20of%20university/campus%20life/2U8A2387.JPG"
+        bgImg="/assets/images%20of%20university/campus%20life/2U8A2387.webp"
       />
 
       {/* ── TAB BAR ── */}

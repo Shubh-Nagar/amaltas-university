@@ -110,8 +110,8 @@ export default function Navbar() {
           <img
             src={
               solid
-                ? "/assets/images%20of%20university/logo/Amaltas-University-Logo.jpg"
-                : "/assets/images%20of%20university/logo/white-logo.png"
+                ? "/assets/images%20of%20university/logo/Amaltas-University-Logo.webp"
+                : "/assets/images%20of%20university/logo/white-logo.webp"
             }
             alt="Amaltas University"
             className="logo-img"

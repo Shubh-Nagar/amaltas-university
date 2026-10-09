@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
@@ -39,6 +39,13 @@ export default defineConfig({
     // The old single bundle tripped this at the default 500 KB. With the
     // vendor split each chunk lands well under, so keep the warning useful.
     chunkSizeWarningLimit: 600,
+  },
+
+  // Unit tests (npm test). jsdom gives components a fake browser DOM to render into.
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./src/test/setup.js",
   },
 
   esbuild: {

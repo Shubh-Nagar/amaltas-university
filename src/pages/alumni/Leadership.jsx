@@ -11,7 +11,7 @@ const VC_INFO = {
   role: "Vice Chancellor",
   name: "Dr. R.K. Singh",
   bio: "Academic visionary and guiding patron of the Alumni Association — committed to building lifelong bonds between Amaltas University and its graduates across all six institutions.",
-  photo: "/assets/images%20of%20university/leadership/vc-sir.jpeg",
+  photo: "/assets/images%20of%20university/leadership/vc-sir.webp",
 };
 
 const EXEC_COUNCIL = [
@@ -39,7 +39,7 @@ export default function AlumniLeadership() {
         eyebrow="Alumni Association Leadership"
         title="The people guiding the alumni family."
         sub="From the Vice Chancellor patron to the elected Executive Council — meet the leadership that connects Amaltas graduates worldwide."
-        bgImg="/assets/images%20of%20university/leadership/vc-sir.jpeg"
+        bgImg="/assets/images%20of%20university/leadership/vc-sir.webp"
       />
 
       {/* ── VICE CHANCELLOR ── */}

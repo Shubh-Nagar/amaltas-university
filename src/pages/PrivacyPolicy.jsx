@@ -109,7 +109,7 @@ export default function PrivacyPolicy() {
         eyebrow="Legal"
         title="Privacy Policy."
         sub="How your information is collected, used, and protected."
-        bgImg="/assets/images%20of%20university/campus%20life/435A1853.JPG"
+        bgImg="/assets/images%20of%20university/campus%20life/435A1853.webp"
       />
 
       <section className="sec wrap" style={{ paddingTop: 70, maxWidth: 900 }}>

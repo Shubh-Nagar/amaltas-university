@@ -22,7 +22,7 @@ const UPCOMING = [
     venue: "Amaltas Institute of Medical Sciences, Dewas",
     audience: "HODs & postgraduate students",
     partner: "With the Regional Office of Health & Family Welfare, Govt. of India · sessions by WHO-FIC and CBHI experts.",
-    doc: "/assets/upcoming%20events/ICF.jpeg",
+    doc: "/assets/upcoming%20events/ICF.webp",
     docLabel: "Invitation",
     gcal: "20260902T033000Z/20260902T073000Z",
     accent: "#23A653",

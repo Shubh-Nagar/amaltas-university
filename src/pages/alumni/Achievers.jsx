@@ -64,7 +64,7 @@ export default function AlumniAchievers() {
         eyebrow="Alumni Achievers"
         title="Celebrating every milestone."
         sub="From monthly spotlights to our highest annual honour — Amaltas never stops celebrating the people it helped shape."
-        bgImg="/assets/images%20of%20university/event%20and%20activites/yoga.jpg"
+        bgImg="/assets/images%20of%20university/event%20and%20activites/yoga.webp"
       />
 
       {/* ── INTRO ── */}

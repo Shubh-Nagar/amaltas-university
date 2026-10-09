@@ -8,7 +8,7 @@ import { CONTACT, VOICES } from "../../data/content.js";
 import SEO from "../../components/SEO.jsx";
 import { breadcrumbSchema } from "../../data/schema.js";
 
-const FALLBACK = "/assets/images%20of%20university/campus%20life/435A1853.JPG";
+const FALLBACK = "/assets/images%20of%20university/campus%20life/435A1853.webp";
 
 /* ── hero carousel slides ── */
 const SLIDES = [
@@ -17,28 +17,28 @@ const SLIDES = [
     t1: "LIVING &",
     t2: "LEARNING",
     sub: "Beyond the classroom, campus life at Amaltas is festivals, friendships, sport, and quiet mornings — all in one place.",
-    img: "/assets/images%20of%20university/photo-gallery/green.png",
+    img: "/assets/images%20of%20university/photo-gallery/green.webp",
   },
   {
     tag: "Culture & Festivals",
     t1: "CULTURE &",
     t2: "CELEBRATION",
     sub: "From folk dance to convocation, every season on campus brings its own festival — and everyone belongs on stage.",
-    img: "/assets/images%20of%20university/campus%20life/435A9602.JPG",
+    img: "/assets/images%20of%20university/campus%20life/435A9602.webp",
   },
   {
     tag: "Sport & Wellness",
     t1: "SPORT &",
     t2: "WELLNESS",
     sub: "A fully-equipped gym, open grounds, and daily yoga keep the mind as sharp as the syllabus demands.",
-    img: "/assets/images%20of%20university/photo-gallery/IMG-20250307-WA0066.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/IMG-20250307-WA0066.webp",
   },
   {
     tag: "Friends & Memories",
     t1: "FRIENDS &",
     t2: "MEMORIES",
     sub: "Fresher's nights, Holi colours, and hostel rooftops — the moments students remember long after graduation.",
-    img: "/assets/images%20of%20university/events/3.jpeg",
+    img: "/assets/images%20of%20university/events/3.webp",
   },
 ];
 
@@ -49,65 +49,65 @@ const STORY = [
     tag: "Culture & Festivals",
     title: "Where every festival becomes a celebration",
     desc: "From folk performances to Founder's Day, the Amaltas stage never stays empty for long. Students choreograph, host, and headline events that turn the campus into a cultural capital every season.",
-    img: "/assets/images%20of%20university/campus%20life/435A9602.JPG",
+    img: "/assets/images%20of%20university/campus%20life/435A9602.webp",
   },
   {
     key: "colours",
     tag: "Holi & Colours",
     title: "Colours, music, and everyone together",
     desc: "Holi at Amaltas erases every batch, department, and hierarchy — for one bright morning, the whole campus is just friends covered in colour.",
-    img: "/assets/images%20of%20university/events/3.jpeg",
+    img: "/assets/images%20of%20university/events/3.webp",
   },
   {
     key: "freshers",
     tag: "Fresher's Day",
     title: "The night every batch becomes a family",
     desc: "Sashes, dance floors, and a Mr. & Ms. Fresher crown — the welcome party that turns nervous first-years into a class that has each other's backs for the next five years.",
-    img: "/assets/images%20of%20university/events/feb-1.jpeg",
+    img: "/assets/images%20of%20university/events/feb-1.webp",
   },
   {
     key: "sports",
     tag: "Sports & Fitness",
     title: "Building strength beyond the syllabus",
     desc: "A fully-equipped gymnasium and open grounds host everything from morning cardio to inter-institute tournaments — because future healers train their bodies as seriously as their minds.",
-    img: "/assets/images%20of%20university/photo-gallery/2U8A0526.jpg",
-    img2: "/assets/images%20of%20university/campus%20life/sport.JPG",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A0526.webp",
+    img2: "/assets/images%20of%20university/campus%20life/sport.webp",
   },
   {
     key: "wellness",
     tag: "Gym & Wellness",
     title: "Mornings that begin with mindfulness",
     desc: "A dedicated gymnasium and daily yoga sessions keep stress in check through demanding exam seasons — a habit many students carry with them long after they leave Amaltas.",
-    img: "/assets/images%20of%20university/photo-gallery/2U8A0439.jpg",
+    img: "/assets/images%20of%20university/photo-gallery/2U8A0439.webp",
   },
   {
     key: "milestones",
     tag: "Convocation & Milestones",
     title: "The traditions that mark every journey",
     desc: "From the lamp-lighting ceremony to convocation day, Amaltas marks every milestone with ritual and pride — moments that stay with graduates for life.",
-    img: "/assets/images%20of%20university/event%20and%20activites/lamp.jpeg",
+    img: "/assets/images%20of%20university/event%20and%20activites/lamp.webp",
   },
   {
     key: "hostel",
     tag: "Hostel Life",
     title: "Where roommates become lifelong friends",
     desc: "Late-night study sessions, shared meals, and Sunday cricket outside the block — hostel life is where the Amaltas community truly forms.",
-    img: "/assets/images%20of%20university/hostel/boys-hostel.jpeg",
-    img2: "/assets/images%20of%20university/hostel/girls-hostel.jpeg",
+    img: "/assets/images%20of%20university/hostel/boys-hostel.webp",
+    img2: "/assets/images%20of%20university/hostel/girls-hostel.webp",
   },
 ];
 
 /* ── mosaic finale ── */
 const MOSAIC = [
-  { img: "/assets/images%20of%20university/events/2.jpeg", cap: "Awareness Drives", tall: true },
-  { img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-02-20-at-17.13.30.jpeg", cap: "Community Outreach" },
-  { img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-05-13-at-13.48.30.jpeg", cap: "Institute Day Celebrations" },
-  { img: "/assets/images%20of%20university/photo-gallery/DJI_0034.jpg", cap: "Campus Walkways" },
-  { img: "/assets/images%20of%20university/campus%20life/IMG_9478.JPG.jpeg", cap: "Between Classes", tall: true },
-  { img: "/assets/images%20of%20university/photo-gallery/2U8A9276.jpg", cap: "Friends for Life" },
-  { img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-03-17-at-15.26.47.jpeg", cap: "Inaugurations & Traditions" },
-  { img: "/assets/images%20of%20university/photo-gallery/2U8A9378.jpg", cap: "Campus Portraits" },
-  { img: "/assets/images%20of%20university/events/feb-1.jpeg", cap: "Fresher's Night" },
+  { img: "/assets/images%20of%20university/events/2.webp", cap: "Awareness Drives", tall: true },
+  { img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-02-20-at-17.13.30.webp", cap: "Community Outreach" },
+  { img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-05-13-at-13.48.30.webp", cap: "Institute Day Celebrations" },
+  { img: "/assets/images%20of%20university/photo-gallery/DJI_0034.webp", cap: "Campus Walkways" },
+  { img: "/assets/images%20of%20university/campus%20life/IMG_9478.JPG.webp", cap: "Between Classes", tall: true },
+  { img: "/assets/images%20of%20university/photo-gallery/2U8A9276.webp", cap: "Friends for Life" },
+  { img: "/assets/images%20of%20university/events/WhatsApp-Image-2026-03-17-at-15.26.47.webp", cap: "Inaugurations & Traditions" },
+  { img: "/assets/images%20of%20university/photo-gallery/2U8A9378.webp", cap: "Campus Portraits" },
+  { img: "/assets/images%20of%20university/events/feb-1.webp", cap: "Fresher's Night" },
 ];
 
 const STATS = [

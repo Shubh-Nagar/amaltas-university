@@ -2,7 +2,7 @@ import React from "react";
 import { ChevronRight, Phone, Mail, AlertCircle } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
-import { C } from "../theme.js";
+import { C, admissionsCardBg } from "../theme.js";
 import { CONTACT } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema } from "../data/schema.js";
@@ -29,7 +29,7 @@ export default function RefundPolicy() {
         eyebrow="Refund Policy"
         title="Fee refunds, governed by regulation."
         sub="Refunds at Amaltas University are processed strictly in accordance with the norms laid down by the statutory regulatory bodies governing each programme."
-        bgImg="/assets/images%20of%20university/photo-gallery/2U8A8968.jpg"
+        bgImg="/assets/images%20of%20university/photo-gallery/2U8A8968.webp"
       />
 
       {/* POLICY STATEMENT */}
@@ -117,7 +117,7 @@ export default function RefundPolicy() {
         <div className="wrap">
           <Reveal>
             <div style={{
-              background: `linear-gradient(135deg,${C.navy},${C.ink})`,
+              ...admissionsCardBg(),
               borderRadius: 24,
               padding: "40px 36px",
               color: C.ivory,

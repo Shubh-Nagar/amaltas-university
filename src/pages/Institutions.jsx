@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal, Tilt } from "../components/Primitives.jsx";
-import { C } from "../theme.js";
+import { C, admissionsCardBg } from "../theme.js";
 import { INSTITUTIONS } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema, COURSE_CATALOG_SCHEMA } from "../data/schema.js";
@@ -26,8 +26,8 @@ export default function Institutions() {
         eyebrow="Six worlds, one campus"
         title="Choose where you'll change a life."
         sub="From modern medicine to classical Ayurveda, nursing to rehabilitation — every Amaltas institution is built around a single working hospital."
-        bgImg="/assets/images%20of%20university/all%20institutes/nursing.jpeg"
-        floatImg="/assets/images%20of%20university/campus%20life/student-back.png"
+        bgImg="/assets/images%20of%20university/all%20institutes/nursing.webp"
+        floatImg="/assets/images%20of%20university/campus%20life/student-back.webp"
       />
 
       <section className="sec wrap" style={{ paddingTop: 80 }}>
@@ -70,7 +70,7 @@ export default function Institutions() {
 
       <section className="sec wrap" style={{ paddingTop: 0 }}>
         <Reveal>
-          <div style={{ background: `linear-gradient(120deg,${C.navy},${C.ink})`, borderRadius: 30, padding: "56px 48px", color: C.ivory, textAlign: "center" }}>
+          <div style={{ ...admissionsCardBg(120), borderRadius: 30, padding: "56px 48px", color: C.ivory, textAlign: "center" }}>
             <h2 style={{ color: C.ivory }}>Not sure which path is yours?</h2>
             <p style={{ color: "rgba(247,244,236,.74)", maxWidth: 520, margin: "14px auto 28px" }}>
               Our admissions counsellors help you match your goals to the right programme — and walk you through eligibility, fees, and scholarships.

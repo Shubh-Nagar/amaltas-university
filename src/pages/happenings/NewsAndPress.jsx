@@ -79,7 +79,7 @@ export default function NewsAndPress() {
         eyebrow="Happenings"
         title="News & Press Releases."
         sub="Announcements, milestones, and campus stories from Amaltas University — as they happen."
-        bgImg="/assets/images%20of%20university/news-press/light-lampning.jpg"
+        bgImg="/assets/images%20of%20university/news-press/light-lampning.webp"
       />
 
       {/* ── PHOTO GALLERY ── */}

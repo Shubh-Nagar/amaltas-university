@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Globe, ClipboardList, Banknote, PenTool, Trophy, ShieldCheck, GraduationCap, Phone, ArrowRight } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
-import { C } from "../theme.js";
+import { C, admissionsCardBg } from "../theme.js";
 import { CONTACT } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema } from "../data/schema.js";
@@ -92,7 +92,7 @@ export default function AdmissionProcedure() {
         eyebrow="Admission Procedure 2026–27"
         title="Seven steps to your seat."
         sub="A clear, straightforward process designed to get you from enquiry to enrolment with confidence. Applications for 2026–27 are now open."
-        bgImg="/assets/images%20of%20university/photo-gallery/DJI_0034.jpg"
+        bgImg="/assets/images%20of%20university/photo-gallery/DJI_0034.webp"
       />
 
       {/* STEP FLOW */}
@@ -194,7 +194,7 @@ export default function AdmissionProcedure() {
         }}>
           <Reveal>
             <div style={{
-              background: `linear-gradient(135deg,${C.navy},${C.ink})`,
+              ...admissionsCardBg(),
               borderRadius: 24,
               padding: "40px 36px",
               color: C.ivory,

@@ -7,7 +7,7 @@ import { logBrochureLead, digitsOnly, validateLead } from "../lib/chatLogger.js"
 export const BROCHURE_URL = "/assets/docs/AMALTAS%20UNIVERSITY%20BROCHURE.pdf";
 const BROCHURE_NAME = "Amaltas University Brochure.pdf";
 const COURSES = [...PROGRAMS.map((p) => p.n), "Not sure yet"];
-const COVER_URL = "/assets/docs/brochure-cover.jpg";
+const COVER_URL = "/assets/docs/brochure-cover.webp";
 // facts from the brochure itself
 const PERKS = [
   { icon: Building2, text: "7 institutions" },

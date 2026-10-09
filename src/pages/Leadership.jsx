@@ -21,7 +21,7 @@ export default function Leadership() {
         eyebrow="The people behind the promise"
         title="Leadership with a legacy of service."
         sub="From the founding welfare society to today's academic council, Amaltas is led by people who built this institution to serve a community."
-        bgImg="/assets/images%20of%20university/photo-gallery/2U8A0233.jpg"
+        bgImg="/assets/images%20of%20university/photo-gallery/2U8A0233.webp"
       />
 
       <section className="sec wrap" style={{ paddingTop: 80 }}>
