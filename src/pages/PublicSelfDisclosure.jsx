@@ -1,5 +1,5 @@
-import React from "react";
-import { ExternalLink, FileText, Mail, Phone, User } from "lucide-react";
+import React, { useMemo, useState } from "react";
+import { ExternalLink, FileText, Mail, Phone, User, Search, X } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
 import { Reveal } from "../components/Primitives.jsx";
 import { C } from "../theme.js";
@@ -67,6 +67,7 @@ const SECTIONS = [
       { label: "Board of Studies", href: `${U}/2026/04/Board-of-Studies.pdf` },
       { label: "Finance Committee", href: `${U}/2026/04/Finance-committee.pdf` },
       { label: "Internal Complaint Committee", href: `${U}/2025/06/Internal-complaint-Committee-1.pdf` },
+      { label: "Internal Complaint Committee — Updated", href: "/disclosure/Internal-Complaint-Committee-2026.pdf" },
       { label: "Academic Leadership (Dean / HoD of Schools / Departments / Centres)", href: `${U}/2025/06/Academic-Leadership-DeanHOD-of-School-Department-Centers.pdf` },
     ],
   },
@@ -120,9 +121,9 @@ const SECTIONS = [
       { label: "Student Grievance Redressal Committee (SGRC)", href: `${U}/2025/06/Student-Grievance-Redressal-Comm-SGRC.pdf` },
       { label: "Ombudsperson Letter", href: `${U}/2025/06/Letter-Ombudasperson.pdf` },
       { label: "Health Facilities", href: `${U}/2025/06/Health-Facilities.pdf` },
-      { label: "Internal Complaint Committee", href: `${U}/2025/06/Internal-complaint-Committee.pdf` },
       { label: "Anti-Ragging Cell", href: `${U}/2025/06/Anti-ragging-Cell.pdf` },
       { label: "Equal Opportunity Cell", href: `${U}/2025/06/Equal-Opportunity-Cell.pdf` },
+      { label: "Equal Opportunity Cell — Updated", href: "/disclosure/Equal-Opportunity-Cell-Committee-2026.pdf" },
       { label: "Facilities for Differently Abled", href: `${U}/2025/06/Faculties-for-Differently-abled.pdf` },
     ],
     note: "NCC / NSS: Under Process",
@@ -251,7 +252,31 @@ function DocRow({ label, href }) {
   );
 }
 
+/* Keeps the sections/groups/docs that match every word of the query. A match on
+   a section title or group heading keeps everything under it. */
+function filterSections(query) {
+  const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+  if (!words.length) return SECTIONS;
+  const hit = (...texts) => {
+    const hay = texts.join(" ").toLowerCase();
+    return words.every((w) => hay.includes(w));
+  };
+  return SECTIONS.map((sec) => {
+    const keep = (docs, heading = "") => docs.filter((d) => hit(sec.title, heading, d.label));
+    const docs = sec.docs && keep(sec.docs);
+    const groups = sec.groups && sec.groups
+      .map((g) => ({ ...g, docs: keep(g.docs, g.heading) }))
+      .filter((g) => g.docs.length);
+    const count = (docs?.length || 0) + (groups?.reduce((n, g) => n + g.docs.length, 0) || 0);
+    return { ...sec, docs, groups, note: hit(sec.title, sec.note || "") ? sec.note : null, count };
+  }).filter((sec) => sec.count);
+}
+
 export default function PublicSelfDisclosure() {
+  const [query, setQuery] = useState("");
+  const sections = useMemo(() => filterSections(query.trim()), [query]);
+  const total = sections.reduce((n, s) => n + (s.count || 0), 0);
+
   return (
     <>
       <SEO
@@ -296,8 +321,34 @@ export default function PublicSelfDisclosure() {
 
       {/* Disclosure sections */}
       <section className="sec wrap" style={{ paddingTop: 20 }}>
-        {SECTIONS.map((sec, si) => (
-          <Reveal key={si} delay={`d${(si % 3) + 1}`}>
+        <div role="search" style={{ position: "sticky", top: 84, zIndex: 5, marginBottom: 36, background: "var(--ivory)", padding: "10px 0" }}>
+          <label htmlFor="disclosure-search" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}>Search disclosure documents</label>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, background: "#fff", borderRadius: 14, padding: "0 14px", border: `1px solid rgba(11,44,24,.14)`, boxShadow: "0 10px 30px -20px rgba(11,44,24,.4)", maxWidth: 720 }}>
+            <Search size={18} color={C.emerald} style={{ flexShrink: 0 }} />
+            <input
+              id="disclosure-search"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search documents — e.g. committee, fee, anti-ragging, statute"
+              autoComplete="off"
+              style={{ flex: 1, minWidth: 0, border: 0, outline: "none", background: "transparent", fontSize: 15, padding: "14px 0", color: C.ink }}
+            />
+            {query && (
+              <button type="button" onClick={() => setQuery("")} aria-label="Clear search" style={{ border: 0, background: "transparent", cursor: "pointer", display: "grid", placeItems: "center", padding: 4, color: C.slate }}>
+                <X size={16} />
+              </button>
+            )}
+          </div>
+          {query.trim() && (
+            <p aria-live="polite" style={{ color: C.slate, fontSize: 13.5, margin: "10px 2px 0" }}>
+              {total ? `${total} document${total === 1 ? "" : "s"} found` : `No documents match “${query.trim()}”.`}
+            </p>
+          )}
+        </div>
+
+        {sections.map((sec) => (
+          <Reveal key={sec.n} delay={`d${(Number(sec.n) % 3) + 1}`}>
             <div style={{ marginBottom: 46 }}>
               <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 20 }}>
                 <span style={{ width: 40, height: 40, borderRadius: 11, background: `linear-gradient(135deg,${C.navy},${C.emerald})`, color: C.gold, display: "grid", placeItems: "center", fontFamily: "Fraunces,serif", fontSize: 18, flexShrink: 0 }}>

@@ -19,6 +19,7 @@ const TheUniversity = lazy(() => import("./pages/about/TheUniversity.jsx"));
 const AwardsRankings = lazy(() => import("./pages/about/AwardsRankings.jsx"));
 const Accreditations = lazy(() => import("./pages/about/Accreditations.jsx"));
 const MandatoryDisclosure = lazy(() => import("./pages/about/MandatoryDisclosure.jsx"));
+const MoU = lazy(() => import("./pages/about/MoU.jsx"));
 const FeeDetails = lazy(() => import("./pages/FeeDetails.jsx"));
 const Eligibility = lazy(() => import("./pages/Eligibility.jsx"));
 const AdmissionProcedure = lazy(() => import("./pages/AdmissionProcedure.jsx"));
@@ -44,6 +45,7 @@ const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions.jsx"));
 const PublicSelfDisclosure = lazy(() => import("./pages/PublicSelfDisclosure.jsx"));
 const AntiRaggingCommittee = lazy(() => import("./pages/AntiRaggingCommittee.jsx"));
 const Healthcare = lazy(() => import("./pages/Healthcare.jsx"));
+const Contact = lazy(() => import("./pages/Contact.jsx"));
 
 // Every page except the homepage is code-split: visitors download a page's
 // code only when they navigate to it, which keeps the first-load bundle small.
@@ -114,6 +116,7 @@ export default function App() {
           <Route path="/about/awards" element={<AwardsRankings />} />
           <Route path="/about/accreditations" element={<Accreditations />} />
           <Route path="/about/disclosure" element={<MandatoryDisclosure />} />
+          <Route path="/about/mou" element={<MoU />} />
           <Route path="/admissions/fees" element={<FeeDetails />} />
           <Route path="/admissions/eligibility" element={<Eligibility />} />
           <Route path="/admissions/procedure" element={<AdmissionProcedure />} />
@@ -137,6 +140,7 @@ export default function App() {
           <Route path="/public-self-disclosure" element={<PublicSelfDisclosure />} />
           <Route path="/anti-ragging-committee" element={<AntiRaggingCommittee />} />
           <Route path="/healthcare" element={<Healthcare />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/certificates" element={<CertificateDownload />} />
           {/* Internal scratch route. It has no real content, so keep it out of
               the index — it was otherwise crawlable as a thin page. */}

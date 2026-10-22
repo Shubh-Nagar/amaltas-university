@@ -47,6 +47,7 @@ export default function Footer() {
             <Link to="/happenings/events">Happenings</Link>
             <Link to="/alumni">Alumni</Link>
             <Link to="/healthcare">Healthcare</Link>
+            <Link to="/contact">Contact Us</Link>
           </div>
           <div>
             <h4>Quick Links</h4>

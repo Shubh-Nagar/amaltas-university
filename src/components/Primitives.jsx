@@ -14,7 +14,7 @@ export function Reveal({ children, cls = "", delay = "", variant = "" }) {
   return <div ref={ref} className={`rv ${v} ${delay} ${seen ? "in" : ""} ${cls}`}>{children}</div>;
 }
 
-export function Tilt({ children, className, style, onClick }) {
+export function Tilt({ children, className, style, onClick, onMouseEnter, onMouseLeave }) {
   const ref = useRef(null);
   const onMove = (e) => {
     const el = ref.current, r = el.getBoundingClientRect();
@@ -22,10 +22,10 @@ export function Tilt({ children, className, style, onClick }) {
     const py = (e.clientY - r.top) / r.height - 0.5;
     el.style.transform = `rotateY(${px * 9}deg) rotateX(${-py * 9}deg) translateY(-6px)`;
   };
-  const reset = (e) => { e.currentTarget.style.transform = ""; };
+  const reset = (e) => { e.currentTarget.style.transform = ""; onMouseLeave?.(e); };
   return (
     <div className="tilt-wrap">
-      <div ref={ref} className={className} style={style} onMouseMove={onMove} onMouseLeave={reset} onClick={onClick}>
+      <div ref={ref} className={className} style={style} onMouseMove={onMove} onMouseEnter={onMouseEnter} onMouseLeave={reset} onClick={onClick}>
         {children}
       </div>
     </div>

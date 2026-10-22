@@ -4,7 +4,7 @@ import {
   Calendar, Download, MessageSquare, Newspaper, Image,
   FileText, ClipboardCheck, BadgeIndianRupee,
   Trophy, Music, Dumbbell, BookOpen, Home as HomeIcon, HandHeart,
-  Leaf, Heart, Star,
+  Leaf, Heart, Star, Handshake,
 } from "lucide-react";
 
 export const INSTITUTIONS = [
@@ -241,6 +241,7 @@ export const NAV = [
       { to: "/leadership",           label: "Leadership",                 desc: "Board, chancellors & messages", icon: Users         },
       { to: "/about/awards",         label: "Awards & Rankings",          desc: "Recognition & achievements",   icon: Trophy        },
       { to: "/about/accreditations", label: "Approvals & Accreditations", desc: "Regulatory body approvals",   icon: Award         },
+      { to: "/about/mou",            label: "MoUs",                       desc: "Academic & research partners", icon: Handshake     },
       { to: "/about/disclosure",     label: "Mandatory Disclosure",       desc: "AISHE & UGC compliance",      icon: FileText      },
     ],
   },
@@ -296,6 +297,10 @@ export const NAV = [
       { to: "/alumni/achievers",    label: "Alumni Achievers"},
       { to: "/alumni/giving-back",  label: "Giving Back"     },
     ],
+  },
+  {
+    label: "Contact Us",
+    to: "/contact",
   },
 ];
 

@@ -15,6 +15,27 @@ const gal = (folder, files) => files.map((f) => `${EV_BASE}/${encodeURIComponent
 
 const EVENTS = [
   {
+    img: "/assets/images%20of%20university/events/Garba%20Celebration%20Paramedical%202026/1.webp",
+    date: "17 October 2026",
+    title: "A Glimpse of Garba Celebration at Amaltas Institute of Medical Sciences (Paramedical Sciences)",
+    desc: "Amaltas Institute of Medical Sciences (Paramedical Sciences) celebrated the vibrant festival of Garba with great enthusiasm, joy, and cultural spirit. The event was filled with energetic performances, colorful traditional attire, and moments of togetherness, creating beautiful memories for students and faculty members. Tradition, Culture & Celebration – Bringing Hearts Together!",
+    gallery: gal("Garba Celebration Paramedical 2026", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/World%20Anatomy%20Day%202026/1.webp",
+    date: "15 October 2026",
+    title: "विश्व एनाटॉमी दिवस के उपलक्ष्य में रचना शारीर विभाग द्वारा विशेष शैक्षणिक कार्यक्रम",
+    desc: "अमलतास इंस्टीट्यूट ऑफ आयुर्वेद, देवास के रचना शारीर विभाग द्वारा विश्व एनाटॉमी दिवस के शुभ अवसर पर दिनांक 15 अक्टूबर 2026 को मानव शरीर की संरचना, शरीर रचना विज्ञान (Anatomy) के महत्व एवं चिकित्सा शिक्षा में इसकी महत्वपूर्ण भूमिका को रेखांकित करने हेतु विशेष शैक्षणिक कार्यक्रम का आयोजन किया गया। इस कार्यक्रम का मुख्य उद्देश्य विद्यार्थियों में मानव शरीर की संरचना के प्रति वैज्ञानिक दृष्टिकोण विकसित करना तथा आयुर्वेद के प्राचीन ज्ञान और आधुनिक शरीर रचना विज्ञान के समन्वय के महत्व को प्रोत्साहित करना है। कार्यक्रम अमलतास ग्रुप के माननीय फाउंडर चेयरमैन श्री सुरेश सिंह भदौरिया एवं चेयरमैन श्री मयंकराज सिंह भदौरिया के संरक्षण, तथा डायरेक्टर डॉ. अभिजीत तायडे, श्री विकास मंडाड, महाप्रबंधक डॉ. मनीष शर्मा एवं प्राचार्या डॉ. अनिता घोडके के निरंतर मार्गदर्शन में संपन्न हुआ। कार्यक्रम का आयोजन रचना शारीर विभाग के डॉ. शीलम परिहार एवं डॉ. दीपेंद्र सिंह राठौर द्वारा किया गया।",
+    gallery: gal("World Anatomy Day 2026", ["1.jpeg", "2.jpeg"]),
+  },
+  {
+    img: "/assets/images%20of%20university/events/World%20Mental%20Health%20Day%202026/1.webp",
+    date: "10 October 2026",
+    title: "World Mental Health Day — “Lived Experiences Heard: Real Voices, Real Change”",
+    desc: "Amaltas Institute of Nursing Sciences celebrated World Mental Health Day to raise awareness about mental health, promote emotional well-being, and encourage a supportive environment where everyone feels heard, valued, and understood. Mental health matters. Let's break the stigma and spread awareness.",
+    gallery: gal("World Mental Health Day 2026", ["1.jpeg", "2.jpeg", "3.jpeg", "4.jpeg"]),
+  },
+  {
     img: "/assets/images%20of%20university/events/World%20Heart%20Day%202026/1.webp",
     date: "29 September 2026",
     title: "Celebrating World Heart Day!",
@@ -169,6 +190,13 @@ const EVENTS = [
     title: "Celebrating the Guiding Hands of Education!",
     desc: "Amaltas Institute of Nursing Sciences celebrated Teachers' Day with joy, gratitude, and heartfelt appreciation for the incredible teachers who inspire, guide, and empower future healthcare professionals. Their dedication, wisdom, and constant encouragement continue to shape confident and compassionate nursing professionals. Happy Teachers' Day to all our inspiring educators!",
     gallery: gal("Teachers Day Celebration Nursing", Array.from({ length: 9 }, (_, i) => `${i + 1}.jpeg`)),
+  },
+  {
+    img: "/assets/images%20of%20university/events/GCP%20and%20ICF%20Workshop%202026/1.webp",
+    date: "2–3 September 2026",
+    title: "National Workshops on Good Clinical Practice, Research Methodology & ICF",
+    desc: "Amaltas Institute of Medical Sciences, Dewas, successfully hosted two significant academic and capacity-building programmes focused on strengthening clinical research, ethical practices, and healthcare classifications. A National Two-Day Workshop on Good Clinical Practice (GCP), Grant Writing and Research Methodology was organized on 2nd–3rd September 2026. The workshop focused on Research Protocol Development, Research Ethics, GCP, Research Grants and Funding Opportunities, Study Designs, Review of Literature, Statistical Planning, Sample Size Calculation, and Scientific Publication. Eminent experts Dr. Atul Srivastava, Dr. Pawan Kare, Dr. Padma Bhatia, and Dr. Shishir Urdhwareshe conducted insightful sessions and practical activities on developing research questions, objectives, and research designs. Alongside this, a National Workshop on the International Classification of Functioning, Disability and Health (ICF) was organized on 2nd September 2026, in collaboration with the Central Bureau of Health Intelligence (CBHI), Directorate General of Health Services, Ministry of Health & Family Welfare, Government of India. Dr. Atul Srivastava conducted the technical session on ICF, while Mrs. Harshada Nandalal introduced participants to CBHI and its initiatives. Both programmes were attended by Dr. Salil Bhargava, Pro-Chancellor; Dr. R.K. Singh, Vice-Chancellor; Dr. Abhay Gupta, Registrar & Research Director; Dr. A.K. Pithawa, Dean; Dr. Mahesh Kumar Jain; and Dr. Tanishq Yadav, Workshop/Programme Coordinator, along with faculty members, clinicians, researchers, principals, and students. These initiatives provided valuable practical insights and strengthened the academic, ethical, research, and professional learning environment at Amaltas University.",
+    gallery: gal("GCP and ICF Workshop 2026", Array.from({ length: 13 }, (_, i) => `${i + 1}.jpeg`)),
   },
   {
     img: "/assets/images%20of%20university/events/Khelo%20India%20Samvad/6.webp",

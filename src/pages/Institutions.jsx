@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { PageHero } from "../components/Layout.jsx";
@@ -7,6 +7,64 @@ import { C, admissionsCardBg } from "../theme.js";
 import { INSTITUTIONS } from "../data/content.js";
 import SEO from "../components/SEO.jsx";
 import { breadcrumbSchema, COURSE_CATALOG_SCHEMA } from "../data/schema.js";
+
+// Looping clip that fades in behind a card's text area on hover. Set `video` on an
+// institution in content.js to give it its own clip.
+const CARD_VIDEO = "/assets/images%20of%20university/hero%20section/hero-video-web.mp4";
+const canHover = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+function InstCard({ it }) {
+  const video = useRef(null);
+  const play = () => {
+    const v = video.current;
+    if (!v || !canHover()) return;
+    v.play().catch(() => {});
+  };
+  const stop = () => {
+    const v = video.current;
+    if (!v) return;
+    v.pause();
+    v.currentTime = 0;
+  };
+  return (
+    <Tilt
+      className="inst-card"
+      onClick={() => window.open(it.website, "_blank", "noreferrer")}
+      onMouseEnter={play}
+      onMouseLeave={stop}
+    >
+      <div className="inst-card-img">
+        <img src={it.img} alt={it.name} loading="lazy" />
+      </div>
+      <div className="inst-card-text">
+        <video ref={video} className="inst-card-video" muted loop playsInline preload="none" aria-hidden="true">
+          <source src={it.video || CARD_VIDEO} type="video/mp4" />
+        </video>
+        <div className="inst-card-body">
+          <span className="inst-tag">{it.tag}</span>
+          <h3>{it.name}</h3>
+          <p className="inst-desc">{it.desc}</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 18 }}>
+            {it.programs.map((p) => (
+              <div key={p} className="inst-prog">
+                <Check size={15} /> {p}
+              </div>
+            ))}
+          </div>
+          <a
+            href={it.website}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="inst-link"
+          >
+            Visit department website <ArrowUpRight size={16} />
+          </a>
+        </div>
+      </div>
+    </Tilt>
+  );
+}
 
 export default function Institutions() {
   return (
@@ -35,33 +93,7 @@ export default function Institutions() {
           {INSTITUTIONS.map((it, i) => {
             return (
               <Reveal key={i} delay={`d${(i % 3) + 1}`}>
-                <Tilt
-                  className="inst-card"
-                  onClick={() => window.open(it.website, "_blank", "noreferrer")}
-                >
-                  <div className="inst-card-img">
-                    <img src={it.img} alt={it.name} loading="lazy" />
-                  </div>
-                  <span className="inst-tag">{it.tag}</span>
-                  <h3>{it.name}</h3>
-                  <p style={{ color: C.slate, fontSize: 14.5, marginBottom: 16 }}>{it.desc}</p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 18 }}>
-                    {it.programs.map((p) => (
-                      <div key={p} style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 14, color: C.ink }}>
-                        <Check size={15} color={C.emerald} /> {p}
-                      </div>
-                    ))}
-                  </div>
-                  <a
-                    href={it.website}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    style={{ display: "inline-flex", alignItems: "center", gap: 7, color: C.emerald, fontWeight: 600, fontSize: 14, textDecoration: "none" }}
-                  >
-                    Visit department website <ArrowUpRight size={16} />
-                  </a>
-                </Tilt>
+                <InstCard it={it} />
               </Reveal>
             );
           })}
