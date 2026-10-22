@@ -48,6 +48,7 @@ export default function Footer() {
             <Link to="/alumni">Alumni</Link>
             <Link to="/healthcare">Healthcare</Link>
             <Link to="/contact">Contact Us</Link>
+            <Link to="/job-openings">Job Openings</Link>
           </div>
           <div>
             <h4>Quick Links</h4>
@@ -62,6 +63,8 @@ export default function Footer() {
             <Link to="/anti-ragging-committee">Anti-Ragging Committee</Link>
             <a href="/disclosure/Students-Grievance-Redressal-Committee-2024.pdf" target="_blank" rel="noreferrer">Students Grievance Redressal Committee</a>
             <Link to="/alumni/giving-back">Giving Back</Link>
+            <a href="https://www.education.gov.in/" target="_blank" rel="noreferrer">Ministry of Education</a>
+            <a href="https://www.ugc.gov.in/" target="_blank" rel="noreferrer">University Grants Commission (UGC)</a>
           </div>
           <div>
             <h4>Reach Us</h4>

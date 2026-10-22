@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import {
-  ArrowRight, Menu, X, ChevronDown,
+  ArrowRight, Menu, X, ChevronDown, ChevronRight,
   Phone, Mail, Facebook, Instagram, Twitter, Youtube,
 } from "lucide-react";
 import { NAV } from "../data/content.js";
@@ -14,11 +14,70 @@ function ChildLink({ to, label }) {
       </a>
     );
   }
+  // External portals open in a new tab instead of going through the router.
+  if (/^https?:\/\//.test(to)) {
+    return (
+      <a href={to} target="_blank" rel="noreferrer" className="dropdown-item">
+        {label}
+      </a>
+    );
+  }
+  // A link to a section of a page (path#id): NavLink would mark every sibling
+  // section link "active" on that page, so use a plain Link.
+  if (to.includes("#")) {
+    return (
+      <Link to={to} className="dropdown-item">
+        {label}
+      </Link>
+    );
+  }
   return (
     <NavLink to={to} className="dropdown-item">
       {label}
     </NavLink>
   );
+}
+
+/* Desktop: an item with its own `children` opens a flyout beside the dropdown
+   on hover or keyboard focus. */
+function DesktopSubMenu({ label, items }) {
+  return (
+    <div className="dropdown-sub">
+      <button type="button" className="dropdown-item dropdown-sub-btn" aria-haspopup="true">
+        {label}
+        <ChevronRight size={14} aria-hidden="true" />
+      </button>
+      <div className="dropdown-flyout" role="menu" aria-label={label}>
+        {items.map((c, k) => <ChildLink key={k} to={c.to} label={c.label} />)}
+      </div>
+    </div>
+  );
+}
+
+/* Mobile drawer: the same nested item expands in place. */
+function MobileSubMenu({ label, items }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`mobile-subgroup${open ? " on" : ""}`}>
+      <button type="button" className="dropdown-item mobile-subgroup-btn" aria-expanded={open} onClick={() => setOpen(!open)}>
+        {label}
+        <ChevronDown size={14} aria-hidden="true" style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform .3s" }} />
+      </button>
+      {open && (
+        <div className="mobile-sub">
+          {items.map((c, k) => <ChildLink key={k} to={c.to} label={c.label} />)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function DropdownEntry({ item, mobile }) {
+  if (item.children) {
+    const Sub = mobile ? MobileSubMenu : DesktopSubMenu;
+    return <Sub label={item.label} items={item.children} />;
+  }
+  return <ChildLink to={item.to} label={item.label} />;
 }
 
 function MegaItem({ to, label, desc, icon: Icon }) {
@@ -60,7 +119,7 @@ export default function Navbar() {
   useEffect(() => {
     setOpen(false);
     setExpandedMobile(null);
-  }, [loc.pathname]);
+  }, [loc.pathname, loc.hash]);
 
   // The drawer covers the viewport on phones: freeze the page behind it and let
   // the floating action buttons get out of its way. They live in App.jsx,
@@ -72,6 +131,21 @@ export default function Navbar() {
 
   const solid = scrolled || !onHome;
 
+  // Publish the header's real height as --header-h so things that dock beneath
+  // it (the homepage notice ticker) sit flush at every breakpoint and while the
+  // top bar collapses on scroll, instead of guessing a pixel value per width.
+  const navRef = useRef(null);
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const publish = () =>
+      document.documentElement.style.setProperty("--header-h", `${Math.round(el.getBoundingClientRect().height)}px`);
+    publish();
+    const ro = new ResizeObserver(publish);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <>
       {/* Backdrop lives outside .nav on purpose: .nav.solid carries a
@@ -80,7 +154,7 @@ export default function Navbar() {
       {open && (
         <div className="mobile-scrim" onClick={() => setOpen(false)} aria-hidden="true" />
       )}
-    <div className={`nav ${solid ? "solid" : ""}`}>
+    <div ref={navRef} className={`nav ${solid ? "solid" : ""}`}>
       {/* TOP INFO BAR — hidden when solid */}
       <div className="nav-topbar">
         <div className="nav-topbar-inner">
@@ -150,7 +224,7 @@ export default function Navbar() {
                     <div className="dropdown-menu">
                       <div className="dropdown-inner">
                         {n.children.map((c, j) => (
-                          <ChildLink key={j} to={c.to} label={c.label} />
+                          <DropdownEntry key={j} item={c} />
                         ))}
                       </div>
                     </div>
@@ -221,11 +295,7 @@ export default function Navbar() {
                 {expandedMobile === i && (
                   <div className="mobile-sub">
                     {n.children.map((c, j) => (
-                      <ChildLink
-                        key={j}
-                        to={c.to}
-                        label={c.label}
-                      />
+                      <DropdownEntry key={j} item={c} mobile />
                     ))}
                   </div>
                 )}

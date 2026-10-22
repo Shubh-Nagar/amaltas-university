@@ -21,7 +21,7 @@ import {
   INSTITUTIONS, WHY, VOICES, STATS, LEADERS,
   EVENTS, NEWS, FAQS, ANNOUNCEMENTS,
   AUDIENCES, ADMISSION_PATHS, LIFE, OUTCOMES, PARTNERS,
-  ACCREDITATIONS, ASSURANCE,
+  ACCREDITATIONS, ASSURANCE, CONTROLLER_OF_EXAMINATION,
 } from "../data/content.js";
 
 const IMGS = {
@@ -1140,11 +1140,18 @@ export default function Home() {
             </div>
           </Reveal>
 
+          {/* Row 1: three leaders. Row 2: three leaders + the Controller of
+              Examination, whose card links to that office's page. */}
           <div className="leader-photo-grid">
-            {LEADERS.slice(0, 6).map((l, i) => (
-              <div key={i} className="lpc-span-2">
-              <Reveal delay={`d${i + 1}`} variant="zoom">
-                <div className="leader-photo-card">
+            {[...LEADERS.slice(0, 6), CONTROLLER_OF_EXAMINATION].map((l, i) => {
+              const Card = l.path ? Link : "div";
+              return (
+              <div key={i} className={i < 3 ? "lpc-row1" : "lpc-row2"}>
+              <Reveal delay={`d${(i % 6) + 1}`} variant="zoom">
+                <Card
+                  className="leader-photo-card"
+                  {...(l.path && { to: l.path, style: { textDecoration: "none" } })}
+                >
                   <div className="lpc-photo-area">
                     {l.photo
                       ? <img src={l.photo} alt={l.nm} loading="lazy" decoding="async" />
@@ -1155,10 +1162,11 @@ export default function Home() {
                     <div className="lpc-name">{l.nm}</div>
                     <p className="lpc-bio">{l.bio}</p>
                   </div>
-                </div>
+                </Card>
               </Reveal>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

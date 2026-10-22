@@ -20,7 +20,7 @@ export default function Accreditations() {
     <>
       <SEO
         title="Approvals & Accreditations — NMC, NCISM, NCH, INC, PCI, UGC"
-        description="Amaltas University's programmes are approved by NMC, NCISM, NCH, Indian Nursing Council, Pharmacy Council of India, UGC, MPPURC, NABH and NABL — ensuring degrees are valid, valued and portable."
+        description="Amaltas University's programmes are approved by NMC, NCISM, NCH, Indian Nursing Council, Pharmacy Council of India, MP Paramedical Council, UGC, MPPURC, NABH and NABL — ensuring degrees are valid, valued and portable."
         path="/about/accreditations"
         keywords="Amaltas University NMC approval, Amaltas University UGC recognition, NCISM BAMS approval, PCI approved pharmacy college"
         jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About Us", path: "/about/university" }, { name: "Accreditations", path: "/about/accreditations" }])}

@@ -77,7 +77,7 @@ const APPROVALS = [
 ];
 
 const HERO_CHIPS = [
-  { icon: CalendarDays, label: "Established 2013" },
+  { icon: CalendarDays, label: "Established 2022" },
   { icon: MapPin,       label: "Dewas, Madhya Pradesh" },
   { icon: Building2,    label: "6 Health-Science Institutes" },
   { icon: ShieldCheck,  label: "Govt. Recognised & Accredited" },

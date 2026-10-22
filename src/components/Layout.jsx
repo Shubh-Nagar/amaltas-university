@@ -3,8 +3,28 @@ import { useLocation, Link } from "react-router-dom";
 import { C } from "../theme.js";
 
 export function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // A link to a section (/page#id). Pages are lazy-loaded, so the target may
+    // not exist yet: retry briefly until it renders, then bring it into view.
+    const id = decodeURIComponent(hash.slice(1));
+    let tries = 0;
+    let timer;
+    const seek = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      if (++tries < 40) timer = setTimeout(seek, 100);
+    };
+    seek();
+    return () => clearTimeout(timer);
+  }, [pathname, hash]);
   return null;
 }
 

@@ -37,6 +37,9 @@ const LEADERS = [
   { role: "Pro Chancellor",  name: "Dr. Salil Bhargava",         email: "prochancellor@amaltasuniversity.in", phone: "070890 40404",   profile: `${DOCS}/salil%20bhargava.pdf` },
   { role: "Vice-Chancellor", name: "Dr. R.K. Singh", email: "vicechancellor@amaltasuniversity.in", phone: "098222 68026",  profile: `${DOCS}/rk%20singh.pdf` },
   { role: "Registrar",       name: "Dr. Abhay Gupta",        email: "registrar@amaltasuniversity.in",     phone: "07272-482580",   profile: `${DOCS}/abhay%20gupta.pdf` },
+  { role: "Finance Officer", name: "Mr. Sohit Gupta", email: "amaltashospitalac@gmail.com", phone: "8878536000" },
+  { role: "Controller of Examination", name: "Dr. Yogendra Singh Bhadoriya", email: "coeamaltasuniversity@gmail.com", phone: "9685096500", profile: `${DOCS}/controller%20of%20examination.pdf` },
+  { role: "Chief Vigilance Officer", name: "Mr. Kishor Shivcharan Barelikar", email: "barelikarkishore@gmail.com", phone: "9326794377", profile: `${DOCS}/chief%20vigilance%20officer.pdf` },
   { role: "Ombudsperson",    name: "Dr. Satish Kumar S. Gupta",  email: "surajbhanji@gmail.com",              phone: "+91 94221-14037", profile: `${U}/2025/06/Dr.-Satish-Kumar-S.-Gupta-Ombudsperson.pdf` },
 ];
 
@@ -61,6 +64,7 @@ const SECTIONS = [
     n: "2",
     title: "Administration",
     docs: [
+      { label: "Organisational Structure (Organogram)", href: `${DOCS}/organisational-structure.webp` },
       { label: "Executive Council / Board of Governors", href: `${U}/2025/06/Executive-Council.pdf` },
       { label: "Board of Management", href: `${U}/2026/04/Board-of-Management.pdf` },
       { label: "Academic Council", href: `${U}/2026/04/Academic-Council.pdf` },
@@ -69,6 +73,8 @@ const SECTIONS = [
       { label: "Internal Complaint Committee", href: `${U}/2025/06/Internal-complaint-Committee-1.pdf` },
       { label: "Internal Complaint Committee — Updated", href: "/disclosure/Internal-Complaint-Committee-2026.pdf" },
       { label: "Academic Leadership (Dean / HoD of Schools / Departments / Centres)", href: `${U}/2025/06/Academic-Leadership-DeanHOD-of-School-Department-Centers.pdf` },
+      { label: "Reservation Roster", status: "As per government norm" },
+      { label: "RTI: Details of CPIO and Appellate Authority", status: "NA" },
     ],
   },
   {
@@ -85,6 +91,12 @@ const SECTIONS = [
       { label: "Ord 6 — University Fellowships, Scholarships, Stipends, Medals and Prizes", href: `${U}/2025/06/Ord-6-University-Fellowships-Scholarships-Stipends-Medals-and-Prizes.pdf` },
       { label: "Ord 7 — Academic & Research Activity Grants", href: `${U}/2025/06/Ord-7-Academic-Research-Activity-Grants.pdf` },
       { label: "Department / Staff Details", href: `${U}/2025/06/Staff-62_94-UGC1.pdf` },
+      { label: "Teaching Faculty List — Medical Sciences", href: "/disclosure/Faculty-List-Medical.pdf" },
+      { label: "Teaching Faculty List — Nursing", href: "/disclosure/Faculty-List-Nursing.pdf" },
+      { label: "Teaching Faculty List — Paramedical Sciences", href: "/disclosure/Faculty-List-Paramedical.pdf" },
+      { label: "Teaching Faculty List — Pharmacy", href: "/disclosure/Faculty-List-Pharmacy.pdf" },
+      { label: "Teaching Faculty List — Ayurveda", href: "/disclosure/Faculty-List-Ayurveda.pdf" },
+      { label: "Teaching Faculty List — Homoeopathy", href: "/disclosure/Faculty-List-Homoeopathy.pdf" },
       { label: "IQAC", href: `${U}/2025/06/Internal-QualityI-Ass.-cell-QAC.pdf` },
       { label: "Library", href: `${U}/2025/06/Library-96-103.pdf` },
       { label: "Academic Collaboration 1 — MOU List in Shodhganga", href: `${U}/2025/06/Academic-Collaboration-1-A1-MOU-LIST-IN-Shodhganga.pdf` },
@@ -221,7 +233,7 @@ const SECTIONS = [
 
 /* One document row — links to the locally-hosted file when a href is known,
    otherwise a muted, non-navigating row (blank on the source site). */
-function DocRow({ label, href }) {
+function DocRow({ label, href, status }) {
   const target = localDoc(href);
   const base = {
     display: "flex", gap: 12, alignItems: "center",
@@ -236,9 +248,14 @@ function DocRow({ label, href }) {
 
   if (!href) {
     return (
-      <div style={{ ...base, opacity: 0.6, cursor: "default" }}>
+      <div style={{ ...base, opacity: status ? 1 : 0.6, cursor: "default" }}>
         {icon}
-        <span style={{ fontSize: 14.5, lineHeight: 1.4 }}>{label}</span>
+        <span style={{ fontSize: 14.5, lineHeight: 1.4, flex: 1 }}>{label}</span>
+        {status && (
+          <span style={{ flexShrink: 0, fontSize: 12, fontWeight: 700, color: C.emerald, background: "rgba(18,134,63,.1)", borderRadius: 100, padding: "4px 11px", textAlign: "right" }}>
+            {status}
+          </span>
+        )}
       </div>
     );
   }
@@ -262,7 +279,7 @@ function filterSections(query) {
     return words.every((w) => hay.includes(w));
   };
   return SECTIONS.map((sec) => {
-    const keep = (docs, heading = "") => docs.filter((d) => hit(sec.title, heading, d.label));
+    const keep = (docs, heading = "") => docs.filter((d) => hit(sec.title, heading, d.label, d.status || ""));
     const docs = sec.docs && keep(sec.docs);
     const groups = sec.groups && sec.groups
       .map((g) => ({ ...g, docs: keep(g.docs, g.heading) }))
@@ -310,9 +327,11 @@ export default function PublicSelfDisclosure() {
                 <a href={`tel:${l.phone.replace(/[^\d+]/g, "")}`} style={{ display: "flex", gap: 8, alignItems: "center", color: C.slate, fontSize: 13.5, marginTop: 8, textDecoration: "none" }}>
                   <Phone size={14} color={C.emerald} style={{ flexShrink: 0 }} /> {l.phone}
                 </a>
-                <a href={localDoc(l.profile)} target="_blank" rel="noreferrer" style={{ display: "inline-flex", gap: 7, alignItems: "center", color: C.emerald, fontSize: 13, fontWeight: 600, marginTop: 14, textDecoration: "none" }}>
-                  <User size={14} /> View profile <ExternalLink size={12} />
-                </a>
+                {l.profile && (
+                  <a href={localDoc(l.profile)} target="_blank" rel="noreferrer" style={{ display: "inline-flex", gap: 7, alignItems: "center", color: C.emerald, fontSize: 13, fontWeight: 600, marginTop: 14, textDecoration: "none" }}>
+                    <User size={14} /> View profile <ExternalLink size={12} />
+                  </a>
+                )}
               </div>
             </Reveal>
           ))}
@@ -363,7 +382,7 @@ export default function PublicSelfDisclosure() {
 
               {sec.docs && (
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 12 }}>
-                  {sec.docs.map((d, di) => <DocRow key={di} label={d.label} href={d.href} />)}
+                  {sec.docs.map((d, di) => <DocRow key={di} label={d.label} href={d.href} status={d.status} />)}
                 </div>
               )}
 
@@ -371,7 +390,7 @@ export default function PublicSelfDisclosure() {
                 <div key={gi} style={{ marginTop: gi === 0 ? 0 : 26 }}>
                   <h3 style={{ fontSize: 16, color: C.ink, margin: "0 0 14px" }}>{g.heading}</h3>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 12 }}>
-                    {g.docs.map((d, di) => <DocRow key={di} label={d.label} href={d.href} />)}
+                    {g.docs.map((d, di) => <DocRow key={di} label={d.label} href={d.href} status={d.status} />)}
                   </div>
                 </div>
               ))}
