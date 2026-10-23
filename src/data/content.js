@@ -40,7 +40,7 @@ export const INSTITUTIONS = [
     icon: GraduationCap, tag: "B.Sc · PB B.Sc Nursing",
     name: "Amaltas Institute of Nursing Sciences",
     desc: "Simulation labs, the lamp-lighting tradition, and placements across the Amaltas hospital network.",
-    img: "/assets/images%20of%20university/all%20institutes/nursing.webp",
+    img: "/assets/images%20of%20university/all%20institutes/nursing-building.webp",
     studentImg: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=75",
     programs: ["B.Sc. Nursing", "Post Basic B.Sc. Nursing", "M.Sc. Nursing", "GNM", "PhD Nursing"],
     website: "http://amaltasgroup.co.in/nursing/",
@@ -49,7 +49,7 @@ export const INSTITUTIONS = [
     icon: FlaskConical, tag: "B.Pharm · D.Pharm",
     name: "Amaltas Institute of Pharmacy",
     desc: "Formulation, pharmacology and analysis labs aligned to PCI standards and industry demand.",
-    img: "/assets/images%20of%20university/all%20institutes/pharmacy.webp",
+    img: "/assets/images%20of%20university/all%20institutes/pharmacy-building.webp",
     studentImg: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=700&q=75",
     programs: ["B.Pharm", "D.Pharm"],
     website: "http://amaltasgroup.co.in/pharmacy/",
@@ -63,7 +63,8 @@ export const INSTITUTIONS = [
     programs: [
       "B.P.T.", "B.M.L.T.", "B.X.R.T.", "D.M.L.T.",
       "Diploma in Cath Lab Technology", "Diploma in Dialysis Technology",
-      "Certificate in OT Technician", "Certificate in X-Ray Technician", "Certificate in USG Technician",
+      // Hidden — OT / X-Ray / USG Technician certificate courses temporarily unlisted.
+      // "Certificate in OT Technician", "Certificate in X-Ray Technician", "Certificate in USG Technician",
     ],
     website: "http://amaltasgroup.co.in/paramedical/#close",
   },
@@ -102,9 +103,10 @@ export const PROGRAMS = [
   { n: "D.M.L.T.", d: "Diploma in Medical Lab Technology", t: "Paramedical" },
   { n: "Diploma in Cath Lab Technology", d: "Paramedical Sciences", t: "Paramedical" },
   { n: "Diploma in Dialysis Technology", d: "Paramedical Sciences", t: "Paramedical" },
-  { n: "Certificate in OT Technician", d: "Paramedical Sciences", t: "Paramedical" },
-  { n: "Certificate in X-Ray Technician", d: "Paramedical Sciences", t: "Paramedical" },
-  { n: "Certificate in USG Technician", d: "Ultrasound Technician", t: "Paramedical" },
+  // Hidden — OT / X-Ray / USG Technician certificate courses temporarily unlisted.
+  // { n: "Certificate in OT Technician", d: "Paramedical Sciences", t: "Paramedical" },
+  // { n: "Certificate in X-Ray Technician", d: "Paramedical Sciences", t: "Paramedical" },
+  // { n: "Certificate in USG Technician", d: "Ultrasound Technician", t: "Paramedical" },
   { n: "Doctor of Philosophy (Ph.D.)", d: "Doctoral Research Programme", t: "Ph.D." },
   // Hidden — Allied & Rehabilitation Sciences programmes temporarily unlisted.
   // { n: "B.Sc. Clinical Psychology (Hons)", d: "Rehabilitation Sciences", t: "Allied" },
@@ -210,8 +212,8 @@ export const WHY = [
 ];
 
 export const LEADERS = [
-  { slug: "founder-chairman", role: "Hon'ble Founder Chairman", nm: "Shri Suresh Singh Bhadoria", org: "Mayank Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/suresh-sir.webp" },
-  { slug: "chairman", role: "Hon'ble Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Mayank Welfare Society", bio: "Visionary founder whose tireless dedication and philanthropic resolve laid the cornerstone of the Amaltas group and its mission to serve society.", photo: "/assets/images%20of%20university/leadership/mayank.webp" },
+  { slug: "founder-chairman", role: "Hon'ble Founder Chairman", nm: "Shri Suresh Singh Bhadoria", org: "Amaltas Educational Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/suresh-sir.webp" },
+  { slug: "chairman", role: "Hon'ble Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Amaltas Educational Welfare Society", bio: "Visionary founder whose tireless dedication and philanthropic resolve laid the cornerstone of the Amaltas group and its mission to serve society.", photo: "/assets/images%20of%20university/leadership/mayank.webp" },
   { slug: "chancellor", role: "Hon'ble Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.webp" },
   { slug: "pro-chancellor", role: "Hon'ble Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir-png.webp" },
   { slug: "vice-chancellor", role: "Hon'ble Vice Chancellor", nm: "Dr. R.K. Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.webp" },
@@ -283,6 +285,7 @@ export const NAV = [
       { to: "/student-life/hostel", label: "Hostel & Accommodation" },
       { to: "/facilities/academic", label: "Academic Facilities" },
       { to: "/facilities/campus", label: "Campus Facilities" },
+      { to: "/facilities/international-students", label: "Facilities for International Students" },
       // Hidden — Central Facilities flyout temporarily unlisted.
       // {
         // label: "Central Facilities",
@@ -510,7 +513,7 @@ export const CONTACT = {
 /* ─── ABOUT US page data ─────────────────────────────────── */
 
 export const UNIVERSITY_MILESTONES = [
-  { year: "2013", title: "Foundation Laid", desc: "Shri Suresh Singh Bhadoria established Mayank Welfare Society, resolving to bring quality healthcare education to Dewas and the Malwa heartland." },
+  { year: "2013", title: "Foundation Laid", desc: "Shri Suresh Singh Bhadoria established Amaltas Educational Welfare Society, resolving to bring quality healthcare education to Dewas and the Malwa heartland." },
   { year: "2015", title: "Medical Sciences Opens", desc: "Institute of Medical Sciences admitted its first MBBS cohort, anchored by the founding 800+ bed teaching hospital — live clinical learning from day one." },
   { year: "2016", title: "BAMS & BHMS Institutes", desc: "Ayurvedic College & Research Centre and Institute of Homoeopathy launched, recognising India's plural healing traditions as equally worthy of academic excellence." },
   { year: "2017", title: "Nursing Institute Inaugurated", desc: "The lamp-lighting ceremony welcomed the first batch of B.Sc. Nursing students — a tradition that continues to define the Amaltas spirit." },
@@ -605,7 +608,7 @@ export const DISCLOSURE_SECTIONS = [
       { label: "Name of University",    value: "Amaltas University" },
       { label: "Tagline",               value: "Where Healing Grows" },
       { label: "Established",           value: "Notified under the Madhya Pradesh Private University Act" },
-      { label: "Founding Society",      value: "Mayank Welfare Society" },
+      { label: "Founding Society",      value: "Amaltas Educational Welfare Society" },
       { label: "Chancellor",            value: "Mrs. Aruna Bhadoria" },
       { label: "Pro-Chancellor",        value: "Dr. Salil Bhargava" },
       { label: "Vice Chancellor",       value: "Dr. R.K. Singh" },
@@ -696,7 +699,7 @@ export const LEADER_MESSAGES = {
   "founder-chairman": {
     salutation: "Dear Students,",
     paragraphs: [
-      "When I established Mayank Welfare Society in 2013, I carried a single, unwavering conviction: that the people of Malwa — of Dewas, of every village and town across this heartland — deserved world-class healthcare education within reach. Not in a distant city, not beyond the means of the ordinary family, but here, close to home.",
+      "When I established Amaltas Educational Welfare Society in 2013, I carried a single, unwavering conviction: that the people of Malwa — of Dewas, of every village and town across this heartland — deserved world-class healthcare education within reach. Not in a distant city, not beyond the means of the ordinary family, but here, close to home.",
       "I have spent my life in service of this community. I have seen the consequences of a healthcare gap — families travelling hundreds of kilometres for treatment, young people with the aptitude to become doctors but no institution willing to open its doors to them. Amaltas was my answer to that silence.",
       "Building a university is not the work of one man or one year. It is the accumulation of thousands of decisions, sacrifices, and acts of faith. Every building you walk through, every laboratory you learn in, every patient you will one day treat — each of these traces its origin to a belief that service is the highest calling.",
       "To our students: you did not come to Amaltas by accident. You came because something in you recognised this place as more than an institution — it is a family, a mission, and a promise. I ask only one thing of you: carry that promise into the world with the same sincerity with which we planted it.",
@@ -708,7 +711,7 @@ export const LEADER_MESSAGES = {
     heroTitle: "Rooted in service, grown with purpose.",
     heroBg: "/assets/images%20of%20university/photo-gallery/DJI_0019.webp",
     stats: [
-      { icon: Leaf, label: "Founded", value: "2013", desc: "Mayank Welfare Society established" },
+      { icon: Leaf, label: "Founded", value: "2013", desc: "Amaltas Educational Welfare Society established" },
       { icon: Heart, label: "Mission", value: "Service", desc: "Healthcare access for Malwa heartland" },
       { icon: Star, label: "Legacy", value: "10+ Years", desc: "Of uninterrupted commitment" },
     ],

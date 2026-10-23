@@ -67,9 +67,10 @@ export const FEE_CATEGORIES = [
       { course: "DMLT", specialization: "Diploma in Medical Lab Technology", fee: 40000, seats: 50 },
       { course: "Dialysis Technician", specialization: null, fee: 30000, seats: null },
       { course: "Cath Lab Technician", specialization: null, fee: 30000, seats: null },
-      { course: "OT Technician", specialization: "Operation Theatre Technician", fee: 30000, seats: 50 },
-      { course: "X-Ray Technician", specialization: null, fee: 20000, seats: 50 },
-      { course: "USG Technician", specialization: "Ultrasonography Technician", fee: 20000, seats: 50 },
+      // Hidden — OT / X-Ray / USG Technician certificate courses temporarily unlisted.
+      // { course: "OT Technician", specialization: "Operation Theatre Technician", fee: 30000, seats: 50 },
+      // { course: "X-Ray Technician", specialization: null, fee: 20000, seats: 50 },
+      // { course: "USG Technician", specialization: "Ultrasonography Technician", fee: 20000, seats: 50 },
     ],
   },
   // Hidden — Allied and Rehabilitation fee category temporarily unlisted.
@@ -146,9 +147,10 @@ export const ELIGIBILITY_CATEGORIES = [
       { course: "DMLT",                          eligibility: "12th with PCB" },
       { course: "Diploma – Cath Lab Technology", eligibility: "12th with PCB" },
       { course: "Diploma – Dialysis Technology", eligibility: "12th with PCB" },
-      { course: "Certificate – OT Technician",   eligibility: "12th with PCB" },
-      { course: "Certificate – X-Ray Technician", eligibility: "12th with PCB" },
-      { course: "Certificate – USG Technician",  eligibility: "12th with PCB" },
+      // Hidden — OT / X-Ray / USG Technician certificate courses temporarily unlisted.
+      // { course: "Certificate – OT Technician",   eligibility: "12th with PCB" },
+      // { course: "Certificate – X-Ray Technician", eligibility: "12th with PCB" },
+      // { course: "Certificate – USG Technician",  eligibility: "12th with PCB" },
     ],
   },
   // Hidden — Allied & Rehabilitation eligibility category temporarily unlisted.

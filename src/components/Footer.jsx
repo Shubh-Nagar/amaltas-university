@@ -14,7 +14,7 @@ export default function Footer() {
               <img src="/assets/images%20of%20university/logo/white-logo.webp" alt="Amaltas University" style={{ height: 72, width: "auto", objectFit: "contain" }} loading="lazy" decoding="async" />
             </Link>
             <p style={{ marginTop: 16, fontSize: 14.5, lineHeight: 1.7 }}>
-              A medical university of the Amaltas Education Welfare Society — where the people
+              A medical university of the Amaltas Educational Welfare Society — where the people
               who will care for India learn by caring.
             </p>
             <div style={{ display: "flex", gap: 12, marginTop: 18 }}>

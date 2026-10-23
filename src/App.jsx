@@ -32,6 +32,7 @@ const HostelAccommodation = lazy(() => import("./pages/student-life/HostelAccomm
 const CampusLife = lazy(() => import("./pages/student-life/CampusLife.jsx"));
 const AcademicFacilities = lazy(() => import("./pages/facilities/AcademicFacilities.jsx"));
 const CampusFacilities = lazy(() => import("./pages/facilities/CampusFacilities.jsx"));
+const InternationalStudents = lazy(() => import("./pages/facilities/InternationalStudents.jsx"));
 const NewsAndPress = lazy(() => import("./pages/happenings/NewsAndPress.jsx"));
 const Events = lazy(() => import("./pages/happenings/Events.jsx"));
 const PhotoGallery = lazy(() => import("./pages/happenings/PhotoGallery.jsx"));
@@ -134,6 +135,7 @@ export default function App() {
           <Route path="/student-life/campus-life" element={<CampusLife />} />
           <Route path="/facilities/academic" element={<AcademicFacilities />} />
           <Route path="/facilities/campus" element={<CampusFacilities />} />
+          <Route path="/facilities/international-students" element={<InternationalStudents />} />
           <Route path="/happenings/news" element={<NewsAndPress />} />
           <Route path="/happenings/events" element={<Events />} />
           <Route path="/happenings/photo-gallery" element={<PhotoGallery />} />

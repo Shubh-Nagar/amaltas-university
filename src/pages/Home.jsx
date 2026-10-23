@@ -968,7 +968,7 @@ export default function Home() {
               <span className="eyebrow">Our purpose</span>
               <h2 style={{ fontSize: "clamp(2.2rem,5vw,3.4rem)", lineHeight: 1.1 }}>A university that began with a promise to a community.</h2>
               <p className="lead">
-                Founded by the Amaltas Education Welfare Society in 2016, we set out to bring
+                Founded by the Amaltas Educational Welfare Society in 2016, we set out to bring
                 world-class medical education to the heart of Madhya Pradesh — close to the
                 families who need care, and the students who dream of giving it.
               </p>

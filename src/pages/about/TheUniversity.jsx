@@ -235,7 +235,7 @@ export default function TheUniversity() {
     <>
       <SEO
         title="The University — Our Story, Vision & Mission"
-        description="Amaltas University, Dewas: founded 2013 by Mayank Welfare Society, gazette-notified as a Madhya Pradesh state private university in 2019. Read our history, vision, mission and values."
+        description="Amaltas University, Dewas: founded 2013 by Amaltas Educational Welfare Society, gazette-notified as a Madhya Pradesh state private university in 2019. Read our history, vision, mission and values."
         path="/about/university"
         jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About Us", path: "/about/university" }, { name: "The University", path: "/about/university" }])}
       />
@@ -294,27 +294,27 @@ export default function TheUniversity() {
 
       {/* ── AMALTAS UNIVERSITY — OUR STORY ── */}
       <section className="sec wrap" style={{ paddingTop: 90 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(400px,1fr))", gap: 60, alignItems: "center" }}>
-          <Reveal variant="left">
-            <div>
+        <div>
+          <Reveal>
+            <div style={{ textAlign: "center", maxWidth: 1080, margin: "0 auto" }}>
               <span className="eyebrow">Amaltas University</span>
               <h2 style={{ marginTop: 14, color: G.ink }}>A single resolve that became a university.</h2>
               <p style={{ color: G.slate, fontSize: 16.5, lineHeight: 1.85, marginTop: 20 }}>
                 Amaltas University began not in a boardroom, but with a conviction — that the Malwa heartland of Madhya Pradesh deserved a university worthy of its people's ambitions.
               </p>
               <p style={{ color: G.slate, fontSize: 16.5, lineHeight: 1.85, marginTop: 16 }}>
-                Founded under the Mayank Welfare Society by Shri Suresh Singh Bhadoria, the university grew institute by institute: first a medical college with a 900-bedded teaching hospital, then Ayurveda, Homeopathy, Nursing, Pharmacy, and Paramedical — six disciplines mirroring the full spectrum of human healing.
+                Founded under the Amaltas Educational Welfare Society by Shri Suresh Singh Bhadoria, the university grew institute by institute: first a medical college with a 900-bedded teaching hospital, then Ayurveda, Homeopathy, Nursing, Pharmacy, and Paramedical — six disciplines mirroring the full spectrum of human healing.
               </p>
               <p style={{ color: G.slate, fontSize: 16.5, lineHeight: 1.85, marginTop: 16 }}>
                 Today, Amaltas University stands in Village Bangar on the Dewas–Ujjain Highway — a campus where 1,500+ hospital beds, research labs, simulation centers, and hostel communities form a living ecosystem for tomorrow's healers.
               </p>
-              <div style={{ display: "flex", gap: 18, marginTop: 28, flexWrap: "wrap", alignItems: "center" }}>
+              <div style={{ display: "flex", gap: 18, marginTop: 28, flexWrap: "wrap", alignItems: "center", justifyContent: "center" }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13.5, color: G.slate, fontWeight: 500 }}>
                   <MapPin size={15} color={G.green} /> Dewas, Madhya Pradesh
                 </span>
                 <span style={{ width: 1, height: 16, background: G.border }} />
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 13.5, color: G.slate, fontWeight: 500 }}>
-                  <Users size={15} color={G.green} /> Mayank Welfare Society
+                  <Users size={15} color={G.green} /> Amaltas Educational Welfare Society
                 </span>
               </div>
             </div>
@@ -322,7 +322,7 @@ export default function TheUniversity() {
 
           {/* University photo */}
           <Reveal variant="img">
-            <div style={{ position: "relative", borderRadius: 26, overflow: "hidden", aspectRatio: "4/3", boxShadow: `0 40px 80px -40px rgba(16,128,59,.25)`, border: `3px solid ${G.greenBg}` }}>
+            <div style={{ position: "relative", borderRadius: 26, overflow: "hidden", aspectRatio: "21/9", marginTop: 56, boxShadow: `0 40px 80px -40px rgba(16,128,59,.25)`, border: `3px solid ${G.greenBg}` }}>
               <img
                 src="/assets/images%20of%20university/our%20purpose/university-png.webp"
                 alt="Amaltas University"
