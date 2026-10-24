@@ -870,13 +870,14 @@ export default function Home() {
       {/* ════════════════════════════════════════
           CAMPUS SHOWCASE  — video strip + blobs
       ════════════════════════════════════════ */}
+      {/* Hidden — campus-tour section ("We Innovate. We Inspire. We Empower.") temporarily unlisted.
       <section className="campus-showcase">
         <div className="campus-showcase-bg" aria-hidden="true">
           <img src={IMGS.campusBanner} alt="" loading="lazy" />
           <div className="campus-showcase-overlay" />
         </div>
 
-        {/* blobs drift over the overlay layer */}
+        [blobs drift over the overlay layer]
         <Blob color="rgba(255,255,255,.06)" size={480} blur={90} variant="a" delay={6}
           style={{ left: "8%", top: "10%", zIndex: 3 }} />
         <Blob color="rgba(246,224,5,.14)" size={360} blur={85} variant="c" delay={17}
@@ -924,7 +925,7 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </section> */}
 
       {/* ════════════════════════════════════════
           LIFE AT AMALTAS  — campus-life image grid
