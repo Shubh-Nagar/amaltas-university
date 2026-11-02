@@ -3228,3 +3228,7 @@ body.brochure-open{overflow:hidden;}
   .ct-hl--burg .ct-hl-ic svg,.ct-guide:hover .ct-guide-arrow{animation:none;}
   .ct-panel,.ct-loc-info{animation:none;}
 }
+
+/* spinner for in-progress buttons */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin 1s linear infinite;}

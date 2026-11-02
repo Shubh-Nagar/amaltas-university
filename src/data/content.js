@@ -291,7 +291,11 @@ export const NAV = [
     to: "/alumni",
     children: [
       { to: "/alumni",              label: "Alumni Home"     },
+      { to: "/alumni/registration", label: "Registration"    },
+      { to: "/alumni/update-profile", label: "Update Profile" },
       { to: "/alumni/leadership",   label: "Leadership"      },
+      { to: "/alumni/message",      label: "Message"         },
+      { to: "/alumni/members",      label: "Members"         },
       { to: "/alumni/engage",       label: "Engage"          },
       { to: "/alumni/assist",       label: "Alumni Assist"   },
       { to: "/alumni/achievers",    label: "Alumni Achievers"},

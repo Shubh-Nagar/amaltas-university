@@ -37,6 +37,10 @@ const AlumniEngage = lazy(() => import("./pages/alumni/Engage.jsx"));
 const AlumniAssist = lazy(() => import("./pages/alumni/Assist.jsx"));
 const AlumniAchievers = lazy(() => import("./pages/alumni/Achievers.jsx"));
 const AlumniGivingBack = lazy(() => import("./pages/alumni/GivingBack.jsx"));
+const AlumniRegistration = lazy(() => import("./pages/alumni/Registration.jsx"));
+const AlumniUpdateProfile = lazy(() => import("./pages/alumni/UpdateProfile.jsx"));
+const AlumniMessage = lazy(() => import("./pages/alumni/Message.jsx"));
+const AlumniMembers = lazy(() => import("./pages/alumni/Members.jsx"));
 const Mainpopup = lazy(() => import("./components/Mainpopup.jsx"));
 const IQAC = lazy(() => import("./pages/IQAC.jsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
@@ -134,6 +138,10 @@ export default function App() {
           <Route path="/alumni/assist" element={<AlumniAssist />} />
           <Route path="/alumni/achievers" element={<AlumniAchievers />} />
           <Route path="/alumni/giving-back" element={<AlumniGivingBack />} />
+          <Route path="/alumni/registration" element={<AlumniRegistration />} />
+          <Route path="/alumni/update-profile" element={<AlumniUpdateProfile />} />
+          <Route path="/alumni/message" element={<AlumniMessage />} />
+          <Route path="/alumni/members" element={<AlumniMembers />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/privacy-policy-2" element={<PrivacyPolicy2 />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
