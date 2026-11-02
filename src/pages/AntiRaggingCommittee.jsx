@@ -40,11 +40,8 @@ const COMMITTEE = [
 
 const SQUAD = [
   { n: 1, name: "Dr. Mohsin Khan",         designation: "Chief Proctor",                               post: "Chairperson", mobile: "9001857748", email: "mohsinkhan4944@gmail.com" },
-  { n: 2, name: "Dr. Madhurendra Rajput",  designation: "Chief Warden, Dy. Dean",                      post: "Member",      mobile: "8770754769", email: "drmadhurendrarajput@gmail.com" },
-  { n: 3, name: "Dr. Savita Rathod",       designation: "Girls Chief Warden Prof. & HOD Biochemistry", post: "Member",      mobile: "8349986127", email: "savitarathore@gmail.com" },
-  { n: 4, name: "Dr. Manish Sharma",       designation: "Prof. & HOD CHN, GM",                         post: "Member",      mobile: "7024107445", email: "sharmamanish750@gmail.com" },
-  { n: 5, name: "Dr. Pradyna Kulkarni",    designation: "Prof. & HOD Anatomy",                         post: "Member",      mobile: "9405955802", email: "drpradynakulkarni@amaltasuniversity.in" },
-  { n: 6, name: "Ms. Ragini Thakur",       designation: "Non Teaching",                                post: "Member",      mobile: "9907670132", email: "raginiaccounts@amaltasuniversity.in" },
+  { n: 2, name: "Dr. Manish Sharma",       designation: "Prof. & HOD CHN, GM",                         post: "Member",      mobile: "7024107445", email: "sharmamanish750@gmail.com" },
+  { n: 3, name: "Ms. Ragini Thakur",       designation: "Non Teaching",                                post: "Member",      mobile: "9907670132", email: "raginiaccounts@amaltasuniversity.in" },
 ];
 
 const th = {

@@ -17,7 +17,7 @@ const FALLBACK = "/assets/images%20of%20university/campus%20life/435A1853.webp";
 
 const STATS = [
   { v: 7,   suf: "",  l: "Dedicated Facility Zones" },
-  { v: 300, suf: "+", l: "Smart Classrooms & Labs" },
+  { v: 92, suf: "", l: "Smart Classrooms & Labs" },
   { v: 500, suf: "+", l: "Library Reading Seats" },
   { v: 100, suf: "%", l: "Wi-Fi Campus Coverage" },
 ];
@@ -49,7 +49,7 @@ const FACILITIES = [
     title: "University Library",
     blurb: "Spanning multiple floors, the central library houses an expansive print and digital collection across medicine, ayurveda, homoeopathy, nursing, pharmacy, and allied health sciences — with a 250-seat reading hall that stays open deep into exam season.",
     features: [
-      "89,800+ volumes across all disciplines",
+      "18,422 volumes across all disciplines",
       "250-seat silent reading hall",
       "Subscription e-journals & medical databases",
       "Digital catalogue & search kiosks",
@@ -308,7 +308,7 @@ function FacilityRow({ f, i }) {
   const Icon = f.icon;
   const flip = i % 2 === 1;
   return (
-    <div id={f.key} className="cf-row" style={{ scrollMarginTop: 90 }}>
+    <div id={f.key} className="cf-row" style={{ scrollMarginTop: "calc(var(--header-h, 90px) + 16px)" }}>
       <Reveal variant={flip ? "right" : "left"} cls={flip ? "" : ""} delay="">
         <div style={{ order: flip ? 2 : 1 }}>
           <div className="cf-row-media">

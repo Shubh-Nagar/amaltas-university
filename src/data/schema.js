@@ -154,9 +154,9 @@ export const PROGRAMMES = [
     code: "Paramedical",
     name: "Paramedical Sciences at Amaltas University",
     alternateName:
-      "Paramedical degree programmes including BPT, BMLT and allied health sciences",
+      "Paramedical degree programmes including BPT, BMLT and medical technology diplomas",
     description:
-      "Undergraduate paramedical and allied-health programmes such as physiotherapy (BPT) and medical laboratory technology (BMLT), taught alongside a working superspeciality hospital.",
+      "Undergraduate paramedical programmes such as physiotherapy (BPT) and medical laboratory technology (BMLT), taught alongside a working superspeciality hospital.",
     credential: "Bachelor's Degree",
     months: 48,
     institution: "Amaltas Institute of Paramedical Sciences",

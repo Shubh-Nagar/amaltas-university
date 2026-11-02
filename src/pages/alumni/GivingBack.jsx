@@ -1,20 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ShoppingBag, Heart, GraduationCap, Mail } from "lucide-react";
+import { ArrowRight, ShoppingBag, Heart, GraduationCap } from "lucide-react";
 import { PageHero } from "../../components/Layout.jsx";
 import { Reveal } from "../../components/Primitives.jsx";
 import { C } from "../../theme.js";
 import SEO from "../../components/SEO.jsx";
 import { breadcrumbSchema } from "../../data/schema.js";
-
-const MERCH_ITEMS = [
-  { name: "Alumni Polo Tee",       tag: "Apparel",     price: "₹699",   badge: "Best Seller", color: C.emerald },
-  { name: "Signature Hoodie",      tag: "Apparel",     price: "₹1,299", badge: "New",         color: C.navy   },
-  { name: "Heritage Ceramic Mug",  tag: "Drinkware",   price: "₹399",   badge: null,          color: C.burg   },
-  { name: "Campus Tote Bag",       tag: "Accessories", price: "₹499",   badge: "Eco",         color: "#1565C0"},
-  { name: "Premium Leather Diary", tag: "Stationery",  price: "₹599",   badge: null,          color: "#4E342E"},
-  { name: "Alumni Lapel Pin",      tag: "Accessories", price: "₹249",   badge: "New",         color: "#C07A00"},
-];
 
 const REQUIREMENTS = [
   { label: "Alumni Email IDs",    note: "Official @alumni communication channel"     },
@@ -65,80 +56,6 @@ export default function AlumniGivingBack() {
             })}
           </div>
         </div>
-      </section>
-
-      {/* ── MERCHANDISE GRID ── */}
-      <section className="sec wrap">
-        <Reveal>
-          <span className="eyebrow">Official Store</span>
-          <h2 style={{ marginTop: 14 }}>Amaltas merchandise.</h2>
-          <p className="lead" style={{ marginTop: 18 }}>
-            Available for delivery across India. To place an order, email{" "}
-            <a href="mailto:alumni@amaltasuniversity.in" style={{ color: C.emerald, fontWeight: 600 }}>alumni@amaltasuniversity.in</a> with the item name, size, and quantity.
-          </p>
-        </Reveal>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(220px,1fr))", gap: 20, marginTop: 52 }}>
-          {MERCH_ITEMS.map((item, i) => (
-            <Reveal key={i} delay={`d${(i % 4) + 1}`}>
-              <div className="alumni-merch-card card-lift">
-                {/* Visual placeholder */}
-                <div style={{
-                  height: 180, background: `linear-gradient(135deg,${item.color}16,${item.color}2e)`,
-                  display: "flex", alignItems: "center", justifyContent: "center", position: "relative",
-                }}>
-                  <ShoppingBag size={54} color={item.color} opacity={0.45} />
-                  {item.badge && (
-                    <div style={{
-                      position: "absolute", top: 12, right: 12,
-                      background: item.color === C.gold ? C.ink : item.color,
-                      color: item.color === C.gold ? C.gold : "#fff",
-                      fontSize: 9.5, fontWeight: 700, letterSpacing: ".1em",
-                      padding: "3px 9px", borderRadius: 100, textTransform: "uppercase",
-                    }}>
-                      {item.badge}
-                    </div>
-                  )}
-                </div>
-                <div style={{ padding: "16px 18px 20px", display: "flex", flexDirection: "column", gap: 8 }}>
-                  <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: C.slate }}>{item.tag}</div>
-                  <div style={{ fontFamily: "Fraunces,serif", fontSize: 16.5, color: C.ink, lineHeight: 1.2 }}>{item.name}</div>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 6, paddingTop: 14, borderTop: "1px solid rgba(11,44,24,.07)" }}>
-                    <div style={{ fontFamily: "Fraunces,serif", fontSize: 19, color: C.emerald }}>{item.price}</div>
-                    <button
-                      onClick={e => e.preventDefault()}
-                      style={{
-                        padding: "8px 14px", borderRadius: 100,
-                        background: `${item.color}16`, border: `1.5px solid ${item.color}44`,
-                        color: item.color === C.gold ? C.ink : item.color,
-                        fontFamily: "inherit", fontSize: 12, fontWeight: 700,
-                        cursor: "pointer", transition: "all .25s",
-                      }}>
-                      Enquire
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Order enquiry note */}
-        <Reveal>
-          <div style={{
-            marginTop: 40, padding: "22px 28px", borderRadius: 16,
-            background: `${C.emerald}0e`, border: `1px solid ${C.emerald}22`,
-            display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap",
-          }}>
-            <Mail size={20} color={C.emerald} style={{ flexShrink: 0 }} />
-            <div>
-              <div style={{ fontWeight: 700, fontSize: 14.5, color: C.ink }}>How to Order</div>
-              <p style={{ color: C.slate, fontSize: 13.5, margin: 0, lineHeight: 1.6 }}>
-                Email <a href="mailto:alumni@amaltasuniversity.in" style={{ color: C.emerald, fontWeight: 600 }}>alumni@amaltasuniversity.in</a> with the item name, size (if applicable), quantity, and delivery address. We'll confirm availability and share payment details.
-              </p>
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       {/* ── REQUIREMENTS ── */}

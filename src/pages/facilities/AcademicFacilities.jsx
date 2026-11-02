@@ -22,9 +22,9 @@ const IMG = {
 
 /* ── count-up stat band ── */
 const STATS = [
-  { v: 300, suf: "+",  l: "Smart Classrooms" },
-  { v: 120, suf: "+",  l: "Teaching & Research Labs" },
-  { v: 89800, suf: "+", l: "Volumes in the Library" },
+  { v: 92, suf: "",  l: "Smart Classrooms" },
+  { v: 78, suf: "",  l: "Teaching & Research Labs" },
+  { v: 18422, suf: "", l: "Volumes in the Library" },
   { v: 100, suf: "%",  l: "Wi-Fi Campus Coverage" },
 ];
 
@@ -130,13 +130,30 @@ const EXPLORER = [
 
 /* ── central library stats ── */
 const LIB_STATS = [
-  { v: 89800, suf: "+", l: "Total Volumes" },
+  { v: 18422, suf: "", l: "Total Volumes" },
   { v: 500,    suf: "+", l: "Seating Capacity" },
-  { v: 50000,  suf: "+", l: "E-Journals" },
+  { v: 132,    suf: "",  l: "E-Journals" },
   { v: 3,      suf: "",  l: "Floors of Reading Space" },
 ];
 
 /* ── S. R. Ranganathan's five laws ── */
+/* ── institute-wise library facilities ("Library at a Glance") ──
+   Areas are kept in the units each institute reported. Totals are computed so
+   they always match the rows. */
+const LIB_FACILITIES = [
+  { inst: "Medical",     area: "26,200 sq. ft.", books: 4702, journals: 106, computers: 25 },
+  { inst: "Nursing",     area: "6,840 sq. ft.",  books: 5964, journals: 16,  computers: 30 },
+  { inst: "Ayurveda",    area: "350 sq. m.",     books: 561,  journals: 13,  computers: 37 },
+  { inst: "Homoeopathy", area: "231.51 sq. m.",  books: 3709, journals: 6,   computers: 12 },
+  { inst: "Pharmacy",    area: "175 sq. ft.",    books: 2886, journals: 16,  computers: 25 },
+  { inst: "Paramedical", area: "1,500 sq. ft.",  books: 600,  journals: 11,  computers: 10 },
+];
+const LIB_TOTALS = LIB_FACILITIES.reduce(
+  (t, r) => ({ books: t.books + r.books, journals: t.journals + r.journals, computers: t.computers + r.computers }),
+  { books: 0, journals: 0, computers: 0 }
+);
+const fmtNum = (n) => n.toLocaleString("en-IN");
+
 const FIVE_LAWS = [
   "Books are for use",
   "Every reader his or her book",
@@ -219,7 +236,7 @@ export default function AcademicFacilities() {
     <>
       <SEO
         title="Academic Facilities — Labs, Library & Smart Classrooms"
-        description="Amaltas University's academic infrastructure: 300+ smart classrooms, 120+ teaching and research labs, a central library with 89,800+ volumes, and discipline-specific labs across medicine, Ayurveda, nursing and pharmacy."
+        description="Amaltas University's academic infrastructure: 92 smart classrooms, 78 teaching and research labs, a central library with 18,422 volumes, and discipline-specific labs across medicine, Ayurveda, nursing and pharmacy."
         path="/facilities/academic"
         jsonLd={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Facilities", path: "/facilities/academic" }, { name: "Academic Facilities", path: "/facilities/academic" }])}
       />
@@ -333,6 +350,67 @@ export default function AcademicFacilities() {
               <div style={{ position: "absolute", bottom: 20, right: 20, background: C.gold, color: C.navy, borderRadius: 12, padding: "12px 18px", fontWeight: 700, fontSize: 13, display: "inline-flex", alignItems: "center", gap: 7 }}>
                 <BookOpen size={15} /> Print & Digital
               </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Library at a glance — institute-wise facilities */}
+        <div className="wrap" style={{ marginTop: 80 }}>
+          <Reveal>
+            <span className="eyebrow" style={{ color: C.goldL }}>Library at a Glance</span>
+            <h3 style={{ fontFamily: "Fraunces,serif", fontWeight: 400, fontSize: "clamp(1.4rem,3vw,2rem)", marginTop: 12, color: C.ivory }}>
+              Details of library facilities
+            </h3>
+            <p style={{ color: "rgba(247,244,236,.75)", fontSize: 15.5, lineHeight: 1.75, marginTop: 14, maxWidth: 860 }}>
+              The library is an essential component of the academic infrastructure of Amaltas University, Dewas. The university provides library facilities for Medical, Nursing, Ayurveda, Homoeopathy, Pharmacy, and Paramedical Sciences. These libraries support teaching, learning, research, and professional development by providing textbooks, reference books, national and international journals, and computer-based learning facilities.
+            </p>
+          </Reveal>
+
+          <Reveal delay="d2">
+            <div className="acad-lib-table-wrap">
+              <table className="acad-lib-table">
+                <caption className="sr-only">Institute-wise library area, books, journals and computers</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Institute</th>
+                    <th scope="col">Library Area</th>
+                    <th scope="col" className="num">Books</th>
+                    <th scope="col" className="num">Journals</th>
+                    <th scope="col" className="num">Computers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {LIB_FACILITIES.map((r) => (
+                    <tr key={r.inst}>
+                      <th scope="row">{r.inst}</th>
+                      <td>{r.area}</td>
+                      <td className="num">{fmtNum(r.books)}</td>
+                      <td className="num">{fmtNum(r.journals)}</td>
+                      <td className="num">{fmtNum(r.computers)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th scope="row">Total</th>
+                    <td aria-label="Not applicable">—</td>
+                    <td className="num">{fmtNum(LIB_TOTALS.books)}</td>
+                    <td className="num">{fmtNum(LIB_TOTALS.journals)}</td>
+                    <td className="num">{fmtNum(LIB_TOTALS.computers)}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </Reveal>
+
+          <Reveal delay="d3">
+            <div style={{ display: "grid", gap: 14, marginTop: 26, maxWidth: 860 }}>
+              <p style={{ color: "rgba(247,244,236,.75)", fontSize: 15.5, lineHeight: 1.75, margin: 0 }}>
+                The libraries have {fmtNum(LIB_TOTALS.books)} books, {fmtNum(LIB_TOTALS.journals)} journals and {fmtNum(LIB_TOTALS.computers)} computers. The Medical Library has 76 national and 30 international journals, and the Nursing Library has 540 reference books, 5,424 issue books, 11 national journals and 5 international journals.
+              </p>
+              <p style={{ color: "rgba(247,244,236,.75)", fontSize: 15.5, lineHeight: 1.75, margin: 0 }}>
+                The libraries at Amaltas University offer academic resources and infrastructure to support students, faculty members and researchers in a variety of healthcare fields. Access to reference materials, research journals, computers and digital learning facilities results in quality education, evidence-based learning and research development. These facilities complement the university's academic milieu and emphasise its commitment to excellent health sciences education.
+              </p>
             </div>
           </Reveal>
         </div>

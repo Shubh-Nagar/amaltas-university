@@ -21,7 +21,7 @@ import {
   INSTITUTIONS, WHY, VOICES, STATS, LEADERS,
   EVENTS, NEWS, FAQS, ANNOUNCEMENTS,
   AUDIENCES, ADMISSION_PATHS, LIFE, OUTCOMES, PARTNERS,
-  ACCREDITATIONS, ASSURANCE,
+  ACCREDITATIONS, ASSURANCE, CONTROLLER_OF_EXAMINATION,
 } from "../data/content.js";
 
 const IMGS = {
@@ -870,13 +870,14 @@ export default function Home() {
       {/* ════════════════════════════════════════
           CAMPUS SHOWCASE  — video strip + blobs
       ════════════════════════════════════════ */}
+      {/* Hidden — campus-tour section ("We Innovate. We Inspire. We Empower.") temporarily unlisted.
       <section className="campus-showcase">
         <div className="campus-showcase-bg" aria-hidden="true">
           <img src={IMGS.campusBanner} alt="" loading="lazy" />
           <div className="campus-showcase-overlay" />
         </div>
 
-        {/* blobs drift over the overlay layer */}
+        [blobs drift over the overlay layer]
         <Blob color="rgba(255,255,255,.06)" size={480} blur={90} variant="a" delay={6}
           style={{ left: "8%", top: "10%", zIndex: 3 }} />
         <Blob color="rgba(246,224,5,.14)" size={360} blur={85} variant="c" delay={17}
@@ -924,7 +925,7 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </section> */}
 
       {/* ════════════════════════════════════════
           LIFE AT AMALTAS  — campus-life image grid
@@ -968,7 +969,7 @@ export default function Home() {
               <span className="eyebrow">Our purpose</span>
               <h2 style={{ fontSize: "clamp(2.2rem,5vw,3.4rem)", lineHeight: 1.1 }}>A university that began with a promise to a community.</h2>
               <p className="lead">
-                Founded by the Amaltas Education Welfare Society in 2016, we set out to bring
+                Founded by the Amaltas Educational Welfare Society in 2016, we set out to bring
                 world-class medical education to the heart of Madhya Pradesh — close to the
                 families who need care, and the students who dream of giving it.
               </p>
@@ -1140,11 +1141,18 @@ export default function Home() {
             </div>
           </Reveal>
 
+          {/* Row 1: three leaders. Row 2: three leaders + the Controller of
+              Examination, whose card links to that office's page. */}
           <div className="leader-photo-grid">
-            {LEADERS.slice(0, 6).map((l, i) => (
-              <div key={i} className="lpc-span-2">
-              <Reveal delay={`d${i + 1}`} variant="zoom">
-                <div className="leader-photo-card">
+            {[...LEADERS.slice(0, 6), CONTROLLER_OF_EXAMINATION].map((l, i) => {
+              const Card = l.path ? Link : "div";
+              return (
+              <div key={i} className={i < 3 ? "lpc-row1" : "lpc-row2"}>
+              <Reveal delay={`d${(i % 6) + 1}`} variant="zoom">
+                <Card
+                  className="leader-photo-card"
+                  {...(l.path && { to: l.path, style: { textDecoration: "none" } })}
+                >
                   <div className="lpc-photo-area">
                     {l.photo
                       ? <img src={l.photo} alt={l.nm} loading="lazy" decoding="async" />
@@ -1155,10 +1163,11 @@ export default function Home() {
                     <div className="lpc-name">{l.nm}</div>
                     <p className="lpc-bio">{l.bio}</p>
                   </div>
-                </div>
+                </Card>
               </Reveal>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

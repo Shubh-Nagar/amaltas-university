@@ -6,6 +6,7 @@ import {
   Trophy, Music, Dumbbell, BookOpen, Home as HomeIcon, HandHeart,
   Leaf, Heart, Star, Handshake,
 } from "lucide-react";
+import { ALL_EVENTS } from "./events.js";
 
 export const INSTITUTIONS = [
   {
@@ -39,7 +40,7 @@ export const INSTITUTIONS = [
     icon: GraduationCap, tag: "B.Sc · PB B.Sc Nursing",
     name: "Amaltas Institute of Nursing Sciences",
     desc: "Simulation labs, the lamp-lighting tradition, and placements across the Amaltas hospital network.",
-    img: "/assets/images%20of%20university/all%20institutes/nursing.webp",
+    img: "/assets/images%20of%20university/all%20institutes/nursing-building.webp",
     studentImg: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=75",
     programs: ["B.Sc. Nursing", "Post Basic B.Sc. Nursing", "M.Sc. Nursing", "GNM", "PhD Nursing"],
     website: "http://amaltasgroup.co.in/nursing/",
@@ -48,7 +49,7 @@ export const INSTITUTIONS = [
     icon: FlaskConical, tag: "B.Pharm · D.Pharm",
     name: "Amaltas Institute of Pharmacy",
     desc: "Formulation, pharmacology and analysis labs aligned to PCI standards and industry demand.",
-    img: "/assets/images%20of%20university/all%20institutes/pharmacy.webp",
+    img: "/assets/images%20of%20university/all%20institutes/pharmacy-building.webp",
     studentImg: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&w=700&q=75",
     programs: ["B.Pharm", "D.Pharm"],
     website: "http://amaltasgroup.co.in/pharmacy/",
@@ -62,7 +63,8 @@ export const INSTITUTIONS = [
     programs: [
       "B.P.T.", "B.M.L.T.", "B.X.R.T.", "D.M.L.T.",
       "Diploma in Cath Lab Technology", "Diploma in Dialysis Technology",
-      "Certificate in OT Technician", "Certificate in X-Ray Technician", "Certificate in USG Technician",
+      // Hidden — OT / X-Ray / USG Technician certificate courses temporarily unlisted.
+      // "Certificate in OT Technician", "Certificate in X-Ray Technician", "Certificate in USG Technician",
     ],
     website: "http://amaltasgroup.co.in/paramedical/#close",
   },
@@ -99,11 +101,12 @@ export const PROGRAMS = [
   { n: "B.M.L.T.", d: "Bachelor of Medical Lab Technology", t: "Paramedical" },
   { n: "B.X.R.T.", d: "Bachelor of X-Ray Technology", t: "Paramedical" },
   { n: "D.M.L.T.", d: "Diploma in Medical Lab Technology", t: "Paramedical" },
-  { n: "Diploma in Cath Lab Technology", d: "Allied Health Sciences", t: "Paramedical" },
-  { n: "Diploma in Dialysis Technology", d: "Allied Health Sciences", t: "Paramedical" },
-  { n: "Certificate in OT Technician", d: "Allied Health Sciences", t: "Paramedical" },
-  { n: "Certificate in X-Ray Technician", d: "Allied Health Sciences", t: "Paramedical" },
-  { n: "Certificate in USG Technician", d: "Ultrasound Technician", t: "Paramedical" },
+  { n: "Diploma in Cath Lab Technology", d: "Paramedical Sciences", t: "Paramedical" },
+  { n: "Diploma in Dialysis Technology", d: "Paramedical Sciences", t: "Paramedical" },
+  // Hidden — OT / X-Ray / USG Technician certificate courses temporarily unlisted.
+  // { n: "Certificate in OT Technician", d: "Paramedical Sciences", t: "Paramedical" },
+  // { n: "Certificate in X-Ray Technician", d: "Paramedical Sciences", t: "Paramedical" },
+  // { n: "Certificate in USG Technician", d: "Ultrasound Technician", t: "Paramedical" },
   { n: "Doctor of Philosophy (Ph.D.)", d: "Doctoral Research Programme", t: "Ph.D." },
   // Hidden — Allied & Rehabilitation Sciences programmes temporarily unlisted.
   // { n: "B.Sc. Clinical Psychology (Hons)", d: "Rehabilitation Sciences", t: "Allied" },
@@ -209,13 +212,26 @@ export const WHY = [
 ];
 
 export const LEADERS = [
-  { slug: "founder-chairman", role: "Hon'ble Founder Chairman", nm: "Shri Suresh Singh Bhadoria", org: "Mayank Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/suresh-sir.webp" },
-  { slug: "chairman", role: "Hon'ble Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Mayank Welfare Society", bio: "Visionary founder whose tireless dedication and philanthropic resolve laid the cornerstone of the Amaltas group and its mission to serve society.", photo: "/assets/images%20of%20university/leadership/mayank.webp" },
+  { slug: "founder-chairman", role: "Hon'ble Founder Chairman", nm: "Shri Suresh Singh Bhadoria", org: "Amaltas Educational Welfare Society", bio: "Founder-chairman whose vision built the Amaltas group from a single welfare society into a full health-sciences university.", photo: "/assets/images%20of%20university/leadership/suresh-sir.webp" },
+  { slug: "chairman", role: "Hon'ble Chairman", nm: "Shri Mayankraj Singh Bhadoria", org: "Amaltas Educational Welfare Society", bio: "Visionary founder whose tireless dedication and philanthropic resolve laid the cornerstone of the Amaltas group and its mission to serve society.", photo: "/assets/images%20of%20university/leadership/mayank.webp" },
   { slug: "chancellor", role: "Hon'ble Chancellor", nm: "Mrs. Aruna Bhadoria", org: "Amaltas University", bio: "Chancellor guiding the institution's commitment to accessible, community-rooted medical education.", photo: "/assets/images%20of%20university/leadership/Smt.Arunaji-Bhadoriya-Chancellor.webp" },
   { slug: "pro-chancellor", role: "Hon'ble Pro-Chancellor", nm: "Dr. Salil Bhargava", org: "Amaltas University", bio: "Pro-Chancellor bringing decades of clinical and academic leadership to the university's growth.", photo: "/assets/images%20of%20university/leadership/salil-sir-png.webp" },
   { slug: "vice-chancellor", role: "Hon'ble Vice Chancellor", nm: "Dr. R.K. Singh", org: "Amaltas University", bio: "Vice Chancellor overseeing academic standards, research and the student experience across all institutions.", photo: "/assets/images%20of%20university/leadership/vc-sir.webp" },
   { slug: "registrar", role: "Registrar", nm: "Dr. Abhay Gupta", org: "Amaltas University", bio: "Registrar responsible for governance, admissions integrity and university administration.", photo: "/assets/images%20of%20university/leadership/registrar-sir-jpeg.webp" },
 ];
+
+// Shown on the Controller of Examination page and as a card in the homepage
+// "Visionary Leadership" section.
+export const CONTROLLER_OF_EXAMINATION = {
+  role: "Controller of Examination",
+  nm: "Dr. Yogendra Singh Bhadoriya",
+  org: "Amaltas University",
+  bio: "Conducts the University's examinations and handles all examination-related queries.",
+  phone: "9685096500",
+  email: "coeamaltasuniversity@gmail.com",
+  photo: "/assets/images%20of%20university/examination/controller-of-examination.webp",
+  path: "/examination/controller",
+};
 
 export const VOICES = [
   { q: "I walked into a real hospital ward in my second month. Nowhere else gives you that. Amaltas didn't just teach me medicine — it made me a doctor patients trust.", n: "Final-year MBBS student", r: "Institute of Medical Sciences", photo: "/assets/images%20of%20university/testimonials/t1.webp" },
@@ -262,19 +278,46 @@ export const NAV = [
     to: "/institutions",
   },
   {
-    label: "Student Life",
+    label: "Academics & Facilities",
     to: "#",
     children: [
       { to: "/student-life/campus-life", label: "Campus Life" },
       { to: "/student-life/hostel", label: "Hostel & Accommodation" },
+      { to: "/facilities/academic", label: "Academic Facilities" },
+      { to: "/facilities/campus", label: "Campus Facilities" },
+      { to: "/facilities/international-students", label: "Facilities for International Students" },
+      // Hidden — Central Facilities flyout temporarily unlisted.
+      // {
+        // label: "Central Facilities",
+        // // Nested flyout; each item jumps to its section on the Campus Facilities page.
+        // children: [
+          // { to: "/facilities/campus#labs", label: "Skill Lab" },
+          // { to: "/facilities/campus#research", label: "Central Research Lab" },
+          // { to: "/facilities/campus#library", label: "Central Library" },
+          // { to: "#", label: "Guest House" },
+          // { to: "/facilities/campus#sports", label: "Indoor & Outdoor Sports Facilities" },
+        // ],
+      // },
     ],
   },
   {
-    label: "Facilities",
+    label: "Research",
     to: "#",
     children: [
-      { to: "/facilities/academic", label: "Academic Facilities" },
-      { to: "/facilities/campus", label: "Campus Facilities" },
+      { to: "/research/publications", label: "Publication" },
+      { to: "/research/patents", label: "Patent" },
+      { to: "/research/industry-collaboration", label: "Industry Collaboration" },
+      { to: "/about/mou", label: "MoU" },
+    ],
+  },
+  {
+    label: "Examination",
+    to: "#",
+    children: [
+      { to: "/examination/controller", label: "Controller of Examination" },
+      { to: "https://www.abc.gov.in/", label: "Academic Bank of Credits" },
+      { to: "https://scholarships.gov.in/", label: "National Scholarship Portal" },
+      { to: "https://nad.digilocker.gov.in/signin", label: "DigiLocker NAD Portal" },
     ],
   },
   {
@@ -325,56 +368,24 @@ export const QUICK_LINKS = [
   { label: "Grievances", to: "#", icon: MessageSquare },
 ];
 
-export const EVENTS = [
-  {
-    date: "Sep 14, 2026",
-    tag: "Festival",
-    tagColor: "#F6A000",
-    title: "Ganesh Chaturthi Celebrations at Amaltas",
-    desc: "The Amaltas Institutes of Pharmacy and Homoeopathy welcomed Lord Ganesha with devotion and joy, praying for wisdom, happiness, success and good health for every student, faculty member and the entire Amaltas family. Ganpati Bappa Morya!",
-    img: "/assets/images%20of%20university/events/Ganesh%20Chaturthi%20Celebration%20Pharmacy/1.webp",
-  },
-  {
-    date: "Sep 11, 2026",
-    tag: "Conference",
-    tagColor: "#15843F",
-    title: "Pharmacon 2026 — Role of AI in Modern Pharmacy",
-    desc: "Our pharmacy students attended the National Conference Pharmacon 2026 at Ravindra Bhavan, Bhopal, organised by Arogya Bharati with the Pharmacy Council of India, and took part in poster presentations and competitions on AI in pharmacy.",
-    img: "/assets/images%20of%20university/events/Pharmacon%202026%20AI%20in%20Pharmacy/1.webp",
-  },
-  {
-    date: "Sep 11, 2026",
-    tag: "Industry Visit",
-    tagColor: "#872822",
-    title: "Industry Visit to MCW Healthcare Pvt. Ltd., Indore",
-    desc: "Students gained firsthand exposure to industry processes, quality standards and professional work culture, and interacted with healthcare-industry experts about careers and the skills the sector demands.",
-    img: "/assets/images%20of%20university/events/Industry%20Visit%20MCW%20Healthcare/1.webp",
-  },
-  {
-    date: "Sep 11, 2026",
-    tag: "न्यूट्रिशनल डे",
-    tagColor: "#15843F",
-    title: "अमलतास इंस्टीट्यूट ऑफ होम्योपैथी में मनाया गया न्यूट्रिशनल डे",
-    desc: "पोषण एवं स्वस्थ जीवनशैली के प्रति जागरूकता हेतु आयोजित कार्यक्रम में विद्यार्थियों ने 10 से अधिक फ्लेमलेस फूड स्टॉल लगाकर संतुलित आहार का महत्व प्रदर्शित किया।",
-    img: "/assets/images%20of%20university/events/Nutritional%20Day%20Homeopathy/1.webp",
-  },
-  {
-    date: "Sep 10, 2026",
-    tag: "Awareness",
-    tagColor: "#F6A000",
-    title: "World Suicide Prevention Day — Mental Health Awareness Program",
-    desc: "Chaired by Vice Chancellor Dr. R.K. Singh with Chief Guest Dr. Vijaya Sakpal, the program highlighted open conversations about mental health, active listening, emotional support and timely professional help.",
-    img: "/assets/images%20of%20university/events/World%20Suicide%20Prevention%20Day%202026/1.webp",
-  },
-  {
-    date: "Sep 10, 2026",
-    tag: "आयुर्वेद दिवस",
-    tagColor: "#15843F",
-    title: "11वें आयुर्वेद दिवस पर विशेष शैक्षणिक भ्रमण एवं जन-जागरूकता कार्यक्रम",
-    desc: "रचना शरीर विभाग के विद्यार्थियों एवं संकाय सदस्यों ने शासकीय धन्वंतरि आयुर्वेद मेडिकल कॉलेज, उज्जैन का शैक्षणिक भ्रमण किया तथा आयुर्वेद एवं स्वास्थ्य जागरूकता का संदेश दिया।",
-    img: "/assets/images%20of%20university/events/Ayurveda%20Day%20Educational%20Visit/1.webp",
-  },
+/* Homepage "Events & Activities" strip: the newest events from the Events page,
+   so the homepage stays current automatically. Events carry no category, so a
+   short tag is inferred from the title (English or Hindi). */
+// First match wins, so the more specific rules come first.
+const EVENT_TAGS = [
+  { re: /conference|congress|icaaicon|pharmacon|ncmsap|सम्मेलन/i, tag: "Conference", color: "#15843F" },
+  { re: /workshop|lecture|session|training|quiz|exhibition|seminar|कार्यशाला|व्याख्यान/i, tag: "Academic", color: "#872822" },
+  { re: /\bvisit|भ्रमण/i, tag: "Visit", color: "#872822" },
+  { re: /\bworld\b.*\b(day|week)\b|विश्व|awareness|campaign|जागरूकता/i, tag: "Awareness", color: "#15843F" },
+  { re: /garba|celebrat|festival|ganesh|गणेश|mahotsav|samaroh|sthapana|independence|lamp|graduation|उत्सव|\bday\b|दिवस/i, tag: "Celebration", color: "#F6A000" },
+  { re: /\bmou\b/i, tag: "MoU", color: "#872822" },
 ];
+const tagFor = (title) => EVENT_TAGS.find((t) => t.re.test(title)) || { tag: "Campus Life", color: "#15843F" };
+
+export const EVENTS = ALL_EVENTS.slice(0, 6).map((ev) => {
+  const { tag, color } = tagFor(ev.title);
+  return { date: ev.date, tag, tagColor: color, title: ev.title, desc: ev.desc, img: ev.img };
+});
 
 // Top latest press items — mirrors the News & Press gallery (/happenings/news).
 export const NEWS = [
@@ -506,7 +517,7 @@ export const CONTACT = {
 /* ─── ABOUT US page data ─────────────────────────────────── */
 
 export const UNIVERSITY_MILESTONES = [
-  { year: "2013", title: "Foundation Laid", desc: "Shri Suresh Singh Bhadoria established Mayank Welfare Society, resolving to bring quality healthcare education to Dewas and the Malwa heartland." },
+  { year: "2013", title: "Foundation Laid", desc: "Shri Suresh Singh Bhadoria established Amaltas Educational Welfare Society, resolving to bring quality healthcare education to Dewas and the Malwa heartland." },
   { year: "2015", title: "Medical Sciences Opens", desc: "Institute of Medical Sciences admitted its first MBBS cohort, anchored by the founding 800+ bed teaching hospital — live clinical learning from day one." },
   { year: "2016", title: "BAMS & BHMS Institutes", desc: "Ayurvedic College & Research Centre and Institute of Homoeopathy launched, recognising India's plural healing traditions as equally worthy of academic excellence." },
   { year: "2017", title: "Nursing Institute Inaugurated", desc: "The lamp-lighting ceremony welcomed the first batch of B.Sc. Nursing students — a tradition that continues to define the Amaltas spirit." },
@@ -585,12 +596,13 @@ export const ACCREDITATIONS = [
   { short: "NCH",    color: "#6A1B9A", logo: "/assets/images%20of%20university/recognisation/nch.webp",      name: "National Commission for Homoeopathy",         desc: "Recognition for BHMS programme under the national homeopathic regulatory framework.",     scope: "Institute of Homoeopathy"           },
   { short: "INC",    color: "#00695C", logo: "/assets/images%20of%20university/recognisation/inc-logo.webp",  name: "Indian Nursing Council",                      desc: "Approval for B.Sc. Nursing and Post Basic B.Sc. Nursing programmes.",                    scope: "Institute of Nursing Sciences"      },
   { short: "PCI",    color: "#D84315", logo: "/assets/images%20of%20university/recognisation/pci-logo.webp",  name: "Pharmacy Council of India",                   desc: "Affiliation for Bachelor of Pharmacy (B.Pharm) and Diploma in Pharmacy (D.Pharm).",    scope: "Institute of Pharmacy"              },
+  { short: "MPPMC",  color: "#2B4C9B", logo: "/assets/images%20of%20university/recognisation/mp-paramedical-council.webp", name: "Madhya Pradesh Paramedical Council, Bhopal", desc: "Recognition for paramedical degree, diploma and certificate programmes.", scope: "Paramedical Sciences" },
   // Hidden — RCI approval tied to the Allied & Rehabilitation Sciences institute.
   // { short: "RCI",    color: "#1565C0", logo: "/assets/images%20of%20university/recognisation/rci.webp",       name: "Rehabilitation Council of India",             desc: "Approval for B.A.S.L.P. and allied rehabilitation science courses.",                     scope: "Allied & Rehabilitation Sciences"   },
   { short: "UGC",    color: "#0D1B5E", logo: "/assets/images%20of%20university/recognisation/ugc.webp",       name: "University Grants Commission",                desc: "Recognition as a Private University under Section 2(f) of the UGC Act, 1956.",           scope: "University-wide"                   },
   { short: "MPPURC", color: "#6D4C41", logo: "/assets/images%20of%20university/recognisation/mppurc.webp",    name: "MP Private University Regulatory Commission", desc: "Established under the MP Niji Vishwavidyalaya (Sthapana Aur Sanchalan) Adhiniyam.",    scope: "University-wide"                   },
-  { short: "NABH",   color: "#880E4F", logo: "/assets/images%20of%20university/recognisation/nabh-logo.webp", name: "Natl. Accreditation Board for Hospitals",     desc: "NABH-linked teaching hospital ensuring patient safety and quality care standards.",       scope: "Teaching Hospital"                  },
-  { short: "NABL",   color: "#4527A0", logo: "/assets/images%20of%20university/recognisation/NABL.webp",     name: "Natl. Accreditation Board for Testing and Calibration Laboratories", desc: "NABL accreditation for diagnostic and testing laboratories ensuring calibrated, quality-assured results.", scope: "Teaching Hospital"                  },
+  { short: "NABH",   color: "#880E4F", logo: "/assets/images%20of%20university/recognisation/nabh-logo.webp", name: "National Accreditation Board for Hospitals",     desc: "NABH-linked teaching hospital ensuring patient safety and quality care standards.",       scope: "Teaching Hospital"                  },
+  { short: "NABL",   color: "#4527A0", logo: "/assets/images%20of%20university/recognisation/NABL.webp",     name: "National Accreditation Board for Testing and Calibration Laboratories", desc: "NABL accreditation for diagnostic and testing laboratories ensuring calibrated, quality-assured results.", scope: "Teaching Hospital"                  },
 ];
 
 export const DISCLOSURE_SECTIONS = [
@@ -600,7 +612,7 @@ export const DISCLOSURE_SECTIONS = [
       { label: "Name of University",    value: "Amaltas University" },
       { label: "Tagline",               value: "Where Healing Grows" },
       { label: "Established",           value: "Notified under the Madhya Pradesh Private University Act" },
-      { label: "Founding Society",      value: "Mayank Welfare Society" },
+      { label: "Founding Society",      value: "Amaltas Educational Welfare Society" },
       { label: "Chancellor",            value: "Mrs. Aruna Bhadoria" },
       { label: "Pro-Chancellor",        value: "Dr. Salil Bhargava" },
       { label: "Vice Chancellor",       value: "Dr. R.K. Singh" },
@@ -691,7 +703,7 @@ export const LEADER_MESSAGES = {
   "founder-chairman": {
     salutation: "Dear Students,",
     paragraphs: [
-      "When I established Mayank Welfare Society in 2013, I carried a single, unwavering conviction: that the people of Malwa — of Dewas, of every village and town across this heartland — deserved world-class healthcare education within reach. Not in a distant city, not beyond the means of the ordinary family, but here, close to home.",
+      "When I established Amaltas Educational Welfare Society in 2013, I carried a single, unwavering conviction: that the people of Malwa — of Dewas, of every village and town across this heartland — deserved world-class healthcare education within reach. Not in a distant city, not beyond the means of the ordinary family, but here, close to home.",
       "I have spent my life in service of this community. I have seen the consequences of a healthcare gap — families travelling hundreds of kilometres for treatment, young people with the aptitude to become doctors but no institution willing to open its doors to them. Amaltas was my answer to that silence.",
       "Building a university is not the work of one man or one year. It is the accumulation of thousands of decisions, sacrifices, and acts of faith. Every building you walk through, every laboratory you learn in, every patient you will one day treat — each of these traces its origin to a belief that service is the highest calling.",
       "To our students: you did not come to Amaltas by accident. You came because something in you recognised this place as more than an institution — it is a family, a mission, and a promise. I ask only one thing of you: carry that promise into the world with the same sincerity with which we planted it.",
@@ -703,7 +715,7 @@ export const LEADER_MESSAGES = {
     heroTitle: "Rooted in service, grown with purpose.",
     heroBg: "/assets/images%20of%20university/photo-gallery/DJI_0019.webp",
     stats: [
-      { icon: Leaf, label: "Founded", value: "2013", desc: "Mayank Welfare Society established" },
+      { icon: Leaf, label: "Founded", value: "2013", desc: "Amaltas Educational Welfare Society established" },
       { icon: Heart, label: "Mission", value: "Service", desc: "Healthcare access for Malwa heartland" },
       { icon: Star, label: "Legacy", value: "10+ Years", desc: "Of uninterrupted commitment" },
     ],

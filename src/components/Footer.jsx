@@ -14,7 +14,7 @@ export default function Footer() {
               <img src="/assets/images%20of%20university/logo/white-logo.webp" alt="Amaltas University" style={{ height: 72, width: "auto", objectFit: "contain" }} loading="lazy" decoding="async" />
             </Link>
             <p style={{ marginTop: 16, fontSize: 14.5, lineHeight: 1.7 }}>
-              A medical university of the Amaltas Education Welfare Society — where the people
+              A medical university of the Amaltas Educational Welfare Society — where the people
               who will care for India learn by caring.
             </p>
             <div style={{ display: "flex", gap: 12, marginTop: 18 }}>
@@ -48,6 +48,7 @@ export default function Footer() {
             <Link to="/alumni">Alumni</Link>
             <Link to="/healthcare">Healthcare</Link>
             <Link to="/contact">Contact Us</Link>
+            <Link to="/job-openings">Job Openings</Link>
           </div>
           <div>
             <h4>Quick Links</h4>
@@ -62,6 +63,8 @@ export default function Footer() {
             <Link to="/anti-ragging-committee">Anti-Ragging Committee</Link>
             <a href="/disclosure/Students-Grievance-Redressal-Committee-2024.pdf" target="_blank" rel="noreferrer">Students Grievance Redressal Committee</a>
             <Link to="/alumni/giving-back">Giving Back</Link>
+            <a href="https://www.education.gov.in/" target="_blank" rel="noreferrer">Ministry of Education</a>
+            <a href="https://www.ugc.gov.in/" target="_blank" rel="noreferrer">University Grants Commission (UGC)</a>
           </div>
           <div>
             <h4>Reach Us</h4>

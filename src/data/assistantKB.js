@@ -463,21 +463,22 @@ const PROGRAMS = compile([
     rows: () => feeRowsWhere("allied", (r) => r.course === "Cath Lab Technician"),
     keywords: ["cath lab", "cathlab", "cath lab technician", "cath lab technology", "catheterization"],
   },
-  {
-    id: "ot", label: "Certificate in OT Technician", instId: "paramedical", elig: eligOf("Certificate – OT Technician"),
-    rows: () => feeRowsWhere("allied", (r) => r.course === "OT Technician"),
-    keywords: ["ot technician", "ot tech", "operation theatre", "operation theater", "operation theatre technician"],
-  },
-  {
-    id: "xraytech", label: "Certificate in X-Ray Technician", instId: "paramedical", elig: eligOf("Certificate – X-Ray Technician"),
-    rows: () => feeRowsWhere("allied", (r) => r.course === "X-Ray Technician"),
-    keywords: ["x ray technician", "xray technician", "x ray tech", "certificate in x ray", "x ray", "xray"],
-  },
-  {
-    id: "usg", label: "Certificate in USG Technician", instId: "paramedical", elig: eligOf("Certificate – USG Technician"),
-    rows: () => feeRowsWhere("allied", (r) => r.course === "USG Technician"),
-    keywords: ["usg", "usg technician", "ultrasound", "ultrasonography", "sonography"],
-  },
+  // Hidden — OT / X-Ray / USG Technician certificate courses temporarily unlisted.
+  // {
+    // id: "ot", label: "Certificate in OT Technician", instId: "paramedical", elig: eligOf("Certificate – OT Technician"),
+    // rows: () => feeRowsWhere("allied", (r) => r.course === "OT Technician"),
+    // keywords: ["ot technician", "ot tech", "operation theatre", "operation theater", "operation theatre technician"],
+  // },
+  // {
+    // id: "xraytech", label: "Certificate in X-Ray Technician", instId: "paramedical", elig: eligOf("Certificate – X-Ray Technician"),
+    // rows: () => feeRowsWhere("allied", (r) => r.course === "X-Ray Technician"),
+    // keywords: ["x ray technician", "xray technician", "x ray tech", "certificate in x ray", "x ray", "xray"],
+  // },
+  // {
+    // id: "usg", label: "Certificate in USG Technician", instId: "paramedical", elig: eligOf("Certificate – USG Technician"),
+    // rows: () => feeRowsWhere("allied", (r) => r.course === "USG Technician"),
+    // keywords: ["usg", "usg technician", "ultrasound", "ultrasonography", "sonography"],
+  // },
 ]);
 
 const progById = (id) => PROGRAMS.find((p) => p.id === id);
@@ -632,7 +633,7 @@ function aboutInstitute(i, lang = "en") {
   ].filter(Boolean))}`;
 }
 
-const NO_NEET_IDS = ["bscn", "gnm", "bpharm", "dpharm", "bpt", "bmlt", "bxrt", "dmlt", "dialysis", "cathlab", "ot", "xraytech", "usg"];
+const NO_NEET_IDS = ["bscn", "gnm", "bpharm", "dpharm", "bpt", "bmlt", "bxrt", "dmlt", "dialysis", "cathlab"];
 
 function shortFee(p) {
   const rows = p.rows({ norm: "", toks: [] });
@@ -1000,8 +1001,8 @@ const INTENTS = compile([
       }
       return {
         text: hi
-          ? `**University ka netritva**\n${bullet(LEADERS.map((l) => `${l.role.replace("Hon'ble ", "")} — ${l.nm}`))}\nAmaltas ka sanchalan Mayank Welfare Society karti hai.`
-          : `**University leadership**\n${bullet(LEADERS.map((l) => `${l.role.replace("Hon'ble ", "")} — ${l.nm}`))}\nAmaltas is run by the Mayank Welfare Society.`,
+          ? `**University ka netritva**\n${bullet(LEADERS.map((l) => `${l.role.replace("Hon'ble ", "")} — ${l.nm}`))}\nAmaltas ka sanchalan Amaltas Educational Welfare Society karti hai.`
+          : `**University leadership**\n${bullet(LEADERS.map((l) => `${l.role.replace("Hon'ble ", "")} — ${l.nm}`))}\nAmaltas is run by the Amaltas Educational Welfare Society.`,
         links: [L.leadership],
       };
     },
@@ -1016,17 +1017,17 @@ const INTENTS = compile([
   },
   {
     id: "about", entity: false,
-    keywords: ["about amaltas", "about university", "about the university", "about you", "history", "established", "founded", "when was", "how old", "mayank welfare", "why amaltas", "why choose", "what is amaltas", "is amaltas good", "good college", "good university", "review", "reviews", "vision", "mission", "students", "faculty", "teachers", "amaltas kaise", "college kaise", "accha hai", "kab bana", "kab shuru hua", "amaltas ke baare", "university ke baare", "kyu amaltas", "faculty kaise", "adhyapak"],
+    keywords: ["about amaltas", "about university", "about the university", "about you", "history", "established", "founded", "when was", "how old", "welfare society", "why amaltas", "why choose", "what is amaltas", "is amaltas good", "good college", "good university", "review", "reviews", "vision", "mission", "students", "faculty", "teachers", "amaltas kaise", "college kaise", "accha hai", "kab bana", "kab shuru hua", "amaltas ke baare", "university ke baare", "kyu amaltas", "faculty kaise", "adhyapak"],
     run: (ctx) => ({
       text: t(ctx.lang,
         `**Amaltas University, Dewas** — "Where healing grows."\n${bullet([
-          "Founded by Shri Suresh Singh Bhadoria through the Mayank Welfare Society (2013)",
+          "Founded by Shri Suresh Singh Bhadoria through the Amaltas Educational Welfare Society (2013)",
           "Private university under the MP Private University Act, recognised by UGC under Section 2(f)",
           `${STATS.map((s) => `${s.v.toLocaleString("en-IN")}${s.suf} ${s.l.toLowerCase()}`).join(" · ")}`,
           `Hospital-embedded learning in a ${HOSPITAL_BEDS} superspeciality teaching hospital`,
         ])}`,
         `**Amaltas University, Dewas** — "Where healing grows."\n${bullet([
-          "Shri Suresh Singh Bhadoria ji ne Mayank Welfare Society ke through 2013 mein iski sthapna ki",
+          "Shri Suresh Singh Bhadoria ji ne Amaltas Educational Welfare Society ke through 2013 mein iski sthapna ki",
           "MP Private University Act ke tahat private university, UGC Section 2(f) se manyata prapt",
           `${STATS.map((s) => `${s.v.toLocaleString("en-IN")}${s.suf} ${s.l.toLowerCase()}`).join(" · ")}`,
           `${HOSPITAL_BEDS} ke superspeciality teaching hospital mein hi padhai aur training`,

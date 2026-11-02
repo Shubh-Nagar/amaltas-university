@@ -20,6 +20,10 @@ const AwardsRankings = lazy(() => import("./pages/about/AwardsRankings.jsx"));
 const Accreditations = lazy(() => import("./pages/about/Accreditations.jsx"));
 const MandatoryDisclosure = lazy(() => import("./pages/about/MandatoryDisclosure.jsx"));
 const MoU = lazy(() => import("./pages/about/MoU.jsx"));
+const Publications = lazy(() => import("./pages/research/Publications.jsx"));
+const Patents = lazy(() => import("./pages/research/Patents.jsx"));
+const IndustryCollaboration = lazy(() => import("./pages/research/IndustryCollaboration.jsx"));
+const ControllerOfExamination = lazy(() => import("./pages/examination/ControllerOfExamination.jsx"));
 const FeeDetails = lazy(() => import("./pages/FeeDetails.jsx"));
 const Eligibility = lazy(() => import("./pages/Eligibility.jsx"));
 const AdmissionProcedure = lazy(() => import("./pages/AdmissionProcedure.jsx"));
@@ -28,6 +32,7 @@ const HostelAccommodation = lazy(() => import("./pages/student-life/HostelAccomm
 const CampusLife = lazy(() => import("./pages/student-life/CampusLife.jsx"));
 const AcademicFacilities = lazy(() => import("./pages/facilities/AcademicFacilities.jsx"));
 const CampusFacilities = lazy(() => import("./pages/facilities/CampusFacilities.jsx"));
+const InternationalStudents = lazy(() => import("./pages/facilities/InternationalStudents.jsx"));
 const NewsAndPress = lazy(() => import("./pages/happenings/NewsAndPress.jsx"));
 const Events = lazy(() => import("./pages/happenings/Events.jsx"));
 const PhotoGallery = lazy(() => import("./pages/happenings/PhotoGallery.jsx"));
@@ -50,6 +55,7 @@ const PublicSelfDisclosure = lazy(() => import("./pages/PublicSelfDisclosure.jsx
 const AntiRaggingCommittee = lazy(() => import("./pages/AntiRaggingCommittee.jsx"));
 const Healthcare = lazy(() => import("./pages/Healthcare.jsx"));
 const Contact = lazy(() => import("./pages/Contact.jsx"));
+const JobOpenings = lazy(() => import("./pages/JobOpenings.jsx"));
 
 // Every page except the homepage is code-split: visitors download a page's
 // code only when they navigate to it, which keeps the first-load bundle small.
@@ -121,6 +127,10 @@ export default function App() {
           <Route path="/about/accreditations" element={<Accreditations />} />
           <Route path="/about/disclosure" element={<MandatoryDisclosure />} />
           <Route path="/about/mou" element={<MoU />} />
+          <Route path="/research/publications" element={<Publications />} />
+          <Route path="/research/patents" element={<Patents />} />
+          <Route path="/research/industry-collaboration" element={<IndustryCollaboration />} />
+          <Route path="/examination/controller" element={<ControllerOfExamination />} />
           <Route path="/admissions/fees" element={<FeeDetails />} />
           <Route path="/admissions/eligibility" element={<Eligibility />} />
           <Route path="/admissions/procedure" element={<AdmissionProcedure />} />
@@ -129,6 +139,7 @@ export default function App() {
           <Route path="/student-life/campus-life" element={<CampusLife />} />
           <Route path="/facilities/academic" element={<AcademicFacilities />} />
           <Route path="/facilities/campus" element={<CampusFacilities />} />
+          <Route path="/facilities/international-students" element={<InternationalStudents />} />
           <Route path="/happenings/news" element={<NewsAndPress />} />
           <Route path="/happenings/events" element={<Events />} />
           <Route path="/happenings/photo-gallery" element={<PhotoGallery />} />
@@ -149,6 +160,7 @@ export default function App() {
           <Route path="/anti-ragging-committee" element={<AntiRaggingCommittee />} />
           <Route path="/healthcare" element={<Healthcare />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/job-openings" element={<JobOpenings />} />
           <Route path="/certificates" element={<CertificateDownload />} />
           {/* Internal scratch route. It has no real content, so keep it out of
               the index — it was otherwise crawlable as a thin page. */}
