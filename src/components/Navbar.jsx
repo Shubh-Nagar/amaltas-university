@@ -167,6 +167,7 @@ export default function Navbar() {
             </a>
           </div>
           <div className="nav-topbar-right">
+            <Link to="/phd-entrance-2027" className="topbar-pill new">Ph.D. Entrance 2027</Link>
             <Link to="/iqac" className="topbar-pill">IQAC</Link>
             <div className="topbar-socials">
               <a href="https://www.facebook.com/people/Amaltas-University-Dewas/100092261027732/" target="_blank" rel="noreferrer" aria-label="Facebook"><Facebook size={14} /></a>

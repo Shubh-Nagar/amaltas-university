@@ -360,7 +360,7 @@ export const ANNOUNCEMENTS = [
 export const QUICK_LINKS = [
   { label: "Photogallery", to: "#", icon: Image },
   { label: "Upcoming Events", to: "#", icon: Calendar, isNew: true },
-  { label: "Ph.D. Entrance 2026", to: "#", icon: GraduationCap, isNew: true },
+  { label: "Ph.D. Entrance 2027", to: "/phd-entrance-2027", icon: GraduationCap, isNew: true },
   { label: "IQAC", to: "/iqac", icon: Award },
   { label: "News & Press Releases", to: "#", icon: Newspaper },
   { label: "NCMSAP Certificates", to: "#", icon: Download },

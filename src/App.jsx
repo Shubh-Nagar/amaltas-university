@@ -48,6 +48,7 @@ const AlumniMessage = lazy(() => import("./pages/alumni/Message.jsx"));
 const AlumniMembers = lazy(() => import("./pages/alumni/Members.jsx"));
 const Mainpopup = lazy(() => import("./components/Mainpopup.jsx"));
 const IQAC = lazy(() => import("./pages/IQAC.jsx"));
+const PhdEntrance = lazy(() => import("./pages/PhdEntrance.jsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
 const PrivacyPolicy2 = lazy(() => import("./pages/PrivacyPolicy2.jsx"));
 const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions.jsx"));
@@ -122,6 +123,7 @@ export default function App() {
           <Route path="/leadership/:slug" element={<LeaderMessage />} />
           <Route path="/voices" element={<Voices />} />
           <Route path="/iqac" element={<IQAC />} />
+          <Route path="/phd-entrance-2027" element={<PhdEntrance />} />
           <Route path="/about/university" element={<TheUniversity />} />
           <Route path="/about/awards" element={<AwardsRankings />} />
           <Route path="/about/accreditations" element={<Accreditations />} />
